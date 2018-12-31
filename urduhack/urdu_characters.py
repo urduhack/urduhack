@@ -2,21 +2,14 @@
 """Complete collection of Urdu alphabet."""
 
 # Complete list of Urdu language Characters.
-URDU_ALL_CHARACTERS = frozenset("""
-
-  آ ا ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ
- س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ہ ۃ ھ ء ی ے ‬
-
-  ۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹
-
- \u0600 \u0601 \u0602 \u0603 \u060c \u060d \u060e \u060f 
- \u0610 \u0611 \u0612 \u0613 \u0614 \u0615  ؟ ؛
- \u064b \u064c \u064d \u064e \u064f
- \u0650 \u0651 \u0652 \u0653 \u0654 \u0656 \u0657 \u0658 
- ٪ ٫ ٬
- \u0670
-۔ 
-""".split())
+URDU_ALL_CHARACTERS = frozenset(" آ ا ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ہ ۃ ھ ء ی ے "
+                                " ۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹ "
+                                " \u0600 \u0601 \u0602 \u0603 \u060c \u060d \u060e \u060f  "
+                                " \u0610 \u0611 \u0612 \u0613 \u0614 \u0615 "
+                                " \u064b \u064c \u064d \u064e \u064f "
+                                " \u0650 \u0651 \u0652 \u0653 \u0654 \u0656 \u0657 \u0658 "
+                                " ؟ ؛ ٪ ٫ ٬ ۔ "
+                                " \u0670 ".split())
 
 # Complete set of Urdu alphabet.
 URDU_ALPHABETS = frozenset("آ ا ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ہ ۃ ھ ء ی ے".split())
