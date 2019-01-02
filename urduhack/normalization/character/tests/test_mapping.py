@@ -6,7 +6,7 @@ from urduhack.urdu_characters import URDU_ALL_CHARACTERS
 
 
 def test_normalize_characters():
-    """Normalize characters Test case"""
+    """Normalize characters Test case arabic words : Urdu words"""
     words: dict = {"ﻣﯿﺎﮞ": "میاں",
                    "ﺗﮭﺎ": "تھا",
                    "ﻧﮩﯽ": "نہی",
