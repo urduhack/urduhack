@@ -52,6 +52,7 @@ CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
                                  '۷': [],
                                  '۸': [],
                                  '۹': [],
+                                 'لا': ['ﻼ'],
                                  }
 
 _TRANSLATOR = {}
