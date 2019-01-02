@@ -121,6 +121,7 @@ def test_normalize_characters():
                    "ﺍﻭﻧﭩﻨﯽ": "اونٹنی",
                    "ﺟﺎﻧﮯ": "جانے",
                    "ﺑﻼﯾﺎ": "بلایا",
+                   "ﻓﺎﺋﺪﮦ": "فائدہ",
                    }
 
     for key, val in words.items():
