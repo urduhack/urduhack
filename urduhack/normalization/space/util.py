@@ -7,7 +7,7 @@ import regex as re
 SPACE_BEFORE_DIGITS_RE = re.compile(r"(?<=[\u0600-\u06ff])(?=[0-9])", flags=re.U | re.M | re.I)
 SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[\u0600-\u06ff])", flags=re.U | re.M | re.I)
 # Add spaces after ., if there is number then not Ex (9.00)
-PUNCTUATIONS_AFTER_DIGITS_RE = re.compile(r"(?<=[۔،])(?=[^\s0-9۔،])", flags=re.U | re.M | re.I)
+SPACE_AFTER_PUNCTUATIONS_RE = re.compile(r"(?<=[۔،])(?=[^\s0-9۔،])", flags=re.U | re.M | re.I)
 
 
 def digits_space(text: str) -> str:
@@ -36,4 +36,4 @@ def punctuations_space(text: str) -> str:
     Returns:
         str
     """
-    return PUNCTUATIONS_AFTER_DIGITS_RE.sub(' ', text)
+    return SPACE_AFTER_PUNCTUATIONS_RE.sub(' ', text)
