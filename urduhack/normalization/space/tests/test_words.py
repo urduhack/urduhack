@@ -1,6 +1,8 @@
 # coding: utf8
 """test case"""
-from urduhack.normalization.space.words import digits_space
+from urduhack.normalization.space.util import digits_space
+from urduhack.normalization.space.words import WORDS_SPACE
+from urduhack.urdu_characters import URDU_ALL_CHARACTERS
 
 
 def test_digits_space():
@@ -12,6 +14,19 @@ def test_digits_space():
             }
     for key, value in data.items():
         assert value == digits_space(key)
+
+
+def test_words_space():
+    """Test case"""
+    for key, value in WORDS_SPACE.items():
+        for char in key:
+            if char == ' ':
+                continue
+            assert char in URDU_ALL_CHARACTERS
+        for char in value:
+            if char == ' ':
+                continue
+            assert char in URDU_ALL_CHARACTERS
 
 
 def test_punctuations_space():
