@@ -115,3 +115,18 @@ WORDS_SPACE: Dict[str, str] = {"کردیا": "کر دیا",
                                "جاسکتا": "جا سکتا",
                                "کرناہے": "کرنا ہے",
                                }
+
+
+def fix_join_words(text: str) -> str:
+    """
+    Replace all join urdu words to separate words
+    Args:
+        text (str): text
+
+    Returns:
+        str
+    """
+    for key, value in WORDS_SPACE.items():
+        text = text.replace(key, value)
+
+    return text
