@@ -76,7 +76,7 @@ ARABIC_ALL_CHARACTER: frozenset = frozenset("""
 
 """.split())
 
-FB50_FEFF_RANGE_RE = re.compile(f'[{"".join(ARABIC_ALL_CHARACTER)}]+', flags=re.UNICODE | re.MULTILINE)
+FB50_FEFF_RANGE_RE = re.compile(f'[{"".join(ARABIC_ALL_CHARACTER)}]+', flags=re.U | re.M | re.I)
 
 
 def find_arabic_words(text: str) -> str:
