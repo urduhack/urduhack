@@ -149,3 +149,7 @@ def test_correct_urdu_characters():
 
     for char in URDU_DIGITS:
         assert char in CORRECT_URDU_CHARACTERS
+
+    for _list in CORRECT_URDU_CHARACTERS.values():
+        for char in _list:
+            assert char not in URDU_ALL_CHARACTERS
