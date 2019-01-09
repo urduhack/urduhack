@@ -5,3 +5,5 @@ pytest>=3.4.1
 pytest-cov
 pytest-codestyle
 pytest-pylint
+Sphinx
+sphinx_rtd_theme
