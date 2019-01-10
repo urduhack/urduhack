@@ -12,13 +12,15 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
 
+sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('.'))
+
+import urduhack
 
 # -- Project information -----------------------------------------------------
-# import sphinx_rtd_theme
 # from urduhack import __version__
 
 project = 'Urduhack'
@@ -26,9 +28,9 @@ copyright = '2019, Ikram Ali'
 author = 'Ikram Ali'
 
 # The short X.Y version
-version = "0.0.1"
+version = urduhack.__version__
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
+release = urduhack.__version__
 
 # -- General configuration ---------------------------------------------------
 
@@ -177,4 +179,4 @@ epub_exclude_files = ['search.html']
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
-# intersphinx_mapping = {'https://docs.python.org/': None}
+intersphinx_mapping = {'https://docs.python.org/3/': None}

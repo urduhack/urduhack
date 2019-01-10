@@ -1,0 +1,18 @@
+language: python
+
+python:
+  - "3.6"
+  - "3.7"
+
+cache: pip
+
+install:
+  - pip install -r dev-requirements.txt
+
+script:
+  - py.test -v .
+  - pytest --cov=./
+  - codecov
+
+notifications:
+  slack: urduhack:HarNbK5WrXQbu9XuFLPsSFtM
