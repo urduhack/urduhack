@@ -19,16 +19,16 @@
 
 # -- Project information -----------------------------------------------------
 # import sphinx_rtd_theme
-from urduhack import __version__
+# from urduhack import __version__
 
 project = 'Urduhack'
 copyright = '2019, Ikram Ali'
 author = 'Ikram Ali'
 
 # The short X.Y version
-version = __version__
+version = "0.0.1"
 # The full version, including alpha/beta/rc tags
-release = __version__
+release = "0.0.1"
 
 # -- General configuration ---------------------------------------------------
 
