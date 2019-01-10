@@ -1,12 +1,12 @@
 # coding: utf8
 """Test cases for mapping"""
 
-from urduhack.normalization.character.mapping import normalize_characters
-from urduhack.urdu_characters import URDU_ALL_CHARACTERS
+from urduhack.normalization.character.mapping import normalize_characters, CORRECT_URDU_CHARACTERS
+from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS
 
 
 def test_normalize_characters():
-    """Normalize characters Test case"""
+    """Normalize characters Test case arabic words : Urdu words"""
     words: dict = {"ﻣﯿﺎﮞ": "میاں",
                    "ﺗﮭﺎ": "تھا",
                    "ﻧﮩﯽ": "نہی",
@@ -33,24 +33,23 @@ def test_normalize_characters():
                    "ﺑﻌﺪ": "بعد",
                    "ﭼﺮﺑﯽ": "چربی",
                    "ﺧﺎﻣﻮﺷﯽ": "خاموشی",
-                   "ﮨﭩﮯ": "ھٹے",
-                   # "ﺍﻭﻻﺩ": "اوﻻد",
+                   "ﮨﭩﮯ": "ہٹے",
+                   "ﺍﻭﻻﺩ": "اولاد",
                    "ﺩﯾﻨﯽ": "دینی",
-                   "ﭼﺎﮨﮯ": "چاھے",
+                   "ﭼﺎﮨﮯ": "چاہے",
                    "ﮐﮩﺎ": "کہا",
-                   # "ﻓﺎﺋﺪﮦ": "فاﺋدہ",
                    "ﺧﺎﻟﯽ": "خالی",
                    "ﻣﺎﻧﮕﯿﮟ": "مانگیں",
-                   "ﺭﮨﺘﮯ": "رھتے",
+                   "ﺭﮨﺘﮯ": "رہتے",
                    "ﻣﻔﻠﺴﯽ": "مفلسی",
                    "ﺩﺭﺑﺎﺭﯼ": "درباری",
-                   # "ﺑﺘﺎﺋﯿﮟ": "بتاﺋیں",
-                   "ﮨﻤﺖ": "ھمت",
+                   "ﺑﺘﺎﺋﯿﮟ": "بتائیں",
+                   "ﮨﻤﺖ": "ہمت",
                    "ﻣﺮﺩ": "مرد",
                    "ﺩﻭﺳﺖ": "دوست",
                    "ﻋﺎﺷﻘﻮ": "عاشقو",
                    "ﺟﻠﻮﮦ": "جلوہ",
-                   "ﺭﮨﺘﺎ": "رھتا",
+                   "ﺭﮨﺘﺎ": "رہتا",
                    "ﮈﺍﮐﭩﺮ": "ڈاکٹر",
                    "ﺭﻫﺘﯽ": "رھتی",
                    "ﺍﯾﺴﮯ": "ایسے",
@@ -63,67 +62,94 @@ def test_normalize_characters():
                    "ﺯﯾﺎﺩﮦ": "زیادہ",
                    "ﻧﻮﺟﻮﻥ": "نوجون",
                    "ﺧﺎﻧﮯ": "خانے",
-                   "ﺭﺍﮦﺳﮯ": "راہسے",
+                   "ﺭﺍﮦ ﺳﮯ": "راہ سے",
                    "ﻣﺤﺘﺮﻣﮧ": "محترمہ",
                    "ﺟﺎﻧﻮﺭ": "جانور",
                    "ﻧﮯﺍﯾﮏ": "نےایک",
                    "ﻣﺤﺒﻮﺏ": "محبوب",
                    "ﺧﻮﺵ": "خوش",
-                   # "ﺳﺎﺋﻞ": "ساﺋل",
+                   "ﺳﺎﺋﻞ": "سائل",
                    "ﮐﺮ": "کر",
                    "ﮐﮩﺎﮐﮧ": "کہاکہ",
                    "ﻧﺴﻮﺍﻧﯽ": "نسوانی",
-                   "ﮨﻤﯿﮟﺑﻬﯽ": "ھمیںبھی",
-                   "ﺍﺭﺍﺩﮦﺑﺘﺎﯾﺎ": "ارادہبتایا",
+                   "ﮨﻤﯿﮟ ﺑﻬﯽ": "ہمیں بھی",
+                   "ﺍﺭﺍﺩﮦ ﺑﺘﺎﯾﺎ": "ارادہ بتایا",
                    "ﺑﺎﭖ": "باپ",
                    "ﻟﮕﯿﮟ": "لگیں",
                    "ﺷﺨﺺ": "شخص",
-                   "ﺭﮨﺘﺎﮨﮯ": "رھتاھے",
+                   "ﺭﮨﺘﺎﮨﮯ": "رہتاہے",
                    "ﻗﺪﺭﺕ": "قدرت",
                    "ﻣﺮﺿﯽ": "مرضی",
                    "ﮔﯿﺎﺍﻭﺭ": "گیااور",
-                   "ﮐﭽﮫ": "کچہ",
-                   "ﻟﮑﮫ": "لکہ",
+                   "ﮐﭽﮫ": "کچھ",
+                   "ﻟﮑﮫ": "لکھ",
                    "ﺍﻋﻈﻢ": "اعظم",
                    "ﺷﺨﺼﯿﺖ": "شخصیت",
-                   # "ﺧﻼﻑ": "خﻼف",
+                   "ﺧﻼﻑ": "خلاف",
                    "ﻏﯿﺮ": "غیر",
                    "ﺳﻮﺩ": "سود",
                    "ﺑﮩﺘﺮ": "بہتر",
-                   # "ﻫﻮﺋﮯ": "ھوﺋے",
-                   # "ﺳﻼﻣﺖ": "سﻼمت",
+                   "ﻫﻮﺋﮯ": "ھوئے",
+                   "ﺳﻼﻣﺖ": "سلامت",
                    "ﺭﺍﺑﻄﮧ": "رابطہ",
-                   "ﮨﻮﮔﯽ": "ھوگی",
+                   "ﮨﻮﮔﯽ": "ہوگی",
                    "ﻣﺮﺽ": "مرض",
                    "ﺳﻔﺮ": "سفر",
                    "ﻣﻔﺴﺮ": "مفسر",
                    "ﻧﺼﻒ": "نصف",
-                   "ﮨﻮﮞﺟﺲ": "ھوںجس",
+                   "ﮨﻮﮞ ﺟﺲ": "ہوں جس",
                    "ﭘﯿﭙﺮﺯ": "پیپرز",
                    "ﺑﻦ": "بن",
                    "ﮔﻨﮩﮕﺎﺭ": "گنہگار",
-                   "ﺭﮨﯽ": "رھی",
+                   "ﺭﮨﯽ": "رہی",
                    "ﻣ": "م",
                    "ﺧﺎﻭﻧﺪ": "خاوند",
                    "ﺩﮐﮭﺎﺗﺎ": "دکھاتا",
                    "ﺟﺎﺳﮑﺘﮯ": "جاسکتے",
                    "ﺣﻞ": "حل",
                    "ﺗﺠﺮﺑﮧ": "تجربہ",
-                   "ﮨﺎﺭﻧﮯ": "ھارنے",
+                   "ﮨﺎﺭﻧﮯ": "ہارنے",
                    "ﺳﺠﺎ": "سجا",
                    "ﺭﻭﻧﻖ": "رونق",
                    "ﺑﻨﻮﮞ": "بنوں",
                    "ﺳﮑﺘﯽ": "سکتی",
-                   "ﮐﮧﺭﺍﺳﺘﮯ": "کہراستے",
+                   "ﮐﮧ ﺭﺍﺳﺘﮯ": "کہ راستے",
                    "ﻭﺍﻟﯽ": "والی",
                    "ﺣﻔﺎﻇﺖ": "حفاظت",
                    "ﺳﯿﺪﮬﺎ": "سیدھا",
                    "ﺍﻭﻧﭩﻨﯽ": "اونٹنی",
                    "ﺟﺎﻧﮯ": "جانے",
+                   "ﺑﻼﯾﺎ": "بلایا",
+                   "ﻓﺎﺋﺪﮦ": "فائدہ",
+                   "ﮔﺎﺋﮯ": "گائے",
+                   "ﻻﮨﻮﺭ": "لاہور",
+                   "ﺑﭩﮭﺎﺅﮞ": "بٹھاؤں",
+                   "اشیاﺀ": "اشیاء",
+                   "کیلﺌے": "کیلئے",
+                   "باعﺚ": "باعث",
                    }
 
     for key, val in words.items():
         norm = normalize_characters(key)
         assert val == norm
         for char in norm:
-            assert char in URDU_ALL_CHARACTERS
+            if char == " ":
+                continue
+            if len(char) == 1:
+                assert char in URDU_ALL_CHARACTERS, norm
+            else:
+                for inner_char in char:
+                    assert inner_char in URDU_ALL_CHARACTERS
+
+
+def test_correct_urdu_characters():
+    """ Test case """
+    for char in URDU_ALPHABETS:
+        assert char in CORRECT_URDU_CHARACTERS
+
+    for char in URDU_DIGITS:
+        assert char in CORRECT_URDU_CHARACTERS
+
+    for _list in CORRECT_URDU_CHARACTERS.values():
+        for char in _list:
+            assert char not in URDU_ALL_CHARACTERS

@@ -3,5 +3,9 @@
 wheel
 pytest>=3.4.1
 pytest-cov
-pytest-pep8
+pytest-codestyle
 pytest-pylint
+Sphinx
+sphinx_rtd_theme
+twine
+keyring
