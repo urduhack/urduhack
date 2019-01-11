@@ -1,7 +1,7 @@
 Urduhack
 ========
 
-Urduhack NLP library for different Urdu language tasks and maintained by `Ikram Ali and Contributors <https://github.com/Urduhack/Urduhack/graphs/contributors>`_.
+NLP library for different Urdu language tasks and maintained by `Ikram Ali and Contributors <https://github.com/Urduhack/Urduhack/graphs/contributors>`_.
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
    :target: https://github.com/urduhack/urduhack/blob/master/LICENSE
@@ -27,6 +27,11 @@ Urduhack NLP library for different Urdu language tasks and maintained by `Ikram 
    :maxdepth: 2
 
    installation.rst
+   handbook/index.rst
+   reference/index.rst
+   about.rst
+   releasenotes/index.rst
+   deprecations.rst
 
 
 
