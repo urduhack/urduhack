@@ -1,7 +1,8 @@
 # coding: utf8
-"""Contains wrong Urdu characters mapping to correct characters"""
+"""Character normalization module"""
 from typing import Dict
 
+# Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
                                  'أ': [],
                                  'ا': ['ﺍ', 'ﺎ', ],
@@ -67,7 +68,8 @@ for key, value in CORRECT_URDU_CHARACTERS.items():
 
 def normalize_characters(text: str) -> str:
     """
-    Replace with correct Urdu unicode characters
+    Replace text with correct Urdu unicode characters
+
     Args:
         text (str): text to replace
 

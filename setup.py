@@ -30,9 +30,17 @@ def setup_package():
 
           version=about['__version__'],
 
-          description=about['DESCRIPTION'],
+          description=about['__description__'],
 
           long_description=readme,
+
+          author=about['__author__'],
+
+          author_email=about['__author_email__'],
+
+          url=about['__url__'],
+
+          license=about['__license__'],
 
           packages=find_packages(),
 

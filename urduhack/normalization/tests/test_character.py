@@ -1,7 +1,7 @@
 # coding: utf8
 """Test cases for mapping"""
 
-from urduhack.normalization.character.mapping import normalize_characters, CORRECT_URDU_CHARACTERS
+from urduhack.normalization.character import normalize_characters, CORRECT_URDU_CHARACTERS
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS
 
 

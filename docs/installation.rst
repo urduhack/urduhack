@@ -47,7 +47,7 @@ Linux Installation
 ^^^^^^^^^^^^^^^^^^
 
 We provide binaries for Linux for each of the supported Python
-versions in the manylinux wheel format.::
+versions in the many linux wheel format.::
 
   $ pip install Urduhack
 
