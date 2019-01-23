@@ -5,7 +5,6 @@ from typing import Dict
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
                                  'أ': ['ﺃ'],
-                                 'إ': ['ﺇ'],
                                  'ا': ['ﺍ', 'ﺎ', ],
                                  'ب': ['ﺏ', 'ﺐ', 'ﺑ', 'ﺒ'],
                                  'پ': ['ﭖ', 'ﭘ', 'ﭙ', ],
