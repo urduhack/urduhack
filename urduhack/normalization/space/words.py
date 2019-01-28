@@ -120,6 +120,7 @@ WORDS_SPACE: Dict[str, str] = {"کردیا": "کر دیا",
 def fix_join_words(text: str) -> str:
     """
     Replace all join urdu words to separate words
+
     Args:
         text (str): text
 

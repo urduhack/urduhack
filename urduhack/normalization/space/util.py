@@ -15,7 +15,7 @@ SPACE_AFTER_PUNCTUATIONS_RE = re.compile(
 
 def digits_space(text: str) -> str:
     """
-    Add spaces before|after numeric number and urdu words
+    Add spaces before|after numeric and urdu digits
 
     Args:
         text (str): text
@@ -31,7 +31,7 @@ def digits_space(text: str) -> str:
 
 def punctuations_space(text: str) -> str:
     """
-    Add spaces after punctuation  and urdu words
+    Add spaces after punctuations used in urdu writing
 
     Args:
         text (str): text

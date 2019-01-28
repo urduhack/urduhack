@@ -5,3 +5,4 @@ Handbook
    :maxdepth: 2
 
    overview
+   normalization
