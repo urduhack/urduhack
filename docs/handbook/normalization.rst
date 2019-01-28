@@ -20,9 +20,9 @@ normalized text.
 Pre-processing for Tokenization
 --------------------------------
 
-Tokenization is a core process of Natural Language Processing. You have to do
-to tokenization in order to process data of any language. To make the tokenization
-of urdu text easy and efficient, it is necessary to add spaces before and after urdu/numeric
+Tokenization is a core process of Natural Language Processing. It is needed
+in order to process data of any language. To make the tokenization of urdu text
+easy and efficient, it is necessary to add spaces before and after urdu/numeric
 digits and spaces after punctuations.
 
 Adding spaces before and after digits (numeric and urdu)
