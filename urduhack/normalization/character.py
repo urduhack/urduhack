@@ -4,7 +4,7 @@ from typing import Dict
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
-                                 'أ': [],
+                                 'أ': ['ﺃ'],
                                  'ا': ['ﺍ', 'ﺎ', ],
                                  'ب': ['ﺏ', 'ﺐ', 'ﺑ', 'ﺒ'],
                                  'پ': ['ﭖ', 'ﭘ', 'ﭙ', ],
@@ -35,7 +35,7 @@ CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
                                  'ڈ': ['ﮈ', 'ﮉ'],
                                  'ڑ': ['ﮍ', 'ﮌ'],
                                  'ژ': ['ﮋ', ],
-                                 'ک': ['ﮎ', 'ﮏ', 'ﮐ', 'ﮑ'],
+                                 'ک': ['ﮎ', 'ﮏ', 'ﮐ', 'ﮑ', 'ﻛ', 'ك'],
                                  'گ': ['ﮒ', 'ﮓ', 'ﮔ', 'ﮕ'],
                                  'ں': ['ﮞ', 'ﮟ'],
                                  'و': ['ﻮ', 'ﻭ', 'ﻮ', ],
@@ -59,6 +59,7 @@ CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
                                  '۸': ['٨'],
                                  '۹': ['٩'],
                                  'لا': ['ﻻ', 'ﻼ'],
+
                                  }
 
 _TRANSLATOR = {}

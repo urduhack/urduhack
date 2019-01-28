@@ -127,16 +127,16 @@ def test_normalize_characters():
                    "اشیاﺀ": "اشیاء",
                    "کیلﺌے": "کیلئے",
                    "باعﺚ": "باعث",
-                   "كيا هوا": "کیا ھوا",
-                   "مر كر موت": "مر کر موت",
                    "كيا خطا": "کیا خطا",
                    "حم مر كر": "حم مر کر",
                    "تم كيا كر": "تم کیا کر",
                    "كن فا يا كن": "کن فا یا کن",
-                   "بهى زنده": "بھی زندہ",
-                   "ﮔﻨﮩﮕﺎﺭ مر كر موت": "گنہگار مر کر موت",
                    "مر كر ﻓﺎﺋﺪﮦ": "مر کر فائدہ",
                    "تم كيا كرو": "تم کیا کرو",
+                   "تم کیا کر": "تم کیا کر",
+                   "گنہگار مر": "گنہگار مر",
+                   "کر موت": "کر موت",
+                   "کیا خطا": "کیا خطا",
                    }
 
     for key, val in words.items():
@@ -163,3 +163,7 @@ def test_correct_urdu_characters():
     for _list in CORRECT_URDU_CHARACTERS.values():
         for char in _list:
             assert char not in URDU_ALL_CHARACTERS
+
+    for key in CORRECT_URDU_CHARACTERS.keys():
+        for char in key:
+            assert char in URDU_ALL_CHARACTERS
