@@ -23,7 +23,7 @@ URDU_DIGITS = frozenset("۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹".split())
 URDU_PUNCTUATIONS = frozenset("؛ ، ٫  ؟ ۔ ٪".split())
 
 # Urdu Aerabs
-URDU_DIACRITICS = frozenset("\u064B \u0670 \u0650 \u064F".split())
+URDU_DIACRITICS = frozenset("\u064e \u064B \u0670 \u0650 \u064F \u064d".split())
 
 URDU_ALL_CHARACTERS_UNICODE = {'\u0600': '\u0600',
                                '\u0601': '\u0601',
