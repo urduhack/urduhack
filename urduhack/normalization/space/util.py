@@ -1,6 +1,7 @@
 # coding: utf8
 """Space utils"""
 import regex as re
+
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS
 
 # Add spaces before|after numeric number and urdu words
