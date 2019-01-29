@@ -6,3 +6,4 @@ Handbook
 
    overview
    normalization
+   remove_diacritics
