@@ -1,6 +1,7 @@
 # coding: utf8
 """htmlmail to text setup file"""
 from pathlib import Path
+
 from setuptools import setup, find_packages
 
 
@@ -33,6 +34,8 @@ def setup_package():
           description=about['__description__'],
 
           long_description=readme,
+
+          long_description_content_type="text/markdown",
 
           author=about['__author__'],
 
