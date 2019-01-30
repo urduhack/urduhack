@@ -7,6 +7,18 @@ NLP library for different Urdu language tasks and maintained by `Ikram Ali and C
    :target: https://github.com/urduhack/urduhack/blob/master/LICENSE
    :alt: License: MIT
 
+.. image:: https://img.shields.io/pypi/v/urduhack.svg
+   :target: https://pypi.org/project/urduhack/
+   :alt: Pypi Version
+
+.. image:: https://img.shields.io/pypi/pyversions/urduhack.svg
+   :target: https://pypi.org/project/urduhack/
+   :alt: Python Versions
+
+.. image:: https://img.shields.io/pypi/wheel/urduhack.svg
+   :target: https://pypi.org/project/urduhack/
+   :alt: Wheel
+
 .. image:: https://readthedocs.org/projects/urduhack/badge/?version=latest
    :target: https://urduhack.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
@@ -18,6 +30,10 @@ NLP library for different Urdu language tasks and maintained by `Ikram Ali and C
 .. image:: https://codecov.io/gh/urduhack/urduhack/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/urduhack/urduhack
    :alt: Code coverage
+
+.. image:: https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=red
+   :target: https://join.slack.com/t/urduhack/shared_invite/enQtNDE5NDg4NzU2Mzg4LTk3ZDNlYzBhOWM5MGY0ZGE0ZmNmNzU2ZTViYjAwMTg3NTBmZGU4OTM0M2E0MzQ0NDI1MDIyYzVkYTVmZTkyZjg
+   :alt: Join Slack Urduhack
 
 .. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
    :target: https://saythanks.io/to/akkefa
