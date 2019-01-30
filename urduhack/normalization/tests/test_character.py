@@ -137,6 +137,7 @@ def test_normalize_characters():
                    "گنہگار مر": "گنہگار مر",
                    "کر موت": "کر موت",
                    "کیا خطا": "کیا خطا",
+                   "قريب": "قریب",
                    }
 
     for key, val in words.items():
