@@ -2,6 +2,7 @@
 """Test cases for mapping"""
 
 from urduhack.normalization.character import normalize_characters, CORRECT_URDU_CHARACTERS
+from urduhack.normalization.character import normalize_combine_characters, COMBINE_URDU_CHARACTERS
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS
 
 
@@ -168,3 +169,32 @@ def test_correct_urdu_characters():
     for key in CORRECT_URDU_CHARACTERS:
         for char in key:
             assert char in URDU_ALL_CHARACTERS
+
+
+def test_normalize_combine_characters():
+    """Test case"""
+    words: dict = {
+        "آزاد": "آزاد",
+    }
+    for key, val in words.items():
+        norm = normalize_combine_characters(key)
+        assert val == norm
+        for char in norm:
+            assert char in URDU_ALL_CHARACTERS, norm
+
+
+def test_combine_urdu_characters():
+    """ Test case """
+    for chars in COMBINE_URDU_CHARACTERS.keys():
+        assert len(chars) == 2
+        for char in chars:
+            assert char in URDU_ALL_CHARACTERS
+
+    for char in COMBINE_URDU_CHARACTERS.values():
+        assert len(char) == 1
+        assert char in URDU_ALL_CHARACTERS
+        assert char in CORRECT_URDU_CHARACTERS
+
+    for key, value in COMBINE_URDU_CHARACTERS.items():
+        assert len(key) == 2
+        assert len(value) == 1

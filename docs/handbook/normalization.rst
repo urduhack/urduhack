@@ -11,8 +11,20 @@ a piece of text to a proper specified Urdu range (0600-06FF).
 To normalize some text, use the :py:func:`~urduhack.normalization.character.normalize_characters` function
 in the :py:mod:`~urduhack.normalization.character` module::
 
-    >>> from urduhack.normalization.character import normalize_characters
+    >>> from urduhack.normalization import normalize_characters
     >>> normalized_text = normalize_characters(un_normalized_text)
+
+If successful, this function returns a :py:class:`String` object containing
+normalized text.
+
+Combine|Join Characters Normalization
+--------------------------------------
+
+To normalize combine characters with single character unicode text, use the :py:func:`~urduhack.normalization.character.normalize_combine_characters`
+function in the :py:mod:`~urduhack.normalization.character` module::
+
+    >>> from urduhack.normalization import normalize_combine_characters
+    >>> normalized_text = normalize_combine_characters(un_normalized_text)
 
 If successful, this function returns a :py:class:`String` object containing
 normalized text.

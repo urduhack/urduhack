@@ -6,7 +6,7 @@
 ==================================================
 
 The :py:mod:`~urduhack.normalization.character` module provides the functionality
-to replace wrong arabic characters with correct urdu characters.
+to replace wrong arabic characters with correct urdu characters and fixed the combine characters issue.
 
 Examples
 --------
@@ -19,11 +19,15 @@ function from the module and pass it the text.
 
 .. code-block:: python
 
-    from urduhack.normalization.character import normalize_characters
+    from urduhack.normalization import normalize_characters, normalize_combine_characters
     text = "گنہگار مر کر موت"
     normalized_text = normalize_characters(text)
+
+    text = "آزاد"
+    normalized_text = normalize_combine_characters(text)
 
 Functions
 ----------
 
 .. autofunction:: normalize_characters
+.. autofunction:: normalize_combine_characters

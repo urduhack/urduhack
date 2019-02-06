@@ -79,3 +79,24 @@ def normalize_characters(text: str) -> str:
         str
     """
     return text.translate(_TRANSLATOR)
+
+
+COMBINE_URDU_CHARACTERS: Dict[str, str] = {"آ": "آ",
+                                           "أ": "أ",
+                                           "ۓ": "ۓ",
+                                           }
+
+
+def normalize_combine_characters(text: str) -> str:
+    """
+    Replace combine characters with single unicode character
+
+    Args:
+        text (str): text to replace
+
+    Returns:
+        str
+    """
+    for key, value in COMBINE_URDU_CHARACTERS.items():
+        text = text.replace(key, value)
+    return text
