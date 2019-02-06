@@ -16,7 +16,20 @@ Urduhack: NLP library for ( 🇵🇰 ) Urdu language
 Feature Support
 ---------------
 
-<script src="https://gist.github.com/mujadadrao/980f4a626f9dd1530d562f67022e918d.js"></script>
+#### To Do
+- [ ] Sentence Tokenization
+- [ ] Classification
+  - [ ] Sentimental Analysis
+  - [ ] Documents Classification
+- [ ] Model Building 
+
+#### What's Done!
+- [x] Words Tokenization
+- [x] Urdu Data Pre-Processing 
+- [x] Urdu Diacritics Removal
+- [x] Urdu Single Character Normalization
+- [x] Urdu Combined Characters Normalization
+- [x] Arabic and Urdu Unicode Redundancy Problem
 
 Urduhack officially supports Python 3.6–3.7, and runs great on PyPy.
 
