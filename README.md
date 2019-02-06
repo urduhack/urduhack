@@ -15,21 +15,26 @@ Urduhack: NLP library for ( 🇵🇰 ) Urdu language
 
 Feature Support
 ---------------
+- [x] Arabic and Urdu Unicode Redundancy Problem
+- [x] Normalization
+    - [x] Urdu Single Character Normalization
+    - [x] Urdu Combined Characters Normalization
+- [x] Urdu Data Pre-Processing 
+    - [x] Urdu Diacritics Removal
+    - [x] Urdu Spaces Before & After Digits
+    - [x] Urdu Spaces After Punctuations
+    - [x] Urdu Joined Words Fix
 
-#### To Do
-- [ ] Sentence Tokenization
+To Do
+-----
+
+- [ ] Tokenization
+    - [ ] Sentence Tokenization
+    - [x] Words Tokenization
 - [ ] Classification
   - [ ] Sentimental Analysis
+  - [ ] Sentence Classification
   - [ ] Documents Classification
-- [ ] Model Building 
-
-#### What's Done!
-- [x] Words Tokenization
-- [x] Urdu Data Pre-Processing 
-- [x] Urdu Diacritics Removal
-- [x] Urdu Single Character Normalization
-- [x] Urdu Combined Characters Normalization
-- [x] Arabic and Urdu Unicode Redundancy Problem
 
 Urduhack officially supports Python 3.6–3.7, and runs great on PyPy.
 
