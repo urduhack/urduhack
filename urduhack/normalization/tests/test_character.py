@@ -185,7 +185,7 @@ def test_normalize_combine_characters():
 
 def test_combine_urdu_characters():
     """ Test case """
-    for chars in COMBINE_URDU_CHARACTERS.keys():
+    for chars in COMBINE_URDU_CHARACTERS:
         assert len(chars) == 2
         for char in chars:
             assert char in URDU_ALL_CHARACTERS

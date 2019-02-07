@@ -59,6 +59,10 @@ CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
                                  '۷': ['٧'],
                                  '۸': ['٨'],
                                  '۹': ['٩'],
+                                 '۔': [],
+                                 '؟': [],
+                                 '٫': [],
+                                 '،': [],
                                  'لا': ['ﻻ', 'ﻼ'],
 
                                  }
@@ -97,6 +101,6 @@ def normalize_combine_characters(text: str) -> str:
     Returns:
         str
     """
-    for key, value in COMBINE_URDU_CHARACTERS.items():
-        text = text.replace(key, value)
+    for _key, _value in COMBINE_URDU_CHARACTERS.items():
+        text = text.replace(_key, _value)
     return text
