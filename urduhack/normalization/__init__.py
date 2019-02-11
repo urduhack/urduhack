@@ -4,7 +4,8 @@ from .character import normalize_characters, normalize_combine_characters
 from .util import punctuations_space, digits_space, remove_diacritics
 
 __all__ = ["normalize_characters", "normalize_combine_characters",
-           "punctuations_space", "digits_space", "normalize", "remove_diacritics"]
+           "punctuations_space", "digits_space", "normalize",
+           "remove_diacritics"]
 
 
 def normalize(text: str) -> str:
