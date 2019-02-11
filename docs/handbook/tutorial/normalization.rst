@@ -68,16 +68,9 @@ function in the :py:mod:`~urduhack.normalization.character` module::
 If successful, this function returns a :py:class:`String` object containing
 normalized text.
 
-Pre-processing for Tokenization
---------------------------------
-
-Tokenization is a core process of Natural Language Processing. It is needed
-in order to process data of any language. To make the tokenization of urdu text
-easy and efficient, it is necessary to add spaces before and after urdu/numeric
-digits and spaces after punctuations.
 
 Adding spaces before and after digits (numeric and urdu)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------------------------
 
 To do so you need to import the :py:func:`~urduhack.normalization.util.digits_space` from
 :py:mod:`~urduhack.normalization` and pass it the text. The function will return you
@@ -90,7 +83,7 @@ the text after putting spaces at proper places.::
     20 فیصد
 
 Adding spaces after punctuations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 To do so you need to import the :py:func:`~urduhack.normalization.util.punctuations_space` from
 :py:mod:`~urduhack.normalization` and pass it the text. The function will return you
@@ -103,7 +96,7 @@ the text after putting spaces at proper places.::
     ہوتا ہے۔ ٹائپ
 
 Adding spaces between joined words
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------
 
 The :py:mod:`~urduhack.normalization.util` module provides functionality
 to put proper spaces after the urdu words which are distinct but written together.
@@ -118,7 +111,7 @@ a space between these two words and return a string like this 'کے بعد'.::
     کے بعد
 
 Diacritics Removal
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 The :py:mod:`~urduhack.normalization.util` module in the UrduHack provides
 the functionality to remove Urdu diacritics from text. It is an important
