@@ -5,5 +5,4 @@ Handbook
    :maxdepth: 2
 
    overview
-   normalization
-   remove_diacritics
+   tutorial/index.rst

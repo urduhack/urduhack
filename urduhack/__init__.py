@@ -1,5 +1,6 @@
 # coding: utf8
 """Project Entry point"""
-from urduhack.about import __version__
+from .about import __version__
+from .normalization import normalize
 
-__all__ = ["__version__", ]
+__all__ = ["__version__", "normalize"]

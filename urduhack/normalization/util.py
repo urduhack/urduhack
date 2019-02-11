@@ -1,6 +1,70 @@
 # coding: utf8
-"""Add words level space fixes"""
+"""Normalization module utils"""
 from typing import Dict
+
+import regex as re
+
+from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
+
+# Add spaces before|after numeric number and urdu words
+# 18سالہ  , 20فیصد
+SPACE_BEFORE_DIGITS_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[0-9])", flags=re.U | re.M | re.I)
+SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[" + "".join(URDU_ALL_CHARACTERS) + "])", flags=re.U | re.M | re.I)
+
+
+def digits_space(text: str) -> str:
+    """
+    Add spaces before|after numeric and urdu digits
+
+    Args:
+        text (str): text
+
+    Returns:
+        str
+    """
+    text = SPACE_BEFORE_DIGITS_RE.sub(' ', text)
+    text = SPACE_AFTER_DIGITS_RE.sub(' ', text)
+
+    return text
+
+
+# Add spaces after ., if there is number then not Ex (9.00)
+SPACE_AFTER_PUNCTUATIONS_RE = re.compile(
+        r"(?<=[" + "".join(URDU_PUNCTUATIONS) + "])(?=[^" + "".join(URDU_PUNCTUATIONS) + "0-9 ])",
+        flags=re.U | re.M | re.I)
+REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE = re.compile(r'\s+([' + "".join(URDU_PUNCTUATIONS) + '])', flags=re.U | re.M | re.I)
+
+
+def punctuations_space(text: str) -> str:
+    """
+    Add spaces after punctuations used in urdu writing
+
+    Args:
+        text (str): text
+
+    Returns:
+        str
+    """
+    text = SPACE_AFTER_PUNCTUATIONS_RE.sub(' ', text)
+    text = REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE.sub(r'\1', text)
+    return text
+
+
+DIACRITICS_RE = re.compile(f'[{"".join(URDU_DIACRITICS)}]', flags=re.U | re.M | re.I)
+
+
+def remove_diacritics(text: str) -> str:
+    """
+    Remove Urdu diacritics from text
+
+    Args:
+        text (str): base string
+
+    Returns:
+        str
+    """
+    return DIACRITICS_RE.sub('', text)
+
 
 WORDS_SPACE: Dict[str, str] = {"کردیا": "کر دیا",
                                "کردی": "کر دی",

@@ -1,9 +1,21 @@
 # coding: utf8
-"""Test cases for mapping"""
+"""Test cases for character class"""
 
-from urduhack.normalization.character import normalize_characters, CORRECT_URDU_CHARACTERS
-from urduhack.normalization.character import normalize_combine_characters, COMBINE_URDU_CHARACTERS
+from urduhack import normalize
+from ..character import (normalize_characters, CORRECT_URDU_CHARACTERS,
+                         normalize_combine_characters, COMBINE_URDU_CHARACTERS, )
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS
+
+
+def test_normalize():
+    """ Testing main function"""
+    text = "پاکستان ﻤﯿﮟ وسائل کی کوئی کمی نہیں ﮨﮯ۔"
+    expected = normalize(text)
+    assert isinstance(expected, str)
+    for char in expected:
+        if char == " ":
+            continue
+        assert char in URDU_ALL_CHARACTERS
 
 
 def test_normalize_characters():
@@ -175,6 +187,13 @@ def test_normalize_combine_characters():
     """Test case"""
     words: dict = {
         "آزاد": "آزاد",
+        "آپ": "آپ",
+        "آدھے": "آدھے",
+        "آج": "آج",
+        "آرام": "آرام",
+        "جرأت": "جرأت",
+        "کوجرأت": "کوجرأت",
+        "أعظم": "أعظم",
     }
     for key, val in words.items():
         norm = normalize_combine_characters(key)
