@@ -8,8 +8,9 @@ from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URD
 
 # Add spaces before|after numeric number and urdu words
 # 18سالہ  , 20فیصد
+EXCEPT_HAMZA = list(filter(lambda c: c != '\u0621', URDU_ALL_CHARACTERS))
 SPACE_BEFORE_DIGITS_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[0-9])", flags=re.U | re.M | re.I)
-SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[" + "".join(URDU_ALL_CHARACTERS) + "])", flags=re.U | re.M | re.I)
+SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[" + "".join(EXCEPT_HAMZA) + "])", flags=re.U | re.M | re.I)
 
 
 def digits_space(text: str) -> str:
