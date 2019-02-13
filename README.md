@@ -62,3 +62,25 @@ How to Contribute
     works as expected.
 4.  Send a pull request and bug the maintainer until it gets merged and
     published. :)
+
+Community
+----------
+
+Get updates on UrduHack nlp development and chat with the project maintainers and community members.
+
+Contributors
+-------------
+
+Special thanks to everyone who contributed to getting the UrduHack to the current state.
+
+Sponsors
+----------
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor]()]
+
+<a href="https://arbisoft.com" target="_blank"><img height="64" src="https://arbisoft.com/static/media/uploads/arbisoft.png"></a>
+
+Copyright and license
+---------------------
+
+Code released under the [MIT License](ttps://github.com/urduhack/urduhack/blob/master/LICENSE).
