@@ -30,7 +30,7 @@ def digits_space(text: str) -> str:
 
 # Add spaces after ., if there is number then not Ex (9.00)
 SPACE_AFTER_PUNCTUATIONS_RE = re.compile(
-        r"(?<=[" + "".join(URDU_PUNCTUATIONS) + "])(?=[^" + "".join(URDU_PUNCTUATIONS) + "0-9 ])",
+        r"(?<=[" + "".join(URDU_PUNCTUATIONS) + "])(?=[^" + "".join(URDU_PUNCTUATIONS) + "0-9 \n])",
         flags=re.U | re.M | re.I)
 REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE = re.compile(r'\s+([' + "".join(URDU_PUNCTUATIONS) + '])', flags=re.U | re.M | re.I)
 
