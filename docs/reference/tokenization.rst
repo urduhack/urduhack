@@ -1,14 +1,20 @@
-Tokenization
-==============
+.. py:module:: urduhack.tokenization
+.. py:currentmodule:: urduhack.tokenization
 
-The tokenization of Urdu text is necessary to make it useful for the machine
-learning tasks. In the :py:mod:`~urduhack.tokenization.tokenizer` module, we solved the problem related to
-sentence and word tokenization.
 
-Sentence Tokenizer
------------------------
+:py:mod:`urduhack.tokenization` Module
+==================================================
 
-To covert raw Urdu text into possible sentences, we need to use :py:func:`~urduhack.tokenization.sentence_tokenizer`
+The :py:mod:`~urduhack.tokenization` module provides the functionality
+to generate tokens (both sentence and word wise) from some Urdu text.
+
+Examples
+--------
+
+Generating tokens
+^^^^^^^^^^^^^^^^^^
+To generate tokens from raw Urdu text you need to use
+:py:func:`~urduhack.tokenization.sentence_tokenizer`
 function.
 
 To generate sentences from some text.::
@@ -23,3 +29,8 @@ To generate sentences from some text.::
 
 If successful, this function returns a :py:class:`List` object containing multiple urdu :py:class:`String`
 sentences.
+
+Functions
+----------
+
+.. autofunction:: sentence_tokenizer
