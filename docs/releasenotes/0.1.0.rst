@@ -1,0 +1,16 @@
+0.1.0
+-----
+
+Normalize function
+===================
+
+Single function added to do all normalize stuff. To normalize some text,
+all you need to do is to import this function :py:func:`~urduhack.normalize` and it will return a string
+with normalized characters both single and combined, proper spaces after digits and punctuations,
+also remove the diacritics.
+
+Sentence Tokenizer
+====================
+
+Urdu sentence tokenization functionality added. To covert raw Urdu text into possible sentences,
+we need to use :py:func:`~urduhack.tokenization.sentence_tokenizer` function.

@@ -9,6 +9,7 @@ them are listed below.
 
 Normalize (All in One)
 -----------------------
+
 To normalize some text, all you need to do is to import the
 function from the module and pass it the text. The :py:func:`~urduhack.normalize`
 function will return a string with normalized characters both
