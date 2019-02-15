@@ -29,13 +29,16 @@ Feature Support
     - [x] Sentence Tokenization
     - [ ] Words Tokenization
 
-To Do
------
+Roadmap
+---------
 - [ ] Classification
   - [ ] Sentimental Analysis
   - [ ] Sentence Classification
   - [ ] Documents Classification
-  
+- [ ] Name Entity Recognition
+- [ ] Image to Text
+- [ ] Speak to Text
+
 
 Installation
 ------------
