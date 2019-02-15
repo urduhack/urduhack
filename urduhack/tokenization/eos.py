@@ -43,7 +43,7 @@ def _generate_sentences(text: str):
                     _sen = _sen.split()
                     new_sent = ""
                     for index, word in enumerate(_sen):
-                        if word in URDU_NEWLINE_WORDS and index + 1 <= len(
+                        if word in URDU_NEWLINE_WORDS and index + 1 < len(
                                 _sen) and _sen[index + 1] not in URDU_CONJUNCTIONS:
                             new_sent += " " + word + "۔"
                         else:
@@ -61,7 +61,7 @@ def _generate_sentences(text: str):
                 new_sent = ""
 
                 for index, word in enumerate(sentence):
-                    if word in URDU_NEWLINE_WORDS and index + 1 <= len(
+                    if word in URDU_NEWLINE_WORDS and index + 1 < len(
                             sentence) and \
                             sentence[index + 1] not in URDU_CONJUNCTIONS:
 
