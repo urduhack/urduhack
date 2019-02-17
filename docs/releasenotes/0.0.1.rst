@@ -1,9 +1,0 @@
-0.0.1
-=====
-
-First version released
------------------------
-
-1. Urdu character normalization api added.
-2. Urdu space normalization utilities functionality added.
-3. urdu characters correct unicode ranges added.
