@@ -204,8 +204,7 @@ def remove_accents(text: str):
     Returns:
         str
     """
-    return ''.join(c for c in unicodedata.normalize('NFKD', text)
-                   if not unicodedata.combining(c))
+    return ''.join(c for c in text if not unicodedata.combining(c))
 
 
 def remove_english_alphabets(text: str):
