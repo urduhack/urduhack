@@ -3,6 +3,9 @@
 Preprocess utilities
 """
 
+import sys
+import unicodedata
+
 import regex as re
 
 CURRENCIES = {'$': 'USD', 'zł': 'PLN', '£': 'GBP', '¥': 'JPY', '฿': 'THB',
@@ -18,7 +21,7 @@ PHONE_REGEX = re.compile(
 NUMBERS_REGEX = re.compile(
         r'(?:^|(?<=[^\w,.]))[+–-]?(([1-9]\d{0,2}(,\d{3})+(\.\d*)?)|([1-9]\d{0,2}([ .]\d{3})+(,\d*)?)'
         r'|(\d*?[.,]\d+)|\d+)(?:$|(?=\b))')
-CURRENCY_REGEX = re.compile('({})+'.format('|'.join(re.escape(c) for c in CURRENCIES.keys())))
+CURRENCY_REGEX = re.compile('({})+'.format('|'.join(re.escape(c) for c in CURRENCIES)))
 LINEBREAK_REGEX = re.compile(r'((\r\n)|[\n\v])+')
 NONBREAKING_SPACE_REGEX = re.compile(r'(?!\n)\s+')
 URL_REGEX = re.compile(
@@ -68,8 +71,13 @@ SHORT_URL_REGEX = re.compile(
         r"(?:$|(?![\w?!+&/]))",
         flags=re.IGNORECASE)
 
+PUNCTUATION_TRANSLATE_UNICODE = dict.fromkeys(
+        (i for i in range(sys.maxunicode)
+         if unicodedata.category(chr(i)).startswith('P')),
+        u' ')
 
-def normalize_whitespace(text):
+
+def normalize_whitespace(text: str):
     """
     Given ``text`` str, replace one or more spacings with a single space, and one
     or more linebreaks with a single newline. Also strip leading/trailing whitespace.
@@ -83,7 +91,7 @@ def normalize_whitespace(text):
     return NONBREAKING_SPACE_REGEX.sub(' ', LINEBREAK_REGEX.sub(r'\n', text)).strip()
 
 
-def replace_urls(text, replace_with='*URL*'):
+def replace_urls(text: str, replace_with='*URL*'):
     """
     Replace all URLs in ``text`` str with ``replace_with`` str.
 
@@ -97,7 +105,7 @@ def replace_urls(text, replace_with='*URL*'):
     return URL_REGEX.sub(replace_with, SHORT_URL_REGEX.sub(replace_with, text))
 
 
-def replace_emails(text, replace_with='*EMAIL*'):
+def replace_emails(text: str, replace_with='*EMAIL*'):
     """
     Replace all emails in ``text`` str with ``replace_with`` str.
 
@@ -111,7 +119,7 @@ def replace_emails(text, replace_with='*EMAIL*'):
     return EMAIL_REGEX.sub(replace_with, text)
 
 
-def replace_phone_numbers(text, replace_with='*PHONE*'):
+def replace_phone_numbers(text: str, replace_with='*PHONE*'):
     """
     Replace all phone numbers in ``text`` str with ``replace_with`` str.
 
@@ -125,7 +133,7 @@ def replace_phone_numbers(text, replace_with='*PHONE*'):
     return PHONE_REGEX.sub(replace_with, text)
 
 
-def replace_numbers(text, replace_with='*NUMBER*'):
+def replace_numbers(text: str, replace_with='*NUMBER*'):
     """
     Replace all numbers in ``text`` str with ``replace_with`` str.
 
@@ -139,7 +147,7 @@ def replace_numbers(text, replace_with='*NUMBER*'):
     return NUMBERS_REGEX.sub(replace_with, text)
 
 
-def replace_currency_symbols(text, replace_with=None):
+def replace_currency_symbols(text: str, replace_with=None):
     """
     Replace all currency symbols in ``text`` str with string specified by ``replace_with`` str.
 
@@ -158,3 +166,43 @@ def replace_currency_symbols(text, replace_with=None):
         return text
     else:
         return CURRENCY_REGEX.sub(replace_with, text)
+
+
+def remove_punctuation(text: str, marks=None):
+    """
+    Remove punctuation from ``text`` by replacing all instances of ``marks``
+    with whitespace.
+
+    Args:
+        text (str): raw text
+        marks (str): If specified, remove only the characters in this string,
+            e.g. ``marks=',;:'`` removes commas, semi-colons, and colons.
+            Otherwise, all punctuation marks are removed.
+
+    Returns:
+        str
+
+    Note:
+        When ``marks=None``, Python's built-in :meth:`str.translate()` is
+        used to remove punctuation; otherwise, a regular expression is used
+        instead. The former's performance is about 5-10x faster.
+    """
+    if marks:
+        return re.sub('[{}]+'.format(re.escape(marks)), ' ', text, flags=re.UNICODE)
+    else:
+        return text.translate(PUNCTUATION_TRANSLATE_UNICODE)
+
+
+def remove_accents(text: str):
+    """
+    Remove accents from any accented unicode characters in ``text`` str, either by
+    transforming them into ascii equivalents or removing them entirely.
+
+    Args:
+        text (str): raw urdu text
+
+    Returns:
+        str
+    """
+    return ''.join(c for c in unicodedata.normalize('NFKD', text)
+                   if not unicodedata.combining(c))
