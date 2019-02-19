@@ -206,3 +206,18 @@ def remove_accents(text: str):
     """
     return ''.join(c for c in unicodedata.normalize('NFKD', text)
                    if not unicodedata.combining(c))
+
+
+def remove_english_alphabets(text: str):
+    """
+    Removes ``English`` words and digits from a ``text``
+
+    Args:
+         text (str): raw urdu text
+
+    Returns:
+        str: ``str`` object with english alphabets removed
+    """
+    characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+    table = str.maketrans({key: None for key in characters})
+    return text.translate(table)
