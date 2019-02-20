@@ -2,9 +2,10 @@
 """Test cases for character class"""
 
 from urduhack import normalize
+from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS
+
 from ..character import (normalize_characters, CORRECT_URDU_CHARACTERS,
                          normalize_combine_characters, COMBINE_URDU_CHARACTERS, )
-from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS
 
 
 def test_normalize():

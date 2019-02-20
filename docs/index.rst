@@ -46,7 +46,7 @@ NLP library for different Urdu language tasks and maintained by `Ikram Ali and C
    handbook/index.rst
    reference/index.rst
    about.rst
-   releasenotes/index.rst
+   releasenotes
    deprecations.rst
 
 

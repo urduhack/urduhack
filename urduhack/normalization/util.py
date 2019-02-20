@@ -1,9 +1,14 @@
 # coding: utf8
-"""Normalization module utils"""
+"""
+Normalization Util module
+-------------------------------
+
+The util module provides functionality to put proper spaces before and after numeric digits, urdu digits
+and punctuations.
+"""
 from typing import Dict
 
 import regex as re
-
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
 
 # Add spaces before|after numeric number and urdu words
@@ -18,10 +23,10 @@ def digits_space(text: str) -> str:
     Add spaces before|after numeric and urdu digits
 
     Args:
-        text (str): text
+        text (str): raw ``urdu`` text
 
     Returns:
-        str
+        str: returns a ``str`` object containing normalized text.
     """
     text = SPACE_BEFORE_DIGITS_RE.sub(' ', text)
     text = SPACE_AFTER_DIGITS_RE.sub(' ', text)
@@ -38,13 +43,13 @@ REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE = re.compile(r'\s+([' + "".join(URDU_PUNCTUA
 
 def punctuations_space(text: str) -> str:
     """
-    Add spaces after punctuations used in urdu writing
+    Add spaces after punctuations used in ``urdu`` writing
 
     Args:
-        text (str): text
+        text (str): raw ``urdu`` text
 
     Returns:
-        str
+        str: returns a ``str`` object containing normalized text.
     """
     text = SPACE_AFTER_PUNCTUATIONS_RE.sub(' ', text)
     text = REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE.sub(r'\1', text)
@@ -56,13 +61,13 @@ DIACRITICS_RE = re.compile(f'[{"".join(URDU_DIACRITICS)}]', flags=re.U | re.M | 
 
 def remove_diacritics(text: str) -> str:
     """
-    Remove Urdu diacritics from text
+    Remove ``urdu`` diacritics from text
 
     Args:
-        text (str): base string
+        text (str): raw ``urdu`` text
 
     Returns:
-        str
+        str: returns a ``str`` object containing normalized text.
     """
     return DIACRITICS_RE.sub('', text)
 
@@ -184,13 +189,13 @@ WORDS_SPACE: Dict[str, str] = {"کردیا": "کر دیا",
 
 def fix_join_words(text: str) -> str:
     """
-    Replace all join urdu words to separate words
+    Replace all join ``urdu`` words with separate words
 
     Args:
-        text (str): text
+        text (str): raw ``urdu`` text
 
     Returns:
-        str
+        str: returns a ``str`` object containing normalized text.
     """
     for key, value in WORDS_SPACE.items():
         text = text.replace(key, value)

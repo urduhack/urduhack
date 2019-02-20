@@ -74,7 +74,7 @@ Adding spaces before and after digits (numeric and urdu)
 ---------------------------------------------------------
 
 To do so you need to import the :py:func:`~urduhack.normalization.util.digits_space` from
-:py:mod:`~urduhack.normalization` and pass it the text. The function will return you
+:py:mod:`~urduhack.normalization.util` and pass it the text. The function will return you
 the text after putting spaces at proper places.::
 
     >>> from urduhack.normalization import digits_space
@@ -87,7 +87,7 @@ Adding spaces after punctuations
 ---------------------------------
 
 To do so you need to import the :py:func:`~urduhack.normalization.util.punctuations_space` from
-:py:mod:`~urduhack.normalization` and pass it the text. The function will return you
+:py:mod:`~urduhack.normalization.util` and pass it the text. The function will return you
 the text after putting spaces at proper places.::
 
     >>> from urduhack.normalization import punctuations_space

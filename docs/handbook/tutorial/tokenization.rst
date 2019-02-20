@@ -8,7 +8,7 @@ sentence and word tokenization.
 Sentence Tokenizer
 -----------------------
 
-To covert raw Urdu text into possible sentences, we need to use :py:func:`~urduhack.tokenization.sentence_tokenizer`
+To covert raw Urdu text into possible sentences, we need to use :py:func:`~urduhack.tokenization.tokenizer.sentence_tokenizer`
 function.
 
 To generate sentences from some text.::
