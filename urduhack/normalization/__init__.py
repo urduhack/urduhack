@@ -15,9 +15,9 @@ This module provides the following functionality:
 """
 
 from .character import normalize_characters, normalize_combine_characters
-from .util import punctuations_space, digits_space, remove_diacritics
+from .util import punctuations_space, digits_space, remove_diacritics, english_characters_space
 
-__all__ = ["normalize_characters", "normalize_combine_characters",
+__all__ = ["normalize_characters", "normalize_combine_characters", "english_characters_space",
            "punctuations_space", "digits_space", "remove_diacritics",
            "normalize"]
 

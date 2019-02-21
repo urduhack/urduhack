@@ -9,6 +9,7 @@ and punctuations.
 from typing import Dict
 
 import regex as re
+
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
 
 # Add spaces before|after numeric number and urdu words
@@ -53,6 +54,30 @@ def punctuations_space(text: str) -> str:
     """
     text = SPACE_AFTER_PUNCTUATIONS_RE.sub(' ', text)
     text = REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE.sub(r'\1', text)
+    return text
+
+
+# Add spaces before|after english characters and urdu words
+# ikramسالہ  , abفیصد
+SPACE_BEFORE_ENG_CHAR_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[a-zA-Z])",
+                                      flags=re.U | re.M | re.I)
+SPACE_AFTER_ENG_CHAR_RE = re.compile(r"(?<=[a-zA-Z])(?=[" + "".join(URDU_ALL_CHARACTERS) + "])",
+                                     flags=re.U | re.M | re.I)
+
+
+def english_characters_space(text: str) -> str:
+    """
+    Add spaces before|after ``english`` characters and ``urdu`` digits
+
+    Args:
+        text (str): raw ``urdu`` text
+
+    Returns:
+        str: returns a ``str`` object containing normalized text.
+    """
+    text = SPACE_BEFORE_ENG_CHAR_RE.sub(' ', text)
+    text = SPACE_AFTER_ENG_CHAR_RE.sub(' ', text)
+
     return text
 
 
