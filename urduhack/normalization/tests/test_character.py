@@ -7,7 +7,6 @@ from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_D
 from ..character import (normalize_characters, CORRECT_URDU_CHARACTERS,
                          normalize_combine_characters, COMBINE_URDU_CHARACTERS, )
 
-
 def test_normalize():
     """ Testing main function"""
     text = "پاکستان ﻤﯿﮟ وسائل کی کوئی کمی نہیں ﮨﮯ۔"

@@ -11,13 +11,16 @@ This module provides the following functionality:
     - Normalizing Combine Characters
     - Put Spaces Before & After Digits
     - Put Spaces After Urdu Punctuations
+    - Put Spaces Before & After English Words
     - Removal of Diacritics from Urdu Text
 """
 
 from .character import normalize_characters, normalize_combine_characters
-from .util import punctuations_space, digits_space, remove_diacritics
+from .util import punctuations_space, digits_space, remove_diacritics, \
+    english_characters_space
 
 __all__ = ["normalize_characters", "normalize_combine_characters",
+           "english_characters_space",
            "punctuations_space", "digits_space", "remove_diacritics",
            "normalize"]
 
@@ -39,4 +42,5 @@ def normalize(text: str) -> str:
     text = digits_space(text)
     text = punctuations_space(text)
     text = remove_diacritics(text)
+    text = english_characters_space(text)
     return text

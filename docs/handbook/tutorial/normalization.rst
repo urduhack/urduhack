@@ -2,23 +2,23 @@ Normalization
 ==============
 
 The normalization of Urdu text is necessary to make it useful for the machine
-learning tasks. In the :py:mod:`~urduhack.normalize` module, the very basic
+learning tasks. In the :py:mod:`~urduhack.normalization.normalize` module, the very basic
 problems faced when working with Urdu data are handled with ease and
-efficiency. All the problems and how :py:mod:`~urduhack.normalize` module handles
+efficiency. All the problems and how :py:mod:`~urduhack.normalization.normalize` module handles
 them are listed below.
 
 Normalize (All in One)
 -----------------------
 
 To normalize some text, all you need to do is to import the
-function from the module and pass it the text. The :py:func:`~urduhack.normalize`
+function from the module and pass it the text. The :py:func:`~urduhack.normalization.normalize`
 function will return a string with normalized characters both
 single and combined, proper spaces after digits and punctuations and
 diacritics removed.::
 
    >>> from urduhack import normalize
    >>> text = "اَباُوگل پاکستان ﻤﯿﮟ20سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔"
-   >>> normalized_text = normalize_characters(text)
+   >>> normalized_text = normalize(text)
 
    # The text now contains proper spaces after digits and punctuations,
    # normalized characters and no diacritics!
@@ -129,3 +129,22 @@ in the :py:mod:`~urduhack.normalization` module.::
 
 If successful, this function returns a :py:class:`String` object which
 contains the original text minus Urdu diacritics.
+
+Adding space before & after English words
+-----------------------------------------
+
+The :py:mod:`~urduhack.normalization.util` module in the UrduHack provides
+the functionality to add spaces before and after English words in the given
+Urdu text. It is an important step in normalization of the Urdu data.
+
+To put spaces after English words in Urdu text, use the :py:func:`~urduhack.normalization.util.english_characters_space` function
+in the :py:mod:`~urduhack.normalization` module.::
+
+    >>> from urduhack.normalization import english_characters_space
+    >>> text = "خاتون Aliyaنے بچوںUzma and Aliyaکے قتل کا اعترافConfession کیا ہے۔"
+    >>> normalized_text = english_characters_space(text)
+    >>> normalized_text
+    خاتون Aliya نے بچوں Uzma and Aliya کے قتل کا اعتراف Confession کیا ہے۔
+
+If successful, this function returns a :py:class:`String` object which
+contains the original text with spaces before & after English words.
