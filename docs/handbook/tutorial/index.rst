@@ -5,5 +5,6 @@ Tutorial
    :maxdepth: 2
 
    normalization
-   tokenization
    preprocess
+   tokenization
+

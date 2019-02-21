@@ -1,5 +1,5 @@
-Pre-Process
-===========
+Text PreProcessing
+===================
 
 The pre-processing of Urdu text is necessary to make it useful for the machine
 learning tasks. This module provides the following functionalities:

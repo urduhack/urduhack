@@ -2,16 +2,16 @@ Normalization
 ==============
 
 The normalization of Urdu text is necessary to make it useful for the machine
-learning tasks. In the :py:mod:`~urduhack.normalize` module, the very basic
+learning tasks. In the :py:mod:`~urduhack.normalization.normalize` module, the very basic
 problems faced when working with Urdu data are handled with ease and
-efficiency. All the problems and how :py:mod:`~urduhack.normalize` module handles
+efficiency. All the problems and how :py:mod:`~urduhack.normalization.normalize` module handles
 them are listed below.
 
 Normalize (All in One)
 -----------------------
 
 To normalize some text, all you need to do is to import the
-function from the module and pass it the text. The :py:func:`~urduhack.normalize`
+function from the module and pass it the text. The :py:func:`~urduhack.normalization.normalize`
 function will return a string with normalized characters both
 single and combined, proper spaces after digits and punctuations and
 diacritics removed.::
