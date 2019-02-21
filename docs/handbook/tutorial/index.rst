@@ -6,3 +6,4 @@ Tutorial
 
    normalization
    tokenization
+   preprocess
