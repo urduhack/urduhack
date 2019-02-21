@@ -161,11 +161,11 @@ def replace_currency_symbols(text: str, replace_with=None):
         str: returns a ``str`` object containing normalized text.
     """
     if replace_with is None:
-        for k, v in CURRENCIES.items():
-            text = text.replace(k, v)
+        for key, value in CURRENCIES.items():
+            text = text.replace(key, value)
         return text
-    else:
-        return CURRENCY_REGEX.sub(replace_with, text)
+
+    return CURRENCY_REGEX.sub(replace_with, text)
 
 
 def remove_punctuation(text: str, marks=None):
@@ -189,8 +189,8 @@ def remove_punctuation(text: str, marks=None):
     """
     if marks:
         return re.sub('[{}]+'.format(re.escape(marks)), ' ', text, flags=re.UNICODE)
-    else:
-        return text.translate(PUNCTUATION_TRANSLATE_UNICODE)
+
+    return text.translate(PUNCTUATION_TRANSLATE_UNICODE)
 
 
 def remove_accents(text: str):
