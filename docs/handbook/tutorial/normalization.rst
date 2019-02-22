@@ -96,21 +96,6 @@ the text after putting spaces at proper places.::
     >>> normalized_text
     ہوتا ہے۔ ٹائپ
 
-Adding spaces between joined words
------------------------------------
-
-The :py:mod:`~urduhack.normalization.util` module provides functionality
-to put proper spaces after the urdu words which are distinct but written together.
-For example, 'کےبعد' are two different words but written together. The
-:py:func:`~urduhack.normalization.util.fix_join_words` function will put
-a space between these two words and return a string like this 'کے بعد'.::
-
-    >>> from urduhack.normalization.util import fix_join_words
-    >>> text = "کےبعد"
-    >>> normalized_text = fix_join_words(text)
-    >>> normalized_text
-    کے بعد
-
 Diacritics Removal
 -------------------
 
