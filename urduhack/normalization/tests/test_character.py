@@ -4,8 +4,9 @@
 from urduhack import normalize
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS
 
-from ..character import (normalize_characters, CORRECT_URDU_CHARACTERS,
-                         normalize_combine_characters, COMBINE_URDU_CHARACTERS, )
+from ..character import normalize_characters, CORRECT_URDU_CHARACTERS, normalize_combine_characters, \
+    COMBINE_URDU_CHARACTERS
+
 
 def test_normalize():
     """ Testing main function"""
