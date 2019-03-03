@@ -67,22 +67,25 @@ How to Contribute
 4.  Send a pull request and bug the maintainer until it gets merged and
     published. :)
 
-Community
-----------
-
-Get updates on UrduHack nlp development and chat with the project maintainers and community members.
-
 Contributors
 -------------
 
 Special thanks to everyone who contributed to getting the UrduHack to the current state.
 
-Sponsors
-----------
+Backers [![Backers on Open Collective](https://opencollective.com/urduhack/backers/badge.svg)](#backers)
+---------------------------------------------------------------------------------------------------------
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor]()]
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/urduhack#backer)]
+
+<a href="https://opencollective.com/urduhack#backers" target="_blank"><img src="https://opencollective.com/urduhack/backers.svg?width=890"></a>
+
+Sponsors [![Sponsors on Open Collective](https://opencollective.com/urduhack/sponsors/badge.svg)](#sponsors)
+-----------------------------------------------------------------------------------------------------------------
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/urduhack#sponsor)]
 
 <a href="https://arbisoft.com" target="_blank"><img height="64" src="https://arbisoft.com/static/media/uploads/arbisoft.png"></a>
+<a href="https://opencollective.com/urduhack/sponsor/0/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/0/avatar.svg"></a>
 
 Copyright and license
 ---------------------
