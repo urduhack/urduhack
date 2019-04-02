@@ -71,6 +71,11 @@ def setup_package():
               'Topic :: Software Development :: Libraries',
               'Topic :: Software Development :: Libraries :: Python Modules'],
 
+          project_urls={
+              "Documentation": "https://urduhack.readthedocs.io/en/stable/",
+              "Source": "https://github.com/urduhack/urduhack",
+              "Bug Tracker": "https://github.com/urduhack/urduhack/issues"},
+
           )
 
 
