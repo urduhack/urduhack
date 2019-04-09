@@ -1,5 +1,9 @@
 # coding: utf8
-"""Complete collection of Urdu Unicode characters."""
+"""
+Complete collection of Urdu Unicode characters.
+Maintainer: Ikram Ali(mrikram1989@gmail.com)
+version = 2019.04.09
+"""
 
 # Complete list of Urdu language Characters.
 URDU_ALL_CHARACTERS = frozenset("آ أ ا ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ؤ ہ ۂ ۃ ھ ء ی "
