@@ -3,6 +3,7 @@
 Complete collection of Urdu Unicode characters.
 Maintainer: Ikram Ali(mrikram1989@gmail.com)
 version = 2019.04.09
+Source = https://github.com/urduhack/urdu-characters
 """
 
 # Complete list of Urdu language Characters.
