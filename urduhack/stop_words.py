@@ -3,6 +3,7 @@
 Complete collection of stopwords for the Urdu language.
 Maintainer: Ikram Ali(mrikram1989@gmail.com)
 version = 2019.04.07
+Source = https://github.com/urduhack/urdu-stopwords
 """
 
 # Urdu Language Stop words list
