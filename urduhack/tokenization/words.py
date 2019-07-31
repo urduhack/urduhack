@@ -4095,9 +4095,9 @@ WORDS_SPACE: Dict[str, str] = {"کردیا": "کر دیا",
                                 "ڈاکٹر عمر":"ڈاکٹرعمر",
                                 "کے سامان":"کےسامان",
                                 "کے مسلسل":"کےمسلسل",
-                                "اور کم":"اورکم"                                                                                                                                                                                                                                                                                                                                                                                                                 
+                                "اور کم":"اورکم"                                                                                                                                                                                                                                                                                                                                                                                                            
                                }
-                               
+
 def fix_join_words(text: str) -> str:
     """
     Replace all join ``urdu`` words with separate words
@@ -4110,5 +4110,4 @@ def fix_join_words(text: str) -> str:
     """
     for key, value in WORDS_SPACE.items():
         text = text.replace(key, value)
-
     return text
