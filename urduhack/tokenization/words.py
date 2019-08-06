@@ -3,7 +3,7 @@
 
 from typing import Dict
 
-WORDS_SPACE: Dict[str, str] =  {"کردیا": "کر دیا",
+WORDS_SPACE: Dict[str, str] = {"کردیا": "کر دیا",
                                 "کردی": "کر دی",
                                 "ہوگیا": "ہو گیا",
                                 "جاسکتے": "جا سکتے",
