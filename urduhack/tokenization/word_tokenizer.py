@@ -87,13 +87,13 @@ class UrduWordTokenizer:
                 final += ' '
         return final
 
-    def _retrieve_words(self, x: np.array, y: np.array) -> list:
+    def _retrieve_words(self, characters: np.array, pred_spaces: np.array) -> list:
         """
         Used privately by UrduWordTokenizer object to convert preprocessed array and predicted spaces to list of words.
 
         Args:
-            x (np.array): Array representing characters in sentence
-            y (np.array): Array representing predicted spaces in sentence
+            characters (np.array): Array representing characters in sentence
+            pred_spaces (np.array): Array representing predicted spaces in sentence
 
         Returns:
             list: Tokenized words
