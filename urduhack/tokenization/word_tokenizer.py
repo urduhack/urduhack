@@ -63,14 +63,14 @@ class UrduWordTokenizer:
             input_[input_chars == key] = value
         return input_
 
-    def _retrieve_sentence(self, x: np.array, y: np.array) -> str:
+    def _retrieve_sentence(self, characters: np.array, spaces: np.array) -> str:
         """
         Used privately by UrduWordTokenizer object to convert preprocessed array and
         predicted spaces to readable sentence.
         
         Args:
-            x (np.array): Array representing characters in sentence
-            y (np.array): Array representing predicted spaces in sentence
+            characters (np.array): Array representing characters in sentence
+            spaces (np.array): Array representing predicted spaces in sentence
         
         Returns:
             str: Predicted sentence
