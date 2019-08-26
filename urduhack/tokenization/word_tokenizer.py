@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 
+
 class UrduWordTokenizer:
     """
     An UrduWordTokenizer object is a self contained tokenizer capable
@@ -24,10 +25,12 @@ class UrduWordTokenizer:
 
     def _load_vocab(self, file: str):
         """
-        Used privately by UrduWordTokenizer object to intialize dictionaries mapping characters to embedding ids and vice versa.
+        Used privately by UrduWordTokenizer object to initialize
+        dictionaries mapping characters to embedding ids and vice versa.
         
         Args:
-            file (str): Path to the vocabulary file of the tokenizer, contains all characters model can identify
+            file (str): Path to the vocabulary file of the tokenizer,
+            contains all characters model can identify
         """
         vocab_file = open(file)
         vocab = vocab_file.readline()
@@ -38,8 +41,8 @@ class UrduWordTokenizer:
   
     def _preprocess_sentences(self, sentences: list) -> np.array:
         """
-        Used privately by UrduWordTokenizer object to remove whitespaces from sentences received, map their characters to 
-        embedding ids and pad them to equal lengths.
+        Used privately by UrduWordTokenizer object to remove whitespaces from sentences received,
+        map their characters to embedding ids and pad them to equal lengths.
         
         Args:
             sentences (list): List of sentences to preprocess
@@ -47,22 +50,23 @@ class UrduWordTokenizer:
         Returns:
             np.array: Preprocessed setences returned in the form of a 3-dimensional array
         """
-        input_chars = np.chararray((len(sentences),self._max_length),unicode=True)
-        input_ = np.zeros((len(sentences),self._max_length),dtype=int)
-        for i,sentence in enumerate(sentences):
+        input_chars = np.chararray((len(sentences), self._max_length), unicode=True)
+        input_ = np.zeros((len(sentences), self._max_length), dtype=int)
+        for i, sentence in enumerate(sentences):
             ls = np.array(list(sentence))
-            spaces = (ls==' ')
+            spaces = (ls == ' ')
             chars = ls[~spaces]
-            if (len(chars)>self._max_length):
+            if len(chars) > self._max_length:
                 continue
-            input_chars[i,:len(chars)] = chars
-        for key,value in self._char2idx.items():
+            input_chars[i, :len(chars)] = chars
+        for key, value in self._char2idx.items():
             input_[input_chars == key] = value
         return input_
 
     def _retrieve_sentence(self, x: np.array, y: np.array) -> str:
         """
-        Used privately by UrduWordTokenizer object to convert preprocessed array and predicted spaces to readable sentence.
+        Used privately by UrduWordTokenizer object to convert preprocessed array and
+        predicted spaces to readable sentence.
         
         Args:
             x (np.array): Array representing characters in sentence
@@ -77,7 +81,7 @@ class UrduWordTokenizer:
         final = ''
         for letter in range(letters.shape[0]):
             idx = letters[letter]
-            if(idx!=0):
+            if idx != 0:
                 final += self._idx2char[idx]
             if spaces[letter] >= self._threshold:
                 final += ' '
@@ -94,7 +98,7 @@ class UrduWordTokenizer:
         Returns:
             list: Tokenized words
         """
-        sentence = self._retrieve_sentence(x,y)
+        sentence = self._retrieve_sentence(x, y)
         tokens = sentence.split(' ')
         return tokens
   
@@ -103,14 +107,15 @@ class UrduWordTokenizer:
         Tokenizes words of sentence received
         word: str
         Args:word: str
-            sentence (str): Urdu sentence to be tokenizedword: str
+            sentence (str): Urdu sentence to be tokenized
+            word: str
         
         Returns:
             list: Tokenized words
         """
         model_input = self._preprocess_sentences([sentence])
         prediction = self._tokenizer.predict(model_input)
-        return self._retrieve_words(np.squeeze(model_input),np.squeeze(prediction))
+        return self._retrieve_words(np.squeeze(model_input), np.squeeze(prediction))
   
     def fix_sentence(self, sentence: str) -> str:
         """
@@ -124,4 +129,4 @@ class UrduWordTokenizer:
         """
         model_input = self._preprocess_sentences([sentence])
         prediction = self._tokenizer.predict(model_input)
-        return self._retrieve_sentence(np.squeeze(model_input),np.squeeze(prediction))
+        return self._retrieve_sentence(np.squeeze(model_input), np.squeeze(prediction))
