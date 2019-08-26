@@ -98,7 +98,7 @@ class UrduWordTokenizer:
         Returns:
             list: Tokenized words
         """
-        sentence = self._retrieve_sentence(x, y)
+        sentence = self._retrieve_sentence(characters, pred_spaces)
         tokens = sentence.split(' ')
         return tokens
 
