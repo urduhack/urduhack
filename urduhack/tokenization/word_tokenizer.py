@@ -125,7 +125,7 @@ class UrduWordTokenizer:
             sentence (str): Urdu sentenced to be fixed
 
         Returns:
-            str: Fixed urdu sentence with correctly occuring spaces
+            str: Fixed urdu sentence with correctly occurring spaces
         """
         model_input = self._preprocess_sentences([sentence])
         prediction = self._tokenizer.predict(model_input)
