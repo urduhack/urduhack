@@ -12,7 +12,7 @@ class UrduWordTokenizer:
     def __init__(self, vocab_file='vocab.txt', model_file='word_tokenizer.h5'):
         """
         Creates a UrduWordTokenizer object based on the files specified
-        
+
         Args:
             vocab_file (str): Path to the vocabulary file of the tokenizer, contains all characters model can identify
             model_file (str): Path to HDF5 file used to load tokenizer model
@@ -46,16 +46,16 @@ class UrduWordTokenizer:
 
         Args:
             sentences (list): List of sentences to preprocess
-        
+
         Returns:
-            np.array: Preprocessed setences returned in the form of a 3-dimensional array
+            np.array: Preprocessed sentences returned in the form of a 3-dimensional array
         """
         input_chars = np.chararray((len(sentences), self._max_length), unicode=True)
         input_ = np.zeros((len(sentences), self._max_length), dtype=int)
         for i, sentence in enumerate(sentences):
-            ls = np.array(list(sentence))
-            spaces = (ls == ' ')
-            chars = ls[~spaces]
+            characters = np.array(list(sentence))
+            spaces = (characters == ' ')
+            chars = characters[~spaces]
             if len(chars) > self._max_length:
                 continue
             input_chars[i, :len(chars)] = chars
@@ -67,11 +67,11 @@ class UrduWordTokenizer:
         """
         Used privately by UrduWordTokenizer object to convert preprocessed array and
         predicted spaces to readable sentence.
-        
+
         Args:
             characters (np.array): Array representing characters in sentence
             pred_spaces (np.array): Array representing predicted spaces in sentence
-        
+
         Returns:
             str: Predicted sentence
         """
