@@ -50,17 +50,13 @@ class UrduWordTokenizer:
         Returns:
             np.array: Preprocessed sentences returned in the form of a 3-dimensional array
         """
-        input_chars = np.chararray((len(sentences), self._max_length), unicode=True)
         input_ = np.zeros((len(sentences), self._max_length), dtype=int)
         for i, sentence in enumerate(sentences):
-            characters = np.array(list(sentence))
-            spaces = (characters == ' ')
-            chars = characters[~spaces]
-            if len(chars) > self._max_length:
-                continue
-            input_chars[i, :len(chars)] = chars
-        for key, value in self._char2idx.items():
-            input_[input_chars == key] = value
+            char_index = 0
+            for letter in sentence:
+                if (letter != ' ') and (letter in self._char2idx):
+                    input_[i, char_index] = self._char2idx[letter]
+                    char_index += 1
         return input_
 
     def _retrieve_sentence(self, characters: np.array, pred_spaces: np.array) -> str:
