@@ -1,7 +1,7 @@
 -r requirements.txt
 
 wheel
-pytest~=5.0
+pytest~=5.1
 pytest-cov
 pytest-codestyle
 pytest-pylint
