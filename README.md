@@ -14,6 +14,13 @@ Urduhack: NLP library for ( 🇵🇰 ) Urdu language
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/akkefa)
 
 
+Urduhack
+---------------
+
+Urduhack as the name suggests is your NLP library for urdu language. It comes with a lot of methods to help you process Urdu
+data in the easiest way possible. It has support for removing unnecessary data. It smoothly handles numbers, phone numbers, email addresses,
+URLs and symbols like currency symbols. 
+
 Feature Support
 ---------------
 
@@ -28,6 +35,11 @@ Feature Support
 - [ ] Tokenization
     - [x] Sentence Tokenization
     - [ ] Words Tokenization
+    
+PreProcessing
+-------------
+ - [x] Data Pre-processing
+     - [x] Handles all kind of numbers, emails, currencies and urls etc.
 
 Roadmap
 ---------
@@ -37,7 +49,7 @@ Roadmap
   - [ ] Documents Classification
 - [ ] Name Entity Recognition
 - [ ] Image to Text
-- [ ] Speak to Text
+- [ ] Speech to Text
 
 
 Installation
