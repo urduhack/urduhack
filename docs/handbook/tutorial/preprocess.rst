@@ -2,7 +2,8 @@ Text PreProcessing
 ===================
 
 The pre-processing of Urdu text is necessary to make it useful for the machine
-learning tasks. This module provides the following functionalities:
+learning tasks. This module assists us in getting rid of unnecessary data. This is more of a
+data cleaning module. It cleans our data from various unnecessary elements. It provides following functions:
 
     - Normalize whitespace
     - Replace urls
