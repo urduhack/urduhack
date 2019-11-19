@@ -38,8 +38,8 @@ NLP library for different Urdu language tasks and maintained by `Ikram Ali and C
 .. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
    :target: https://saythanks.io/to/akkefa
    :alt: Say Thanks!
-Urduhack has different modules all of which serve a specific purpose. You can load
-any of them and check out their results by giving in your inputs.
+**Urduhack** has different modules all of which serve a specific purpose.
+You can load any of them and check out their results by giving in your inputs.
 
 .. toctree::
    :maxdepth: 2
@@ -48,7 +48,7 @@ any of them and check out their results by giving in your inputs.
    handbook/index.rst
    reference/index.rst
    about.rst
-   releasenotes
+   releasenotes.rst
    deprecations.rst
 
 
