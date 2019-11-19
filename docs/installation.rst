@@ -18,7 +18,9 @@ Basic Installation
 .. note::
 
     The following instructions will install Urduhack with full support for
-    NLP tasks.
+    NLP tasks. **Urduhack** is simple to install and use on any operating system like windows, Mac and Linux.
+    You just need a simple :command:`pip install` and its done.
+
 
 Install Urduhack with :command:`pip`::
 
