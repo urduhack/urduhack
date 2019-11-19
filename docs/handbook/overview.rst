@@ -15,7 +15,7 @@ By normalization we mean to end the confusion between Urdu and Arabic characters
 to replace two words with one word keeping in mind the
 context they are used in. Like the character 'ﺁ' and 'ﺂ' are to be replaced by 'آ'.
 It removes unnecessary spaces and also add
-spaces after the punctuation marks. All this is done using regular expressions. 
+spaces after the punctuation marks. All this is done using regular expressions.
 
 Tokenization
 -------------
