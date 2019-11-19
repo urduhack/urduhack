@@ -39,7 +39,7 @@ NLP library for different Urdu language tasks and maintained by `Ikram Ali and C
    :target: https://saythanks.io/to/akkefa
    :alt: Say Thanks!
 Urduhack has different modules all of which serve a specific purpose. You can load
-any of them a check out their results by giving in your inputs.
+any of them and check out their results by giving in your inputs.
 
 .. toctree::
    :maxdepth: 2
