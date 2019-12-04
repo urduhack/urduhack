@@ -1,0 +1,112 @@
+# coding: utf8
+"""
+keras_tokenizer module
+-------------------------------
+
+This module create tokens using a pre-trained sequence model .
+"""
+
+
+import numpy as np
+import tensorflow as tf
+
+
+def load_vocab(vocab_path: str):
+    """
+    Maps characters to integers and vice verca
+
+    Args:
+        vocab_path (str): path to the vocab file
+    Returns:
+        Two dictionaries containing character to integer mapping and integer to character mapping
+    """
+
+    vocab_file = open(vocab_path)
+    vocab = vocab_file.readline()
+    vocab = list('_' + vocab)
+    vocab.remove('\n')
+    char2idx = {char: idx for idx, char in enumerate(vocab)}
+    idx2char = {idx: char for idx, char in enumerate(vocab)}
+    return char2idx, idx2char
+
+
+def preprocess_sentences(sentences: list, maxLen: int, char2idx: dict):
+    """
+    Makes the input and output arrays for the data explaining where is a character or a space
+
+    Args:
+        sentences (str): Sentence to be tokenized
+        maxLen (int): integer
+        char2idx (dict): Dict containing character to integer mapping
+    Returns:
+        Input and Output arrays representing features and labels
+    """
+
+    input_ = np.zeros((len(sentences), maxLen), dtype=int)
+    output_ = np.zeros((len(sentences), maxLen))
+    for i, sentence in enumerate(sentences):
+        char_index = 0
+        for letter in sentence:
+            if letter == ' ':
+                output_[i, char_index - 1] = 1
+            elif letter in char2idx:
+                input_[i, char_index] = char2idx[letter]
+                char_index += 1
+    return input_, output_
+
+
+def retrieve_words(x, y, idx2char, thresh):
+    """
+    Retrieve the original words from predicted and actual arrays as per char2idx mapping
+    Args:
+        x (array): Input array
+        y (array): Output array
+        idx2char (dict): Dict mapping integer to character
+        thresh (float): Confidence to tell whether prediction is a character or space
+    Returns:
+        list : Containing ``urdu`` word tokens
+    """
+    mask = x != 0
+    letters = x[mask]
+    spaces = y[mask]
+    final = ''
+    tokens = []
+    for letter in range(letters.shape[0]):
+        idx = letters[letter]
+        if idx != 0:
+            final += idx2char[idx]
+        if spaces[letter] >= thresh:
+            tokens.append(final)
+            final = ''
+    tokens.append(final)
+    return tokens
+
+
+def predict(sentence: str, weight_file: str, maxLen: int = 256, thresh: float = 0.5):
+    """
+    Predicts tokens based on Pre-trained Keras Model
+
+    Args:
+        sentence (str): Sentence to be tokenized
+        weight_file (str): path to the model weights file
+        maxLen (int): Maximum length of the tokens vector
+        thresh (float): Confidence needed to predict a character/space
+    Returns:
+        list: list containing urdu tokens
+    """
+    X = []
+    if type(sentence) == str:
+        X.append(sentence)
+    else:
+        X = sentence
+    model = tf.keras.models.load_model(weight_file)
+    char2idx, idx2char = load_vocab('vocab.txt')
+    inp_, out_ = preprocess_sentences(X, maxLen, char2idx)
+    example_letters = inp_[:, :]
+    predictions = model.predict(example_letters)
+    for i in range(inp_.shape[0]):
+        print("Sentence: ", X[i])
+        print("Tokens: ", retrieve_words(example_letters[i, :], predictions[i, :], idx2char, thresh=thresh))
+
+
+
