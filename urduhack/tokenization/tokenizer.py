@@ -9,8 +9,8 @@ import os
 from typing import List
 from pathlib import Path
 from .eos import _generate_sentences
-from urduhack.utils.io import download_weights
 from .keras_tokenizer import predict
+from ..utils.io import download_weights
 
 WEIGHTS_URL = 'https://sgp1.digitaloceanspaces.com/urduhack/models/tokenizer/word/weights_v1.zip'
 file_name = WEIGHTS_URL.split('/')[-1]
