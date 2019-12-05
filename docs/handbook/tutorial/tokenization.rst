@@ -39,5 +39,5 @@ To generate tokens from urdu sentence.:
     'عراق اور شام نے اعلان کیا ہے دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟'
     >>>from urduhack.tokenization import word_tokenizer
     >>>word_tokenizer(sentence)
-If the tokenizer runs successfully, this function returns a :py:class:`List` object containing urdu :py:class:`String`
+If the word_tokenizer runs successfully, this function returns a :py:class:`List` object containing urdu :py:class:`String`
 word tokens.
