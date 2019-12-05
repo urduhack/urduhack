@@ -1,18 +1,16 @@
 # coding: utf8
 """
-Tokenizer module
--------------------------------
-
 This module provides the functionality to generate tokens (both sentence and word wise) from Urdu text.
 """
 import os
-from typing import List
 from pathlib import Path
+from typing import List, Union
+
 from .eos import _generate_sentences
 from .keras_tokenizer import predict
 from ..utils.io import download_weights
 
-WEIGHTS_URL = 'https://sgp1.digitaloceanspaces.com/urduhack/models/tokenizer/word/weights_v1.zip'
+WEIGHTS_URL: str = 'https://sgp1.digitaloceanspaces.com/urduhack/models/tokenizer/word/weights_v1.zip'
 file_name = WEIGHTS_URL.split('/')[-1]
 SUB_DIR = "urduhack/models/"
 
@@ -45,12 +43,12 @@ def download_keras_weights():
         return download_weights(WEIGHTS_URL, file_name, MODEL_DIR)
 
 
-def keras_tokenizer_predict(sentence: str) -> List[str]:
+def word_tokenizer(sentence: Union[str, list]) -> List[str]:
     """
-    Converts an Urdu Sentence into tokens bases on a Deep Learning Model
+    Generate words tokens from Urdu sentence
 
     Args:
-        sentence (str): raw ``urdu`` text
+        sentence (str)|(list): Raw ``urdu`` text or list of text
 
     Return:
         list: returns a ``list`` containing urdu tokens
