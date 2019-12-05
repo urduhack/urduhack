@@ -35,6 +35,16 @@ def sentence_tokenizer(text: str) -> List[str]:
     return _generate_sentences(text)
 
 
+def download_keras_weights():
+    """
+    Download keras model weights
+
+    Return: Download model weights and vocab.txt
+    """
+    if not os.path.exists(MODEL_PATH):
+        return download_weights(WEIGHTS_URL, file_name, MODEL_DIR)
+
+
 def keras_tokenizer_predict(sentence: str) -> List[str]:
     """
     Converts an Urdu Sentence into tokens bases on a Deep Learning Model
@@ -46,6 +56,4 @@ def keras_tokenizer_predict(sentence: str) -> List[str]:
         list: returns a ``list`` containing urdu tokens
 
     """
-    if not os.path.exists(MODEL_DIR):
-        download_weights(url=WEIGHTS_URL, file_name=file_name, path=MODEL_DIR)
     return predict(sentence, MODEL_PATH, VOCAB_PATH)
