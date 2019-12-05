@@ -8,15 +8,18 @@ from typing import List, Union
 
 from .eos import _generate_sentences
 from .keras_tokenizer import predict
-from ..utils.io import download_weights
+from ..utils.io import download_from_url, extract_weights
 
 WEIGHTS_URL: str = 'https://sgp1.digitaloceanspaces.com/urduhack/models/tokenizer/word/weights_v1.zip'
 file_name = WEIGHTS_URL.split('/')[-1]
-SUB_DIR = "/urduhack/models/"
 
 home = str(Path.home())
+SUB_DIR = "/urduhack/models/"
+
 MODEL_DIR = home + SUB_DIR
-file_name = f"{MODEL_DIR}/{file_name}"
+file_path = f"{MODEL_DIR}/{file_name}"
+extract_file = f"{MODEL_DIR}/{file_name}/{file_name}"
+
 MODEL_PATH = MODEL_DIR + "word_tokenizer.h5"
 VOCAB_PATH = MODEL_DIR + "vocab.txt"
 
@@ -41,7 +44,7 @@ def download_keras_weights():
     Return: Download model weights and vocab.txt
     """
     if not os.path.exists(MODEL_PATH):
-        return download_weights(WEIGHTS_URL, file_name, MODEL_DIR)
+        return download_from_url(WEIGHTS_URL, file_path)
 
 
 def word_tokenizer(sentence: Union[str, list]) -> List[str]:
@@ -55,5 +58,6 @@ def word_tokenizer(sentence: Union[str, list]) -> List[str]:
         list: returns a ``list`` containing urdu tokens
 
     """
-    download_keras_weights()
+    download_from_url(WEIGHTS_URL, file_path)
+    extract_weights(extract_file, MODEL_DIR, file_path)
     return predict(sentence, MODEL_PATH, VOCAB_PATH)

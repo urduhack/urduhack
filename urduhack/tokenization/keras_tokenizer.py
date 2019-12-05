@@ -8,6 +8,7 @@ This module create tokens using a pre-trained sequence model .
 
 import numpy as np
 import tensorflow as tf
+from ..normalization import normalize
 
 
 def load_vocab(vocab_path: str):
@@ -96,6 +97,7 @@ def predict(sentence: str, weight_file: str, vocab_path: str, max_len: int = 256
     """
     X = []
     if type(sentence) == str:
+        sentence = normalize(sentence)
         X.append(sentence)
     else:
         X = sentence

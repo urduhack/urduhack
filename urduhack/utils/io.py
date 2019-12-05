@@ -39,23 +39,24 @@ def pickle_load(file_name: str) -> Any:
         return pickle.load(f)
 
 
-def download_from_url(url: str, file_path: str) -> None:
+def download_from_url(url: str, file_path: str, file_name: str) -> None:
     """
     Download anything from HTTP url
 
     Args:
         url (str): HTTP url
         file_path (str): location to store file
+        file_name (str): name of the file
 
     Returns:
         None
     """
     if not isinstance(url, str):
-        raise ValueError(Errors.E002.format(object_name="url", object_type="str"))
+        raise TypeError(Errors.E001.format(object_name="url", object_type="str"))
     if not isinstance(file_path, str):
-        raise ValueError(Errors.E002.format(object_name="file_path", object_type="str"))
-
-    file_name = f"{file_path}/{url.split('/')[-1]}"
+        raise TypeError(Errors.E001.format(object_name="file_path", object_type="str"))
+    if not isinstance(file_name, str):
+        raise TypeError(Errors.E001.format(object_name="file_name", object_type="str"))
 
     if not os.path.exists(file_path):
         os.makedirs(file_path)
@@ -65,6 +66,27 @@ def download_from_url(url: str, file_path: str) -> None:
             for line in in_file:
                 out_file.write(line)
 
-    with ZipFile(file_name) as z_file:
-        z_file.extractall(file_path)
-        os.remove(file_name)
+
+def extract_weights(file_path: str, model_dir: str, file_dir: str) -> None:
+    """
+    Extracts file into the specified directory
+
+    Args:
+        file_path (str): location of the zip file
+        model_dir (str): Directory into which file will be extracted
+        file_dir (str): directory containing downloaded file
+
+    Returns:
+        None
+    """
+    if not isinstance(file_path, str):
+        raise ValueError(Errors.E001.format(object_name="file_path", object_type="str"))
+    if not isinstance(file_path, str):
+        raise ValueError(Errors.E001.format(object_name="model_dir", object_type="str"))
+    if not isinstance((file_dir, str)):
+        raise ValueError(Errors.E001.format(object_name="file_dir", object_type="str"))
+
+    with ZipFile(file_path) as z_file:
+        z_file.extractall(model_dir)
+        os.remove(file_path)
+        os.rmdir(file_dir)
