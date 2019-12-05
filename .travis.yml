@@ -9,8 +9,6 @@ matrix:
       dist: xenial
       sudo: false
 
-cache: pip
-
 install:
   - pip install -r dev-requirements.txt
 
