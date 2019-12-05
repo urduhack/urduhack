@@ -12,10 +12,11 @@ from ..utils.io import download_weights
 
 WEIGHTS_URL: str = 'https://sgp1.digitaloceanspaces.com/urduhack/models/tokenizer/word/weights_v1.zip'
 file_name = WEIGHTS_URL.split('/')[-1]
-SUB_DIR = "urduhack/models/"
+SUB_DIR = "/urduhack/models/"
 
 home = str(Path.home())
 MODEL_DIR = home + SUB_DIR
+file_name = f"{MODEL_DIR}/{file_name}"
 MODEL_PATH = MODEL_DIR + "word_tokenizer.h5"
 VOCAB_PATH = MODEL_DIR + "vocab.txt"
 
@@ -54,4 +55,5 @@ def word_tokenizer(sentence: Union[str, list]) -> List[str]:
         list: returns a ``list`` containing urdu tokens
 
     """
+    download_keras_weights()
     return predict(sentence, MODEL_PATH, VOCAB_PATH)
