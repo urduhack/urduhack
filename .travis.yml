@@ -10,6 +10,7 @@ matrix:
       sudo: false
 
 install:
+  - pip install --upgrade pip
   - pip install -r dev-requirements.txt
 
 script:
