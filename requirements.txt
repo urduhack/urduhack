@@ -1,1 +1,3 @@
+tensorflow==2.0.0
+smart-open
 regex
