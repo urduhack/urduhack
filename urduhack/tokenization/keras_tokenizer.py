@@ -6,9 +6,25 @@ keras_tokenizer module
 This module create tokens using a pre-trained sequence model .
 """
 
+from pathlib import Path
+
 import numpy as np
 import tensorflow as tf
+
 from ..normalization import normalize
+from ..utils.io import download_from_url, extract_zip, remove_file
+
+WORD_TOKENIZER_WEIGHTS_URL: str = 'https://sgp1.digitaloceanspaces.com/urduhack/models/tokenizer/word/weights_v1.zip'
+WORD_TOKENIZER_FILE_NAME = WORD_TOKENIZER_WEIGHTS_URL.split('/')[-1]
+
+USER_HOME = str(Path.home())
+SUB_DIR = "/urduhack/models/"
+MODELS_DIR = f"{USER_HOME}/{SUB_DIR}"
+WORD_TOKENIZER_FILE_PATH = f"{MODELS_DIR}/{WORD_TOKENIZER_FILE_NAME}"
+EXTRACT_FILE = f"{MODELS_DIR}/{WORD_TOKENIZER_FILE_NAME}"
+
+MODEL_PATH = f"{MODELS_DIR}word_tokenizer.h5"
+VOCAB_PATH = f"{MODELS_DIR}vocab.txt"
 
 
 def load_vocab(vocab_path: str):
@@ -82,6 +98,19 @@ def retrieve_words(x, y, idx2char, thresh):
     return tokens
 
 
+def _download_model():
+    """
+    Test
+    Returns:
+
+    """
+    if not Path(MODEL_PATH).exists() and Path(VOCAB_PATH).exists():
+        download_from_url(WORD_TOKENIZER_WEIGHTS_URL, MODELS_DIR)
+        extract_zip(EXTRACT_FILE, MODELS_DIR)
+
+    remove_file(EXTRACT_FILE)
+
+
 def predict(sentence: str, weight_file: str, vocab_path: str, max_len: int = 256, thresh: float = 0.5):
     """
     Predicts tokens based on Pre-trained Keras Model
@@ -92,6 +121,7 @@ def predict(sentence: str, weight_file: str, vocab_path: str, max_len: int = 256
         vocab_path (str): path to the vocab file
         max_len (int): Maximum length of the tokens vector
         thresh (float): Confidence needed to predict a character/space
+
     Returns:
         list: list containing urdu tokens
     """
