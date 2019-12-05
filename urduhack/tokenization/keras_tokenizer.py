@@ -33,6 +33,7 @@ def load_vocab(vocab_path: str):
 
     Args:
         vocab_path (str): path to the vocab file
+
     Returns:
         Two dictionaries containing character to integer mapping and integer to character mapping
     """
@@ -54,6 +55,7 @@ def preprocess_sentences(sentences: list, max_len: int, char2idx: dict):
         sentences (str): Sentence to be tokenized
         max_len (int): integer
         char2idx (dict): Dict containing character to integer mapping
+
     Returns:
         Input and Output arrays representing features and labels
     """
@@ -79,6 +81,7 @@ def retrieve_words(x, y, idx2char, thresh):
         y (array): Output array
         idx2char (dict): Dict mapping integer to character
         thresh (float): Confidence to tell whether prediction is a character or space
+
     Returns:
         list : Containing ``urdu`` word tokens
     """
@@ -98,10 +101,12 @@ def retrieve_words(x, y, idx2char, thresh):
     return tokens
 
 
-def _download_model():
+def _download_model() -> None:
     """
-    Test
-    Returns:
+    Used privately by tokenizer
+    Download and extracts the model file if it does not already exists
+
+    Returns: None
 
     """
     if not Path(MODEL_PATH).exists() and Path(VOCAB_PATH).exists():
