@@ -3,7 +3,6 @@ Installation
 
 Notes
 -----
-
 .. note:: Urduhack is supported on the following Python versions
 
 +--------------+-------+-------+-------+-------+-------+
@@ -14,42 +13,7 @@ Notes
 
 Basic Installation
 ------------------
-
-.. note::
-
-    The following instructions will install Urduhack with full support for
-    NLP tasks. **Urduhack** is simple to install and use on any operating system like windows, Mac and Linux.
-    You just need a simple :command:`pip install` and its done.
-
-
 Install Urduhack with :command:`pip`::
 
     $ pip install Urduhack
-
-
-Windows Installation
-^^^^^^^^^^^^^^^^^^^^
-
-We provide Urduhack binaries for Windows compiled for the matrix of
-supported Pythons in both 32 and 64-bit versions in wheel, egg, and
-executable installers.::
-
-  > pip install Urduhack
-
-
-macOS Installation
-^^^^^^^^^^^^^^^^^^
-
-We provide binaries for macOS for each of the supported Python
-versions in the wheel format.::
-
-  $ pip install Urduhack
-
-Linux Installation
-^^^^^^^^^^^^^^^^^^
-
-We provide binaries for Linux for each of the supported Python
-versions in the many linux wheel format.::
-
-  $ pip install Urduhack
 
