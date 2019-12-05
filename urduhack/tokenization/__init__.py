@@ -9,6 +9,6 @@ This module provides the following functionality:
     - Sentence Tokenization
     - Word Tokenization
 """
-from .tokenizer import sentence_tokenizer
+from .tokenizer import sentence_tokenizer, word_tokenizer
 
-__all__ = ["sentence_tokenizer"]
+__all__ = ["sentence_tokenizer", "word_tokenizer"]

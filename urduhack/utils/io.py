@@ -4,8 +4,11 @@
 import os
 import pickle
 from typing import Any
-import smart_open
 from zipfile import ZipFile
+
+import smart_open
+
+from ..errors import Errors
 
 
 def pickle_dump(file_name: str, data) -> None:
@@ -36,23 +39,32 @@ def pickle_load(file_name: str) -> Any:
         return pickle.load(f)
 
 
-def download_weights(url: str, file_name: str, path: str):
+def download_from_url(url: str, file_path: str) -> None:
     """
+    Download anything from HTTP url
+
     Args:
-        url (str): url
-        file_name (str): file name
-        path (str): path to the model
+        url (str): HTTP url
+        file_path (str): location to store file
 
     Returns:
-        Any: python object type
+        None
     """
+    if not isinstance(url, str):
+        raise ValueError(Errors.E002.format(object_name="url", object_type="str"))
+    if not isinstance(file_path, str):
+        raise ValueError(Errors.E002.format(object_name="file_path", object_type="str"))
+
+    file_name = f"{file_path}/{url.split('/')[-1]}"
+
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+
     with smart_open.open(url, "rb") as in_file:
         with open(file_name, "wb") as out_file:
             for line in in_file:
                 out_file.write(line)
 
-    if not os.path.exists(path):
-        os.makedirs(path)
     with ZipFile(file_name) as z_file:
-        z_file.extractall(path)
-    os.remove(file_name)
+        z_file.extractall(file_path)
+        os.remove(file_name)

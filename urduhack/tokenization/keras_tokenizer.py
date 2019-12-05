@@ -6,14 +6,13 @@ keras_tokenizer module
 This module create tokens using a pre-trained sequence model .
 """
 
-
 import numpy as np
 import tensorflow as tf
 
 
 def load_vocab(vocab_path: str):
     """
-    Maps characters to integers and vice verca
+    Maps characters to integers and vice versa
 
     Args:
         vocab_path (str): path to the vocab file
@@ -30,20 +29,20 @@ def load_vocab(vocab_path: str):
     return char2idx, idx2char
 
 
-def preprocess_sentences(sentences: list, maxLen: int, char2idx: dict):
+def preprocess_sentences(sentences: list, max_len: int, char2idx: dict):
     """
     Makes the input and output arrays for the data explaining where is a character or a space
 
     Args:
         sentences (str): Sentence to be tokenized
-        maxLen (int): integer
+        max_len (int): integer
         char2idx (dict): Dict containing character to integer mapping
     Returns:
         Input and Output arrays representing features and labels
     """
 
-    input_ = np.zeros((len(sentences), maxLen), dtype=int)
-    output_ = np.zeros((len(sentences), maxLen))
+    input_ = np.zeros((len(sentences), max_len), dtype=int)
+    output_ = np.zeros((len(sentences), max_len))
     for i, sentence in enumerate(sentences):
         char_index = 0
         for letter in sentence:
@@ -82,7 +81,7 @@ def retrieve_words(x, y, idx2char, thresh):
     return tokens
 
 
-def predict(sentence: str, weight_file: str, vocab_path: str, maxLen: int = 256, thresh: float = 0.5):
+def predict(sentence: str, weight_file: str, vocab_path: str, max_len: int = 256, thresh: float = 0.5):
     """
     Predicts tokens based on Pre-trained Keras Model
 
@@ -90,7 +89,7 @@ def predict(sentence: str, weight_file: str, vocab_path: str, maxLen: int = 256,
         sentence (str): Sentence to be tokenized
         weight_file (str): path to the model weights file
         vocab_path (str): path to the vocab file
-        maxLen (int): Maximum length of the tokens vector
+        max_len (int): Maximum length of the tokens vector
         thresh (float): Confidence needed to predict a character/space
     Returns:
         list: list containing urdu tokens
@@ -102,12 +101,9 @@ def predict(sentence: str, weight_file: str, vocab_path: str, maxLen: int = 256,
         X = sentence
     model = tf.keras.models.load_model(weight_file)
     char2idx, idx2char = load_vocab(vocab_path)
-    inp_, out_ = preprocess_sentences(X, maxLen, char2idx)
+    inp_, out_ = preprocess_sentences(X, max_len, char2idx)
     example_letters = inp_[:, :]
     predictions = model.predict(example_letters)
     for i in range(inp_.shape[0]):
         print("Sentence: ", X[i])
         print("Tokens: ", retrieve_words(example_letters[i, :], predictions[i, :], idx2char, thresh=thresh))
-
-
-
