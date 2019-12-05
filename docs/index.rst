@@ -6,15 +6,6 @@ and check out their results by giving in your inputs. urduhack has got some magi
 particular module and get amazing results by giving in your data.
 Normalization, Tokenization and Preprocess are the main modules of Urduhack.
 
-**Tokenization** module is another crucial part of the Urduhack. This module performs tokenization on sentence. It separates different sentence from each other
-and converts each string into a complete **sentence taken**. Note here you must not confuse yourself with the word token. They are two
-completely different things. It handles multiple spaces and the spaces before and after a sentence. For Urdu language '۔' is a standard separator. We can specify
-our custom separator and make sentence tokens.
-
-**Preprocess** module takes care of every other type of data present in the corps. It handles *Numbers*, *Phone Numbers*, *Email Address*, *URLs*
-*Line Breaks* and  *Currency Symbols* etc. It replaces all these entities with specified characters. Like we replace multiple spaces with a single space and where there
-is a URL we replace it with the word 'URL'.
-
 **Urduhack** is maintained by `Ikram Ali and Contributors <https://github.com/Urduhack/Urduhack/graphs/contributors>`_.
 
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
