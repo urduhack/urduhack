@@ -48,7 +48,7 @@ Normalization, Tokenization and Preprocess are the main modules of Urduhack.
    :maxdepth: 2
 
    installation.rst
-   handbook/index.rst
+   quickstart/index.rst
    reference/index.rst
    about.rst
    releasenotes.rst
