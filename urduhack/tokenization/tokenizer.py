@@ -19,6 +19,7 @@ SUB_DIR = "urduhack/models/"
 home = str(Path.home())
 MODEL_DIR = home + SUB_DIR
 MODEL_PATH = MODEL_DIR + "word_tokenizer.h5"
+VOCAB_PATH = MODEL_DIR + "vocab.txt"
 
 
 def sentence_tokenizer(text: str) -> List[str]:
@@ -34,19 +35,17 @@ def sentence_tokenizer(text: str) -> List[str]:
     return _generate_sentences(text)
 
 
-def keras_tokenizer_predict(sentence: str, model_dir: str, model_path: str) ->List[str]:
+def keras_tokenizer_predict(sentence: str) -> List[str]:
     """
     Converts an Urdu Sentence into tokens bases on a Deep Learning Model
 
     Args:
         sentence (str): raw ``urdu`` text
-        model_dir (str): path to the model file
-        model_path (str): full path to the weights file
 
     Return:
         list: returns a ``list`` containing urdu tokens
 
     """
-    if not os.path.exists(model_dir):
-        download_weights(url=WEIGHTS_URL, file_name=file_name, path=model_dir)
-    predict(sentence, model_path)
+    if not os.path.exists(MODEL_DIR):
+        download_weights(url=WEIGHTS_URL, file_name=file_name, path=MODEL_DIR)
+    return predict(sentence, MODEL_PATH, VOCAB_PATH)
