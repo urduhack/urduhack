@@ -1,10 +1,16 @@
 # coding: utf8
 """
-Normalization module
----------------------
+Character Normalization module
+-------------------------------
+This modules fixes the problem of correct encodings for the Urdu characters as well as replace Arabic
+characters with correct Urdu characters. This module brings all the characters in the specified unicode range
+(0600-06FF) for Urdu language.
 
-The normalization of Urdu text is necessary to make it useful for the machine
-learning tasks.
+It also fixes the problem of joining of different Urdu words. By joining we mean that when space between two Urdu words
+is removed, they must not make a new word. Their rendering must not change and even after the removal of space
+they should look the same.
+
+The normalization of Urdu text is necessary to make it useful for the machine learning tasks.
 This module provides the following functionality:
 
     - Normalizing Single Characters
