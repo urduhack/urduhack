@@ -6,11 +6,10 @@ keras_tokenizer module
 This module create tokens using a pre-trained sequence model .
 """
 
-from pathlib import Path
-
 import numpy as np
 import tensorflow as tf
 
+from pathlib import Path
 from ..normalization import normalize
 from ..utils.io import download_from_url, extract_zip, remove_file
 
@@ -73,21 +72,21 @@ def preprocess_sentences(sentences: list, max_len: int, char2idx: dict):
     return input_, output_
 
 
-def retrieve_words(x, y, idx2char, thresh):
+def retrieve_words(features, labels, idx2char, thresh):
     """
     Retrieve the original words from predicted and actual arrays as per char2idx mapping
     Args:
-        x (array): Input array
-        y (array): Output array
+        features (array): Input array
+        labels (array): Output array
         idx2char (dict): Dict mapping integer to character
         thresh (float): Confidence to tell whether prediction is a character or space
 
     Returns:
         list : Containing ``urdu`` word tokens
     """
-    mask = x != 0
-    letters = x[mask]
-    spaces = y[mask]
+    mask = features != 0
+    letters = features[mask]
+    spaces = labels[mask]
     final = ''
     tokens = []
     for letter in range(letters.shape[0]):
@@ -130,17 +129,17 @@ def predict(sentence: str, weight_file: str, vocab_path: str, max_len: int = 256
     Returns:
         list: list containing urdu tokens
     """
-    X = []
-    if type(sentence) == str:
+    sentences = []
+    if isinstance(sentence, str):
         sentence = normalize(sentence)
-        X.append(sentence)
+        sentences.append(sentence)
     else:
-        X = sentence
+        sentences = sentence
     model = tf.keras.models.load_model(weight_file)
     char2idx, idx2char = load_vocab(vocab_path)
-    inp_, out_ = preprocess_sentences(X, max_len, char2idx)
+    inp_, _ = preprocess_sentences(sentences, max_len, char2idx)
     example_letters = inp_[:, :]
     predictions = model.predict(example_letters)
     for i in range(inp_.shape[0]):
-        print("Sentence: ", X[i])
+        print("Sentence: ", sentences[i])
         print("Tokens: ", retrieve_words(example_letters[i, :], predictions[i, :], idx2char, thresh=thresh))
