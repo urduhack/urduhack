@@ -39,7 +39,7 @@ in the :py:mod:`~urduhack.normalization.character` module::
     >>> from urduhack.normalization import normalize_characters
 
     # Text containing characters from Arabic Unicode block
-    >>> text = "مجھ کو جو توڑا گیا تھا"
+    >>> text = "مجھ کو جو توڑا ﮔیا تھا"
     >>> normalized_text = normalize_characters(text)
 
     # Normalized text - Arabic characters are now replaced with Urdu characters
