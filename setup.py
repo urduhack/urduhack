@@ -25,7 +25,7 @@ def setup_package():
     # Required packages
     requirements_path = root / 'requirements.txt'
     with requirements_path.open('r', encoding='utf8') as file_content:
-        requires = [l.strip('\n') for l in file_content if l.strip('\n') and not l.startswith('#')]
+        requires = [line.strip('\n') for line in file_content if line.strip('\n') and not line.startswith('#')]
 
     setup(name=package_name,
 
@@ -69,7 +69,10 @@ def setup_package():
               'Programming Language :: Python :: 3.6',
               'Programming Language :: Python :: 3.7',
               'Topic :: Software Development :: Libraries',
-              'Topic :: Software Development :: Libraries :: Python Modules'],
+              'Topic :: Software Development :: Libraries :: Python Modules',
+              "Natural Language :: Urdu",
+              "Topic :: Text Processing :: Linguistic",
+          ],
 
           project_urls={
               "Documentation": "https://urduhack.readthedocs.io/en/stable/",

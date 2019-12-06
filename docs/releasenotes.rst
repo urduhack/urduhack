@@ -3,6 +3,17 @@ Release Notes
 
 .. note:: Contributors please include release notes as needed or appropriate with your bug fixes, feature additions and tests.
 
+
+0.2.2
+-----
+
+Changes:
+
+- **Word tokenizer**
+    Urdu word tokenization functionality added. To covert normalize Urdu sentence into possible word tokens,
+    we need to use ``urduhack.tokenization.word_tokenizer`` function.
+
+
 0.1.0
 -----
 

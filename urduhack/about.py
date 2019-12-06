@@ -1,7 +1,7 @@
 # coding: utf8
 """Project Meta data description"""
 
-__version__ = '0.2.1'
+__version__ = '0.2.2'
 __description__ = 'Natural Language Processing (NLP) library for Urdu language.'
 __url__ = 'https://github.com/urduhack/urduhack'
 __author__ = 'Ikram Ali'
