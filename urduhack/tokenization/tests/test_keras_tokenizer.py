@@ -1,5 +1,5 @@
 from typing import Union
-from ..keras_tokenizer import load_vocab, preprocess_sentences, predict, MODEL_PATH, VOCAB_PATH
+from ..keras_tokenizer import load_vocab, preprocess_sentences
 
 
 def test_load_vocab(tmpdir):
@@ -33,3 +33,4 @@ def test_predict():
     """Test Case"""
     sentence = "ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی"
     assert isinstance(sentence, str) or isinstance(sentence, list) is True
+
