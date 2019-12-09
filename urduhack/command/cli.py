@@ -14,10 +14,8 @@ class CLI(click.MultiCommand):
     def list_commands(self, ctx):
         """
          Obtain a list of all available commands.
-
         Args:
             ctx: Click context
-
         Returns:
             List of sorted commands
         """
@@ -34,11 +32,9 @@ class CLI(click.MultiCommand):
     def get_command(self, ctx, name):
         """
          Get a specific command by looking up the module.
-
         Args:
             ctx: Click context
             name: Command name
-
         Returns:
             Module's cli function
         """

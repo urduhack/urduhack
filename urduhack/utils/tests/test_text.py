@@ -1,2 +1,45 @@
 # coding: utf8
 """Test cases for text.py file"""
+from pathlib import Path
+from ..io import remove_file, download_from_url, extract_zip
+from ...tokenization.keras_tokenizer import WORD_TOKENIZER_WEIGHTS_URL, WORD_TOKENIZER_FILE_NAME
+
+
+def test_download_from_url(tmpdir):
+    """Test Case"""
+    temp_model_dir = tmpdir.mkdir("sub")
+    model_path = str(temp_model_dir) + "/" + WORD_TOKENIZER_FILE_NAME
+    assert isinstance(WORD_TOKENIZER_WEIGHTS_URL, str) is True
+    assert isinstance(model_path, str) is True
+    assert isinstance(WORD_TOKENIZER_FILE_NAME, str) is True
+    download_from_url(WORD_TOKENIZER_WEIGHTS_URL, str(temp_model_dir), WORD_TOKENIZER_FILE_NAME)
+    assert Path(model_path).exists() is True
+
+
+def test_extract_zip(tmpdir):
+    """Test Case"""
+    temp_model_dir = tmpdir.mkdir("sub")
+    zipped_file = str(temp_model_dir) + "/" + WORD_TOKENIZER_FILE_NAME
+    download_from_url(WORD_TOKENIZER_WEIGHTS_URL, str(temp_model_dir), WORD_TOKENIZER_FILE_NAME)
+    unzip_dir = tmpdir.mkdir("unzipped")
+    unzip_dir = str(unzip_dir)
+    model_path = unzip_dir + "/" + "word_tokenizer.h5"
+    vocab_path = unzip_dir + "/" + "vocab.txt"
+    extract_zip(zipped_file, unzip_dir)
+    assert Path(model_path).exists() is True
+    assert Path(vocab_path).exists() is True
+
+
+def test_remove_file(tmpdir):
+    """Test Case"""
+    tmp_dir = tmpdir.mkdir("sub_dir")
+    tmp_file = tmp_dir.join("hello.txt")
+    tmp_file.write("This is a test Text")
+    file_name = str(tmp_file)
+    assert Path(tmp_dir).exists() is True
+    assert Path(tmp_file).exists() is True
+    assert tmp_file.read() == "This is a test Text"
+    remove_file(file_name)
+    assert Path(tmp_file).exists() is False
+
+

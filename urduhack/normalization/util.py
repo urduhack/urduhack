@@ -22,10 +22,8 @@ SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[" + "".join(EXCEPT_HAMZA) + "
 def digits_space(text: str) -> str:
     """
     Add spaces before|after numeric and urdu digits
-
     Args:
         text (str): raw ``urdu`` text
-
     Returns:
         str: returns a ``str`` object containing normalized text.
     """
@@ -46,10 +44,8 @@ REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE = re.compile(r'\s+([' + "".join(URDU_PUNCTUA
 def punctuations_space(text: str) -> str:
     """
     Add spaces after punctuations used in ``urdu`` writing
-
     Args:
         text (str): raw ``urdu`` text
-
     Returns:
         str: returns a ``str`` object containing normalized text.
     """
@@ -69,10 +65,8 @@ SPACE_AFTER_ENG_CHAR_RE = re.compile(r"(?<=[a-zA-Z])(?=[" + "".join(URDU_ALL_CHA
 def english_characters_space(text: str) -> str:
     """
     Add spaces before|after ``english`` characters and ``urdu`` digits
-
     Args:
         text (str): raw ``urdu`` text
-
     Returns:
         str: returns a ``str`` object containing normalized text.
     """
@@ -88,10 +82,8 @@ DIACRITICS_RE = re.compile(f'[{"".join(URDU_DIACRITICS)}]', flags=re.U | re.M | 
 def remove_diacritics(text: str) -> str:
     """
     Remove ``urdu`` diacritics from text
-
     Args:
         text (str): raw ``urdu`` text
-
     Returns:
         str: returns a ``str`` object containing normalized text.
     """

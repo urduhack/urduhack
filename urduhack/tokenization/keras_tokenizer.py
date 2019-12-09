@@ -30,10 +30,8 @@ VOCAB_PATH = f"{MODELS_DIR}vocab.txt"
 def load_vocab(vocab_path: str):
     """
     Maps characters to integers and vice versa
-
     Args:
         vocab_path (str): path to the vocab file
-
     Returns:
         Two dictionaries containing character to integer mapping and integer to character mapping
     """
@@ -50,12 +48,10 @@ def load_vocab(vocab_path: str):
 def preprocess_sentences(sentences: list, max_len: int, char2idx: dict):
     """
     Makes the input and output arrays for the data explaining where is a character or a space
-
     Args:
         sentences (str): Sentence to be tokenized
         max_len (int): integer
         char2idx (dict): Dict containing character to integer mapping
-
     Returns:
         Input and Output arrays representing features and labels
     """
@@ -81,7 +77,6 @@ def retrieve_words(features, labels, idx2char, thresh):
         labels (array): Output array
         idx2char (dict): Dict mapping integer to character
         thresh (float): Confidence to tell whether prediction is a character or space
-
     Returns:
         list : Containing ``urdu`` word tokens
     """
@@ -105,7 +100,6 @@ def _download_model() -> None:
     """
     Used privately by tokenizer
     Download and extracts the model file if it does not already exists
-
     Returns: None
 
     """
@@ -119,14 +113,12 @@ def _download_model() -> None:
 def predict(sentence: str, weight_file: str, vocab_path: str, max_len: int = 256, thresh: float = 0.5):
     """
     Predicts tokens based on Pre-trained Keras Model
-
     Args:
         sentence (str): Sentence to be tokenized
         weight_file (str): path to the model weights file
         vocab_path (str): path to the vocab file
         max_len (int): Maximum length of the tokens vector
         thresh (float): Confidence needed to predict a character/space
-
     Returns:
         list: list containing urdu tokens
     """

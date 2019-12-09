@@ -21,3 +21,4 @@ class Errors(object):
     """Error messages with code"""
     E000 = "{message}"
     E001 = "{object_name} must be {object_type} type."
+    E002 = "{object_name} does not exist"

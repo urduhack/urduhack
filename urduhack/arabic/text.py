@@ -84,7 +84,6 @@ def find_arabic_words(text: str) -> str:
     Find all arabic words
     Args:
         text (str): text
-
     Returns:
         str
     """

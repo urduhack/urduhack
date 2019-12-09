@@ -22,10 +22,8 @@ def _generate_sentences(text: str):
     This function automatically fixes multiple whitespaces
     or new lines so you just need to pass the data and
     get sentences in return.
-
     Args:
         text (str): base str
-
     Returns:
         list
     """

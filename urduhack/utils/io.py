@@ -1,7 +1,6 @@
 # coding: utf8
 """Different file types read/write utils"""
 
-import os
 import pickle
 from pathlib import Path
 from typing import Any, Optional
@@ -33,7 +32,6 @@ def pickle_load(file_name: str) -> Any:
 
     Args:
         file_name (str):  file name
-
     Returns:
         Any: python object type
     """
@@ -44,12 +42,10 @@ def pickle_load(file_name: str) -> Any:
 def download_from_url(url: str, file_path: str, file_name: Optional[str] = None) -> None:
     """
     Download anything from HTTP url
-
     Args:
         url (str): HTTP url
         file_path (str): location to store file
         file_name (str): Save file as provided file name
-
     Returns:
         None
     """
@@ -105,5 +101,5 @@ def remove_file(file_name: str) -> None:
     Returns:
         None
     """
-    if Path(file_name).exists():
-        os.remove(file_name)
+    if isinstance(file_name, str) is True:
+        Path(file_name).unlink()
