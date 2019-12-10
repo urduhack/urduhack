@@ -2,7 +2,7 @@
 """Test cases"""
 
 from ..util import (normalize_whitespace, replace_urls, replace_emails, replace_phone_numbers, replace_numbers,
-                    replace_currency_symbols, remove_accents, remove_punctuation, )
+                    replace_currency_symbols, remove_accents, remove_punctuation, remove_english_alphabets)
 
 
 def test_normalize_whitespace():
@@ -67,3 +67,10 @@ def test_remove_punctuation():
     text = "کر  ؟ سکتی ہے۔ علینا نے"
     proc_text = "کر    سکتی ہے  علینا نے"
     assert remove_punctuation(text) == proc_text
+
+
+def test_remove_english_alphabets():
+    """Test Case"""
+    text = "تمہارے پاس کتنے dollars ہے"
+    proc_text = 'تمہارے پاس کتنے  ہے'
+    assert remove_english_alphabets(text) == proc_text
