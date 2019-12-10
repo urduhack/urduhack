@@ -101,5 +101,8 @@ def remove_file(file_name: str) -> None:
     Returns:
         None
     """
-    if isinstance(file_name, str) is True:
+    if not isinstance(file_name, str):
+        raise ValueError(Errors.E001.format(object_name="file_name", object_type="str"))
+
+    if Path(file_name).exists():
         Path(file_name).unlink()

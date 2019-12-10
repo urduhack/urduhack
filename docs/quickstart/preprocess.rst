@@ -95,4 +95,26 @@ by USD.::
 If successful, this function returns a :py:class:`String` object with
 currency symbol replaced by "*USD*".
 
+Remove Punctuation
+------------------
+To remove punctuations like commas, colons and semicolons etc, we will use :py:mod:`~urduhack.preprocess.remove_punctuation`
+module. It will replace all the punctuations marks by a space::
 
+    >>> from urduhack.preprocess import remove_punctuation
+    >>> text = "کر  ؟ سکتی ہے۔ علینا نے"
+    >>> remove_punctuation(text)
+    'کر    سکتی ہے  علینا نے'
+
+If successful, this function returns a :py:mod:`string` object with punctuation marks replaced by
+a space character.
+
+Remove Accents
+--------------
+To remove urdu we accents, we will use the :py:mod:`~urduhack.preprocess.remove_accents` module.::
+
+    >>> from urduhack.preprocess import remove_accents
+    >>>text = "دالتِ عظمیٰ درخواست"
+    >>> remove_accents(text)
+    'دالت عظمی درخواست'
+
+If successful, this function returns a :py:mod:`string` free of "accents".
