@@ -7,8 +7,8 @@ problems faced when working with Urdu data are handled with ease and
 efficiency. All the problems and how :py:mod:`~urduhack.normalization.normalize` module handles
 them are listed below.
 
-Normalize (All in One)
------------------------
+Normalize Data
+---------------
 
 To normalize some text, all you need to do is to import the
 function from the module and pass it the text. The :py:func:`~urduhack.normalization.normalize`
@@ -31,7 +31,19 @@ Characters Normalization
 
 The most important module in the UrduHack is the :py:mod:`~urduhack.normalization.character` module,
 defined in the module with the same name. You can use this module separately to normalize
-a piece of text to a proper specified Urdu range (0600-06FF).
+a piece of text to a proper specified Urdu range (0600-06FF). To get an understanding of how this module works, one
+needs to understand unicode. Every character has a unicode. You can search for any character unicode from any language
+you will find it. No two characters can have the same unicode. This module works with reference to the unicodes. Now as
+urdu language has its roots in Arabic, Parsian and Turkish. So we have to deal with all those characters and convert them
+to a normal urdu character. To get a bit more of what the above explanation means is.
+
+     >>> all_fes = ['ﻑ', 'ﻒ', 'ﻓ', 'ﻔ', ]
+    >>> urdu_fe = 'ف'
+
+All the characters in all_fes are same but they come from different languages and they all have different unicodes. Now as
+computers deal with numbers, same character appearing in more than one place in a different language will have a different
+unicode and that will create confusion which will be create problems in understanding the context of the data.
+:py:mod:`~character` module will eliminate this problem by replacing all the characters in all_fes by urdu_fe.
 
 To normalize some text, use the :py:func:`~urduhack.normalization.character.normalize_characters` function
 in the :py:mod:`~urduhack.normalization.character` module::
