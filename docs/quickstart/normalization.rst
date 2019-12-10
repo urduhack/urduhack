@@ -35,10 +35,10 @@ a piece of text to a proper specified Urdu range (0600-06FF). To get an understa
 needs to understand unicode. Every character has a unicode. You can search for any character unicode from any language
 you will find it. No two characters can have the same unicode. This module works with reference to the unicodes. Now as
 urdu language has its roots in Arabic, Parsian and Turkish. So we have to deal with all those characters and convert them
-to a normal urdu character. To get a bit more of what the above explanation means is.
+to a normal urdu character. To get a bit more of what the above explanation means is.::
 
      >>> all_fes = ['ﻑ', 'ﻒ', 'ﻓ', 'ﻔ', ]
-    >>> urdu_fe = 'ف'
+        >>> urdu_fe = 'ف'
 
 All the characters in all_fes are same but they come from different languages and they all have different unicodes. Now as
 computers deal with numbers, same character appearing in more than one place in a different language will have a different
