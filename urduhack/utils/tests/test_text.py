@@ -47,6 +47,9 @@ def test_remove_file(tmpdir):
     with pytest.raises(TypeError, match=r'[E001]'):
         remove_file(file_name=123456)
 
+    with pytest.raises(FileNotFoundError):
+        remove_file(file_name="no_file")
+
     tmp_dir = tmpdir.mkdir("sub_dir")
     tmp_file = tmp_dir.join("hello.txt")
     tmp_file.write("This is a test Text")
