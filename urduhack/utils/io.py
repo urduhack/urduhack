@@ -94,15 +94,15 @@ def extract_zip(zip_file: str, unzip_dir: str) -> None:
 
 def remove_file(file_name: str) -> None:
     """Deletes the file
-
     Args:
         file_name (str): file to be deleted
-
     Returns:
         None
+    Raises:
+        TypeError: if file_name is not str.
     """
     if not isinstance(file_name, str):
-        raise ValueError(Errors.E001.format(object_name="file_name", object_type="str"))
+        raise TypeError(Errors.E001.format(object_name="file_name", object_type="str"))
 
     if Path(file_name).exists():
         Path(file_name).unlink()

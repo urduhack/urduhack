@@ -1,6 +1,9 @@
 # coding: utf8
 """Test cases for text.py file"""
 from pathlib import Path
+
+import pytest
+
 from ..io import remove_file, download_from_url, extract_zip
 from ...tokenization.keras_tokenizer import WORD_TOKENIZER_WEIGHTS_URL, WORD_TOKENIZER_FILE_NAME
 
@@ -32,6 +35,10 @@ def test_extract_zip(tmpdir):
 
 def test_remove_file(tmpdir):
     """Test Case"""
+
+    with pytest.raises(TypeError, match=r'[E001]'):
+        remove_file(file_name=123456)
+
     tmp_dir = tmpdir.mkdir("sub_dir")
     tmp_file = tmp_dir.join("hello.txt")
     tmp_file.write("This is a test Text")
@@ -41,5 +48,3 @@ def test_remove_file(tmpdir):
     assert tmp_file.read() == "This is a test Text"
     remove_file(file_name)
     assert Path(tmp_file).exists() is False
-
-
