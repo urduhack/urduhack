@@ -79,6 +79,11 @@ def setup_package():
               "Source": "https://github.com/urduhack/urduhack",
               "Bug Tracker": "https://github.com/urduhack/urduhack/issues"},
 
+          entry_points="""
+            [console_scripts]
+            urduhack=urduhack.command.cli:cli
+        """
+
           )
 
 

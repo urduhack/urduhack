@@ -1,10 +1,11 @@
 # coding: utf8
 """Sentence tokenization module"""
 from regex import sub
+from ..errors import Errors
 
 # Global Variables
 URDU_CONJUNCTIONS = ['جنہیں', 'جس', 'جن', 'جو', 'اور', 'اگر', 'اگرچہ', 'لیکن', 'مگر', 'پر', 'یا', 'تاہم', 'کہ', 'کر']
-URDU_NEWLINE_WORDS = ['کیجئے', 'گئیں', 'تھیں', 'ہوں', 'خریدا', 'گے', 'ہونگے', 'گا', 'چاہیے', 'ہوئیں', 'گی',
+URDU_NEWLINE_WORDS = ['کیجیے','کیجئے', 'گئیں', 'تھیں', 'ہوں', 'خریدا', 'گے', 'ہونگے', 'گا', 'چاہیے', 'ہوئیں', 'گی',
                       'تھا', 'تھی', 'تھے', 'ہیں', 'ہے',
                       ]
 
@@ -22,13 +23,17 @@ def _generate_sentences(text: str):
     This function automatically fixes multiple whitespaces
     or new lines so you just need to pass the data and
     get sentences in return.
-
     Args:
         text (str): base str
-
     Returns:
         list
+    Raises:
+        TypeError: If text is not a str Type
     """
+
+    if not isinstance(text, str):
+        raise TypeError(Errors.E001.format(object_name=text, object_type=str))
+
     all_sentences = []
     sentences = _split_and_keep(text, '۔')
     sen_counter = 0

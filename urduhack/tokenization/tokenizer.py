@@ -12,10 +12,8 @@ from .keras_tokenizer import predict, _download_model, MODEL_PATH, VOCAB_PATH
 def sentence_tokenizer(text: str) -> List[str]:
     """
     Convert ``urdu`` text into possible sentences.
-
     Args:
         text (str): raw ``urdu`` text
-
     Returns:
         list: returns a ``list`` object containing multiple urdu sentences type ``str``.
     """
@@ -25,10 +23,8 @@ def sentence_tokenizer(text: str) -> List[str]:
 def word_tokenizer(sentence: Union[str, list]) -> List[str]:
     """
     Generate words tokens from Urdu sentence
-
     Args:
         sentence (str)|(list): Raw ``urdu`` text or list of text
-
     Return:
         list: returns a ``list`` containing urdu tokens
 

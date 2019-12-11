@@ -1,13 +1,13 @@
 # coding: utf8
 """Different file types read/write utils"""
 
-import os
 import pickle
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 from zipfile import ZipFile
 
-import smart_open
+import requests
+import tqdm
 
 from ..errors import Errors
 
@@ -32,7 +32,6 @@ def pickle_load(file_name: str) -> Any:
 
     Args:
         file_name (str):  file name
-
     Returns:
         Any: python object type
     """
@@ -40,30 +39,40 @@ def pickle_load(file_name: str) -> Any:
         return pickle.load(f)
 
 
-def download_from_url(url: str, file_path: str, ) -> None:
+def download_from_url(url: str, file_path: str, file_name: Optional[str] = None) -> None:
     """
     Download anything from HTTP url
-
     Args:
         url (str): HTTP url
         file_path (str): location to store file
-
+        file_name (str): Save file as provided file name
     Returns:
         None
+    Raises:
+        TypeError: If any of the url, file_path and file_name are not str Type.
     """
     if not isinstance(url, str):
         raise TypeError(Errors.E001.format(object_name="url", object_type="str"))
     if not isinstance(file_path, str):
         raise TypeError(Errors.E001.format(object_name="file_path", object_type="str"))
 
-    if not os.path.exists(file_path):
-        os.makedirs(file_path)
+    Path(file_path).mkdir(parents=True, exist_ok=True)
 
-    file_name = f"{file_path}/{url.split('/')[-1]}"
-    with smart_open.open(url, "rb") as in_file:
-        with open(file_name, "wb") as out_file:
-            for line in in_file:
-                out_file.write(line)
+    if file_name is None:
+        file_name = url.split('/')[-1]
+
+    file_name = f"{file_path}/{file_name}"
+    req = requests.get(url, stream=True)
+    file_size = int(req.headers['Content-Length'])
+    chunk_size = 1024
+    num_bars = int(file_size / chunk_size)
+
+    tqdm_description: str = f"Downloading {file_name.split('/')[-1]}({file_size} bytes)"
+    with open(file_name, 'wb') as fp:
+        for chunk in tqdm.tqdm(req.iter_content(chunk_size=chunk_size), total=num_bars, unit='KB',
+                               desc=tqdm_description,
+                               leave=True):
+            fp.write(chunk)
 
 
 def extract_zip(zip_file: str, unzip_dir: str) -> None:
@@ -75,11 +84,13 @@ def extract_zip(zip_file: str, unzip_dir: str) -> None:
         unzip_dir (str): Directory into which file will be extracted
     Returns:
         None
+    Raises:
+        TypeError: If any of zip_file and unzip_dir are not str Type.
     """
     if not isinstance(zip_file, str):
-        raise ValueError(Errors.E001.format(object_name="zip_file", object_type="str"))
+        raise TypeError(Errors.E001.format(object_name="zip_file", object_type="str"))
     if not isinstance(unzip_dir, str):
-        raise ValueError(Errors.E001.format(object_name="unzip_dir", object_type="str"))
+        raise TypeError(Errors.E001.format(object_name="unzip_dir", object_type="str"))
 
     with ZipFile(zip_file) as z_file:
         z_file.extractall(unzip_dir)
@@ -87,12 +98,15 @@ def extract_zip(zip_file: str, unzip_dir: str) -> None:
 
 def remove_file(file_name: str) -> None:
     """Deletes the file
-
     Args:
         file_name (str): file to be deleted
-
     Returns:
         None
+    Raises:
+        TypeError: if file_name is not str Type.
+        FileNotFoundError: If file_name does not exist
     """
-    if Path(file_name).exists():
-        os.remove(file_name)
+    if not isinstance(file_name, str):
+        raise TypeError(Errors.E001.format(object_name="file_name", object_type="str"))
+
+    Path(file_name).unlink()

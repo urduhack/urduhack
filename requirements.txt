@@ -1,3 +1,5 @@
-tensorflow==2.0.0
-smart-open
-regex
+tensorflow~=2.0
+regex~=2019.4
+Click~=7.0
+tqdm~=4.32
+requests~=2.21
