@@ -1,6 +1,7 @@
 # coding: utf8
 """Sentence tokenization module"""
 from regex import sub
+from ..errors import Errors
 
 # Global Variables
 URDU_CONJUNCTIONS = ['جنہیں', 'جس', 'جن', 'جو', 'اور', 'اگر', 'اگرچہ', 'لیکن', 'مگر', 'پر', 'یا', 'تاہم', 'کہ', 'کر']
@@ -26,7 +27,13 @@ def _generate_sentences(text: str):
         text (str): base str
     Returns:
         list
+    Raises:
+        TypeError: If text is not a str Type
     """
+
+    if not isinstance(text, str):
+        raise TypeError(Errors.E001.format(object_name=text, object_type=str))
+
     all_sentences = []
     sentences = _split_and_keep(text, '۔')
     sen_counter = 0

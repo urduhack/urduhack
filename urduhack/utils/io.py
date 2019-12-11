@@ -48,6 +48,8 @@ def download_from_url(url: str, file_path: str, file_name: Optional[str] = None)
         file_name (str): Save file as provided file name
     Returns:
         None
+    Raises:
+        TypeError: If any of the url, file_path and file_name are not str Type.
     """
     if not isinstance(url, str):
         raise TypeError(Errors.E001.format(object_name="url", object_type="str"))
@@ -82,11 +84,13 @@ def extract_zip(zip_file: str, unzip_dir: str) -> None:
         unzip_dir (str): Directory into which file will be extracted
     Returns:
         None
+    Raises:
+        TypeError: If any of zip_file and unzip_dir are not str Type.
     """
     if not isinstance(zip_file, str):
-        raise ValueError(Errors.E001.format(object_name="zip_file", object_type="str"))
+        raise TypeError(Errors.E001.format(object_name="zip_file", object_type="str"))
     if not isinstance(unzip_dir, str):
-        raise ValueError(Errors.E001.format(object_name="unzip_dir", object_type="str"))
+        raise TypeError(Errors.E001.format(object_name="unzip_dir", object_type="str"))
 
     with ZipFile(zip_file) as z_file:
         z_file.extractall(unzip_dir)
@@ -99,10 +103,13 @@ def remove_file(file_name: str) -> None:
     Returns:
         None
     Raises:
-        TypeError: if file_name is not str.
+        TypeError: if file_name is not str Type.
+        FileNotFoundError: If file_name does not exist
     """
     if not isinstance(file_name, str):
         raise TypeError(Errors.E001.format(object_name="file_name", object_type="str"))
 
-    if Path(file_name).exists():
-        Path(file_name).unlink()
+    if not Path(file_name).exists():
+        raise FileNotFoundError(Errors.E002.format(object_name=file_name))
+
+    Path(file_name).unlink()

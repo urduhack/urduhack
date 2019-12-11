@@ -1,5 +1,7 @@
 # coding: utf8
 """test case"""
+import pytest
+
 from urduhack.urdu_characters import URDU_ALPHABETS, URDU_ALL_CHARACTERS
 
 from ..eos import URDU_CONJUNCTIONS, URDU_NEWLINE_WORDS, _generate_sentences
@@ -36,3 +38,5 @@ def test_generate_sentences():
     assert isinstance(text, str) is True
     sentences = _generate_sentences(text)
     assert isinstance(sentences, list)
+    with pytest.raises(TypeError, match=r'[E001]'):
+        _generate_sentences(text=123)

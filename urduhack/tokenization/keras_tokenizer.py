@@ -5,7 +5,7 @@ keras_tokenizer module
 
 This module create tokens using a pre-trained sequence model .
 """
-
+from typing import Union
 from pathlib import Path
 
 import numpy as np
@@ -110,11 +110,11 @@ def _download_model() -> None:
     remove_file(EXTRACT_FILE)
 
 
-def predict(sentence: str, weight_file: str, vocab_path: str, max_len: int = 256, thresh: float = 0.5):
+def predict(sentence: Union[str, list], weight_file: str, vocab_path: str, max_len: int = 256, thresh: float = 0.5):
     """
     Predicts tokens based on Pre-trained Keras Model
     Args:
-        sentence (str): Sentence to be tokenized
+        sentence (str)|(list): Raw ``urdu`` text or list of text
         weight_file (str): path to the model weights file
         vocab_path (str): path to the vocab file
         max_len (int): Maximum length of the tokens vector

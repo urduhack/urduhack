@@ -10,6 +10,10 @@ from ...tokenization.keras_tokenizer import WORD_TOKENIZER_WEIGHTS_URL, WORD_TOK
 
 def test_download_from_url(tmpdir):
     """Test Case"""
+
+    with pytest.raises(TypeError, match=r'[E001]'):
+        download_from_url(url=123, file_path=1234, file_name=12)
+
     temp_model_dir = tmpdir.mkdir("sub")
     model_path = str(temp_model_dir) + "/" + WORD_TOKENIZER_FILE_NAME
     assert isinstance(WORD_TOKENIZER_WEIGHTS_URL, str) is True
@@ -21,6 +25,10 @@ def test_download_from_url(tmpdir):
 
 def test_extract_zip(tmpdir):
     """Test Case"""
+
+    with pytest.raises(TypeError, match=r'[E001]'):
+        extract_zip(zip_file=123, unzip_dir=1254)
+
     temp_model_dir = tmpdir.mkdir("sub")
     zipped_file = str(temp_model_dir) + "/" + WORD_TOKENIZER_FILE_NAME
     download_from_url(WORD_TOKENIZER_WEIGHTS_URL, str(temp_model_dir), WORD_TOKENIZER_FILE_NAME)
@@ -38,6 +46,8 @@ def test_remove_file(tmpdir):
 
     with pytest.raises(TypeError, match=r'[E001]'):
         remove_file(file_name=123456)
+    with pytest.raises(FileNotFoundError, match=r'[E002]'):
+        remove_file(file_name="no_file")
 
     tmp_dir = tmpdir.mkdir("sub_dir")
     tmp_file = tmp_dir.join("hello.txt")

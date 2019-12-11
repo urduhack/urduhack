@@ -1,4 +1,4 @@
-from typing import Union
+
 from ..keras_tokenizer import load_vocab, preprocess_sentences
 
 
