@@ -109,7 +109,5 @@ def remove_file(file_name: str) -> None:
     if not isinstance(file_name, str):
         raise TypeError(Errors.E001.format(object_name="file_name", object_type="str"))
 
-    if not Path(file_name).exists():
-        raise FileNotFoundError(Errors.E002.format(object_name=file_name))
-
-    Path(file_name).unlink()
+    if Path(file_name).exists():
+        Path(file_name).unlink()
