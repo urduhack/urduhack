@@ -47,12 +47,10 @@ Let's see the magic of :py:func:`~urduhack.tokenization.word_tokenizer`.::
     >>>print(word_tokens)
      ['اس', 'رقم', 'سے', 'پاکستان', 'کو', 'اپنے', 'مالیاتی', 'معاملات', 'بہتر', 'بنانے', 'اور', 'بجٹ', 'خسارے', 'سے', 'نمٹنے', 'میں', 'مدد', 'ملے', 'گی']
 
-
-
 .. toctree::
    :maxdepth: 2
 
+   command
    normalization
    preprocess
    tokenization
-

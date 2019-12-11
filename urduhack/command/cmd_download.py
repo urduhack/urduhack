@@ -19,6 +19,9 @@ def cli() -> None:
 
     """
     _url = MODELS_URL['WORD_TOKENIZER_WEIGHTS']
-    extract_file = f"{URDUHACK_MODElS_DIR}/{_url.split('/')[-1]}"
+    model_file_name = _url.split("/")[-1]
+    model_file_path = f"{URDUHACK_MODElS_DIR}/{model_file_name}"
+    version = model_file_name[8:10]
+    unzip_dir = f"{URDUHACK_MODElS_DIR}/tokenizer/word/{version}"
     download_from_url(url=_url, file_path=URDUHACK_MODElS_DIR)
-    extract_zip(zip_file=extract_file, unzip_dir=URDUHACK_MODElS_DIR)
+    extract_zip(zip_file=model_file_path, unzip_dir=unzip_dir)
