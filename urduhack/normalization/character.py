@@ -87,6 +87,7 @@ for key, value in CORRECT_URDU_CHARACTERS.items():
 def normalize_characters(text: str) -> str:
     """
     Replace ``urdu`` text characters with correct ``unicode`` characters.
+
     Args:
         text (str): raw ``urdu`` text
     Returns:
@@ -104,6 +105,7 @@ COMBINE_URDU_CHARACTERS: Dict[str, str] = {"آ": "آ",
 def normalize_combine_characters(text: str) -> str:
     """
     Replace combine|join ``urdu`` characters with single unicode character
+
     Args:
         text (str): raw ``urdu`` text
     Returns:
