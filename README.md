@@ -43,7 +43,6 @@ Features Support
 Installation
 ------------
 Urduhack officially supports Python 3.6–3.7, and runs great on PyPy.
-To install Requests, simply use pip
 ``` {.sourceCode .bash}
 $ pip install urduhack
 ```
