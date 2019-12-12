@@ -1,6 +1,6 @@
 # coding: utf8
 """
-Character Normalization module
+Character Normalization Module
 -------------------------------
 This modules fixes the problem of correct encodings for the Urdu characters as well as replace Arabic
 characters with correct Urdu characters. This module brings all the characters in the specified unicode range

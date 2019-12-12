@@ -1,7 +1,7 @@
 # coding: utf8
 """
-Normalization Util module
--------------------------------
+Normalization Utils
+-------------------
 
 The util module provides functionality to put proper spaces before and after numeric digits, urdu digits
 and punctuations.
@@ -9,7 +9,7 @@ and punctuations.
 
 import regex as re
 
-from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
+from ..urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
 
 # Add spaces before|after numeric number and urdu words
 # 18سالہ  , 20فیصد

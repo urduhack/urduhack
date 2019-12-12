@@ -1,7 +1,7 @@
 # coding: utf8
 """
-Character Normalization module
--------------------------------
+Character Normalization
+-----------------------
 
 The most important module in the UrduHack is the character module. You can use this module separately to normalize a
 piece of text to a proper specified Urdu range (0600-06FF). This module provides the functionality
@@ -11,7 +11,7 @@ from typing import Dict
 
 # Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
 # We cannot merge them neither can we have them separately. Because if we decompose ئ,
-# we get unicodes that are not available in our unicode list.
+# we get unicode that are not available in our unicode list.
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
