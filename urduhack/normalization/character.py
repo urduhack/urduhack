@@ -7,13 +7,11 @@ The most important module in the UrduHack is the character module. You can use t
 piece of text to a proper specified Urdu range (0600-06FF). This module provides the functionality
 to replace wrong arabic characters with correct urdu characters and fixed the combine|join characters issue.
 """
-"""
-Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
-We cannot merge them neither can we have them separately. Because if we decompose ئ,
-we get unicodes that are not available in our unicode list. 
-"""
-
 from typing import Dict
+
+# Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
+# We cannot merge them neither can we have them separately. Because if we decompose ئ,
+# we get unicodes that are not available in our unicode list.
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
