@@ -139,7 +139,7 @@ def replace_numbers(text: str, replace_with='*NUMBER*'):
 def replace_currency_symbols(text: str, replace_with=None):
     """
     Replace all currency symbols in ``text`` str with string specified by ``replace_with`` str.
-    
+
     Args:
         text (str): raw text
         replace_with (str): if None (default), replace symbols with

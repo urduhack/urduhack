@@ -7,5 +7,5 @@ Reference
    normalization
    preprocess
    tokenization
-   text
+   utils
 
