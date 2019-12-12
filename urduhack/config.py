@@ -4,7 +4,6 @@
 from pathlib import Path
 from typing import Dict
 
-
 # Directories
 USER_HOME_DIR: str = str(Path.home())
 URDUHACK_BASE_DIR: str = f"{USER_HOME_DIR}/.urduhack"
