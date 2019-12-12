@@ -1,8 +1,6 @@
 Installation
 ============
 
-Notes
------
 .. note:: Urduhack is supported on the following Python versions
 
 +--------------+-------+-------+-------+-------+-------+
