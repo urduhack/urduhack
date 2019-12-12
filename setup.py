@@ -1,5 +1,5 @@
 # coding: utf8
-"""htmlmail to text setup file"""
+"""Urduhack setup file"""
 from pathlib import Path
 
 from setuptools import setup, find_packages
