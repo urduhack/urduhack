@@ -6,7 +6,8 @@ This module provides the functionality to generate tokens (both sentence and wor
 from typing import List, Union
 
 from .eos import _generate_sentences
-from .keras_tokenizer import predict, _download_model, MODEL_PATH, VOCAB_PATH
+from .keras_tokenizer import predict, _is_model_exist
+from ..config import MODEL_PATH, VOCAB_PATH
 
 
 def sentence_tokenizer(text: str) -> List[str]:
@@ -29,5 +30,5 @@ def word_tokenizer(sentence: Union[str, list]) -> List[str]:
         list: returns a ``list`` containing urdu tokens
 
     """
-    _download_model()
+    _is_model_exist()
     return predict(sentence, MODEL_PATH, VOCAB_PATH)

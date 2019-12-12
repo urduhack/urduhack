@@ -5,7 +5,9 @@ from pathlib import Path
 import pytest
 
 from ..io import remove_file, download_from_url, extract_zip
-from ...tokenization.keras_tokenizer import WORD_TOKENIZER_WEIGHTS_URL, WORD_TOKENIZER_FILE_NAME
+from ...config import MODELS_URL
+WORD_TOKENIZER_WEIGHTS_URL = MODELS_URL["WORD_TOKENIZER_WEIGHTS"]
+WORD_TOKENIZER_FILE_NAME = WORD_TOKENIZER_WEIGHTS_URL.split("/")[-1]
 
 
 def test_download_from_url(tmpdir):
