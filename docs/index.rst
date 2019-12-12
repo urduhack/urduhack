@@ -40,10 +40,6 @@ Normalization, Tokenization and Preprocess are the main modules of Urduhack.
    :target: https://join.slack.com/t/urduhack/shared_invite/enQtNDE5NDg4NzU2Mzg4LTk3ZDNlYzBhOWM5MGY0ZGE0ZmNmNzU2ZTViYjAwMTg3NTBmZGU4OTM0M2E0MzQ0NDI1MDIyYzVkYTVmZTkyZjg
    :alt: Join Slack Urduhack
 
-.. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
-   :target: https://saythanks.io/to/akkefa
-   :alt: Say Thanks!
-
 .. toctree::
    :maxdepth: 2
 
