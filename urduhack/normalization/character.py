@@ -1,11 +1,6 @@
 # coding: utf8
 """
-Character Normalization
------------------------
-
-The most important module in the UrduHack is the character module. You can use this module separately to normalize a
-piece of text to a proper specified Urdu range (0600-06FF). This module provides the functionality
-to replace wrong arabic characters with correct urdu characters and fixed the combine|join characters issue.
+Character Normalization functions
 """
 from typing import Dict
 
@@ -86,6 +81,10 @@ for key, value in CORRECT_URDU_CHARACTERS.items():
 
 def normalize_characters(text: str) -> str:
     """
+    The most important function in the UrduHack normalize_characters. You can use this function separately to normalize
+    a piece of text to a proper specified Urdu range (0600-06FF). This provides the functionality
+    to replace wrong arabic characters with correct urdu characters and fixed the combine|join characters issue.
+
     Replace ``urdu`` text characters with correct ``unicode`` characters.
 
     Args:
