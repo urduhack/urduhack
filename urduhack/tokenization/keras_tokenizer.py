@@ -91,7 +91,7 @@ def _is_model_exist() -> None:
     Returns: None
     """
     if not Path(MODEL_PATH).exists() and not Path(VOCAB_PATH).exists():
-        raise FileNotFoundError("Model weights not found!")
+        raise FileNotFoundError("Model weights not found! Please run 'urduhack download' in terminal")
 
 
 def predict(sentence: Union[str, list], weight_file: str, vocab_path: str, max_len: int = 256, thresh: float = 0.5):

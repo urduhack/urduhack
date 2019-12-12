@@ -1,7 +1,7 @@
 # coding: utf8
 """text test cases"""
 
-from urduhack.arabic.text import find_arabic_words
+from ..arabic import find_arabic_words
 
 
 def test_find_arabic_words():
