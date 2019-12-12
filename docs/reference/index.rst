@@ -5,7 +5,7 @@ Reference
    :maxdepth: 2
 
    normalization
-   preprocess
    tokenization
+   preprocess
    utils
 

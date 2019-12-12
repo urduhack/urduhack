@@ -1,7 +1,8 @@
 # coding: utf8
 """
-Sentence and Word Tokenization module
--------------------------------------
+Urdu Sentence and Word Tokenization module
+------------------------------------------
+
 This module is another crucial part of the Urduhack. This module performs tokenization on sentence. It separates
 different sentence from each other and converts each string into a complete **sentence token**. Note here you must not
 confuse yourself with the word token. They are two completely different things.
