@@ -60,6 +60,7 @@ def preprocess_sentences(sentences: list, max_len: int, char2idx: dict):
 def retrieve_words(features, labels, idx2char, thresh):
     """
     Retrieve the original words from predicted and actual arrays as per char2idx mapping
+
     Args:
         features (array): Input array
         labels (array): Output array
@@ -97,6 +98,7 @@ def _is_model_exist() -> None:
 def predict(sentence: Union[str, list], weight_file: str, vocab_path: str, max_len: int = 256, thresh: float = 0.5):
     """
     Predicts tokens based on Pre-trained Keras Model
+
     Args:
         sentence (str)|(list): Raw ``urdu`` text or list of text
         weight_file (str): path to the model weights file
@@ -117,6 +119,7 @@ def predict(sentence: Union[str, list], weight_file: str, vocab_path: str, max_l
     inp_, _ = preprocess_sentences(sentences, max_len, char2idx)
     example_letters = inp_[:, :]
     predictions = model.predict(example_letters)
+    tokens = []
     for i in range(inp_.shape[0]):
-        print("Sentence: ", sentences[i])
-        print("Tokens: ", retrieve_words(example_letters[i, :], predictions[i, :], idx2char, thresh=thresh))
+        tokens.append(retrieve_words(example_letters[i, :], predictions[i, :], idx2char, thresh=thresh))
+    return tokens

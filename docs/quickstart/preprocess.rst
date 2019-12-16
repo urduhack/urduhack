@@ -42,6 +42,7 @@ function from :py:mod:`~urduhack.preprocess.utils` module to replace web urls wi
     >>> text = "20 www.gmail.com  فیصد"
     >>> replace_urls(text)
     '20 *URL*  فیصد'
+
 If successful, this function returns a :py:class:`String` object with
 urls replaced by "*URL*".
 
@@ -54,6 +55,7 @@ In the same way we replace web urls we will replace email addresses as well. We 
     >>> from urduhack.preprocess import replace_emails
     >>> replace_emails(text)
     '20 *EMAIL*  فیصد'
+
 If successful, this function returns a :py:class:`String` object with
 email address replaced by "*EMAIL*".
 
@@ -66,6 +68,7 @@ In some cases where numbers are also unnecessary in our data. We can get rid of 
     >>> text = "20  فیصد"
     >>> replace_numbers(text)
     '*NUMBER*  فیصد'
+
 If successful, this function returns a :py:class:`String` object with
 number replaced by "*NUMBER*".
 
@@ -78,6 +81,7 @@ function from :py:mod:`~urduhack.preprocess.utils` module.::
     >>> text = "یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ 555-123-4567 میں ہوا تھا"
     >>> replace_phone_numbers(text)
     'یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ *PHONE* میں ہوا تھا'
+
 If successful, this function returns a :py:class:`String` object with
 number replaced by "*PHONE*".
 

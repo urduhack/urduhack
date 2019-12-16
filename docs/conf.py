@@ -24,7 +24,7 @@ import urduhack
 # from urduhack import __version__
 
 project = 'Urduhack'
-copyright = '2019, Ikram Ali'
+copyright = '2020, Ikram Ali'
 author = 'Ikram Ali'
 
 # The short X.Y version

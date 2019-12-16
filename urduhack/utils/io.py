@@ -19,7 +19,6 @@ def pickle_dump(file_name: str, data) -> None:
     Args:
         file_name (str): file name
         data: Any data type
-
     Returns:
         None
     """
@@ -29,6 +28,7 @@ def pickle_dump(file_name: str, data) -> None:
 
 def pickle_load(file_name: str) -> Any:
     """
+    Load the pickle file
 
     Args:
         file_name (str):  file name
@@ -42,6 +42,7 @@ def pickle_load(file_name: str) -> Any:
 def download_from_url(url: str, file_path: str, file_name: Optional[str] = None) -> None:
     """
     Download anything from HTTP url
+
     Args:
         url (str): HTTP url
         file_path (str): location to store file
@@ -97,7 +98,9 @@ def extract_zip(zip_file: str, unzip_dir: str) -> None:
 
 
 def remove_file(file_name: str) -> None:
-    """Deletes the file
+    """
+    Delete the local file
+
     Args:
         file_name (str): file to be deleted
     Returns:

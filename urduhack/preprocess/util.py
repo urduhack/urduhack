@@ -75,6 +75,7 @@ def normalize_whitespace(text: str):
     """
     Given ``text`` str, replace one or more spacings with a single space, and one
     or more linebreaks with a single newline. Also strip leading/trailing whitespace.
+
     Args:
         text (str): raw ``urdu`` text
     Returns:
@@ -86,6 +87,7 @@ def normalize_whitespace(text: str):
 def replace_urls(text: str, replace_with='*URL*'):
     """
     Replace all URLs in ``text`` str with ``replace_with`` str.
+
     Args:
         text (str): raw ``urdu`` text
         replace_with (str): replace string
@@ -98,6 +100,7 @@ def replace_urls(text: str, replace_with='*URL*'):
 def replace_emails(text: str, replace_with='*EMAIL*'):
     """
     Replace all emails in ``text`` str with ``replace_with`` str.
+
     Args:
         text (str): raw ``urdu`` text
         replace_with (str): replace string
@@ -110,6 +113,7 @@ def replace_emails(text: str, replace_with='*EMAIL*'):
 def replace_phone_numbers(text: str, replace_with='*PHONE*'):
     """
     Replace all phone numbers in ``text`` str with ``replace_with`` str.
+
     Args:
         text (str): raw ``urdu`` text
         replace_with (str): replace string
@@ -122,6 +126,7 @@ def replace_phone_numbers(text: str, replace_with='*PHONE*'):
 def replace_numbers(text: str, replace_with='*NUMBER*'):
     """
     Replace all numbers in ``text`` str with ``replace_with`` str.
+
     Args:
         text (str): raw ``urdu`` text
         replace_with (str): replace string
@@ -134,6 +139,7 @@ def replace_numbers(text: str, replace_with='*NUMBER*'):
 def replace_currency_symbols(text: str, replace_with=None):
     """
     Replace all currency symbols in ``text`` str with string specified by ``replace_with`` str.
+
     Args:
         text (str): raw text
         replace_with (str): if None (default), replace symbols with
@@ -151,17 +157,17 @@ def replace_currency_symbols(text: str, replace_with=None):
     return CURRENCY_REGEX.sub(replace_with, text)
 
 
-def remove_punctuation(text: str, marks=None):
+def remove_punctuation(text: str, marks=None) -> str:
     """
-    Remove punctuation from ``text`` by replacing all instances of ``marks``
-    with whitespace.
+    Remove punctuation from ``text`` by replacing all instances of ``marks`` with whitespace.
+
     Args:
         text (str): raw text
         marks (str): If specified, remove only the characters in this string,
             e.g. ``marks=',;:'`` removes commas, semi-colons, and colons.
             Otherwise, all punctuation marks are removed.
     Returns:
-        str
+        str: returns a ``str`` object containing normalized text.
     Note:
         When ``marks=None``, Python's built-in :meth:`str.translate()` is
         used to remove punctuation; otherwise, a regular expression is used
@@ -177,6 +183,7 @@ def remove_accents(text: str):
     """
     Remove accents from any accented unicode characters in ``text`` str, either by
     transforming them into ascii equivalents or removing them entirely.
+
     Args:
         text (str): raw urdu text
     Returns:
@@ -188,6 +195,7 @@ def remove_accents(text: str):
 def remove_english_alphabets(text: str):
     """
     Removes ``English`` words and digits from a ``text``
+
     Args:
          text (str): raw urdu text
     Returns:
