@@ -1,8 +1,5 @@
 # coding: utf8
 """
-Normalization Utils
--------------------
-
 The util module provides functionality to put proper spaces before and after numeric digits, urdu digits
 and punctuations.
 """
