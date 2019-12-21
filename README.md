@@ -31,13 +31,13 @@ Features Support
     - [x] Words Tokenization
  - [x] Data Pre-processing
      - [x] Handles all kind of numbers, emails, currencies and urls etc.
-- [ ] Classification
+- [ ] Tasks
   - [ ] Sentimental Analysis
   - [ ] Sentence Classification
   - [ ] Documents Classification
-- [ ] Name Entity Recognition
-- [ ] Image to Text
-- [ ] Speech to Text
+  - [ ] Name Entity Recognition
+  - [ ] Image to Text
+  - [ ] Speech to Text
 
 
 Installation
