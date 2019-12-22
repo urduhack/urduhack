@@ -21,18 +21,14 @@ Dependencies
 Having so many functionality, **urduhack** depends on a number of other packages. Try to avoid any kind of conflict.
 It is preferred that you create a virtual environment and install *urduhack* in that environment.
 
-* **Tensorflow**
-  * Use for training, evaluating and testing deep neural network model.
-  * Urduhack has been tested with **2.0.0**, **2.0.1** versions.
+* **Tensorflow** Use for training, evaluating and testing deep neural network model. Urduhack has been tested with
+   **2.0.0**, **2.0.1** versions.
 
-* **Request**
-  * Use for downloading data for s3.
+* **Request** Use for downloading data for s3.
 
-* **Click**
-  * With help of this library Urduhack commandline application developed.
+* **Click** With help of this library Urduhack commandline application developed.
 
-* **tqdm**
-  * Use for showing progressbar while training.
+* **tqdm** Use for showing progressbar while training.
 
 
 Downloading Model
