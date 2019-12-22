@@ -18,9 +18,22 @@ The easiest way to install **urduhack** is by :command:`pip` install.::
 
 Dependencies
 ------------
-Having so many functionality, **urduhack** depends on a number of other packages. Some of the important packages
-are Tensorflow, regex, tqdm, Cick and requests. Try to avoid any kind of conflict. It is preferred that you create a
-virtual environment and install *urduhack* in that environment.
+Having so many functionality, **urduhack** depends on a number of other packages. Try to avoid any kind of conflict.
+It is preferred that you create a virtual environment and install *urduhack* in that environment.
+
+* **Tensorflow**
+  * Use for training, evaluating and testing deep neural network model.
+  * Urduhack has been tested with **2.0.0**, **2.0.1** versions.
+
+* **Request**
+  * Use for downloading data for s3.
+
+* **Click**
+  * With help of this library Urduhack commandline application developed.
+
+* **tqdm**
+  * Use for showing progressbar while training.
+
 
 Downloading Model
 -----------------
