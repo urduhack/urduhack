@@ -7,21 +7,24 @@ Contains different Natural Language Processing tasks some of which are listed be
 
 Sentiment Analysis
 ------------------
+Let's perform sentiment analysis using state of the art language models. We have used a Multiligual pretrained
+roberta model to generate contextual word embeddings. These word embeddings were then fed into a Convolution Neural
+Network. After complete training, the network weights were saved and are being used in prediction. For more details on
+Roberta read the official Roberta `Paper <https://arxiv.org/abs/1907.11692>`_.
+Now to perform sentiment analysis all you have to do is import the package you want to use and give in your data.
+For this purpose, tasks module offers two functions. One is :py:func:`~predict_sentiment_label` and
+the other is :py:func:`~predict_sentiment_id`. So let's use them.::
 
-To perform sentiment analysis all you have to do is import the package you want to use and give in your data.
-For this purpose, tasks module offers two functions. One is :py:func:`~get_sentiment_label` and
-the other is :py:func:`~get_sentiment_probability`. So let's use them.::
-
-    >>> from urduhack.tasks import get_sentiment_label
-    >>> text = " 13 سال بعد ہوم سیریز جیتنے کا اعزاز حاصل کر لیا ہے"
-    >>> get_sentiment_label(text)
-    array(['Positive'], dtype='<U8')
+    >>> from urduhack.tasks import predict_sentiment_label
+    >>> text = "تفصیلات کے مطابق مشیر خزانہ حفیظ شیخ کی زیر صدارت اقتصادی رابطہ کمیٹی کا اجلاس ہوا"
+    >>> predict_sentiment_label(text)
+    'Positive'
 
 Similarly to get the probabilities of all sentiments::
 
-    >>> from urduhack.tasks import get_sentiment_probability
-    >>> text = " 13 سال بعد ہوم سیریز جیتنے کا اعزاز حاصل کر لیا ہے"
-    >>> get_sentiment_probability(text)
-    array([[0.0110281 , 0.04892549, 0.9400465 ]], dtype=float32)
+    >>> from urduhack.tasks import predict_sentiment_id
+    >>> text = "تفصیلات کے مطابق مشیر خزانہ حفیظ شیخ کی زیر صدارت اقتصادی رابطہ کمیٹی کا اجلاس ہوا"
+    >>>  predict_sentiment_id(text)
+    1
 
-Remember the first column is for "Negative", second for "Neutral" and third for "Positive".
+Remember the id 0 is for "Negative", 1 for "Positive" and 2 for "Neutral".

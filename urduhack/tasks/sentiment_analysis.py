@@ -1,98 +1,45 @@
 """
-Sentiment Module
----------------
-Predict whether a sentiment is Positive, Negative or Neutral
+sentiment_analysis module
+------------------------
+Predict sentiment labels or ids
 """
 
-from ..normalization import normalize
-from ..tokenization import word_tokenizer
-from ..config import SENTIMENT_MODEL_PATH, SENTIMENT_VOCAB_PATH, MAX_SEQUENCE_LENGTH
-from ..utils.io import pickle_load
-
-import tensorflow as tf
 import numpy as np
+from transformers import RobertaTokenizer, TFRobertaModel
+
+from .sentiment import compile_model, predict_pipeline
+from ..config import LAYERS_WEIGHTS_PATH
+
+pretrained = "roberta-large-mnli"
+tokenizer = RobertaTokenizer.from_pretrained(pretrained)
+lang_model = TFRobertaModel.from_pretrained(pretrained)
+
+model = compile_model(weights=LAYERS_WEIGHTS_PATH, lang_model=lang_model)
 
 
-def convert_word_to_index(tokens: list, word_index: dict):
+def predict_sentiment_label(text: str, index2label: dict = {0: "Negative", 1: "Positive", 2: "Neutral"}):
     """
-    Converts word tokens to respective indexes according to model vocabulary
+    Predicts sentiment label
 
     Args:
-        tokens (list): list of word tokens
-        word_index (dict): Model vocab containing words and their indexes
+        text (str): A text string
+        index2label (dict): Dictionary mapping id to the corresponding label
     Returns:
-        list of word indexes
+         Any of Positive, Negative or Neutral label
     """
-    sequences = []
-    for token in tokens:
-        for i, word in enumerate(token):
-            if word not in word_index.keys():
-                token[i] = word_index["<UK>"]
-            else:
-                token[i] = word_index[word]
-        sequences.append(token)
-    return sequences
+    predictions = predict_pipeline(text=text, model=model, tokenizer=tokenizer)
+    sentiment_id = np.argmax(predictions)
+    return index2label[sentiment_id]
 
 
-def pad_sequences(sequences: list, max_len: int = MAX_SEQUENCE_LENGTH):
+def predict_sentiment_id(text: str):
     """
-    Pad sequences to make them all of a fixed equal length
+    Predict sentiment id
 
     Args:
-        sequences (list): list containing word indexes
-        max_len (int): Maximum length to pad sequences
+        text (str): A text string
     Returns:
-        padded sequences array
+        Any of 0, 1, 2 sentiment label
     """
-    padded_sequences = tf.keras.preprocessing.sequence.pad_sequences(sequences, maxlen=max_len, padding="post", truncating="post")
-    return padded_sequences
-
-
-def predict_sentiment(text: str, model_path: str, vocab_path: str):
-    """
-    Predict Sentiment using keras model
-
-    Args:
-        text (str): sentiment to be analyzed
-        model_path (str): Path to the sentiment model file
-        vocab_path (str): Path to the model vocab file
-    Returns:
-        Probabilities of all the sentiments
-    """
-    model = tf.keras.models.load_model(model_path)
-    word_index = pickle_load(vocab_path)
-    normal_text = normalize(text)
-    word_tokens = word_tokenizer(normal_text)
-    sequences = convert_word_to_index(word_tokens, word_index)
-    padded_sequence = pad_sequences(sequences)
-    predictions = model.predict(padded_sequence)
-    return predictions
-
-
-def get_sentiment_label(text: str):
-    """
-    Converts Prediction probabilities to actual labels
-
-    Args:
-        text (str): Text sentiment to be predicted
-    Returns:
-        list containing sentiment label
-    """
-    predictions = predict_sentiment(text, SENTIMENT_MODEL_PATH, SENTIMENT_VOCAB_PATH)
-    encoded = np.argmax(predictions, axis=1)
-    label_dict = {0: "Negative", 1: "Neutral", 2: "Positive"}
-    label = [label_dict[word] for word in encoded]
-    return np.array(label)
-
-
-def get_sentiment_probability(text: str):
-    """
-    Returns Sentiment Probabilities for Negative, Neutral and Positive sentiments
-
-    Args:
-         text (str): Text sentiment to be predicted
-    Returns:
-        Prediction Probabilities for Negative, Neutral and Positive Sentiment
-    """
-    predictions = predict_sentiment(text, SENTIMENT_MODEL_PATH, SENTIMENT_VOCAB_PATH)
-    return predictions
+    predictions = predict_pipeline(text=text, model=model, tokenizer=tokenizer)
+    return np.argmax(predictions)
