@@ -12,7 +12,8 @@ URDUHACK_MODElS_DIR: str = f"{URDUHACK_BASE_DIR}/models"
 MODEL_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/v1/word_tokenizer.h5"
 VOCAB_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/v1/vocab.txt"
 
-LAYERS_WEIGHTS_PATH = F"{URDUHACK_MODElS_DIR}/layers_weights.pkl"
+ROBERTA_PATH: str = f"{URDUHACK_MODElS_DIR}/sentiment/v1/roberta/"
+LAYERS_WEIGHTS_PATH: str = f"{URDUHACK_MODElS_DIR}/sentiment/v1/model_layers_weights.pkl"
 
 # Models URLs
 MODELS_URL: Dict[str, str] = {

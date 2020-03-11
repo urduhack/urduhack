@@ -1,5 +1,5 @@
 transformers~=2.3
-tensorflow~=2.0
+# tensorflow~=2.0
 regex~=2019.4
 Click~=7.0
 tqdm~=4.32

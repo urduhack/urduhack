@@ -1,18 +1,17 @@
 """
-Sentiment Analysis Module
---------------------------
+This module contains different NLP tasks which are listed below.
 
-Performs sentiment analysis on urdu textual data. It analyzes the data using a pre-trained Deep Learning Model.
-It takes in a text string to predict whether that particular text(sentiment) is Negative, Positive or Neutral.
+Sentiment Analysis
+------------------
+
+Performs sentiment analysis on urdu text. It analyzes the data using a pre-trained Deep Learning Model.
+It takes in a text string to predict whether that particular text is Negative or Positive.
 This module has two important functions
 
-    - predict_sentiment_label
-    - predict_sentiment_id
+    - predict_label
+    - predict_id
 
-predict_sentiment_label returns the predicted label in a string format whereas predict_sentiment_id
-returns the sentiment ids of all the three sentiment labels which are 'Negative', 'Positive' and 'Neutral'.
+predict_label returns the predicted label in a string format whereas predict_id
+returns the sentiment ids of both Negative and Positive labels.
 
 """
-from .sentiment_analysis import predict_sentiment_id, predict_sentiment_label
-
-__all__ = ['predict_sentiment_label', 'predict_sentiment_id']
