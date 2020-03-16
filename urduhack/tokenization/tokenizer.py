@@ -3,14 +3,14 @@
 This module provides the functionality to generate tokens (both sentence and word wise) from Urdu text.
 """
 
-from typing import List, Union
-
 from .eos import _generate_sentences
-from .keras_tokenizer import predict, _is_model_exist
-from ..config import MODEL_PATH, VOCAB_PATH
+from .keras_tokenizer import _is_model_exist, _preprocess_sentence, _retrieve_words, _load_model
+
+_is_model_exist()
+model, char2idx, idx2char = _load_model()
 
 
-def sentence_tokenizer(text: str) -> List[str]:
+def sentence_tokenizer(text: str):
     """
     Convert ``urdu`` text into possible sentences.
 
@@ -22,14 +22,17 @@ def sentence_tokenizer(text: str) -> List[str]:
     return _generate_sentences(text)
 
 
-def word_tokenizer(sentence: Union[str, list]) -> List[str]:
+def word_tokenizer(sentence: str, maxlen: int = 256):
     """
     Generate words tokens from Urdu sentence
 
     Args:
-        sentence (str)|(list): Raw ``urdu`` text or list of text
+        sentence (str): Raw ``urdu`` text or list of text
+        maxlen (int): Maximum text length supported by model
     Return:
         list: Returns a ``list`` containing urdu tokens
     """
-    _is_model_exist()
-    return predict(sentence, MODEL_PATH, VOCAB_PATH)
+    inp_, _ = _preprocess_sentence(sentence, char2idx, max_len=maxlen)
+    predictions = model.predict(inp_)
+    word_tokens = _retrieve_words(inp_[0, :], predictions[0, :], idx2char)
+    return word_tokens

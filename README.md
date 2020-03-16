@@ -32,7 +32,7 @@ Features Support
  - [x] Data Pre-processing
      - [x] Handles all kind of numbers, emails, currencies and urls etc.
 - [ ] Tasks
-  - [ ] Sentimental Analysis
+  - [x] Sentimental Analysis
   - [ ] Sentence Classification
   - [ ] Documents Classification
   - [ ] Name Entity Recognition

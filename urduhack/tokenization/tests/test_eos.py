@@ -35,7 +35,7 @@ def test_words_space():
 def test_generate_sentences():
     """Test Case"""
     text = "ہم اس کیلئے تیار ہیں لیکن پھرسسٹم لپیٹاجائے گا۔قومی اسمبلی کے اجلاس میں خطاب کرتے ہوئے۔ایسے رویوں سے تشدد کی لہر شروع ہوگی۔"
-    assert isinstance(text, str) is True
+    assert isinstance(text, str)
     sentences = _generate_sentences(text)
     assert isinstance(sentences, list)
     with pytest.raises(TypeError, match=r'[E001]'):

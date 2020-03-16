@@ -8,7 +8,11 @@ learning tasks.
 This module provides the following functionality:
 
     - Normalize whitespace
-    - Replace urls,emails,number,phone_no,currency_symbols
+    - Replace urls
+    - Replace emails
+    - Replace number
+    - Replace phone_number
+    - Replace currency_symbols
 """
 from .util import (normalize_whitespace, replace_urls, replace_emails, replace_numbers, replace_phone_numbers,
                    replace_currency_symbols, remove_punctuation, remove_accents, remove_english_alphabets, )

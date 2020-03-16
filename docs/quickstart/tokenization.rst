@@ -16,8 +16,6 @@ To generate sentences from some text.::
    >>> from urduhack.tokenization import sentence_tokenizer
    >>> text = "عراق اور شام نے اعلان کیا ہے دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟"
    >>> sentences = sentence_tokenizer(text)
-
-   # list of multiple sentences,
    >>> sentences
    ["دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟" ,"عراق اور شام نے اعلان کیا ہے۔"]
 
@@ -32,13 +30,9 @@ Before doing this we need to normalize our sentence as well. For normalizing the
 
 To generate tokens from urdu sentence.::
 
-    >>> from urduhack import normalize
-    >>> sentence = "عراق اور شام نے اعلان کیا ہے دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟"
-    >>> sentence = normalize(sentence)
-    # normalized sentence
     >>> sentence = 'عراق اور شام نے اعلان کیا ہے دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟'
-    >>>from urduhack.tokenization import word_tokenizer
-    >>>word_tokenizer(sentence)
+    >>> from urduhack.tokenization import word_tokenizer
+    >>> word_tokenizer(sentence)
     Tokens:  ['عراق', 'اور', 'شام', 'نے', 'اعلان', 'کیا', 'ہے', 'دونوں', 'ممالک', 'جلد', 'اپنے', 'اپنے', 'سفیروں', 'کو', 'واپس', 'بغداد', 'اور', 'دمشق', 'بھیج', 'دیں', 'گے؟']
 
 If the word_tokenizer runs successfully, this function returns a :py:class:`List` object containing urdu :py:class:`String`

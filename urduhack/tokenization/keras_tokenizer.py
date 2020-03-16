@@ -6,16 +6,13 @@ keras_tokenizer module
 This module create tokens using a pre-trained sequence model .
 """
 from pathlib import Path
-from typing import Union
-
 import numpy as np
 import tensorflow as tf
 
-from ..normalization import normalize
 from ..config import MODEL_PATH, VOCAB_PATH
 
 
-def load_vocab(vocab_path: str):
+def _load_vocab(vocab_path: str):
     """
     Maps characters to integers and vice versa
     Args:
@@ -33,31 +30,32 @@ def load_vocab(vocab_path: str):
     return char2idx, idx2char
 
 
-def preprocess_sentences(sentences: list, max_len: int, char2idx: dict):
+def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int):
     """
     Makes the input and output arrays for the data explaining where is a character or a space
     Args:
-        sentences (str): Sentence to be tokenized
-        max_len (int): integer
+        sentence (str): Sentence to be tokenized
         char2idx (dict): Dict containing character to integer mapping
+        max_len (int): integer
     Returns:
         Input and Output arrays representing features and labels
     """
 
-    input_ = np.zeros((len(sentences), max_len), dtype=int)
-    output_ = np.zeros((len(sentences), max_len))
-    for i, sentence in enumerate(sentences):
-        char_index = 0
-        for letter in sentence:
-            if letter == ' ':
-                output_[i, char_index - 1] = 1
-            elif letter in char2idx:
-                input_[i, char_index] = char2idx[letter]
-                char_index += 1
+    input_ = np.zeros((len(sentence), max_len,), dtype=int)
+    output_ = np.zeros((len(sentence), max_len,))
+    char_index = 0
+    for letter in sentence:
+        if letter == ' ':
+            output_[0, char_index - 1] = 1
+        elif letter in char2idx:
+            input_[0, char_index] = char2idx[letter]
+            char_index += 1
+            if char_index == max_len:
+                break
     return input_, output_
 
 
-def retrieve_words(features, labels, idx2char, thresh):
+def _retrieve_words(features, labels, idx2char, thresh=0.5):
     """
     Retrieve the original words from predicted and actual arrays as per char2idx mapping
 
@@ -85,6 +83,21 @@ def retrieve_words(features, labels, idx2char, thresh):
     return tokens
 
 
+def _load_model(model_path: str = MODEL_PATH, vocab_path: str = VOCAB_PATH):
+    """
+    Loads pre_trained keras model and vocab file
+
+    Args:
+        model_path (str): Path to the model file
+        vocab_path (str): Path to the vocab file
+    Returns:
+        None
+    """
+    model_ = tf.keras.models.load_model(model_path)
+    char2idx_, idx2char_ = _load_vocab(vocab_path)
+    return model_, char2idx_, idx2char_
+
+
 def _is_model_exist() -> None:
     """
     Check if the models file exist.
@@ -93,33 +106,3 @@ def _is_model_exist() -> None:
     """
     if not Path(MODEL_PATH).exists() and not Path(VOCAB_PATH).exists():
         raise FileNotFoundError("Model weights not found! Please run 'urduhack download' in terminal")
-
-
-def predict(sentence: Union[str, list], weight_file: str, vocab_path: str, max_len: int = 256, thresh: float = 0.5):
-    """
-    Predicts tokens based on Pre-trained Keras Model
-
-    Args:
-        sentence (str)|(list): Raw ``urdu`` text or list of text
-        weight_file (str): path to the model weights file
-        vocab_path (str): path to the vocab file
-        max_len (int): Maximum length of the tokens vector
-        thresh (float): Confidence needed to predict a character/space
-    Returns:
-        list: list containing urdu tokens
-    """
-    sentences = []
-    if isinstance(sentence, str):
-        sentence = normalize(sentence)
-        sentences.append(sentence)
-    else:
-        sentences = sentence
-    model = tf.keras.models.load_model(weight_file)
-    char2idx, idx2char = load_vocab(vocab_path)
-    inp_, _ = preprocess_sentences(sentences, max_len, char2idx)
-    example_letters = inp_[:, :]
-    predictions = model.predict(example_letters)
-    tokens = []
-    for i in range(inp_.shape[0]):
-        tokens.append(retrieve_words(example_letters[i, :], predictions[i, :], idx2char, thresh=thresh))
-    return tokens
