@@ -16,7 +16,7 @@ install:
   - urduhack download
 
 script:
-  - pytest -v . --ignore=urduhack/tokenization --ignore=urduhack/tasks
+  - pytest -v . --ignore=urduhack/tasks
 #  - pytest --cov=./
 #  - codecov
 
