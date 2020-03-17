@@ -98,11 +98,14 @@ def _load_model(model_path: str = MODEL_PATH, vocab_path: str = VOCAB_PATH):
     return model_, char2idx_, idx2char_
 
 
-def _is_model_exist() -> None:
+def _is_model_exist(model_path: str = MODEL_PATH, vocab_path: str = VOCAB_PATH) -> None:
     """
     Check if the models file exist.
 
+    Args:
+        model_path (str): path to the tokenizer model file
+        vocab_path (str): Path to the tokenizer vocab file
     Returns: None
     """
-    if not Path(MODEL_PATH).exists() and not Path(VOCAB_PATH).exists():
+    if not Path(model_path).exists() and not Path(vocab_path).exists():
         raise FileNotFoundError("Model weights not found! Please run 'urduhack download' in terminal")

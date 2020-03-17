@@ -7,7 +7,7 @@ from .eos import _generate_sentences
 from .keras_tokenizer import _is_model_exist, _preprocess_sentence, _retrieve_words, _load_model
 
 _is_model_exist()
-model, char2idx, idx2char = _load_model()
+_model, _char2idx, _idx2char = _load_model()
 
 
 def sentence_tokenizer(text: str):
@@ -32,7 +32,7 @@ def word_tokenizer(sentence: str, maxlen: int = 256):
     Return:
         list: Returns a ``list`` containing urdu tokens
     """
-    inp_, _ = _preprocess_sentence(sentence, char2idx, max_len=maxlen)
-    predictions = model.predict(inp_)
-    word_tokens = _retrieve_words(inp_[0, :], predictions[0, :], idx2char)
+    inp_, _ = _preprocess_sentence(sentence, _char2idx, max_len=maxlen)
+    predictions = _model.predict(inp_)
+    word_tokens = _retrieve_words(inp_[0, :], predictions[0, :], _idx2char)
     return word_tokens

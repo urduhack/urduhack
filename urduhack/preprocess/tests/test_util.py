@@ -67,6 +67,11 @@ def test_remove_punctuation():
     text = "کر  ؟ سکتی ہے۔ علینا نے"
     proc_text = "کر    سکتی ہے  علینا نے"
     assert remove_punctuation(text) == proc_text
+    custom_mark = ["|"]
+    text1 = "کر  | سکتی ہے۔ علینا نے"
+    p_text = remove_punctuation(text1, marks=["|"])
+    for char in p_text:
+        assert char not in custom_mark
 
 
 def test_remove_english_alphabets():

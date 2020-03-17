@@ -161,11 +161,8 @@ def test_normalize_characters():
         for char in norm:
             if char == " ":
                 continue
-            if len(char) == 1:
-                assert char in URDU_ALL_CHARACTERS, norm
-            else:
-                for inner_char in char:
-                    assert inner_char in URDU_ALL_CHARACTERS
+            assert len(char) == 1
+            assert char in URDU_ALL_CHARACTERS, norm
 
 
 def test_correct_urdu_characters():
