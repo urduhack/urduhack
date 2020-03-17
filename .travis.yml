@@ -16,7 +16,7 @@ install:
   - urduhack download
 
 script:
-  - py.test -v .
+  - pytest -v .
   - pytest --cov=./
   - codecov
 
