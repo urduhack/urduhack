@@ -4,7 +4,6 @@ Urduhack: NLP library for ( 🇵🇰 ) Urdu language
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/urduhack/urduhack/blob/master/LICENSE)
 [![image](https://img.shields.io/pypi/v/urduhack.svg)](https://pypi.org/project/urduhack/)
 [![image](https://img.shields.io/pypi/pyversions/urduhack.svg)](https://pypi.org/project/urduhack/)
-[![wheel](https://img.shields.io/pypi/wheel/urduhack.svg)](https://pypi.org/project/urduhack/)
 [![Build Status](https://travis-ci.org/urduhack/urduhack.svg?branch=master)](https://travis-ci.org/urduhack/urduhack)
 [![codecov](https://codecov.io/gh/urduhack/urduhack/branch/master/graph/badge.svg)](https://codecov.io/gh/urduhack/urduhack)
 ![Last commit](https://img.shields.io/github/last-commit/urduhack/urduhack.svg)
