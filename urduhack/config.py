@@ -18,4 +18,5 @@ LAYERS_WEIGHTS_PATH: str = f"{URDUHACK_MODElS_DIR}/sentiment/v1/model_layers_wei
 # Models URLs
 MODELS_URL: Dict[str, str] = {
     "WORD_TOKENIZER_WEIGHTS": "https://sgp1.digitaloceanspaces.com/urduhack/models/tokenizer/word/weights_v1.zip",
+    "SENTIMENT_V1_WEIGHTS": "https://sgp1.digitaloceanspaces.com/urduhack/models/sentiment/v1/sentiment_v1.zip",
 }
