@@ -24,7 +24,7 @@ def _generate_sentences(text: str):
     or new lines so you just need to pass the data and
     get sentences in return.
     Args:
-        text (str): base str
+        text (str): base string
     Returns:
         list
     Raises:

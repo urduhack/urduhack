@@ -26,9 +26,8 @@ This module provides the following functionality:
     - Removal of Diacritics from Urdu Text
 """
 
-from .character import normalize_characters, normalize_combine_characters
-from .util import punctuations_space, digits_space, remove_diacritics, \
-    english_characters_space
+from .character import normalize_characters, normalize_combine_characters, punctuations_space, digits_space, \
+    remove_diacritics, english_characters_space
 
 __all__ = ["normalize_characters", "normalize_combine_characters",
            "english_characters_space",

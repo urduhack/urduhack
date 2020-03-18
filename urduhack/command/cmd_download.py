@@ -25,3 +25,12 @@ def cli() -> None:
     unzip_dir = f"{URDUHACK_MODElS_DIR}/tokenizer/word/{version}"
     download_from_url(url=_url, file_path=URDUHACK_MODElS_DIR)
     extract_zip(zip_file=model_file_path, unzip_dir=unzip_dir)
+
+    # Sentiment model
+    _url = MODELS_URL['SENTIMENT_V1_WEIGHTS']
+    model_file_name = _url.split("/")[-1]
+    model_file_path = f"{URDUHACK_MODElS_DIR}/{model_file_name}"
+    version = model_file_name[10:12]
+    unzip_dir = f"{URDUHACK_MODElS_DIR}/sentiment/{version}"
+    download_from_url(url=_url, file_path=URDUHACK_MODElS_DIR)
+    extract_zip(zip_file=model_file_path, unzip_dir=unzip_dir)

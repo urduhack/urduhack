@@ -12,10 +12,12 @@ matrix:
 install:
   - pip install --upgrade pip
   - pip install -r dev-requirements.txt
+  - pip install .
+  - urduhack download
 
 script:
-  - py.test -v .
-  - pytest --cov=./
+  - pytest -v . --ignore=urduhack/tasks
+  - pytest --cov=./ --ignore=urduhack/tasks
   - codecov
 
 notifications:
