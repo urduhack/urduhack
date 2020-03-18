@@ -16,8 +16,8 @@ install:
   - urduhack download
 
 script:
-  - pytest -v .
-  - pytest --cov=./
+  - pytest -v . --ignore=urduhack/tasks
+  - pytest --cov=./ --ignore=urduhack/tasks
   - codecov
 
 notifications:
