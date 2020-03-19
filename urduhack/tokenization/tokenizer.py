@@ -7,6 +7,7 @@ from typing import List
 
 from .eos import _generate_sentences
 from .keras_tokenizer import _is_model_exist, _preprocess_sentence, _retrieve_words, _load_model
+from ..errors import Errors
 
 _is_model_exist()
 _model, _char2idx, _idx2char = _load_model()
@@ -20,7 +21,12 @@ def sentence_tokenizer(text: str) -> List[str]:
         text (str): Raw ``urdu`` text
     Returns:
         list: Returns a ``list`` object containing multiple urdu sentences type ``str``.
+    Raises:
+        TypeError: If text is not a str Type
     """
+    if not isinstance(text, str):
+        raise TypeError(Errors.E001.format(object_name=text, object_type=str))
+
     return _generate_sentences(text)
 
 
