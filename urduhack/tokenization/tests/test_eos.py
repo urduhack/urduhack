@@ -4,6 +4,7 @@ import pytest
 
 from urduhack.urdu_characters import URDU_ALPHABETS, URDU_ALL_CHARACTERS
 from ..eos import _URDU_CONJUNCTIONS, _URDU_NEWLINE_WORDS, _generate_sentences
+from ..tokenizer import sentence_tokenizer
 from ..words import WORDS_SPACE, fix_join_words
 
 
@@ -45,8 +46,14 @@ def test_generate_sentences():
     assert isinstance(sentences, list)
     assert isinstance(sentences2, list)
     assert isinstance(sentences[0], str)
+
+    sentences = sentence_tokenizer(text)
+    sentences2 = sentence_tokenizer(text2)
+    assert isinstance(sentences, list)
+    assert isinstance(sentences2, list)
+    assert isinstance(sentences[0], str)
     with pytest.raises(TypeError, match=r'[E001]'):
-        _generate_sentences(text=123)
+        sentence_tokenizer(123)
 
 
 def test_fix_join_words():
