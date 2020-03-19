@@ -2,8 +2,9 @@
 Test Cases
 """
 import numpy as np
-from ..sentiment import predict_label, predict_id, model, tokenizer
+
 from .._backend._sentiment import predict_pipeline
+from ..sentiment import predict_label, predict_id, _model, _tokenizer
 
 
 def test_predict_label():
@@ -32,5 +33,5 @@ def test_predict_pipeline():
     """
     text = "ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی"
     assert isinstance(text, str)
-    predictions = predict_pipeline(text=text, model=model, tokenizer=tokenizer)
+    predictions = predict_pipeline(text=text, model=_model, tokenizer=_tokenizer)
     assert predictions.shape == (1, 2)
