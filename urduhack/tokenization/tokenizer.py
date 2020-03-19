@@ -3,6 +3,8 @@
 This module provides the functionality to generate tokens (both sentence and word wise) from Urdu text.
 """
 
+from typing import List
+
 from .eos import _generate_sentences
 from .keras_tokenizer import _is_model_exist, _preprocess_sentence, _retrieve_words, _load_model
 
@@ -10,7 +12,7 @@ _is_model_exist()
 _model, _char2idx, _idx2char = _load_model()
 
 
-def sentence_tokenizer(text: str):
+def sentence_tokenizer(text: str) -> List[str]:
     """
     Convert ``urdu`` text into possible sentences.
 

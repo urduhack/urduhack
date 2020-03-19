@@ -1,13 +1,15 @@
 # coding: utf8
-"""Sentence tokenization module"""
+"""Rule based Sentence tokenization module"""
 from regex import sub
+
 from ..errors import Errors
 
 # Global Variables
-URDU_CONJUNCTIONS = ['جنہیں', 'جس', 'جن', 'جو', 'اور', 'اگر', 'اگرچہ', 'لیکن', 'مگر', 'پر', 'یا', 'تاہم', 'کہ', 'کر','تو', 'گے', 'گی']
-URDU_NEWLINE_WORDS = ['کیجیے','کیجئے', 'گئیں', 'تھیں', 'ہوں', 'خریدا', 'گے', 'ہونگے', 'گا', 'چاہیے', 'ہوئیں', 'گی',
-                      'تھا', 'تھی', 'تھے', 'ہیں', 'ہے',
-                      ]
+_URDU_CONJUNCTIONS = ['جنہیں', 'جس', 'جن', 'جو', 'اور', 'اگر', 'اگرچہ', 'لیکن', 'مگر', 'پر', 'یا', 'تاہم', 'کہ', 'کر',
+                      'تو', 'گے', 'گی']
+_URDU_NEWLINE_WORDS = ['کیجیے', 'کیجئے', 'گئیں', 'تھیں', 'ہوں', 'خریدا', 'گے', 'ہونگے', 'گا', 'چاہیے', 'ہوئیں', 'گی',
+                       'تھا', 'تھی', 'تھے', 'ہیں', 'ہے',
+                       ]
 
 
 def _split_and_keep(_str, separator):
@@ -23,6 +25,7 @@ def _generate_sentences(text: str):
     This function automatically fixes multiple whitespaces
     or new lines so you just need to pass the data and
     get sentences in return.
+
     Args:
         text (str): base string
     Returns:
@@ -48,8 +51,8 @@ def _generate_sentences(text: str):
                     _sen = _sen.split()
                     new_sent = ""
                     for index, word in enumerate(_sen):
-                        if word in URDU_NEWLINE_WORDS and index + 1 < len(
-                                _sen) and _sen[index + 1] not in URDU_CONJUNCTIONS:
+                        if word in _URDU_NEWLINE_WORDS and index + 1 < len(
+                                _sen) and _sen[index + 1] not in _URDU_CONJUNCTIONS:
                             new_sent += " " + word + "۔"
                         else:
                             new_sent += " " + word
@@ -66,9 +69,9 @@ def _generate_sentences(text: str):
                 new_sent = ""
 
                 for index, word in enumerate(sentence):
-                    if word in URDU_NEWLINE_WORDS and index + 1 < len(
+                    if word in _URDU_NEWLINE_WORDS and index + 1 < len(
                             sentence) and \
-                            sentence[index + 1] not in URDU_CONJUNCTIONS:
+                            sentence[index + 1] not in _URDU_CONJUNCTIONS:
 
                         new_sent += " " + word + "۔"
                     else:
