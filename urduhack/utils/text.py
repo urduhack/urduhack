@@ -24,8 +24,10 @@ def load_vocab(extra_vocab: str = None) -> Tuple[dict, dict]:
     vocab: str = ""
     for value in _vocab_sources.values():
         vocab += value
-    if extra_vocab is not None:
+
+    if extra_vocab is not None and isinstance(extra_vocab, str):
         vocab += extra_vocab
+
     char2idx = {char: idx for idx, char in enumerate(vocab)}
     idx2char = {idx: char for idx, char in enumerate(vocab)}
 

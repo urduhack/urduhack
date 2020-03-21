@@ -9,6 +9,13 @@ def test_load_vocab(tmpdir):
     char2idx, idx2char = load_vocab()
     assert isinstance(char2idx, dict)
     assert isinstance(idx2char, dict)
+    _extra_vocab = "㐐㑈㒏"
+    char2idx, idx2char = load_vocab(_extra_vocab)
+    for c in _extra_vocab:
+        assert c in char2idx.keys()
+        assert c in idx2char.values()
+
+    assert isinstance(idx2char, dict)
 
 
 def test_get_code_point():
