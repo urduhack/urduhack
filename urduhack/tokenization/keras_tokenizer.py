@@ -6,10 +6,11 @@ keras_tokenizer module
 This module create tokens using a pre-trained sequence model .
 """
 from pathlib import Path
+
 import numpy as np
 import tensorflow as tf
 
-from ..config import MODEL_PATH, VOCAB_PATH
+from ..errors import Errors
 
 
 def _load_vocab(vocab_path: str):
@@ -33,6 +34,7 @@ def _load_vocab(vocab_path: str):
 def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int):
     """
     Makes the input and output arrays for the data explaining where is a character or a space
+
     Args:
         sentence (str): Sentence to be tokenized
         char2idx (dict): Dict containing character to integer mapping
@@ -83,7 +85,7 @@ def _retrieve_words(features, labels, idx2char, thresh=0.5):
     return tokens
 
 
-def _load_model(model_path: str = MODEL_PATH, vocab_path: str = VOCAB_PATH):
+def _load_model(model_path: str, vocab_path: str):
     """
     Loads pre_trained keras model and vocab file
 
@@ -98,7 +100,7 @@ def _load_model(model_path: str = MODEL_PATH, vocab_path: str = VOCAB_PATH):
     return model_, char2idx_, idx2char_
 
 
-def _is_model_exist(model_path: str = MODEL_PATH, vocab_path: str = VOCAB_PATH) -> None:
+def _is_model_exist(model_path: str, vocab_path: str) -> None:
     """
     Check if the models file exist.
 
@@ -108,4 +110,5 @@ def _is_model_exist(model_path: str = MODEL_PATH, vocab_path: str = VOCAB_PATH) 
     Returns: None
     """
     if not Path(model_path).exists() and not Path(vocab_path).exists():
-        raise FileNotFoundError("Model weights not found! Please run 'urduhack download' in terminal")
+        raise FileNotFoundError(
+            Errors.E000.format(message="Word tokenizer Model not found! Please run 'urduhack download' in terminal"))
