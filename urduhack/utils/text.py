@@ -7,8 +7,12 @@ from urduhack.urdu_characters import URDU_ALL_CHARACTERS
 
 _vocab_sources = {
     "urdu": "".join(URDU_ALL_CHARACTERS),
+    "arabic": "ﷲﷺ",
     "english": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-    "math": "0123456789"
+    "math": "0123456789",
+    "symbol": "<>=+-*&%^$#@!",
+    "extra": "",
+
 }
 
 
