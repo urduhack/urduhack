@@ -85,8 +85,8 @@ normalized text.
 Adding spaces before and after digits (numeric and urdu)
 ---------------------------------------------------------
 
-To do so you need to import the :py:func:`~urduhack.normalization.util.digits_space` from
-:py:mod:`~urduhack.normalization.util` and pass it the text. The function will return you
+To do so you need to import the :py:func:`~urduhack.normalization.digits_space` from
+:py:mod:`~urduhack.normalization` and pass it the text. The function will return you
 the text after putting spaces at proper places.::
 
     >>> from urduhack.normalization import digits_space
@@ -98,8 +98,8 @@ the text after putting spaces at proper places.::
 Adding spaces after punctuations
 ---------------------------------
 
-To do so you need to import the :py:func:`~urduhack.normalization.util.punctuations_space` from
-:py:mod:`~urduhack.normalization.util` and pass it the text. The function will return you
+To do so you need to import the :py:func:`~urduhack.normalization.punctuations_space` from
+:py:mod:`~urduhack.normalization` and pass it the text. The function will return you
 the text after putting spaces at proper places.::
 
     >>> from urduhack.normalization import punctuations_space
@@ -111,11 +111,11 @@ the text after putting spaces at proper places.::
 Diacritics Removal
 -------------------
 
-The :py:mod:`~urduhack.normalization.util` module in the UrduHack provides
+The :py:mod:`~urduhack.normalization` module in the UrduHack provides
 the functionality to remove Urdu diacritics from text. It is an important
 step in pre-processing of the Urdu data.
 
-To remove diacritics from some text, use the :py:func:`~urduhack.normalization.util.remove_diacritics` function
+To remove diacritics from some text, use the :py:func:`~urduhack.normalization.remove_diacritics` function
 in the :py:mod:`~urduhack.normalization` module.::
 
     >>> from urduhack.normalization import remove_diacritics
@@ -130,11 +130,11 @@ contains the original text minus Urdu diacritics.
 Adding space before & after English words
 -----------------------------------------
 
-The :py:mod:`~urduhack.normalization.util` module in the UrduHack provides
+The :py:mod:`~urduhack.normalization` module in the UrduHack provides
 the functionality to add spaces before and after English words in the given
 Urdu text. It is an important step in normalization of the Urdu data.
 
-To put spaces after English words in Urdu text, use the :py:func:`~urduhack.normalization.util.english_characters_space` function
+To put spaces after English words in Urdu text, use the :py:func:`~urduhack.normalization.english_characters_space` function
 in the :py:mod:`~urduhack.normalization` module.::
 
     >>> from urduhack.normalization import english_characters_space

@@ -24,6 +24,8 @@ It is preferred that you create a virtual environment and install *urduhack* in 
 * **Tensorflow** Use for training, evaluating and testing deep neural network model. Urduhack has been tested with
    **2.0.0**, **2.0.1** versions.
 
+* **transformers** Use for bert implementation for training and evaluation.
+
 * **Request** Use for downloading data for s3.
 
 * **Click** With help of this library Urduhack commandline application developed.
@@ -35,6 +37,6 @@ Downloading Model
 -----------------
 To download the model weights all you have to do is run this simple command in the command line.::
 
-    >>>urduhack download
+    $ urduhack download
 
-This command will download the model which will be used by urduhack.
+This command will download the models which will be used by urduhack.

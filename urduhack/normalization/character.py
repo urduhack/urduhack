@@ -10,17 +10,6 @@ import regex as re
 
 from ..urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
 
-# Add spaces before|after numeric number and urdu words
-# 18سالہ  , 20فیصد
-_EXCEPT_HAMZA = list(filter(lambda c: c != '\u0621', URDU_ALL_CHARACTERS))
-_SPACE_BEFORE_DIGITS_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[0-9])",
-                                     flags=re.U | re.M | re.I)
-_SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[" + "".join(_EXCEPT_HAMZA) + "])", flags=re.U | re.M | re.I)
-# Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
-# We cannot merge them neither can we have them separately. Because if we decompose ئ,
-# we get unicode that are not available in our unicode list.
-
-
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
                                  'أ': ['ﺃ'],
@@ -128,6 +117,18 @@ def normalize_combine_characters(text: str) -> str:
     return text
 
 
+# Add spaces before|after numeric number and urdu words
+# 18سالہ  , 20فیصد
+_EXCEPT_HAMZA = list(filter(lambda c: c != '\u0621', URDU_ALL_CHARACTERS))
+_SPACE_BEFORE_DIGITS_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[0-9])",
+                                     flags=re.U | re.M | re.I)
+_SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[" + "".join(_EXCEPT_HAMZA) + "])", flags=re.U | re.M | re.I)
+
+
+# Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
+# We cannot merge them neither can we have them separately. Because if we decompose ئ,
+# we get unicode that are not available in our unicode list.
+
 def digits_space(text: str) -> str:
     """
     Add spaces before|after numeric and urdu digits
@@ -201,3 +202,24 @@ def remove_diacritics(text: str) -> str:
         str: returns a ``str`` object containing normalized text.
     """
     return _DIACRITICS_RE.sub('', text)
+
+
+def normalize(text: str) -> str:
+    """
+    To normalize some text, all you need to do pass ``unicode`` text. It will return a ``str``
+    with normalized characters both single and combined, proper spaces after digits and punctuations
+    and diacritics removed.
+
+    Args:
+        text (str): raw ``unicode`` Urdu text
+
+    Returns:
+        str: normalized urdu text
+    """
+    text = normalize_characters(text)
+    text = normalize_combine_characters(text)
+    text = digits_space(text)
+    text = punctuations_space(text)
+    text = remove_diacritics(text)
+    text = english_characters_space(text)
+    return text
