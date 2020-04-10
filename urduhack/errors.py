@@ -5,7 +5,7 @@
 def add_codes(cls):
     """Add error messages with Code for easy debugging"""
 
-    class ErrorsWithCodes(object):
+    class ErrorsWithCodes:  # pylint: disable=too-few-public-methods
         """Add error messages with Code for easy debugging
         """
 
@@ -17,7 +17,7 @@ def add_codes(cls):
 
 
 @add_codes
-class Errors(object):
+class Errors:  # pylint: disable=too-few-public-methods
     """Error messages with code"""
     E000 = "{message}"
     E001 = "{object_name} must be {object_type} type."
