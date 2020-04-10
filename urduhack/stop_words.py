@@ -5,9 +5,10 @@ Maintainer: Ikram Ali(mrikram1989@gmail.com)
 version = 2020.02.14
 Source = https://github.com/urduhack/urdu-stopwords
 """
+from typing import FrozenSet
 
 # Urdu Language Stop words list
-STOP_WORDS = frozenset("""
+STOP_WORDS: FrozenSet[str] = frozenset("""
 
  آ آئی آئیں آئے آتا آتی آتے آداب آدھ آدھا آدھی آدھے آس آمدید آنا آنسہ آنی آنے
  آپ آگے آہ آہا آیا اب ابھی ابے اتوار ارب اربویں ارے اس اسکا اسکی اسکے اسی اسے اف

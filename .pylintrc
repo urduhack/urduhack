@@ -1,4 +1,5 @@
 [MASTER]
+load-plugins=pylint.extensions.docparams
 ignore=docs
 
 [FORMAT]
