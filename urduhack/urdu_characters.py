@@ -2,33 +2,31 @@
 """
 Complete collection of Urdu Unicode characters.
 Maintainer: Ikram Ali(mrikram1989@gmail.com)
-version = 2019.04.09
+version = 2020.04.07
 Source = https://github.com/urduhack/urdu-characters
 """
 
-# Complete list of Urdu language Characters.
-URDU_ALL_CHARACTERS = frozenset("آ أ ا ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ؤ ہ ۂ ۃ ھ ء ی "
-                                " ئ ے ۓ  "
-                                " ۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹ "
-                                " \u0600 \u0601 \u0602 \u0603 \u060c \u060d \u060e \u060f  "
-                                " \u0610 \u0611 \u0612 \u0613 \u0614 \u0615 "
-                                " \u064b \u064c \u064d \u064e \u064f "
-                                " \u0650 \u0651 \u0652 \u0653 \u0654 \u0656 \u0657 \u0658 "
-                                " ؟ ؛ ٪ ٫ ٬ ۔ "
-                                " \u0670 ".split())
+from typing import FrozenSet
 
-# Urdu Alphabet
-URDU_ALPHABETS = frozenset("آ أ ا ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل م ن ں و ؤ ہ ۂ ۃ ھ ء ی ئ "
-                           "ے ۓ ".split())
+# Urdu Alphabets
+URDU_ALPHABETS: FrozenSet[str] = frozenset("آ أ ا ب پ ت ٹ ث ج چ ح خ د ڈ ذ ر ڑ ز ژ س ش ص ض ط ظ ع غ ف ق ک گ ل "
+                                           " م ن ں و ؤ ہ ۂ ۃ ھ ء ی ئ ے ۓ ".split())
 
 # Urdu Digits from 0 to 9
-URDU_DIGITS = frozenset("۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹".split())
+URDU_DIGITS: FrozenSet[str] = frozenset("۰ ۱ ۲ ۳ ۴ ۵ ۶ ۷ ۸ ۹".split())
 
-# Urdu Punctuation
-URDU_PUNCTUATIONS = frozenset("؛ ، ٫  ؟ ۔ ٪".split())
+# Urdu Punctuations
+URDU_PUNCTUATIONS: FrozenSet[str] = frozenset("؛ ، ٫  ؟ ۔ ٪".split())
 
 # Urdu Aerabs
-URDU_DIACRITICS = frozenset("\u064e \u064B \u0670 \u0650 \u064F \u064d".split())
+URDU_DIACRITICS: FrozenSet[str] = frozenset("\u064e \u064B \u0670 \u0650 \u064F \u064d".split())
+
+# Urdu Extra Characters
+URDU_EXTRA_CHARACTERS: FrozenSet[str] = frozenset(" ؀ ؁ ؂ ؃ ؍ ؎ ؏ ؐ ؑ ؒ ؓ ؔ ؕ ٌ ّ ْ ٓ ٔ ٖ ٗ ٘ ٬".split())
+
+# Complete list of Urdu language Characters.
+URDU_ALL_CHARACTERS: FrozenSet[str] = frozenset().union(URDU_ALPHABETS, URDU_DIGITS, URDU_PUNCTUATIONS, URDU_DIACRITICS,
+                                                        URDU_EXTRA_CHARACTERS)
 
 URDU_ALL_CHARACTERS_UNICODE = {'\u0600': '\u0600',
                                '\u0601': '\u0601',

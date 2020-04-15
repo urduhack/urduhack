@@ -8,15 +8,9 @@ from urduhack.utils.io import download_from_url, extract_zip
 
 
 @click.command()
-def cli() -> None:
+def cli():
     """
      Download the specific model from s3.
-
-    Args:
-
-    Returns:
-        None
-
     """
     _url = MODELS_URL['WORD_TOKENIZER_WEIGHTS']
     model_file_name = _url.split("/")[-1]

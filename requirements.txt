@@ -1,6 +1,6 @@
-tensorflow~=2.1
-transformers~=2.5
-regex~=2019.4
+tensorflow==2.1.0
+transformers==2.8.0
+regex
 Click~=7.1
 tqdm~=4.43
 requests~=2.23
