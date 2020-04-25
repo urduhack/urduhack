@@ -6,5 +6,5 @@ pytest-cov
 pytest-pylint
 Sphinx
 twine
-keyring
+keyring==21.2.0
 codecov
