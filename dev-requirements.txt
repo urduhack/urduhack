@@ -4,7 +4,7 @@ wheel
 pytest~=5.4
 pytest-cov
 pytest-pylint
-Sphinx
+Sphinx==3.0.2
 twine
 keyring
 codecov
