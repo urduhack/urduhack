@@ -1,6 +1,6 @@
 -r requirements.txt
 
-wheel
+wheel==0.34.2
 pytest~=5.4
 pytest-cov
 pytest-pylint
