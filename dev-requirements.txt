@@ -3,7 +3,7 @@
 wheel
 pytest~=5.4
 pytest-cov
-pytest-pylint
+pytest-pylint==0.16.0
 Sphinx
 twine
 keyring
