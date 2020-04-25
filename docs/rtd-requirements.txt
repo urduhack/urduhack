@@ -1,4 +1,4 @@
 regex~=2019.4
 Click~=7.1
-tqdm~=4.43
+tqdm==4.45.0
 requests~=2.23
