@@ -2,7 +2,7 @@
 
 wheel
 pytest~=5.4
-pytest-cov
+pytest-cov==2.8.1
 pytest-pylint
 Sphinx
 twine
