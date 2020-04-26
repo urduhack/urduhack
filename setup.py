@@ -49,9 +49,9 @@ def setup_package():
 
           install_requires=requires,
 
-          setup_requires=['pytest-runner'],
+          setup_requires=[],
 
-          tests_require=['pytest'],
+          tests_require=[],
 
           zip_safe=False,
 
