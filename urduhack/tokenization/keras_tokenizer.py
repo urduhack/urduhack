@@ -93,7 +93,7 @@ def _load_model(model_path: str, vocab_path: str):
         model_path (str): Path to the model file
         vocab_path (str): Path to the vocab file
     Returns:
-        None
+        tuple: contains object
     """
     model_ = tf.keras.models.load_model(model_path)
     char2idx_, idx2char_ = _load_vocab(vocab_path)
@@ -107,6 +107,8 @@ def _is_model_exist(model_path: str, vocab_path: str) -> None:
     Args:
         model_path (str): path to the tokenizer model file
         vocab_path (str): Path to the tokenizer vocab file
+    Raises:
+        FileNotFoundError: If model_path does not exist
     Returns: None
     """
     if not Path(model_path).exists() and not Path(vocab_path).exists():
