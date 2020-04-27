@@ -13,9 +13,9 @@ from ...config import MODEL_PATH, VOCAB_PATH
 def test_load_vocab(tmpdir):
     """Test Case"""
     file_name = str(tmpdir.join("vocab.txt"))
-    with open(file_name, "w") as f:
-        f.write("abcdefghijklmnopqrstuvwxyz")
-        f.write("\n")
+    with open(file_name, "w") as tmp_file:
+        tmp_file.write("abcdefghijklmnopqrstuvwxyz")
+        tmp_file.write("\n")
 
     assert isinstance(file_name, str)
     assert len(_load_vocab(file_name)) == 2
@@ -29,10 +29,10 @@ def test_preprocess_sentence(tmpdir):
     sentence = "ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی"
     assert isinstance(sentence, str)
     file_name = str(tmpdir.join("vocab.txt"))
-    with open(file_name, "w") as f:
-        f.write("ءصأژلضپجعڈفٹگآرنوؤہںاےطھچحۂبغیشزختثڑمئۓذسظقدکۃةABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij"
-                "klmnopqrstuvwxyz0123456789،؛٪۔؟٫۸۶۳۷۹۵۲۰۴۱<>=+-*&%^$#@!ﷺٴ`ـ±ﷲﹰ")
-        f.write("\n")
+    with open(file_name, "w") as tmp_file:
+        tmp_file.write("ءصأژلضپجعڈفٹگآرنوؤہںاےطھچحۂبغیشزختثڑمئۓذسظقدکۃةABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij"
+                       "klmnopqrstuvwxyz0123456789،؛٪۔؟٫۸۶۳۷۹۵۲۰۴۱<>=+-*&%^$#@!ﷺٴ`ـ±ﷲﹰ")
+        tmp_file.write("\n")
     char2idx, _ = _load_vocab(file_name)
     assert len(_preprocess_sentence(sentence, char2idx, 46)) == 2
     inp_, out_ = _preprocess_sentence(sentence, char2idx, 46)

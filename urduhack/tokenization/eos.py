@@ -18,7 +18,7 @@ def _split_and_keep(_str, separator):
     return _str.replace(separator, separator + max_p).split(max_p)
 
 
-def _generate_sentences(text: str):
+def _generate_sentences(text: str) -> list:
     """Generate a list of urdu sentences from a given string.
     This function automatically fixes multiple whitespaces
     or new lines so you just need to pass the data and

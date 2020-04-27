@@ -13,7 +13,7 @@ import tensorflow as tf
 from ..errors import Errors
 
 
-def _load_vocab(vocab_path: str):
+def _load_vocab(vocab_path: str) -> dict:
     """
     Maps characters to integers and vice versa
     Args:
@@ -31,7 +31,7 @@ def _load_vocab(vocab_path: str):
     return char2idx, idx2char
 
 
-def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int):
+def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int) -> bytearray:
     """
     Makes the input and output arrays for the data explaining where is a character or a space
 
@@ -57,7 +57,7 @@ def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int):
     return input_, output_
 
 
-def _retrieve_words(features, labels, idx2char, thresh=0.5):
+def _retrieve_words(features, labels, idx2char, thresh=0.5) -> list:
     """
     Retrieve the original words from predicted and actual arrays as per char2idx mapping
 

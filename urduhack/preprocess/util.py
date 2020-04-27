@@ -179,7 +179,7 @@ def remove_punctuation(text: str, marks=None) -> str:
     return text.translate(PUNCTUATION_TRANSLATE_UNICODE)
 
 
-def remove_accents(text: str):
+def remove_accents(text: str) -> str:
     """
     Remove accents from any accented unicode characters in ``text`` str, either by
     transforming them into ascii equivalents or removing them entirely.
