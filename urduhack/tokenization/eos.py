@@ -32,7 +32,7 @@ def _generate_sentences(text: str) -> list:
     all_sentences = []
     sentences = _split_and_keep(text, '۔')
     sen_counter = 0
-    for sentence in sentences:
+    for sentence in sentences:  # pylint: disable=too-many-nested-blocks
         if sentence and (len(sentence.split()) >= 2):
             if '؟' in sentence:
                 q_sentences = _split_and_keep(sentence, '؟')
