@@ -37,7 +37,7 @@ def test_generate_sentences():
     text = "ہم اس کیلئے تیار ہیں لیکن پھرسسٹم " \
            "لپیٹاجائے ؟کیجئے گا۔قومی اسمبلی کے اجلاس میں خطاب کرتے ہوئے۔ایسے رویوں سے تشدد کی لہر شروع ہوگی۔"
     text1 = ""
-    text2 = "ہم اس کیلئے تیار ہیں لیکن پھرسسٹم لپیٹاجائےکیجئے گا n\ ۔"
+    text2 = r"ہم اس کیلئے تیار ہیں لیکن پھرسسٹم لپیٹاجائےکیجئے گا n\ ۔"
     assert len(_generate_sentences(text1)) == 0
     assert isinstance(text, str)
     assert isinstance(text2, str)
