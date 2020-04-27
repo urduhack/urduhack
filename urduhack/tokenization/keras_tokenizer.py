@@ -27,7 +27,7 @@ def _load_vocab(vocab_path: str) -> dict:
     vocab = list('_' + vocab)
     vocab.remove('\n')
     char2idx = {char: idx for idx, char in enumerate(vocab)}
-    idx2char = {idx: char for idx, char in enumerate(vocab)}
+    idx2char = {idx: char for idx, char in enumerate(vocab)}  # pylint: disable=unnecessary-comprehension
     return char2idx, idx2char
 
 
