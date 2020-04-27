@@ -32,8 +32,10 @@ def load_vocab(extra_vocab: str = None) -> Tuple[dict, dict]:
     if extra_vocab is not None and isinstance(extra_vocab, str):
         vocab += extra_vocab
 
-    char2idx = {char: idx for idx, char in enumerate(vocab)}
-    idx2char = {idx: char for idx, char in enumerate(vocab)}
+    char2idx, idx2char = {}, {}
+    for index, char in enumerate(vocab):
+        char2idx[char] = index
+        idx2char[index] = char
     return char2idx, idx2char
 
 
