@@ -4,6 +4,10 @@ matrix:
   include:
     - python: 3.6
     - python: 3.7
+    - name: Python 3.6.9 on macOS
+      os: osx
+      language: objective-c
+      env: PYENV_VERSION=3.6.9
 
 install:
   - pip install --upgrade pip
