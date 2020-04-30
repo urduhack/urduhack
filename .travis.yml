@@ -24,6 +24,8 @@ install:
 
 script:
   - pytest --cov=./ --ignore=urduhack/tasks
+
+after_success:
   - codecov
 
 notifications:
