@@ -13,8 +13,8 @@ from ...utils import pickle_load
 from ...config import LAYERS_WEIGHTS_PATH
 
 
-def compile_model(weights: str, maxlen: int = 512, filter_size: list = [3, 5, 7], num_filters: int = 6,
-                  n_classes: int = 2, lang_model: None = None):
+def compile_model(weights: str, maxlen: int = 512, filter_size: list = [3, 5, 7],
+                  num_filters: int = 6, n_classes: int = 2, lang_model: None = None):
     """
     Compiles a pre-trained keras model
 
@@ -43,9 +43,9 @@ def compile_model(weights: str, maxlen: int = 512, filter_size: list = [3, 5, 7]
         conv = Flatten()(conv)
         conv_blocks.append(conv)
     concat = Concatenate()(conv_blocks) if len(conv_blocks) > 1 else conv_blocks[0]
-    x = Dropout(0.2)(concat)
-    x = Dense(512, activation="relu")(x)
-    preds = Dense(n_classes, activation="softmax")(x)
+    dense = Dropout(0.2)(concat)
+    dense = Dense(512, activation="relu")(dense)
+    preds = Dense(n_classes, activation="softmax")(dense)
 
     model = tf.keras.Model(sequence_input, preds)
     model.compile(loss='categorical_crossentropy',
@@ -58,7 +58,7 @@ def compile_model(weights: str, maxlen: int = 512, filter_size: list = [3, 5, 7]
     return model
 
 
-def predict_pipeline(text: str, max_seq_len: int = 512, model: None = None, tokenizer: None = None):
+def predict_pipeline(text: str, max_seq_len: int = 512, model: None = None, tokenizer: None = None) -> bytearray:
     """
     Predict sentiment of a text sentence
 
@@ -92,6 +92,3 @@ def load_models(layers_weights: str = LAYERS_WEIGHTS_PATH, pre_trained: str = "j
     if Path(layers_weights).exists():
         model_ = compile_model(weights=layers_weights, lang_model=lang_model)
     return model_, tokenizer_
-
-
-

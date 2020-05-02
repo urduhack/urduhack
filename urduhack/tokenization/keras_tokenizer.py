@@ -13,7 +13,7 @@ import tensorflow as tf
 from ..errors import Errors
 
 
-def _load_vocab(vocab_path: str):
+def _load_vocab(vocab_path: str) -> dict:
     """
     Maps characters to integers and vice versa
     Args:
@@ -27,11 +27,11 @@ def _load_vocab(vocab_path: str):
     vocab = list('_' + vocab)
     vocab.remove('\n')
     char2idx = {char: idx for idx, char in enumerate(vocab)}
-    idx2char = {idx: char for idx, char in enumerate(vocab)}
+    idx2char = {idx: char for idx, char in enumerate(vocab)}  # pylint: disable=unnecessary-comprehension
     return char2idx, idx2char
 
 
-def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int):
+def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int) -> bytearray:
     """
     Makes the input and output arrays for the data explaining where is a character or a space
 
@@ -57,7 +57,7 @@ def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int):
     return input_, output_
 
 
-def _retrieve_words(features, labels, idx2char, thresh=0.5):
+def _retrieve_words(features, labels, idx2char, thresh=0.5) -> list:
     """
     Retrieve the original words from predicted and actual arrays as per char2idx mapping
 
@@ -93,7 +93,7 @@ def _load_model(model_path: str, vocab_path: str):
         model_path (str): Path to the model file
         vocab_path (str): Path to the vocab file
     Returns:
-        None
+        tuple: contains object
     """
     model_ = tf.keras.models.load_model(model_path)
     char2idx_, idx2char_ = _load_vocab(vocab_path)
@@ -107,6 +107,8 @@ def _is_model_exist(model_path: str, vocab_path: str) -> None:
     Args:
         model_path (str): path to the tokenizer model file
         vocab_path (str): Path to the tokenizer vocab file
+    Raises:
+        FileNotFoundError: If model_path does not exist
     Returns: None
     """
     if not Path(model_path).exists() and not Path(vocab_path).exists():

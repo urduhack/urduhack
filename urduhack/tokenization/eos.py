@@ -18,7 +18,7 @@ def _split_and_keep(_str, separator):
     return _str.replace(separator, separator + max_p).split(max_p)
 
 
-def _generate_sentences(text: str):
+def _generate_sentences(text: str) -> list:
     """Generate a list of urdu sentences from a given string.
     This function automatically fixes multiple whitespaces
     or new lines so you just need to pass the data and
@@ -32,7 +32,7 @@ def _generate_sentences(text: str):
     all_sentences = []
     sentences = _split_and_keep(text, '۔')
     sen_counter = 0
-    for sentence in sentences:
+    for sentence in sentences:  # pylint: disable=too-many-nested-blocks
         if sentence and (len(sentence.split()) >= 2):
             if '؟' in sentence:
                 q_sentences = _split_and_keep(sentence, '؟')

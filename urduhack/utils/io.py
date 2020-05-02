@@ -12,18 +12,16 @@ import tqdm
 from ..errors import Errors
 
 
-def pickle_dump(file_name: str, data) -> None:
+def pickle_dump(file_name: str, data: Any):
     """
     Save the python object in pickle format
 
     Args:
         file_name (str): file name
-        data: Any data type
-    Returns:
-        None
+        data (Any): Any data type
     """
-    with open(file_name, 'wb') as f:
-        pickle.dump(data, f, protocol=pickle.HIGHEST_PROTOCOL)
+    with open(file_name, 'wb') as file:
+        pickle.dump(data, file, protocol=pickle.HIGHEST_PROTOCOL)
 
 
 def pickle_load(file_name: str) -> Any:
@@ -35,11 +33,11 @@ def pickle_load(file_name: str) -> Any:
     Returns:
         Any: python object type
     """
-    with open(file_name, 'rb') as f:
-        return pickle.load(f)
+    with open(file_name, 'rb') as file:
+        return pickle.load(file)
 
 
-def download_from_url(url: str, file_path: str, file_name: Optional[str] = None) -> None:
+def download_from_url(url: str, file_path: str, file_name: Optional[str] = None):
     """
     Download anything from HTTP url
 
@@ -47,8 +45,6 @@ def download_from_url(url: str, file_path: str, file_name: Optional[str] = None)
         url (str): HTTP url
         file_path (str): location to store file
         file_name (str): Save file as provided file name
-    Returns:
-        None
     Raises:
         TypeError: If any of the url, file_path and file_name are not str Type.
     """
@@ -69,22 +65,20 @@ def download_from_url(url: str, file_path: str, file_name: Optional[str] = None)
     num_bars = int(file_size / chunk_size)
 
     tqdm_description: str = f"Downloading {file_name.split('/')[-1]}({file_size} bytes)"
-    with open(file_name, 'wb') as fp:
+    with open(file_name, 'wb') as f_p:
         for chunk in tqdm.tqdm(req.iter_content(chunk_size=chunk_size), total=num_bars, unit='KB',
                                desc=tqdm_description,
                                leave=True):
-            fp.write(chunk)
+            f_p.write(chunk)
 
 
-def extract_zip(zip_file: str, unzip_dir: str) -> None:
+def extract_zip(zip_file: str, unzip_dir: str):
     """
     Extracts file into the specified directory
 
     Args:
         zip_file (str): location of the zip file
         unzip_dir (str): Directory into which file will be extracted
-    Returns:
-        None
     Raises:
         TypeError: If any of zip_file and unzip_dir are not str Type.
     """
@@ -97,14 +91,12 @@ def extract_zip(zip_file: str, unzip_dir: str) -> None:
         z_file.extractall(unzip_dir)
 
 
-def remove_file(file_name: str) -> None:
+def remove_file(file_name: str):
     """
     Delete the local file
 
     Args:
         file_name (str): file to be deleted
-    Returns:
-        None
     Raises:
         TypeError: if file_name is not str Type.
         FileNotFoundError: If file_name does not exist

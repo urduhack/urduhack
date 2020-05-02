@@ -10,7 +10,7 @@ from .keras_tokenizer import _is_model_exist, _preprocess_sentence, _retrieve_wo
 from ..config import MODEL_PATH, VOCAB_PATH
 from ..errors import Errors
 
-_word_tokenizer_model, _char2idx, _idx2char = None, None, None
+_WORD_TOKENIZER_MODEL, _CHAR2IDX, _IDX2CHAR = None, None, None
 
 
 def sentence_tokenizer(text: str) -> List[str]:
@@ -40,13 +40,13 @@ def word_tokenizer(sentence: str, max_len: int = 256) -> List[str]:
     Return:
         list: Returns a ``List[str]`` containing urdu tokens
     """
-    global _word_tokenizer_model, _char2idx, _idx2char
+    global _WORD_TOKENIZER_MODEL, _CHAR2IDX, _IDX2CHAR
 
-    if _word_tokenizer_model is None:
+    if _WORD_TOKENIZER_MODEL is None:
         _is_model_exist(MODEL_PATH, VOCAB_PATH)
-        _word_tokenizer_model, _char2idx, _idx2char = _load_model(MODEL_PATH, VOCAB_PATH)
+        _WORD_TOKENIZER_MODEL, _CHAR2IDX, _IDX2CHAR = _load_model(MODEL_PATH, VOCAB_PATH)
 
-    inp_, _ = _preprocess_sentence(sentence, _char2idx, max_len=max_len)
-    predictions = _word_tokenizer_model.predict(inp_)
-    word_tokens = _retrieve_words(inp_[0, :], predictions[0, :], _idx2char)
+    inp_, _ = _preprocess_sentence(sentence, _CHAR2IDX, max_len=max_len)
+    predictions = _WORD_TOKENIZER_MODEL.predict(inp_)
+    word_tokens = _retrieve_words(inp_[0, :], predictions[0, :], _IDX2CHAR)
     return word_tokens

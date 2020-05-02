@@ -5,7 +5,7 @@ from typing import Tuple
 
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS
 
-_vocab_sources = {
+_VOCAB_SOURCES = {
     "urdu": "".join(URDU_ALL_CHARACTERS),
     "arabic": "ﷲﷺ",
     "english": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
@@ -26,15 +26,16 @@ def load_vocab(extra_vocab: str = None) -> Tuple[dict, dict]:
         tuple: Two dictionaries containing character to integer mapping and integer to character mapping
     """
     vocab: str = ""
-    for value in _vocab_sources.values():
+    for value in _VOCAB_SOURCES.values():
         vocab += value
 
     if extra_vocab is not None and isinstance(extra_vocab, str):
         vocab += extra_vocab
 
-    char2idx = {char: idx for idx, char in enumerate(vocab)}
-    idx2char = {idx: char for idx, char in enumerate(vocab)}
-
+    char2idx, idx2char = {}, {}
+    for index, char in enumerate(vocab):
+        char2idx[char] = index
+        idx2char[index] = char
     return char2idx, idx2char
 
 
