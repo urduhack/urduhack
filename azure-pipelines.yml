@@ -13,9 +13,21 @@ pool:
   vmImage: 'ubuntu-latest'
 strategy:
   matrix:
-    Python36:
+    Python36Linux:
       python.version: '3.6'
-    Python37:
+    Python36Windows:
+      imageName: 'vs2017-win2016'
+      python.version: '3.6'
+    Python36Mac:
+      imageName: 'macos-10.14'
+      python.version: '3.6'
+    Python37Linux:
+      python.version: '3.7'
+    Python37Windows:
+     imageName: 'vs2017-win2016'
+     python.version: '3.7'
+    Python37Mac:
+      imageName: 'macos-10.13'
       python.version: '3.7'
 
 steps:
