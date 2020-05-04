@@ -1,0 +1,51 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - '*'
+
+strategy:
+  matrix:
+    Python36Linux:
+      imageName: 'ubuntu-18.04'
+      python.version: '3.6'
+    Python36Windows:
+      imageName: 'vs2017-win2016'
+      python.version: '3.6'
+    Python36Mac:
+      imageName: 'macos-10.14'
+      python.version: '3.6'
+    Python37Linux:
+      imageName: 'ubuntu-18.04'
+      python.version: '3.7'
+    Python37Windows:
+     imageName: 'vs2017-win2016'
+     python.version: '3.7'
+    Python37Mac:
+      imageName: 'macos-10.14'
+      python.version: '3.7'
+pool:
+    vmImage: $(imageName)
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r dev-requirements.txt
+    pip install pytest-azurepipelines
+    pip install .
+    urduhack download
+  displayName: 'Install dependencies'
+
+- script: |
+    pytest --cov=./ --cov-report html --ignore=urduhack/tasks
+  displayName: 'pytest'
