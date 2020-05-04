@@ -4,7 +4,10 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
 trigger:
-- master
+  batch: true
+  branches:
+    include:
+      - '*'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -23,10 +26,11 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r requirements.txt
+    pip install -r dev-requirements.txt
+    pip install .
+    urduhack download
   displayName: 'Install dependencies'
 
 - script: |
-    pip install pytest pytest-azurepipelines
-    pytest
+    pytest --cov=./ --ignore=urduhack/tasks
   displayName: 'pytest'
