@@ -77,6 +77,8 @@ def test_remove_file(tmpdir):
     file_name = str(tmp_file)
     assert Path(tmp_dir).exists()
     assert Path(tmp_file).exists()
-    assert tmp_file.read() == "ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی"
+    with open(tmp_file, "r", encoding="utf-8") as read_file:
+        line = read_file.read()
+        assert line == "ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی"
     remove_file(file_name)
     assert Path(tmp_file).exists() is False
