@@ -9,11 +9,10 @@ trigger:
     include:
       - '*'
 
-pool:
-  vmImage: 'ubuntu-latest'
 strategy:
   matrix:
     Python36Linux:
+      imageName: 'ubuntu-16.04'
       python.version: '3.6'
     Python36Windows:
       imageName: 'vs2017-win2016'
@@ -22,6 +21,7 @@ strategy:
       imageName: 'macos-10.14'
       python.version: '3.6'
     Python37Linux:
+      imageName: 'ubuntu-16.04'
       python.version: '3.7'
     Python37Windows:
      imageName: 'vs2017-win2016'
@@ -29,6 +29,8 @@ strategy:
     Python37Mac:
       imageName: 'macos-10.13'
       python.version: '3.7'
+pool:
+    vmImage: $(imageName)
 
 steps:
 - task: UsePythonVersion@0
@@ -45,5 +47,5 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    pytest --cov=./ --ignore=urduhack/tasks
+    pytest --cov=./ --cov-report html --ignore=urduhack/tasks
   displayName: 'pytest'
