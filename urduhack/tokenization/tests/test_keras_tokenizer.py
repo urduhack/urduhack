@@ -13,7 +13,7 @@ from ...config import MODEL_PATH, VOCAB_PATH
 def test_load_vocab(tmpdir):
     """Test Case"""
     file_name = str(tmpdir.join("vocab.txt"))
-    with open(file_name, "w") as tmp_file:
+    with open(file_name, "w", encoding="utf-8") as tmp_file:
         tmp_file.write("abcdefghijklmnopqrstuvwxyz")
         tmp_file.write("\n")
 
@@ -29,7 +29,7 @@ def test_preprocess_sentence(tmpdir):
     sentence = "ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی"
     assert isinstance(sentence, str)
     file_name = str(tmpdir.join("vocab.txt"))
-    with open(file_name, "w") as tmp_file:
+    with open(file_name, "w", encoding="utf-8") as tmp_file:
         tmp_file.write("ءصأژلضپجعڈفٹگآرنوؤہںاےطھچحۂبغیشزختثڑمئۓذسظقدکۃةABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghij"
                        "klmnopqrstuvwxyz0123456789،؛٪۔؟٫۸۶۳۷۹۵۲۰۴۱<>=+-*&%^$#@!ﷺٴ`ـ±ﷲﹰ")
         tmp_file.write("\n")

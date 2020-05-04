@@ -22,7 +22,7 @@ def _load_vocab(vocab_path: str) -> dict:
         Two dictionaries containing character to integer mapping and integer to character mapping
     """
 
-    vocab_file = open(vocab_path)
+    vocab_file = open(vocab_path, encoding="utf-8")
     vocab = vocab_file.readline()
     vocab = list('_' + vocab)
     vocab.remove('\n')
