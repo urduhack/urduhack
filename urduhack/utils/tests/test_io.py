@@ -72,8 +72,8 @@ def test_remove_file(tmpdir):
 
     tmp_dir = tmpdir.mkdir("sub_dir")
     tmp_file = tmp_dir.join("hello.txt")
-    with open(tmp_file, "w", encoding="utf-8") as f:
-        f.write("ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی")
+    with open(tmp_file, "w", encoding="utf-8") as temp_file:
+        temp_file.write("ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی")
     file_name = str(tmp_file)
     assert Path(tmp_dir).exists()
     assert Path(tmp_file).exists()
