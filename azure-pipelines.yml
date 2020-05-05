@@ -9,43 +9,63 @@ trigger:
     include:
       - '*'
 
-strategy:
-  matrix:
-    Python36Linux:
-      imageName: 'ubuntu-18.04'
-      python.version: '3.6'
-    Python36Windows:
-      imageName: 'vs2017-win2016'
-      python.version: '3.6'
-    Python36Mac:
-      imageName: 'macos-10.14'
-      python.version: '3.6'
-    Python37Linux:
-      imageName: 'ubuntu-18.04'
-      python.version: '3.7'
-    Python37Windows:
-     imageName: 'vs2017-win2016'
-     python.version: '3.7'
-    Python37Mac:
-      imageName: 'macos-10.14'
-      python.version: '3.7'
-pool:
-    vmImage: $(imageName)
+jobs:
+# Perform basic checks for most important errors (syntax etc.) Uses the config
+- job: 'Validate'
+  pool:
+    vmImage: 'ubuntu-18.04'
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.7'
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r dev-requirements.txt
+      pip install pytest-azurepipelines
+      pip install .
+      urduhack download
+      pytest --ignore=urduhack/tasks
+    displayName: 'pylint'
 
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '$(python.version)'
-  displayName: 'Use Python $(python.version)'
+- job: 'Test'
+  dependsOn: 'Validate'
+  strategy:
+    matrix:
+      Python36Linux:
+        imageName: 'ubuntu-18.04'
+        python.version: '3.6'
+      Python36Windows:
+        imageName: 'vs2017-win2016'
+        python.version: '3.6'
+      Python36Mac:
+        imageName: 'macos-10.14'
+        python.version: '3.6'
+      Python37Linux:
+        imageName: 'ubuntu-18.04'
+        python.version: '3.7'
+      Python37Windows:
+       imageName: 'vs2017-win2016'
+       python.version: '3.7'
+      Python37Mac:
+        imageName: 'macos-10.14'
+        python.version: '3.7'
+  pool:
+      vmImage: $(imageName)
 
-- script: |
-    python -m pip install --upgrade pip
-    pip install -r dev-requirements.txt
-    pip install pytest-azurepipelines
-    pip install .
-    urduhack download
-  displayName: 'Install dependencies'
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+    displayName: 'Use Python $(python.version)'
 
-- script: |
-    pytest --cov=./ --cov-report html --ignore=urduhack/tasks
-  displayName: 'pytest'
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r dev-requirements.txt
+      pip install pytest-azurepipelines
+      pip install .
+      urduhack download
+    displayName: 'Install dependencies'
+
+  - script: |
+      pytest --cov=./ --cov-report html --ignore=urduhack/tasks
+    displayName: 'pytest'
