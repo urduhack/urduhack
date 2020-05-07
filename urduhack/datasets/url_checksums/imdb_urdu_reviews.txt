@@ -1,0 +1,2 @@
+https://github.com/urduhack/urdu-datasets/releases/download/imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews_test.csv 23000243 14d03aa2b539cf7d56d0e72c16014e23d799787b0396c52934ff4fe289e4c433
+https://github.com/urduhack/urdu-datasets/releases/download/imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews_train.csv 91749209 bd9aba0206ce5235a995f939aae1922fceed1f83f3056822e02fd6a3f96d8dfc
