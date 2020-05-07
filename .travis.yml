@@ -11,7 +11,7 @@ install:
   - urduhack download
 
 script:
-  - pytest --pylint --cov=./ --ignore=urduhack/tasks
+  - pytest --cov=./ --ignore=urduhack/tasks
 
 after_success:
   - codecov
