@@ -2,10 +2,12 @@
 """Imdb 50k movies Urdu reviews datasets"""
 
 import csv
-import os
+from typing import Dict
 
 import tensorflow as tf
 import tensorflow_datasets.public_api as tfds
+
+from urduhack.datasets import CHECKSUM_DIR
 
 _CITATION = """\
 @InProceedings{maas-EtAl:2011:ACL-HLT2011,
@@ -31,15 +33,14 @@ The reason behind using this dataset is high polarity for each class.
 It contains 50k samples equally divided in two classes.
 """
 
-_DOWNLOAD_URL: str = "https://github.com/urduhack/urdu-datasets/releases/download/" \
-                     "imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews.zip"
-
-CHECKSUM_DIR = os.path.join(os.path.dirname(__file__), '..', 'url_checksums/')
-CHECKSUM_DIR = os.path.normpath(CHECKSUM_DIR)
+_DOWNLOAD_URLS: Dict[str, str] = {"train": "https://github.com/urduhack/urdu-datasets/releases/download/"
+                                           "imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews_train.csv",
+                                  "test": "https://github.com/urduhack/urdu-datasets/releases/download/"
+                                          "imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews_test.csv"}
 tfds.download.add_checksums_dir(CHECKSUM_DIR)
 
 
-class ImdbUrdu(tfds.core.GeneratorBasedBuilder):
+class ImdbUrduReviews(tfds.core.GeneratorBasedBuilder):
     """IMDB movie Urdu reviews dataset."""
 
     VERSION = tfds.core.Version('1.0.0')
@@ -59,18 +60,16 @@ class ImdbUrdu(tfds.core.GeneratorBasedBuilder):
 
     def _split_generators(self, dl_manager):
         """Returns SplitGenerators."""
-        folder_path = dl_manager.download_and_extract(_DOWNLOAD_URL)
-        train_file = os.path.join(folder_path, "imdb_urdu_reviews", "imdb_urdu_reviews_train.csv")
-        test_file = os.path.join(folder_path, "imdb_urdu_reviews", "imdb_urdu_reviews_test.csv")
+        files = dl_manager.download(_DOWNLOAD_URLS)
 
         return [
             tfds.core.SplitGenerator(
                 name=tfds.Split.TRAIN,
-                gen_kwargs={'file_path': train_file}
+                gen_kwargs={'file_path': files['train']}
             ),
             tfds.core.SplitGenerator(
                 name=tfds.Split.TEST,
-                gen_kwargs={'file_path': test_file}
+                gen_kwargs={'file_path': files['test']}
             ),
         ]
 
