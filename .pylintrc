@@ -9,4 +9,4 @@ max-line-length=120
 max-module-lines=10000
 
 [MESSAGES CONTROL]
-disable=exec-used,eval-used,too-many-branches,global-statement
+disable=exec-used,eval-used,too-many-branches,global-statement,no-self-use,too-few-public-methods

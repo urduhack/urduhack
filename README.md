@@ -40,6 +40,8 @@ Features Support
   - [ ] Name Entity Recognition
   - [ ] Image to Text
   - [ ] Speech to Text
+- [ ] Datasets
+  - [x] IMDB Urdu Movies Review dataset
 
 
 Installation

@@ -9,4 +9,6 @@ Reference
    preprocess
    tasks
    utils
+   command
+   datasets
 
