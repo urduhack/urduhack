@@ -41,7 +41,7 @@ Features Support
   - [ ] Image to Text
   - [ ] Speech to Text
 - [ ] Datasets
-  - [x] IMDB Urdu Movies Review [dataset](https://www.kaggle.com/akkefa/imdb-dataset-of-50k-movie-translated-urdu-reviews)
+  - [x] IMDB Urdu Movies Review dataset
 
 
 Installation
