@@ -60,7 +60,7 @@ def setup_package():
           python_requires='>= 3.6',
 
           classifiers=[
-              'Development Status :: 3 - Alpha',
+              'Development Status :: 4 - Beta',
               'Intended Audience :: Developers',
               'Intended Audience :: Education',
               'Intended Audience :: Science/Research',
