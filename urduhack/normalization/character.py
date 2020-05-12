@@ -80,56 +80,6 @@ _TRANSLATOR = {}
 for key, value in CORRECT_URDU_CHARACTERS.items():
     _TRANSLATOR.update(dict.fromkeys(map(ord, value), key))
 
-ENG_URDU_MAP: Dict = {
-    '0': ['۰'],
-    '1': ['۱'],
-    '2': ['۲'],
-    '3': ['۳'],
-    '4': ['۴'],
-    '5': ['۵'],
-    '6': ['۶'],
-    '7': ['۷'],
-    '8': ['۸'],
-    '9': ['۹']
-}
-
-_ENG_TRANSLATOR = {}
-for key, value in ENG_URDU_MAP.items():
-    _ENG_TRANSLATOR.update(dict.fromkeys(map(ord, value), key))
-
-URDU_ENG_MAP: Dict = {
-    '۰': ['0'],
-    '۱': ['1'],
-    '۲': ['2'],
-    '۳': ['3'],
-    '۴': ['4'],
-    '۵': ['5'],
-    '۶': ['6'],
-    '۷': ['7'],
-    '۸': ['8'],
-    '۹': ['9']
-}
-
-
-_URDU_TRANSLATOR = {}
-for key, value in URDU_ENG_MAP.items():
-    _URDU_TRANSLATOR.update(dict.fromkeys(map(ord, value), key))
-
-
-def replace_digits(text: str, with_eng: bool = True) -> str:
-    """
-    Replace urdu digits with English digits and vice versa
-
-    Args:
-        text (str): urdu text string
-        with_eng (bool): Boolean to convert digits from one language to other
-    Returns:
-        Text string with replaced digits
-    """
-    if with_eng:
-        return text.translate(_ENG_TRANSLATOR)
-    return text.translate(_URDU_TRANSLATOR)
-
 
 def normalize_characters(text: str) -> str:
     """
@@ -271,6 +221,56 @@ def normalize(text: str) -> str:
     text = digits_space(text)
     text = punctuations_space(text)
     text = remove_diacritics(text)
-    text = replace_digits(text)
     text = english_characters_space(text)
     return text
+
+
+ENG_URDU_DIGITS_MAP: Dict = {
+    '0': ['۰'],
+    '1': ['۱'],
+    '2': ['۲'],
+    '3': ['۳'],
+    '4': ['۴'],
+    '5': ['۵'],
+    '6': ['۶'],
+    '7': ['۷'],
+    '8': ['۸'],
+    '9': ['۹']
+}
+
+_ENG_DIGITS_TRANSLATOR = {}
+for key, value in ENG_URDU_DIGITS_MAP.items():
+    _ENG_DIGITS_TRANSLATOR.update(dict.fromkeys(map(ord, value), key))
+
+URDU_ENG_DIGITS_MAP: Dict = {
+    '۰': ['0'],
+    '۱': ['1'],
+    '۲': ['2'],
+    '۳': ['3'],
+    '۴': ['4'],
+    '۵': ['5'],
+    '۶': ['6'],
+    '۷': ['7'],
+    '۸': ['8'],
+    '۹': ['9']
+}
+
+
+_URDU_DIGITS_TRANSLATOR = {}
+for key, value in URDU_ENG_DIGITS_MAP.items():
+    _URDU_DIGITS_TRANSLATOR.update(dict.fromkeys(map(ord, value), key))
+
+
+def replace_digits(text: str, with_eng: bool = True) -> str:
+    """
+    Replace urdu digits with English digits and vice versa
+
+    Args:
+        text (str): urdu text string
+        with_eng (bool): Boolean to convert digits from one language to other
+    Returns:
+        Text string with replaced digits
+    """
+    if with_eng:
+        return text.translate(_ENG_DIGITS_TRANSLATOR)
+    return text.translate(_URDU_DIGITS_TRANSLATOR)

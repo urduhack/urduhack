@@ -41,7 +41,7 @@ Features Support
   - [ ] Image to Text
   - [ ] Speech to Text
 - [ ] Datasets
-  - [x] IMDB Urdu Movies Review dataset
+  - [x] IMDB Urdu Movies Review Dataset
 
 
 Installation
