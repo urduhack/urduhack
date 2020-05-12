@@ -8,6 +8,8 @@ import unicodedata
 
 import regex as re
 
+from ..stop_words import STOP_WORDS
+
 CURRENCIES = {'$': 'USD', 'zł': 'PLN', '£': 'GBP', '¥': 'JPY', '฿': 'THB',
               '₡': 'CRC', '₦': 'NGN', '₩': 'KRW', '₪': 'ILS', '₫': 'VND',
               '€': 'EUR', '₱': 'PHP', '₲': 'PYG', '₴': 'UAH', '₹': 'INR'}
@@ -204,3 +206,17 @@ def remove_english_alphabets(text: str):
     characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
     table = str.maketrans({key: None for key in characters})
     return text.translate(table)
+
+
+def remove_stopwords(text: str) -> str:
+    """
+    Remove :const:`~urduhack.stop_words.STOP_WORDS` from `text`.
+
+    Args:
+        text (str): Urdu text
+
+    Returns:
+        str: ``str`` object with stop words removed
+
+    """
+    return " ".join(word for word in text.split() if word not in STOP_WORDS)
