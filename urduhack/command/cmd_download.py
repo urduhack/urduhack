@@ -3,8 +3,8 @@
 
 import click
 
-from urduhack.config import MODELS_URL, URDUHACK_MODElS_DIR
-from urduhack.utils.io import download_from_url, extract_zip
+from urduhack.config import MODELS_URL
+from urduhack.utils.io import download_from_url
 
 
 @click.command()
@@ -13,18 +13,10 @@ def cli():
      Download the specific model from s3.
     """
     _url = MODELS_URL['WORD_TOKENIZER_WEIGHTS']
-    model_file_name = _url.split("/")[-1]
-    model_file_path = f"{URDUHACK_MODElS_DIR}/{model_file_name}"
-    version = model_file_name[8:10]
-    unzip_dir = f"{URDUHACK_MODElS_DIR}/tokenizer/word/{version}"
-    download_from_url(url=_url, file_path=URDUHACK_MODElS_DIR)
-    extract_zip(zip_file=model_file_path, unzip_dir=unzip_dir)
+    file_name = _url.split("/")[-1]
+    download_from_url(file_name=file_name, url=_url, download_dir='tokenizer/v1')
 
     # Sentiment model
     _url = MODELS_URL['SENTIMENT_V1_WEIGHTS']
-    model_file_name = _url.split("/")[-1]
-    model_file_path = f"{URDUHACK_MODElS_DIR}/{model_file_name}"
-    version = model_file_name[10:12]
-    unzip_dir = f"{URDUHACK_MODElS_DIR}/sentiment/{version}"
-    download_from_url(url=_url, file_path=URDUHACK_MODElS_DIR)
-    extract_zip(zip_file=model_file_path, unzip_dir=unzip_dir)
+    file_name = _url.split("/")[-1]
+    download_from_url(file_name=file_name, url=_url, download_dir='sentiment/v1')

@@ -3,10 +3,12 @@
 
 from urduhack import normalize
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS, URDU_DIACRITICS
-from .. import digits_space, punctuations_space, remove_diacritics, english_characters_space
+from urduhack.normalization.character import digits_space, punctuations_space,\
+    remove_diacritics, english_characters_space
 
-from ..character import normalize_characters, CORRECT_URDU_CHARACTERS, normalize_combine_characters, \
-    COMBINE_URDU_CHARACTERS
+from urduhack.normalization.character import normalize_characters, CORRECT_URDU_CHARACTERS,\
+    normalize_combine_characters, \
+    COMBINE_URDU_CHARACTERS, replace_digits
 
 
 def test_normalize():
@@ -292,3 +294,11 @@ def test_remove_diacritics():
 
             if char != ' ':
                 assert char in URDU_ALPHABETS, norm
+
+
+def test_replace_digits():
+    """Test Case"""
+    eng_text = 'سکیورٹی حکام کے مطابق جنوبی صوبے 550 میں رات گئے'
+    ur_text = 'سکیورٹی حکام کے مطابق جنوبی صوبے ۵۵۰ میں رات گئے'
+    assert replace_digits(ur_text) == eng_text
+    assert replace_digits(eng_text, with_eng=False) == ur_text
