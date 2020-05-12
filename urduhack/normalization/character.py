@@ -93,6 +93,9 @@ def normalize_characters(text: str) -> str:
         text (str): raw ``urdu`` text
     Returns:
         str: returns a ``str`` object containing normalized text.
+    Examples:
+        >>> text = normalize("پاکستان ﻤﯿﮟ وسائل کی کوئی کمی نہیں ﮨﮯ۔")
+        پاکستان ﻤﯿﮟ وسائل کی کوئی کمی نہیں ﮨﮯ۔
     """
     return text.translate(_TRANSLATOR)
 
@@ -254,7 +257,6 @@ URDU_ENG_DIGITS_MAP: Dict = {
     '۸': ['8'],
     '۹': ['9']
 }
-
 
 _URDU_DIGITS_TRANSLATOR = {}
 for key, value in URDU_ENG_DIGITS_MAP.items():
