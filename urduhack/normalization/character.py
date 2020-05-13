@@ -94,7 +94,8 @@ def normalize_characters(text: str) -> str:
     Returns:
         str: returns a ``str`` object containing normalized text.
     Examples:
-        >>> text = normalize("پاکستان ﻤﯿﮟ وسائل کی کوئی کمی نہیں ﮨﮯ۔")
+        >>> from urduhack.normalization import normalize_characters
+        >>> text = normalize_characters("پاکستان ﻤﯿﮟ وسائل کی کوئی کمی نہیں ﮨﮯ۔")
         پاکستان ﻤﯿﮟ وسائل کی کوئی کمی نہیں ﮨﮯ۔
     """
     return text.translate(_TRANSLATOR)
