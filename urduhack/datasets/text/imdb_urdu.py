@@ -7,10 +7,6 @@ from typing import Dict
 import tensorflow as tf
 import tensorflow_datasets.public_api as tfds
 
-from urduhack.datasets import CHECKSUM_DIR
-
-tfds.download.add_checksums_dir(CHECKSUM_DIR)
-
 _CITATION = """\
 @InProceedings{maas-EtAl:2011:ACL-HLT2011,
   author    = {Maas, Andrew L. and Daly,nRaymond E. and Pham, Peter T. and Huang, Dan and Ng, Andrew Y...},

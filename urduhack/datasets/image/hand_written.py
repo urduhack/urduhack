@@ -4,10 +4,6 @@
 import numpy as np
 import tensorflow_datasets.public_api as tfds
 
-from urduhack.datasets import CHECKSUM_DIR
-
-tfds.download.add_checksums_dir(CHECKSUM_DIR)
-
 _CITATION = """
 """
 
