@@ -1,0 +1,1 @@
+https://github.com/urduhack/urdu-datasets/releases/download/urdu_handwritten_text_dataset_v1.0.0/uhat_dataset.npz 32654662 f3631a6192bd2c0d59cb1cc2ddf2c34f392abffb7a081815a828adfa3f46c57d

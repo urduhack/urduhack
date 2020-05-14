@@ -42,7 +42,7 @@ to a normal urdu character. To get a bit more of what the above explanation mean
 
 All the characters in all_fes are same but they come from different languages and they all have different unicodes. Now as
 computers deal with numbers, same character appearing in more than one place in a different language will have a different
-unicode and that will create confusion which will be create problems in understanding the context of the data.
+unicode and that will create confusion which will create problems in understanding the context of the data.
 :py:mod:`~character` module will eliminate this problem by replacing all the characters in all_fes by urdu_fe.
 
 To normalize some text, use the :py:func:`~urduhack.normalization.character.normalize_characters` function

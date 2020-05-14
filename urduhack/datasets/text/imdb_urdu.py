@@ -7,8 +7,6 @@ from typing import Dict
 import tensorflow as tf
 import tensorflow_datasets.public_api as tfds
 
-from urduhack.datasets import CHECKSUM_DIR
-
 _CITATION = """\
 @InProceedings{maas-EtAl:2011:ACL-HLT2011,
   author    = {Maas, Andrew L. and Daly,nRaymond E. and Pham, Peter T. and Huang, Dan and Ng, Andrew Y...},
@@ -37,7 +35,6 @@ _DOWNLOAD_URLS: Dict[str, str] = {"train": "https://github.com/urduhack/urdu-dat
                                            "imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews_train.csv",
                                   "test": "https://github.com/urduhack/urdu-datasets/releases/download/"
                                           "imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews_test.csv"}
-tfds.download.add_checksums_dir(CHECKSUM_DIR)
 
 
 class ImdbUrduReviews(tfds.core.GeneratorBasedBuilder):
