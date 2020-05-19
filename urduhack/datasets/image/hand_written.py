@@ -59,6 +59,6 @@ class HandWrittenDigits(tfds.core.GeneratorBasedBuilder):
         images = np.expand_dims(images, axis=-1)
         labels = urdu_dataset[label]
         data = list(zip(images, labels))
-        for index, (image, label) in enumerate(data):
-            record = {"image": image, "label": label}
+        for index, (img, value) in enumerate(data):
+            record = {"image": img, "label": value}
             yield index, record
