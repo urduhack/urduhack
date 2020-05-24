@@ -10,3 +10,17 @@ max-module-lines=10000
 
 [MESSAGES CONTROL]
 disable=exec-used,eval-used,too-many-branches,global-statement,no-self-use,too-few-public-methods
+
+[SIMILARITIES]
+
+# Minimum lines number of a similarity.
+min-similarity-lines=10
+
+# Ignore comments when computing similarities.
+ignore-comments=yes
+
+# Ignore docstrings when computing similarities.
+ignore-docstrings=yes
+
+# Ignore imports when computing similarities.
+ignore-imports=no
