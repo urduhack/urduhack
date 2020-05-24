@@ -14,6 +14,7 @@ __license__ = 'MIT License'
 def get_info() -> dict:
     """
     Get system info about Urduhack library.
+    prints details in Markdown for easy copy-pasting to GitHub issues.
 
     Returns:
         dict: Urduhack library info
