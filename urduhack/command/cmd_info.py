@@ -9,13 +9,13 @@ from urduhack import get_info
 
 
 @click.command()
-@click.argument('markdown', default=False)
+@click.option('--markdown', is_flag=True)
 def cli(markdown):
     """
      Print system info about Urduhack library.
     """
     data = get_info()
-    if markdown is not False:
+    if markdown:
         markdown_format = []
         for key, value in data.items():
             if isinstance(value, str) and Path(value).exists():
