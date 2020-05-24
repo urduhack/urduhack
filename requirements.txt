@@ -1,5 +1,5 @@
-tensorflow~=2.1
-transformers~=2.8
+tensorflow~=2.2
+transformers~=2.10
 tensorflow-datasets~=3.1
 Click~=7.1
 regex
