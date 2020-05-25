@@ -57,9 +57,11 @@ Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 
 | Documentation   |                                                                |
 | --------------- | -------------------------------------------------------------- |
+| [Installation]  | How to install Urduhack and download models                    |
 | [Quickstart]    | New to Urduhack? Here's everything you need to know!           |
-| [API Reference] | The detailed reference for spaCy's API.                        |
+| [API Reference] | The detailed reference for Urduhack's API.                     |
 
+[Installation]: https://urduhack.readthedocs.io/en/stable/installation.html
 [Quickstart]: https://urduhack.readthedocs.io/en/stable/quickstart/index.html
 [Api reference]: https://urduhack.readthedocs.io/en/stable/reference/index.html
 
