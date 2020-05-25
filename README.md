@@ -34,14 +34,15 @@ Features Support
  - [x] Data Pre-processing
      - [x] Handles all kind of numbers, emails, currencies and urls etc.
 - [ ] Tasks
-  - [x] Sentimental Analysis
-  - [ ] Sentence Classification
-  - [ ] Documents Classification
-  - [ ] Name Entity Recognition
-  - [ ] Image to Text
-  - [ ] Speech to Text
-- [ ] Datasets
-  - [x] IMDB Urdu Movies Review Dataset
+  - [x] Sentimental analysis
+  - [ ] Sentence classification
+  - [ ] Documents classification
+  - [ ] Name entity recognition
+  - [ ] Image to text
+  - [ ] Speech to text
+- [x] Datasets
+  - [x] IMDB Urdu movies review dataset
+  - [x] Hand written digits datasets
 
 
 Installation
