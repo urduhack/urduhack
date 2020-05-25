@@ -18,7 +18,7 @@ Urduhack is a NLP library for urdu language. It comes with a lot of battery incl
 data in the easiest way possible.
 
 
-Features Support
+🔥 Features Support
 ----------------
 - [x] Normalization
     - [x] Arabic and Urdu Unicode Redundancy Problem
@@ -45,14 +45,14 @@ Features Support
   - [x] Hand written digits datasets
 
 
-Installation
+🛠 Installation
 ------------
 Urduhack officially supports Python 3.6–3.7, and runs great on PyPy.
 ``` {.sourceCode .bash}
 $ pip install urduhack
 ```
 
-Documentation
+🔗 Documentation
 -------------
 Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 
@@ -79,7 +79,7 @@ How to Contribute
 4.  Send a pull request and bug the maintainer until it gets merged and
     published. :)
 
-Contributors
+👍 Contributors
 -------------
 Special thanks to everyone who contributed to getting the UrduHack to the current state.
 
@@ -94,6 +94,6 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 <a href="https://opencollective.com/urduhack/sponsor/0/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/urduhack/sponsor/1/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/1/avatar.svg"></a>
 
-Copyright and license
+📝 Copyright and license
 ---------------------
 Code released under the [MIT License](ttps://github.com/urduhack/urduhack/blob/master/LICENSE).
