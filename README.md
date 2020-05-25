@@ -55,6 +55,16 @@ Documentation
 -------------
 Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 
+| Documentation   |                                                                |
+| --------------- | -------------------------------------------------------------- |
+| [Quickstart]    | New to Urduhack? Here's everything you need to know!           |
+| [API Reference] | The detailed reference for spaCy's API.                        |
+
+[Quickstart]: https://urduhack.readthedocs.io/en/stable/quickstart/index.html
+[Api reference]: https://urduhack.readthedocs.io/en/stable/reference/index.html
+
+
+
 How to Contribute
 -----------------
 1.  Check for open issues or open a fresh issue to start a discussion
