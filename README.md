@@ -10,7 +10,7 @@ Urduhack: NLP library for ( 🇵🇰 ) Urdu language
 [![codecov](https://codecov.io/gh/urduhack/urduhack/branch/master/graph/badge.svg)](https://codecov.io/gh/urduhack/urduhack)
 [![image](https://img.shields.io/github/contributors/urduhack/urduhack.svg)](https://github.com/urduhack/urduhack/graphs/contributors)
 [![Downloads](https://pepy.tech/badge/urduhack)](https://pepy.tech/project/urduhack)
-[![Join Slack](https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=red)](https://join.slack.com/t/urduhack/shared_invite/zt-5cpkrvz8-Zu_tOyR5AEcspCBCyqhSZQ)
+[![Gitter](https://badges.gitter.im/urduhack/urduhack.svg)](https://gitter.im/urduhack/urduhack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/urduhack/urduhack/blob/master/LICENSE)
 
 
