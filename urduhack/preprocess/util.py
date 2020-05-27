@@ -69,9 +69,6 @@ _SHORT_URL_RE = re.compile(r"(?:^|(?<![\w/.]))"
                            r"(?:$|(?![\w?!+&/]))",
                            flags=re.IGNORECASE)
 
-PUNCTUATION_TRANSLATE_UNICODE = dict.fromkeys((i for i in range(sys.maxunicode)
-                                               if unicodedata.category(chr(i)).startswith('P')), u' ')
-
 
 def normalize_whitespace(text: str):
     """
@@ -86,7 +83,7 @@ def normalize_whitespace(text: str):
     return _NONBREAKING_SPACE_RE.sub(' ', _LINEBREAK_RE.sub(r'\n', text)).strip()
 
 
-def replace_urls(text: str, replace_with='*URL*'):
+def replace_urls(text: str, replace_with=''):
     """
     Replace all URLs in ``text`` str with ``replace_with`` str.
 
@@ -99,7 +96,7 @@ def replace_urls(text: str, replace_with='*URL*'):
     return _URL_RE.sub(replace_with, _SHORT_URL_RE.sub(replace_with, text))
 
 
-def replace_emails(text: str, replace_with='*EMAIL*'):
+def replace_emails(text: str, replace_with=''):
     """
     Replace all emails in ``text`` str with ``replace_with`` str.
 
@@ -112,7 +109,7 @@ def replace_emails(text: str, replace_with='*EMAIL*'):
     return _EMAIL_RE.sub(replace_with, text)
 
 
-def replace_phone_numbers(text: str, replace_with='*PHONE*'):
+def replace_phone_numbers(text: str, replace_with=''):
     """
     Replace all phone numbers in ``text`` str with ``replace_with`` str.
 
@@ -125,7 +122,7 @@ def replace_phone_numbers(text: str, replace_with='*PHONE*'):
     return _PHONE_RE.sub(replace_with, text)
 
 
-def replace_numbers(text: str, replace_with='*NUMBER*'):
+def replace_numbers(text: str, replace_with=''):
     """
     Replace all numbers in ``text`` str with ``replace_with`` str.
 
@@ -159,9 +156,13 @@ def replace_currency_symbols(text: str, replace_with=None):
     return _CURRENCY_RE.sub(replace_with, text)
 
 
+PUNCTUATION_TRANSLATE_UNICODE = dict.fromkeys((i for i in range(sys.maxunicode)
+                                               if unicodedata.category(chr(i)).startswith('P')), '')
+
+
 def remove_punctuation(text: str, marks=None) -> str:
     """
-    Remove punctuation from ``text`` by replacing all instances of ``marks`` with whitespace.
+    Remove punctuation from ``text`` by removing all instances of ``marks``.
 
     Args:
         text (str): raw text
@@ -174,9 +175,14 @@ def remove_punctuation(text: str, marks=None) -> str:
         When ``marks=None``, Python's built-in :meth:`str.translate()` is
         used to remove punctuation; otherwise, a regular expression is used
         instead. The former's performance is about 5-10x faster.
+    Examples:
+        >>> from urduhack.preprocess import remove_punctuation
+        >>> output = remove_punctuation("کر ؟ سکتی ہے۔")
+        کر سکتی ہے
+
     """
     if marks:
-        return re.sub('[{}]+'.format(re.escape(marks)), ' ', text, flags=re.UNICODE)
+        return re.sub('[{}]+'.format(re.escape(marks)), '', text, flags=re.UNICODE)
 
     return text.translate(PUNCTUATION_TRANSLATE_UNICODE)
 

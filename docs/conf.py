@@ -195,4 +195,6 @@ autodoc_mock_imports = [
     "tensorflow",
     "transformers",
     "numpy",
+    "tf",
+    "keras",
 ]

@@ -2,7 +2,7 @@
 """about.py test cases"""
 import regex as re
 
-from urduhack.about import __version__, __description__, __author__, __author_email__, __license__, __url__
+from urduhack.about import __version__, __description__, __author__, __author_email__, __license__, __url__, get_info
 
 
 def test_version():
@@ -36,3 +36,14 @@ def test_url():
     """test cases"""
     assert isinstance(__url__, str)
     assert '.' in __url__
+
+
+def test_get_info():
+    """Test get info function"""
+    data = get_info()
+    assert isinstance(data, dict)
+    for value in data.values():
+        assert isinstance(value, str)
+    keys = ("Urduhack version", "Location", "Python version", "Platform")
+    for _key in keys:
+        assert _key in data.keys()

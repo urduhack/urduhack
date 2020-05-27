@@ -10,7 +10,7 @@ _CITATION = """
 _DESCRIPTION = """
 """
 
-_DOWNLOAD_URL: str = "https://github.com/urduhack/urdu-datasets/releases/download/" \
+_DOWNLOAD_URL: str = "https://github.com/urduhack/resources/releases/download/" \
                      "urdu_handwritten_text_dataset_v1.0.0/uhat_dataset.npz"
 _IMAGE_SIZE = 28
 _IMAGE_SHAPE = (_IMAGE_SIZE, _IMAGE_SIZE, 1)

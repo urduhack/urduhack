@@ -66,7 +66,7 @@ def test_remove_accents():
 def test_remove_punctuation():
     """Test case"""
     text = "کر  ؟ سکتی ہے۔ علینا نے"
-    proc_text = "کر    سکتی ہے  علینا نے"
+    proc_text = "کر   سکتی ہے علینا نے"
     assert remove_punctuation(text) == proc_text
     custom_mark = ["|"]
     text1 = "کر  | سکتی ہے۔ علینا نے"

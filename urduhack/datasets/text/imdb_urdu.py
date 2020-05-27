@@ -31,9 +31,9 @@ The reason behind using this dataset is high polarity for each class.
 It contains 50k samples equally divided in two classes.
 """
 
-_DOWNLOAD_URLS: Dict[str, str] = {"train": "https://github.com/urduhack/urdu-datasets/releases/download/"
+_DOWNLOAD_URLS: Dict[str, str] = {"train": "https://github.com/urduhack/resources/releases/download/"
                                            "imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews_train.csv",
-                                  "test": "https://github.com/urduhack/urdu-datasets/releases/download/"
+                                  "test": "https://github.com/urduhack/resources/releases/download/"
                                           "imdb_urdu_reviews_v1.0.0/imdb_urdu_reviews_test.csv"}
 
 

@@ -67,5 +67,13 @@ jobs:
     displayName: 'Install dependencies'
 
   - script: |
+      urduhack download
+    displayName: 'Downloading Urduhack models'
+
+  - script: |
+      urduhack info
+    displayName: 'Urduhack info'
+
+  - script: |
       pytest --cov=./ --cov-report html --ignore=urduhack/tasks
     displayName: 'pytest'

@@ -10,7 +10,7 @@ Urduhack: NLP library for ( 🇵🇰 ) Urdu language
 [![codecov](https://codecov.io/gh/urduhack/urduhack/branch/master/graph/badge.svg)](https://codecov.io/gh/urduhack/urduhack)
 [![image](https://img.shields.io/github/contributors/urduhack/urduhack.svg)](https://github.com/urduhack/urduhack/graphs/contributors)
 [![Downloads](https://pepy.tech/badge/urduhack)](https://pepy.tech/project/urduhack)
-[![Join Slack](https://img.shields.io/badge/join-us%20on%20slack-gray.svg?longCache=true&logo=slack&colorB=red)](https://join.slack.com/t/urduhack/shared_invite/enQtNDE5NDg4NzU2Mzg4LTk3ZDNlYzBhOWM5MGY0ZGE0ZmNmNzU2ZTViYjAwMTg3NTBmZGU4OTM0M2E0MzQ0NDI1MDIyYzVkYTVmZTkyZjg)
+[![Gitter](https://badges.gitter.im/urduhack/urduhack.svg)](https://gitter.im/urduhack/urduhack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/urduhack/urduhack/blob/master/LICENSE)
 
 
@@ -18,7 +18,7 @@ Urduhack is a NLP library for urdu language. It comes with a lot of battery incl
 data in the easiest way possible.
 
 
-Features Support
+🔥 Features Support
 ----------------
 - [x] Normalization
     - [x] Arabic and Urdu Unicode Redundancy Problem
@@ -34,26 +34,39 @@ Features Support
  - [x] Data Pre-processing
      - [x] Handles all kind of numbers, emails, currencies and urls etc.
 - [ ] Tasks
-  - [x] Sentimental Analysis
-  - [ ] Sentence Classification
-  - [ ] Documents Classification
-  - [ ] Name Entity Recognition
-  - [ ] Image to Text
-  - [ ] Speech to Text
-- [ ] Datasets
-  - [x] IMDB Urdu Movies Review Dataset
+  - [x] Sentimental analysis
+  - [ ] Sentence classification
+  - [ ] Documents classification
+  - [ ] Name entity recognition
+  - [ ] Image to text
+  - [ ] Speech to text
+- [x] Datasets
+  - [x] IMDB Urdu movies review dataset
+  - [x] Hand written digits datasets
 
 
-Installation
+🛠 Installation
 ------------
 Urduhack officially supports Python 3.6–3.7, and runs great on PyPy.
 ``` {.sourceCode .bash}
 $ pip install urduhack
 ```
 
-Documentation
+🔗 Documentation
 -------------
 Fantastic documentation is available at <https://urduhack.readthedocs.io/>
+
+| Documentation   |                                                                |
+| --------------- | -------------------------------------------------------------- |
+| [Installation]  | How to install Urduhack and download models                    |
+| [Quickstart]    | New to Urduhack? Here's everything you need to know!           |
+| [API Reference] | The detailed reference for Urduhack's API.                     |
+
+[Installation]: https://urduhack.readthedocs.io/en/stable/installation.html
+[Quickstart]: https://urduhack.readthedocs.io/en/stable/quickstart/index.html
+[Api reference]: https://urduhack.readthedocs.io/en/stable/reference/index.html
+
+
 
 How to Contribute
 -----------------
@@ -66,7 +79,7 @@ How to Contribute
 4.  Send a pull request and bug the maintainer until it gets merged and
     published. :)
 
-Contributors
+👍 Contributors
 -------------
 Special thanks to everyone who contributed to getting the UrduHack to the current state.
 
@@ -81,6 +94,6 @@ Support this project by becoming a sponsor. Your logo will show up here with a l
 <a href="https://opencollective.com/urduhack/sponsor/0/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/urduhack/sponsor/1/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/1/avatar.svg"></a>
 
-Copyright and license
+📝 Copyright and license
 ---------------------
 Code released under the [MIT License](ttps://github.com/urduhack/urduhack/blob/master/LICENSE).
