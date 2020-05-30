@@ -1,5 +1,5 @@
-Urduhack: NLP library for ( 🇵🇰 ) Urdu language
-================================================
+Urduhack: A Python NLP library for Urdu language
+=================================================
 
 [![image](https://img.shields.io/pypi/pyversions/urduhack.svg)](https://pypi.org/project/urduhack/)
 [![image](https://img.shields.io/pypi/v/urduhack.svg)](https://pypi.org/project/urduhack/)
