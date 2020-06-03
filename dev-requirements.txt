@@ -1,5 +1,3 @@
--r requirements.txt
-
 wheel
 pytest~=5.4
 pytest-cov

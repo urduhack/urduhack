@@ -20,8 +20,8 @@ jobs:
       versionSpec: '3.7'
   - script: |
       python -m pip install --upgrade pip
-      pip install .
       pip install -r dev-requirements.txt
+      pip install .[tf]
       pip install pytest-azurepipelines
       urduhack download
       pytest --ignore=urduhack/tasks
@@ -60,8 +60,8 @@ jobs:
 
   - script: |
       python -m pip install --upgrade pip
-      pip install .
       pip install -r dev-requirements.txt
+      pip install .[tf]
       pip install pytest-azurepipelines
       urduhack download
     displayName: 'Install dependencies'
