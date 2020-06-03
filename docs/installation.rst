@@ -11,17 +11,15 @@ Installation
 
 Basic Installation
 ------------------
-The easiest way to install **urduhack** is by :command:`pip` install.::
+The easiest way to install **urduhack** is by :command:`pip` install.
 
- Installing with tensorflow cpu version.
+ Installing with tensorflow **cpu** version.::
 
     $ pip install Urduhack[tf]
 
-
- Installing with tensorflow gpu version.
+ Installing with tensorflow **gpu** version.::
 
     $ pip install Urduhack[tf-gpu]
-
 
 Dependencies
 ------------
