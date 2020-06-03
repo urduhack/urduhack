@@ -19,6 +19,7 @@ def test_load_vocab(tmpdir):
 
     assert isinstance(file_name, str)
     assert len(_load_vocab(file_name)) == 2
+    assert isinstance(_load_vocab(file_name), tuple)
     char2idx, idx2char = _load_vocab(file_name)
     assert isinstance(char2idx, dict)
     assert isinstance(idx2char, dict)
@@ -86,4 +87,4 @@ def test_word_tokenizer():
 def test_is_model_exist():
     """Test Case"""
     with pytest.raises(FileNotFoundError):
-        _is_model_exist(model_path="urduhack/models", vocab_path="urduhack/models")
+        _is_model_exist(model_path="urduhack/unknown_path_to_models", vocab_path="urduhack/unknown_path_to_models")

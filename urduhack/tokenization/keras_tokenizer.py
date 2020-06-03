@@ -6,6 +6,7 @@ keras_tokenizer module
 This module create tokens using a pre-trained sequence model .
 """
 from pathlib import Path
+from typing import Tuple
 
 import numpy as np
 import tensorflow as tf
@@ -13,7 +14,7 @@ import tensorflow as tf
 from ..errors import Errors
 
 
-def _load_vocab(vocab_path: str) -> dict:
+def _load_vocab(vocab_path: str) -> Tuple[dict, dict]:
     """
     Maps characters to integers and vice versa
     Args:
