@@ -1,5 +1,5 @@
-Urduhack: NLP library for ( 🇵🇰 ) Urdu language
-================================================
+Urduhack: A Python NLP library for Urdu language
+=================================================
 
 [![image](https://img.shields.io/pypi/pyversions/urduhack.svg)](https://pypi.org/project/urduhack/)
 [![image](https://img.shields.io/pypi/v/urduhack.svg)](https://pypi.org/project/urduhack/)
@@ -48,8 +48,15 @@ data in the easiest way possible.
 🛠 Installation
 ------------
 Urduhack officially supports Python 3.6–3.7, and runs great on PyPy.
+
+Installing with tensorflow cpu version.
 ``` {.sourceCode .bash}
-$ pip install urduhack
+$ pip install urduhack[tf]
+```
+
+Installing with tensorflow gpu version.
+``` {.sourceCode .bash}
+$ pip install urduhack[tf-gpu]
 ```
 
 🔗 Documentation
