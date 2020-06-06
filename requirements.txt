@@ -1,4 +1,5 @@
 transformers~=2.10
 tensorflow-datasets~=3.1
 Click~=7.1
+pyconll~=2.2
 regex
