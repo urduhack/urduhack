@@ -51,7 +51,7 @@ def setup_package():
 
           extras_require={
               "tf": ["tensorflow~=2.2"],
-              "tf_gpu": ["tensorflow-gpu~=2.2"]
+              "tf-gpu": ["tensorflow-gpu~=2.2"]
           },
 
           setup_requires=[],
