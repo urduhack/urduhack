@@ -1,12 +1,11 @@
 # coding: utf8
 """Conll format parser"""
 
-from typing import Dict
+from typing import Dict, Tuple, Any, Optional, List
 
 import regex as re
 
-from .exception import ParseError
-from .reader import CoNLL
+from urduhack.conll.exception import ParseError
 
 COMMENT_MARKER = '#'
 KEY_VALUE_COMMENT_PATTERN = COMMENT_MARKER + r'\s*([^=]+?)\s*=\s*(.+)'
@@ -16,8 +15,19 @@ TEXT_KEY = 'text'
 FIELD_DELIMITER = '\t'
 
 
-def parse_conll_token(line: str) -> Dict:
-    """Parse single conll line"""
+def parse_conll_token(line: str) -> dict:
+    """
+    Parse single conll line
+
+    Args:
+        line (str): A single conll-u token line
+
+    Returns:
+         A dictionary containing conll-u token attributes
+
+    Raises:
+        ParseError: If the number of columns in line are not 10
+    """
     if line[-1] == '\n':
         line = line[:-1]
 
@@ -26,24 +36,30 @@ def parse_conll_token(line: str) -> Dict:
         raise ParseError(f'The number of columns per token line must be 10. Invalid token: {line}')
 
     token: dict = {
-        CoNLL.ID: fields[0],
-        CoNLL.TEXT: fields[1],
-        CoNLL.LEMMA: fields[2],
-        CoNLL.UPOS: fields[3],
-        CoNLL.XPOS: fields[4],
-        CoNLL.FEATS: fields[5],
-        CoNLL.HEAD: fields[6],
-        CoNLL.DEPREL: fields[7],
-        CoNLL.DEPS: fields[8],
-        CoNLL.MISC: fields[9],
+        'ID': fields[0],
+        'TEXT': fields[1],
+        'LEMMA': fields[2],
+        'UPOS': fields[3],
+        'XPOS': fields[4],
+        'FEATS': fields[5],
+        'HEAD': fields[6],
+        'DEPREL': fields[7],
+        'DEPS': fields[8],
+        'MISC': fields[9],
     }
 
     return token
 
 
-def parse_conll_sentence(sentence):
+def parse_conll_sentence(sentence: str) -> Tuple[Dict[Any, Optional[Any]], List[Dict]]:
     """
     Parse single conll sentence
+
+    Args:
+        sentence (str):  A complete conllu sentence
+
+    Returns:
+        Two dicts containing sentence metadata and token data
     """
     lines = sentence.split('\n')
     _meta = {}
@@ -55,9 +71,9 @@ def parse_conll_sentence(sentence):
                 kv_match = re.match(KEY_VALUE_COMMENT_PATTERN, line)
                 singleton_match = re.match(SINGLETON_COMMENT_PATTERN, line)
                 if kv_match:
-                    k = kv_match.group(1)
-                    v = kv_match.group(2)
-                    _meta[k] = v
+                    key = kv_match.group(1)
+                    val = kv_match.group(2)
+                    _meta[key] = val
                 elif singleton_match:
                     k = singleton_match.group(1)
                     _meta[k] = None
@@ -67,7 +83,7 @@ def parse_conll_sentence(sentence):
     return _meta, _tokens
 
 
-def _create_sentence(sent_lines):
+def _create_sentence(sent_lines: iter) -> Tuple[Dict[Any, Optional[Any]], List[Dict]]:
     """
     Creates a Sentence object given the current state of the source iteration.
 
@@ -83,7 +99,7 @@ def _create_sentence(sent_lines):
     return parse_conll_sentence('\n'.join(sent_lines))
 
 
-def _iter_lines(lines):
+def _iter_lines(lines: iter) -> iter:
     """
     Iterate over the constructed sentences in the given lines.
 

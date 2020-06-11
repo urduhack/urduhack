@@ -19,7 +19,7 @@ class CoNLL:
     MISC = 'misc'
 
     @staticmethod
-    def load_file(file_name: str):
+    def load_file(file_name: str) -> list:
         """
         Load a CoNLL-U file given its location.
 
@@ -41,7 +41,7 @@ class CoNLL:
         return _sentences
 
     @staticmethod
-    def iter_file(file_name: str):
+    def iter_file(file_name: str) -> str:
         """
         Iterate over a CoNLL-U file's sentences.
 
@@ -55,12 +55,12 @@ class CoNLL:
             IOError if there is an error opening the file.
             ParseError: If there is an error parsing the input into a Conll object.
         """
-        with open(file_name, encoding='utf8') as f:
-            for sentence in _iter_lines(f):
+        with open(file_name, encoding='utf8') as file:
+            for sentence in _iter_lines(file):
                 yield sentence
 
     @staticmethod
-    def iter_from_string(text: str):
+    def iter_from_string(text: str) -> str:
         """
         Iterate over a CoNLL-U string's sentences.
 
