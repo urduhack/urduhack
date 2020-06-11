@@ -1,12 +1,10 @@
 # coding: utf8
 """A minimal module to parse CoNLL files."""
 
-from enum import Enum
-
 from urduhack.conll.parser import _iter_lines
 
 
-class CoNLL(Enum):
+class CoNLL:
     """A Conll class to easily load conll-u formats. This module can also load resources by iterating over string.
     This module is the main entrance to pyconll's functionalities."""
     ID = 'id'
@@ -21,7 +19,7 @@ class CoNLL(Enum):
     MISC = 'misc'
 
     @staticmethod
-    def load_from_file(file_name: str):
+    def load_file(file_name: str):
         """
         Load a CoNLL-U file given its location.
 
@@ -41,3 +39,43 @@ class CoNLL(Enum):
                 _sentences.append(sentence)
 
         return _sentences
+
+    @staticmethod
+    def iter_file(file_name: str):
+        """
+        Iterate over a CoNLL-U file's sentences.
+
+        Args:
+            file_name (str): The name of the file whose sentences should be iterated over.
+
+        Yields:
+            The sentences that make up the CoNLL-U file.
+
+        Raises:
+            IOError if there is an error opening the file.
+            ParseError: If there is an error parsing the input into a Conll object.
+        """
+        with open(file_name, encoding='utf8') as f:
+            for sentence in _iter_lines(f):
+                yield sentence
+
+    @staticmethod
+    def iter_from_string(text: str):
+        """
+        Iterate over a CoNLL-U string's sentences.
+
+        Use this method if you only need to iterate over the CoNLL-U file once and
+        do not need to create or store the Conll object.
+
+        Args:
+            text (str): The CoNLL-U string.
+
+        Yields:
+            The sentences that make up the CoNLL-U file.
+
+        Raises:
+            ParseError: If there is an error parsing the input into a Conll object.
+        """
+        lines = text.splitlines()
+        for sentence in _iter_lines(lines):
+            yield sentence
