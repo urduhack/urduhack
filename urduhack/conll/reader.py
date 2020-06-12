@@ -8,11 +8,6 @@ class CoNLL:
     """
     A Conll class to easily load conll-u formats. This module can also load resources by iterating over string.
     This module is the main entrance to pyconll's functionalities.
-
-    Example:
-        >>> from urduhack.conll import CoNLL
-        >>> conll_reader = CoNLL()
-        >>> conll_data = conll_reader.load_file(file_name='example.conll')
     """
     ID = 'id'
     TEXT = 'text'
@@ -67,7 +62,7 @@ class CoNLL:
                 yield sentence
 
     @staticmethod
-    def iter_from_string(text: str) -> str:
+    def iter_string(text: str) -> str:
         """
         Iterate over a CoNLL-U string's sentences.
 
