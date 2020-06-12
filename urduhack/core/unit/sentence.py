@@ -6,12 +6,13 @@ Basic data structures
 import io
 import json
 from typing import Tuple
+from urduhack.conll.conllable import Conllable
 
 from urduhack.conll import CoNLL
 from .token import Token, Word
 
 
-class Sentence:
+class Sentence(Conllable):
     """ A sentence class that stores attributes of a sentence and carries a list of tokens.
     """
 
@@ -114,6 +115,9 @@ class Sentence:
         for token in self.tokens:
             ret += token.to_dict()
         return ret
+
+    def conll(self):
+        """Convert doc object into conll string"""
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
