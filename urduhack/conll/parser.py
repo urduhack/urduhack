@@ -10,8 +10,6 @@ from urduhack.conll.exception import ParseError
 COMMENT_MARKER = '#'
 KEY_VALUE_COMMENT_PATTERN = COMMENT_MARKER + r'\s*([^=]+?)\s*=\s*(.+)'
 SINGLETON_COMMENT_PATTERN = COMMENT_MARKER + r'\s*(\S.*?)\s*$'
-SENTENCE_ID_KEY = 'sent_id'
-TEXT_KEY = 'text'
 FIELD_DELIMITER = '\t'
 
 
@@ -36,16 +34,16 @@ def parse_conll_token(line: str) -> dict:
         raise ParseError(f'The number of columns per token line must be 10. Invalid token: {line}')
 
     token: dict = {
-        'ID': fields[0],
-        'TEXT': fields[1],
-        'LEMMA': fields[2],
-        'UPOS': fields[3],
-        'XPOS': fields[4],
-        'FEATS': fields[5],
-        'HEAD': fields[6],
-        'DEPREL': fields[7],
-        'DEPS': fields[8],
-        'MISC': fields[9],
+        'id': fields[0],
+        'text': fields[1],
+        'lemma': fields[2],
+        'upos': fields[3],
+        'xpos': fields[4],
+        'feats': fields[5],
+        'head': fields[6],
+        'deprel': fields[7],
+        'deps': fields[8],
+        'misc': fields[9],
     }
 
     return token
@@ -56,14 +54,14 @@ def parse_conll_sentence(sentence: str) -> Tuple[Dict[Any, Optional[Any]], List[
     Parse single conll sentence
 
     Args:
-        sentence (str):  A complete conllu sentence
+        sentence (str):  A complete conll-u sentence
 
     Returns:
         Two dicts containing sentence metadata and token data
     """
     lines = sentence.split('\n')
-    _meta = {}
-    _tokens = []
+    sentence_meta = {}
+    tokens = []
 
     for line in lines:
         if line:
@@ -73,14 +71,14 @@ def parse_conll_sentence(sentence: str) -> Tuple[Dict[Any, Optional[Any]], List[
                 if kv_match:
                     key = kv_match.group(1)
                     val = kv_match.group(2)
-                    _meta[key] = val
+                    sentence_meta[key] = val
                 elif singleton_match:
                     k = singleton_match.group(1)
-                    _meta[k] = None
+                    sentence_meta[k] = None
             else:
                 token = parse_conll_token(line)
-                _tokens.append(token)
-    return _meta, _tokens
+                tokens.append(token)
+    return sentence_meta, tokens
 
 
 def _create_sentence(sent_lines: iter) -> Tuple[Dict[Any, Optional[Any]], List[Dict]]:
@@ -129,3 +127,25 @@ def _iter_lines(lines: iter) -> iter:
     if sent_lines:
         conll_sentence = _create_sentence(sent_lines)
         yield conll_sentence
+
+
+def _load_file(file_name: str):
+    """
+    Load a CoNLL-U file given its location.
+
+    Args:
+        file_name (str): The location of the file.
+
+    Returns:
+        A Conll object equivalent to the provided file.
+
+    Raises:
+        IOError: If there is an error opening the given filename.
+        ParseError: If there is an error parsing the input into a Conll object.
+    """
+    conll_data = []
+    with open(file_name, encoding='utf8') as file:
+        for sentence in _iter_lines(file):
+            conll_data.append(sentence)
+
+    return conll_data

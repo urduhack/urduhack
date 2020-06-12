@@ -1,7 +1,7 @@
 # coding: utf8
 """A minimal module to parse CoNLL files."""
 
-from urduhack.conll.parser import _iter_lines
+from urduhack.conll.parser import _iter_lines, _load_file
 
 
 class CoNLL:
@@ -35,12 +35,7 @@ class CoNLL:
             IOError: If there is an error opening the given filename.
             ParseError: If there is an error parsing the input into a Conll object.
         """
-        _sentences = []
-        with open(file_name, encoding='utf8') as file:
-            for sentence in _iter_lines(file):
-                _sentences.append(sentence)
-
-        return _sentences
+        return _load_file(file_name)
 
     @staticmethod
     def iter_file(file_name: str) -> str:
