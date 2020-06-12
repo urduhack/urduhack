@@ -1,6 +1,6 @@
 # coding: utf8
 """
-Holds custom pyconll errors. These errors include parsing errors when reading and writing CoNLL objects.
+Holds custom conll errors. These errors include parsing errors when reading and writing CoNLL objects.
 """
 
 

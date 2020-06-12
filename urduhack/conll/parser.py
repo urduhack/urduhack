@@ -129,7 +129,7 @@ def _iter_lines(lines: iter) -> iter:
         yield conll_sentence
 
 
-def _load_file(file_name: str):
+def _load_file(file_name: str) -> List[Tuple]:
     """
     Load a CoNLL-U file given its location.
 
@@ -137,7 +137,7 @@ def _load_file(file_name: str):
         file_name (str): The location of the file.
 
     Returns:
-        A Conll object equivalent to the provided file.
+        List[Tuple]: A Conll object equivalent to the provided file.
 
     Raises:
         IOError: If there is an error opening the given filename.

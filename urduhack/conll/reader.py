@@ -1,6 +1,8 @@
 # coding: utf8
 """A minimal module to parse CoNLL files."""
 
+from typing import Tuple, List
+
 from urduhack.conll.parser import _iter_lines, _load_file
 
 
@@ -21,7 +23,7 @@ class CoNLL:
     MISC = 'misc'
 
     @staticmethod
-    def load_file(file_name: str) -> list:
+    def load_file(file_name: str) -> List[Tuple]:
         """
         Load a CoNLL-U file given its location.
 
@@ -29,7 +31,7 @@ class CoNLL:
             file_name (str): The location of the file.
 
         Returns:
-            A Conll object equivalent to the provided file.
+           List[Tuple]: A Conll object equivalent to the provided file.
 
         Raises:
             IOError: If there is an error opening the given filename.
