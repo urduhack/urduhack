@@ -1,7 +1,7 @@
 # coding: utf8
 """Conll format parser"""
 
-from typing import Dict, Tuple, Any, Optional, List
+from typing import Dict, Tuple, Any, Optional, List, Iterator
 
 import regex as re
 
@@ -97,7 +97,7 @@ def _create_sentence(sent_lines: iter) -> Tuple[Dict[Any, Optional[Any]], List[D
     return parse_conll_sentence('\n'.join(sent_lines))
 
 
-def _iter_lines(lines: iter) -> iter:
+def _iter_lines(lines: iter) -> Iterator[Tuple]:
     """
     Iterate over the constructed sentences in the given lines.
 

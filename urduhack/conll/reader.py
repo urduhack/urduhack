@@ -1,7 +1,7 @@
 # coding: utf8
 """A minimal module to parse CoNLL files."""
 
-from typing import Tuple, List
+from typing import Tuple, List, Iterator
 
 from urduhack.conll.parser import _iter_lines, _load_file
 
@@ -40,7 +40,7 @@ class CoNLL:
         return _load_file(file_name)
 
     @staticmethod
-    def iter_file(file_name: str) -> str:
+    def iter_file(file_name: str) -> Iterator[Tuple]:
         """
         Iterate over a CoNLL-U file's sentences.
 
@@ -48,7 +48,7 @@ class CoNLL:
             file_name (str): The name of the file whose sentences should be iterated over.
 
         Yields:
-            The sentences that make up the CoNLL-U file.
+            Iterator[Tuple]: The sentences that make up the CoNLL-U file.
 
         Raises:
             IOError if there is an error opening the file.
@@ -59,7 +59,7 @@ class CoNLL:
                 yield sentence
 
     @staticmethod
-    def iter_string(text: str) -> str:
+    def iter_string(text: str) -> Iterator[Tuple]:
         """
         Iterate over a CoNLL-U string's sentences.
 
@@ -70,7 +70,7 @@ class CoNLL:
             text (str): The CoNLL-U string.
 
         Yields:
-            The sentences that make up the CoNLL-U file.
+            Iterator[Tuple]: The sentences that make up the CoNLL-U file.
 
         Raises:
             ParseError: If there is an error parsing the input into a Conll object.
