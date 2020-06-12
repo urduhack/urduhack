@@ -27,7 +27,7 @@ class Token:
     a (multi-word) token might be expanded into multiple words that carry syntactic annotations.
     """
 
-    def __init__(self, token_entry: Dict[str:str], words=None):
+    def __init__(self, token_entry: Dict, words=None):
         """ Construct a token given a dictionary format token entry. Optionally link itself to the corresponding words.
         """
         assert token_entry.get(CoNLL.ID) and token_entry.get(CoNLL.TEXT), 'id and text should be included for the token'
@@ -147,7 +147,7 @@ class Word(Conllable):
     """ A word class that stores attributes of a word.
     """
 
-    def __init__(self, word_entry: Dict[str:str]):
+    def __init__(self, word_entry: Dict):
         """ Construct a word given a dictionary format word entry.
         """
         assert word_entry.get(CoNLL.ID) and word_entry.get(CoNLL.TEXT), 'id and text should be included for the' \
