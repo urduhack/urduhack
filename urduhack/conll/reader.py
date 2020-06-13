@@ -22,6 +22,7 @@ class CoNLL:
     DEPS = 'deps'
     MISC = 'misc'
 
+    COMMENT_MARKER = '#'
     FIELD_DELIMITER = '\t'
     EMPTY = '_'
 

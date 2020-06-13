@@ -1,10 +1,10 @@
 # coding: utf8
 """
-Basic data structures
+Sentence data structures
 """
-
 import io
 import json
+import operator
 from typing import Tuple
 
 from urduhack.conll import CoNLL
@@ -161,8 +161,28 @@ class Sentence(Conllable):
             ret += token.to_dict()
         return ret
 
-    def conll(self):
-        """Convert doc object into conll string"""
+    def conll(self) -> str:
+        """
+        Convert the sentence to a CoNLL-U representation.
+
+        Returns:
+            str: A string representing the Sentence in CoNLL-U format.
+        """
+        lines = []
+        sorted_meta = sorted(self._meta.items(), key=operator.itemgetter(0))
+        for meta in sorted_meta:
+            if meta[1] is not None:
+                line = '{} {} = {}'.format(CoNLL.COMMENT_MARKER, meta[0],
+                                           meta[1])
+            else:
+                line = '{} {}'.format(CoNLL.COMMENT_MARKER, meta[0])
+
+            lines.append(line)
+
+        for word in self.words:
+            lines.append(word.conll())
+
+        return '\n'.join(lines)
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
