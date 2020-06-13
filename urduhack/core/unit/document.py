@@ -162,8 +162,19 @@ class Document(Conllable):
         """
         return [sentence.to_dict() for sentence in self.sentences]
 
-    def conll(self):
-        """Convert doc object into conll string"""
+    def conll(self) -> str:
+        """
+        Output the Conll object to a CoNLL-U formatted string.
+
+        Returns:
+            str: The CoNLL-U object as a string. This string will end in a newline.
+        """
+        # Add newlines along with sentence strings so that there is no need to
+        # slice potentially long lists or modify strings.
+        components = list(map(lambda sent: sent.conll(), self.sentences))
+        components.append('')
+
+        return '\n\n'.join(components)
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
