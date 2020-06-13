@@ -23,6 +23,27 @@ class CoNLL:
     MISC = 'misc'
 
     @staticmethod
+    def get_fields() -> List[str]:
+        """
+        List of conll fields
+
+        Returns:
+            list: conll fields
+        """
+        return [
+            CoNLL.ID,
+            CoNLL.TEXT,
+            CoNLL.LEMMA,
+            CoNLL.UPOS,
+            CoNLL.XPOS,
+            CoNLL.FEATS,
+            CoNLL.HEAD,
+            CoNLL.DEPREL,
+            CoNLL.DEPS,
+            CoNLL.MISC
+        ]
+
+    @staticmethod
     def load_file(file_name: str) -> List[Tuple]:
         """
         Load a CoNLL-U file given its location.

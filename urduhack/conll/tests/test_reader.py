@@ -4,6 +4,15 @@ from urduhack.conll.reader import CoNLL
 from .test_parser import CONLL_SENTENCE
 
 
+def test_get_fields():
+    """Test Case"""
+    fields = CoNLL.get_fields()
+    assert isinstance(fields, list)
+    for item in fields:
+        assert isinstance(item, str)
+    assert len(fields) == 10
+
+
 def test_iter_string():
     """Test Case"""
     for sentence in CoNLL.iter_string(CONLL_SENTENCE):
