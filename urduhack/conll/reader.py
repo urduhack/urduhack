@@ -29,10 +29,10 @@ class CoNLL:
     @staticmethod
     def get_fields() -> List[str]:
         """
-        List of conll fields
+        Get the list of conll fields
 
         Returns:
-            list: conll fields
+            List[str]: Return list of conll fields
         """
         return [
             CoNLL.ID,
@@ -60,7 +60,7 @@ class CoNLL:
 
         Raises:
             IOError: If there is an error opening the given filename.
-            ParseError: If there is an error parsing the input into a Conll object.
+            ValueError: If there is an error parsing the input into a Conll object.
         """
         return _load_file(file_name)
 
@@ -76,7 +76,7 @@ class CoNLL:
             Iterator[Tuple]: The sentences that make up the CoNLL-U file.
 
         Raises:
-            IOError if there is an error opening the file.
+            IOError: If there is an error opening the file.
             ParseError: If there is an error parsing the input into a Conll object.
         """
         with open(file_name, encoding='utf8') as file:
