@@ -31,7 +31,7 @@ def parse_conll_token(line: str) -> dict:
     if len(fields) != 10:
         raise ValueError(f'The number of columns per token line must be 10. Invalid token: {line}')
 
-    token: dict = {
+    return {
         'id': fields[0],
         'text': fields[1],
         'lemma': fields[2],
@@ -43,8 +43,6 @@ def parse_conll_token(line: str) -> dict:
         'deps': fields[8],
         'misc': fields[9],
     }
-
-    return token
 
 
 def parse_conll_sentence(sentence: str) -> Tuple[Dict[Any, Optional[Any]], List[Dict]]:
