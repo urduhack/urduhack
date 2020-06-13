@@ -327,8 +327,25 @@ class Word(Conllable):
     def _is_null(self, value):
         return (value is None) or (value == '_')
 
-    def conll(self):
-        """Convert doc object into conll string"""
+    def conll(self) -> str:
+        """
+        Convert this Word to its CoNLL-U representation.
+
+        A Token's CoNLL-U representation is a line. Note that this method does
+        not include a newline at the end.
+        
+        Returns:
+            str:  A string representing the Word in CoNLL-U format.
+        """
+        items: list = []
+        for field in CoNLL.get_fields():
+            value = getattr(self, field)
+            if value is None:
+                items.append(CoNLL.EMPTY)
+            else:
+                items.append(str(value))
+
+        return CoNLL.FIELD_DELIMITER.join(items)
 
 
 class Span:
