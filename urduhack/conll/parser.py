@@ -5,8 +5,6 @@ from typing import Dict, Tuple, Any, Optional, List, Iterator
 
 import regex as re
 
-from urduhack.conll.exception import ParseError
-
 COMMENT_MARKER = '#'
 KEY_VALUE_COMMENT_PATTERN = COMMENT_MARKER + r'\s*([^=]+?)\s*=\s*(.+)'
 SINGLETON_COMMENT_PATTERN = COMMENT_MARKER + r'\s*(\S.*?)\s*$'
@@ -24,14 +22,14 @@ def parse_conll_token(line: str) -> dict:
          A dictionary containing conll-u token attributes
 
     Raises:
-        ParseError: If the number of columns in line are not 10
+        ValueError: If the number of columns in line are not 10
     """
     if line[-1] == '\n':
         line = line[:-1]
 
     fields = line.split(FIELD_DELIMITER)
     if len(fields) != 10:
-        raise ParseError(f'The number of columns per token line must be 10. Invalid token: {line}')
+        raise ValueError(f'The number of columns per token line must be 10. Invalid token: {line}')
 
     token: dict = {
         'id': fields[0],
