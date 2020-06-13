@@ -9,7 +9,7 @@ from urduhack.conll.parser import _iter_lines, _load_file
 class CoNLL:
     """
     A Conll class to easily load conll-u formats. This module can also load resources by iterating over string.
-    This module is the main entrance to pyconll's functionalities.
+    This module is the main entrance to conll's functionalities.
     """
     ID = 'id'
     TEXT = 'text'
