@@ -22,6 +22,9 @@ class CoNLL:
     DEPS = 'deps'
     MISC = 'misc'
 
+    FIELD_DELIMITER = '\t'
+    EMPTY = '_'
+
     @staticmethod
     def get_fields() -> List[str]:
         """
