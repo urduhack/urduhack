@@ -6,9 +6,9 @@ Basic data structures
 import io
 import json
 from typing import Tuple
-from urduhack.conll.conllable import Conllable
 
 from urduhack.conll import CoNLL
+from urduhack.conll.conllable import Conllable
 from .token import Token, Word
 
 
@@ -20,6 +20,7 @@ class Sentence(Conllable):
         """ Construct a sentence given a dict object which contain sentence meta and
         tokens in the form of CoNLL-U dicts.
         """
+        self._meta = {}
         self._tokens = []
         self._words = []
         self._dependencies = []
@@ -29,10 +30,54 @@ class Sentence(Conllable):
 
         self._process(sentence)
 
+    def meta_value(self, key: str):
+        """
+        Returns the value associated with the key in the metadata (comments).
+
+        Args:
+            key: The key whose value to look up.
+
+        Returns:
+            The value associated with the key as a string. If the key is a
+            singleton then None is returned.
+
+        Raises:
+            KeyError: If the key is not present in the comments.
+        """
+        return self._meta[key]
+
+    def meta_present(self, key: str):
+        """
+        Check if the key is present as a singleton or as a pair.
+
+        Args:
+            key: The value to check for in the comments.
+
+        Returns:
+            True if the key was provided as a singleton or as a key value pair.
+            False otherwise.
+        """
+        return key in self._meta
+
+    def set_meta(self, key: str, value=None):
+        """
+        Set the metadata or comments associated with this Sentence.
+
+        Args:
+            key: The key for the comment.
+            value: The value to associate with the key. If the comment is a
+                singleton, this field can be ignored or set to None.
+        """
+        self._meta[key] = value
+
     def _process(self, sentence):
         st, en = -1, -1
         self.tokens, self.words = [], []
         sentence_meta, tokens = sentence
+
+        for key, value in sentence_meta.items():
+            self.set_meta(key, value)
+
         for i, entry in enumerate(tokens):
             if CoNLL.ID not in entry:  # manually set a 1-based id for word if not exist
                 entry[CoNLL.ID] = str(i + 1)

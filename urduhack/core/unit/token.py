@@ -333,7 +333,7 @@ class Word(Conllable):
 
         A Token's CoNLL-U representation is a line. Note that this method does
         not include a newline at the end.
-        
+
         Returns:
             str:  A string representing the Word in CoNLL-U format.
         """
