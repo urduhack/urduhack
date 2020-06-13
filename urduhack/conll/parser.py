@@ -81,22 +81,6 @@ def parse_conll_sentence(sentence: str) -> Tuple[Dict[Any, Optional[Any]], List[
     return sentence_meta, tokens
 
 
-def _create_sentence(sent_lines: iter) -> Tuple[Dict[Any, Optional[Any]], List[Dict]]:
-    """
-    Creates a Sentence object given the current state of the source iteration.
-
-    Args:
-        sent_lines: An iterable of the lines that make up the source.
-
-    Returns:
-        The created Sentence.
-
-    Raises:
-        ParseError: If the sentence source is not valid.
-    """
-    return parse_conll_sentence('\n'.join(sent_lines))
-
-
 def _iter_lines(lines: iter) -> Iterator[Tuple]:
     """
     Iterate over the constructed sentences in the given lines.
@@ -120,13 +104,15 @@ def _iter_lines(lines: iter) -> Iterator[Tuple]:
         if line:
             sent_lines.append(line)
         elif sent_lines:
-            conll_sentence = _create_sentence(sent_lines)
+            single_conll_sentence = '\n'.join(sent_lines)
+            _sentence = parse_conll_sentence(single_conll_sentence)
             sent_lines.clear()
-            yield conll_sentence
+            yield _sentence
 
     if sent_lines:
-        conll_sentence = _create_sentence(sent_lines)
-        yield conll_sentence
+        single_conll_sentence = '\n'.join(sent_lines)
+        _sentence = parse_conll_sentence(single_conll_sentence)
+        yield _sentence
 
 
 def _load_file(file_name: str) -> List[Tuple]:

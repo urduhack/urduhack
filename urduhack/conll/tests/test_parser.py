@@ -1,6 +1,6 @@
 """Test Cases"""
 
-from urduhack.conll.parser import parse_conll_sentence, parse_conll_token, _iter_lines, _create_sentence
+from urduhack.conll.parser import parse_conll_sentence, parse_conll_token, _iter_lines
 
 CONLL_SENTENCE = """
 # sent_id = test-s13
@@ -57,19 +57,3 @@ def test_iter_lines(tmpdir):
             sentence = line[0]
             assert isinstance(sentence, dict)
             assert sentence['text'] == 'والدین معمولی زخمی ہوئے ہےں۔'
-
-
-def test_create_sentence(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-
-            text = text.strip()
-            file.write(text + "\n")
-    with open(file_name, "r") as file:
-        lines = file.readlines()
-        sentence = _create_sentence(lines)
-        s_meta = sentence[0]
-        assert s_meta['text'] == 'والدین معمولی زخمی ہوئے ہےں۔'
