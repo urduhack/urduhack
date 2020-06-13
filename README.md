@@ -1,5 +1,4 @@
-Urduhack: A Python NLP library for Urdu language
-=================================================
+# Urduhack: A Python NLP library for Urdu language
 
 [![image](https://img.shields.io/pypi/pyversions/urduhack.svg)](https://pypi.org/project/urduhack/)
 [![image](https://img.shields.io/pypi/v/urduhack.svg)](https://pypi.org/project/urduhack/)
@@ -16,6 +15,14 @@ Urduhack: A Python NLP library for Urdu language
 
 Urduhack is a NLP library for urdu language. It comes with a lot of battery included features to help you process Urdu
 data in the easiest way possible.
+
+## Note: Releasing a stable version v1.0.0 soon with lots of new models and new api.
+
+## Our Goal
+
+- **Academic users** Easier experimentation to prove their hypothesis without coding from scratch.
+- **NLP beginners** Learn how to build an NLP project with production level code quality.
+- **NLP developers** Build a production level application within minutes.
 
 
 🔥 Features Support
