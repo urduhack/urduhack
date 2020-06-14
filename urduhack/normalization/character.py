@@ -207,7 +207,7 @@ def punctuations_space(text: str) -> str:
         >>> text = "ہوتا ہے   ۔  ٹائپ"
         >>> normalized_text = punctuations_space(text)
         >>> normalized_text
-ہوتا ہے۔ ٹائپ
+        ہوتا ہے۔ ٹائپ
     """
     text = _SPACE_AFTER_PUNCTUATIONS_RE.sub(' ', text)
     text = _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE.sub(r'\1', text)
