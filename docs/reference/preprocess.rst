@@ -1,3 +1,0 @@
-
-.. automodule:: urduhack.preprocess
-    :members:
