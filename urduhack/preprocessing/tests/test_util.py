@@ -1,7 +1,7 @@
 # coding: utf8
 """Test cases"""
 
-from urduhack.preprocess.util import normalize_whitespace, replace_currency_symbols, \
+from ..util import normalize_whitespace, replace_currency_symbols, \
     remove_punctuation, remove_accents, \
     remove_stopwords, remove_english_alphabets, replace_emails, replace_numbers, replace_phone_numbers, replace_urls
 

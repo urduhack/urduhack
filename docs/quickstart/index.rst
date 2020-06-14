@@ -9,6 +9,5 @@ Every python package needs an import statement so let's do that first.::
 .. toctree::
    :maxdepth: 2
 
-   preprocess
    tasks
    command

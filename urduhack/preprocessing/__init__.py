@@ -1,15 +1,17 @@
+# coding: utf8
+"""
 Text PreProcessing
 ===================
 
 The pre-processing of Urdu text is necessary to make it useful for the machine
-learning tasks. This module assists us in getting rid of unnecessary data. This is more of a
-data cleaning module. It cleans our data from various unnecessary elements. It provides following functions:
+learning tasks.
+This module provides the following functionality:
 
     - Normalize whitespace
     - Replace urls
     - Replace emails
     - Replace number
-    - Replace phone_no
+    - Replace phone_number
     - Replace currency_symbols
 
 You can look for all the different functions that come with pre-process
@@ -23,7 +25,7 @@ in the given text.
 
 To normalize whitespaces from some text.::
 
-   >>> from urduhack.preprocess import normalize_whitespace
+   >>> from urduhack.preprocessing import normalize_whitespace
    >>> text = "عراق اور شام     اعلان کیا ہے دونوں         جلد اپنے     گے؟"
    >>> normalized_text = normalize_whitespace(text)
    >>> normalized_text
@@ -35,10 +37,11 @@ whitespaces removed.
 Replace Urls
 --------------------
 While processing any form of text we like to get rid of many unnecessary things, one of those is web urls.
-We don't need them as they don't convey any meaningful information. We will use :py:mod:`~urduhack.preprocess.replace_urls`
-function from :py:mod:`~urduhack.preprocess.utils` module to replace web urls with a specific text.::
+We don't need them as they don't convey any meaningful information. We will use
+:py:mod:`~urduhack.preprocess.replace_urls` function from :py:mod:`~urduhack.preprocess.utils` module to
+replace web urls with a specific text.::
 
-    >>> from urduhack.preprocess import replace_urls
+    >>> from urduhack.preprocessing import replace_urls
     >>> text = "20 www.gmail.com  فیصد"
     >>> replace_urls(text)
     '20 *URL*  فیصد'
@@ -49,10 +52,11 @@ urls replaced by "*URL*".
 Replace Emails
 --------------
 In the same way we replace web urls we will replace email addresses as well. We will use
-:py:func:`~urduhack.preprocess.replace_emails` function from :py:mod:`~urduhack.preprocess.utils` module to replace emails with a specific text.::
+:py:func:`~urduhack.preprocess.replace_emails` function from :py:mod:`~urduhack.preprocess.utils` module to
+replace emails with a specific text.::
 
     >>> text = "20 gunner@gmail.com  فیصد"
-    >>> from urduhack.preprocess import replace_emails
+    >>> from urduhack.preprocessing import replace_emails
     >>> replace_emails(text)
     '20 *EMAIL*  فیصد'
 
@@ -64,7 +68,7 @@ Replace Numbers
 In some cases where numbers are also unnecessary in our data. We can get rid of them as well by using
 :py:func:`~urduhack.preprocess.replace_numbers` function from :py:mod:`~urduhack.preprocess.utils` module.::
 
-    >>> from urduhack.preprocess import replace_numbers
+    >>> from urduhack.preprocessing import replace_numbers
     >>> text = "20  فیصد"
     >>> replace_numbers(text)
     '*NUMBER*  فیصد'
@@ -77,7 +81,7 @@ Replace Phone Number
 To replace a phone number from our text we will utilize :py:func:`~urduhack.preprocess.replace_phone_numbers`
 function from :py:mod:`~urduhack.preprocess.utils` module.::
 
-    >>> from urduhack.preprocess import replace_phone_numbers
+    >>> from urduhack.preprocessing import replace_phone_numbers
     >>> text = "یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ 555-123-4567 میں ہوا تھا"
     >>> replace_phone_numbers(text)
     'یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ *PHONE* میں ہوا تھا'
@@ -92,7 +96,7 @@ from :py:mod:`~urduhack.preprocess.utils` module.
 A currency symbols will be replaced by its respective representation in characters like $ will be replaced
 by USD.::
 
-    >>> from urduhack.preprocess import replace_currency_symbols
+    >>> from urduhack.preprocessing import replace_currency_symbols
     >>> text = "یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ 2003 میں ہوا 33$ تھا۔"
     >>> replace_currency_symbols(text)
     'یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ 2003 میں ہوا 33USD تھا۔'
@@ -102,10 +106,11 @@ currency symbol replaced by "*USD*".
 
 Remove Punctuation
 ------------------
-To remove punctuations like commas, colons and semicolons etc, we will use :py:func:`~urduhack.preprocess.remove_punctuation`
-function from :py:mod:`~urduhack.preprocess.utils` module. It will replace all the punctuations marks by a space::
+To remove punctuations like commas, colons and semicolons etc, we will use
+:py:func:`~urduhack.preprocess.remove_punctuation` function from :py:mod:`~urduhack.preprocess.utils` module.
+It will replace all the punctuations marks by a space.::
 
-    >>> from urduhack.preprocess import remove_punctuation
+    >>> from urduhack.preprocessing import remove_punctuation
     >>> text = "کر  ؟ سکتی ہے۔ علینا نے"
     >>> remove_punctuation(text)
     'کر    سکتی ہے  علینا نے'
@@ -118,9 +123,18 @@ Remove Accents
 To remove urdu we accents, we will use the :py:func:`~urduhack.preprocess.remove_accents` function from
 :py:mod:`~urduhack.preprocess.utils` module.::
 
-    >>> from urduhack.preprocess import remove_accents
+    >>> from urduhack.preprocessing import remove_accents
     >>>text = "دالتِ عظمیٰ درخواست"
     >>> remove_accents(text)
     'دالت عظمی درخواست'
 
 If successful, this function returns a :py:mod:`string` free of "accents".
+
+"""
+from .util import (normalize_whitespace, replace_urls, replace_emails, replace_numbers, replace_phone_numbers,
+                   replace_currency_symbols, remove_punctuation, remove_accents, remove_english_alphabets,
+                   remove_stopwords)
+
+__all__ = ["normalize_whitespace", "remove_punctuation", "remove_accents", "replace_urls",
+           "replace_emails", "replace_numbers", "replace_phone_numbers",
+           "replace_currency_symbols", "remove_english_alphabets", "remove_stopwords"]
