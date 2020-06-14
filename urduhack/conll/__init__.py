@@ -41,7 +41,7 @@ Fields
 Format
 ------
 
-::
+CoNLL single sentence format.::
 
     # sent_id = test-s13
     # text = والدین معمولی زخمی ہوئے ہےں۔
@@ -56,10 +56,18 @@ Format
 Examples
 --------
 
-    >>> from urduhack.conll import CoNLL
-    >>> data = CoNLL.load_file("urdu_data.conll")
-    >>> print(data[0][0]['text'])
+Load conll file using load_file function.::
+
+    from urduhack.conll import CoNLL
+    data = CoNLL.load_file("urdu_data.conll")
+    print(data[0][1]])
     والدین معمولی زخمی ہوئے ہےں۔
+
+Yield conll sentence using iter_string function.::
+
+    for sentence in CoNLL.iter_string(conll_text)
+        print(data[0]['text'])
+        والدین معمولی زخمی ہوئے ہےں۔
 
 
 """
