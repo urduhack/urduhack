@@ -129,12 +129,24 @@ COMBINE_URDU_CHARACTERS: Dict[str, str] = {"آ": "آ",
 
 def normalize_combine_characters(text: str) -> str:
     """
+    To normalize combine characters with single character unicode text, use the
+    :py:func:`~urduhack.normalization.character.normalize_combine_characters` function in the
+    :py:mod:`~urduhack.normalization.character` module.
+
     Replace combine|join ``urdu`` characters with single unicode character
 
     Args:
-        text (str): raw ``urdu`` text
+        text (str): ``Urdu`` text
     Returns:
-        str: returns a ``str`` object containing normalized text.
+        str: Returns a ``str`` object containing normalized text.
+    Examples:
+        >>> from urduhack.normalization import normalize_combine_characters
+        >>> # In the following string, Alif ('ا') and Hamza ('ٔ ') are separate characters
+        >>> text = "جرأت"
+        >>> normalized_text = normalize_combine_characters(text)
+        >>> # Now Alif and Hamza are replaced by a Single Urdu Unicode Character!
+        >>> normalized_text
+        جرأت
     """
     for _key, _value in COMBINE_URDU_CHARACTERS.items():
         text = text.replace(_key, _value)
@@ -158,9 +170,15 @@ def digits_space(text: str) -> str:
     Add spaces before|after numeric and urdu digits
 
     Args:
-        text (str): raw ``urdu`` text
+        text (str): ``Urdu`` text
     Returns:
-        str: returns a ``str`` object containing normalized text.
+        str: Returns a ``str`` object containing normalized text.
+    Examples:
+        >>> from urduhack.normalization import digits_space
+        >>> text = "20فیصد"
+        >>> normalized_text = digits_space(text)
+        >>> normalized_text
+        20 فیصد
     """
     text = _SPACE_BEFORE_DIGITS_RE.sub(' ', text)
     text = _SPACE_AFTER_DIGITS_RE.sub(' ', text)
@@ -181,9 +199,15 @@ def punctuations_space(text: str) -> str:
     Add spaces after punctuations used in ``urdu`` writing
 
     Args:
-        text (str): raw ``urdu`` text
+        text (str): ``Urdu`` text
     Returns:
-        str: returns a ``str`` object containing normalized text.
+        str: Returns a ``str`` object containing normalized text.
+    Examples:
+        >>> from urduhack.normalization import punctuations_space
+        >>> text = "ہوتا ہے   ۔  ٹائپ"
+        >>> normalized_text = punctuations_space(text)
+        >>> normalized_text
+ہوتا ہے۔ ٹائپ
     """
     text = _SPACE_AFTER_PUNCTUATIONS_RE.sub(' ', text)
     text = _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE.sub(r'\1', text)
@@ -200,12 +224,22 @@ _SPACE_AFTER_ENG_CHAR_RE = re.compile(r"(?<=[a-zA-Z])(?=[" + "".join(URDU_ALL_CH
 
 def english_characters_space(text: str) -> str:
     """
-    Add spaces before|after ``english`` characters and ``urdu`` digits
+    Functionality to add spaces before and after English words in the given Urdu text. It is an important step in
+    normalization of the Urdu data.
+
+    this function returns a :py:class:`String` object which contains the original text with spaces before & after
+    English words.
 
     Args:
-        text (str): raw ``urdu`` text
+        text (str): ``Urdu`` text
     Returns:
-        str: returns a ``str`` object containing normalized text.
+        str: Returns a ``str`` object containing normalized text.
+    Examples:
+        >>> from urduhack.normalization import english_characters_space
+        >>> text = "خاتون Aliyaنے بچوںUzma and Aliyaکے قتل کا اعترافConfession کیا ہے۔"
+        >>> normalized_text = english_characters_space(text)
+        >>> normalized_text
+        خاتون Aliya نے بچوں Uzma and Aliya کے قتل کا اعتراف Confession کیا ہے۔
     """
     text = _SPACE_BEFORE_ENG_CHAR_RE.sub(' ', text)
     text = _SPACE_AFTER_ENG_CHAR_RE.sub(' ', text)
@@ -218,12 +252,19 @@ _DIACRITICS_RE = re.compile(f'[{"".join(URDU_DIACRITICS)}]', flags=re.U | re.M |
 
 def remove_diacritics(text: str) -> str:
     """
-    Remove ``urdu`` diacritics from text
+    Remove ``urdu`` diacritics from text. It is an important step in pre-processing of the Urdu data.
+    This function returns a String object which contains the original text minus Urdu diacritics.
 
     Args:
-        text (str): raw ``urdu`` text
+        text (str): ``Urdu`` text
     Returns:
-        str: returns a ``str`` object containing normalized text.
+        str: Returns a ``str`` object containing normalized text.
+    Examples:
+        >>> from urduhack.normalization import remove_diacritics
+        >>> text = "شیرِ پنجاب"
+        >>> normalized_text = remove_diacritics(text)
+        >>> normalized_text
+        شیر پنجاب
     """
     return _DIACRITICS_RE.sub('', text)
 
@@ -235,10 +276,17 @@ def normalize(text: str) -> str:
     and diacritics removed.
 
     Args:
-        text (str): raw ``unicode`` Urdu text
-
+        text (str): ``Urdu`` text
     Returns:
-        str: normalized urdu text
+        str: Normalized urdu text
+    Examples:
+        >>> from urduhack import normalize
+        >>> text = "اَباُوگل پاکستان ﻤﯿﮟ20سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔"
+        >>> normalized_text = normalize(text)
+        >>> # The text now contains proper spaces after digits and punctuations,
+        >>> # normalized characters and no diacritics!
+        >>> normalized_text
+        اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ، وسائل کی کوئی کمی نہیں ﮨﮯ۔
     """
     text = normalize_characters(text)
     text = normalize_combine_characters(text)
