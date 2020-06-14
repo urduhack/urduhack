@@ -9,8 +9,6 @@ problems faced when working with Urdu data are handled with ease and
 efficiency. All the problems and how :py:mod:`~urduhack.normalization.normalize` module handles
 them are listed below.
 
-Urdu Characters Normalization Module
-------------------------------------
 This modules fixes the problem of correct encodings for the Urdu characters as well as replace Arabic
 characters with correct Urdu characters. This module brings all the characters in the specified unicode range
 (0600-06FF) for Urdu language.
