@@ -4,11 +4,10 @@
 import pickle
 from pathlib import Path
 from typing import Any, Optional
+
 import tensorflow as tf
 
 from ..config import URDUHACK_BASE_DIR
-
-from ..errors import Errors
 
 
 def pickle_dump(file_name: str, data: Any):
@@ -49,11 +48,11 @@ def download_from_url(file_name: str, url: str, download_dir: str, cache_dir: Op
         TypeError: If any of the url, file_path and file_name are not str Type.
     """
     if not isinstance(url, str):
-        raise TypeError(Errors.E001.format(object_name="url", object_type="str"))
+        raise TypeError(f"{url} must be str type.")
     if not isinstance(file_name, str):
-        raise TypeError(Errors.E001.format(object_name="file_name", object_type="str"))
+        raise TypeError(f"{file_name} must be str type.")
     if not isinstance(download_dir, str):
-        raise TypeError(Errors.E001.format(object_name="download_dir", object_type="str"))
+        raise TypeError(f"{download_dir} must be str type.")
 
     if cache_dir is None:
         cache_dir = URDUHACK_BASE_DIR
@@ -67,12 +66,12 @@ def remove_file(file_name: str):
     Delete the local file
 
     Args:
-        file_name (str): file to be deleted
+        file_name (str): File to be deleted
     Raises:
-        TypeError: if file_name is not str Type.
+        TypeError: If file_name is not str Type.
         FileNotFoundError: If file_name does not exist
     """
     if not isinstance(file_name, str):
-        raise TypeError(Errors.E001.format(object_name="file_name", object_type="str"))
+        raise TypeError(f"{file_name} must be str type.")
 
     Path(file_name).unlink()

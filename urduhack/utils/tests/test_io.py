@@ -24,7 +24,7 @@ def test_pickle_dump(tmpdir):
 def test_download_from_url(tmpdir):
     """Test Case"""
 
-    with pytest.raises(TypeError, match=r'[E001]'):
+    with pytest.raises(TypeError, match=r'str'):
         download_from_url(file_name='test_abc', url=123, download_dir=1234, cache_dir='cache_test')
 
     with pytest.raises(TypeError):
@@ -43,7 +43,7 @@ def test_download_from_url(tmpdir):
 def test_remove_file(tmpdir):
     """Test Case"""
 
-    with pytest.raises(TypeError, match=r'[E001]'):
+    with pytest.raises(TypeError, match=r'[str]'):
         remove_file(file_name=123456)
 
     with pytest.raises(FileNotFoundError):
