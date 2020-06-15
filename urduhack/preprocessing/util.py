@@ -76,9 +76,15 @@ def normalize_whitespace(text: str):
     or more linebreaks with a single newline. Also strip leading/trailing whitespace.
 
     Args:
-        text (str): raw ``urdu`` text
+        text (str): ``Urdu`` text
     Returns:
-        str: returns a ``str`` object containing normalized text.
+        str: Returns a ``str`` object containing normalized text.
+    Examples:
+        >>> from urduhack.preprocessing import normalize_whitespace
+        >>> text = "عراق اور شام     اعلان کیا ہے دونوں         جلد اپنے     گے؟"
+        >>> normalized_text = normalize_whitespace(text)
+        >>> normalized_text
+        عراق اور شام اعلان کیا ہے دونوں جلد اپنے گے؟
     """
     return _NONBREAKING_SPACE_RE.sub(' ', _LINEBREAK_RE.sub(r'\n', text)).strip()
 
@@ -88,10 +94,15 @@ def replace_urls(text: str, replace_with=''):
     Replace all URLs in ``text`` str with ``replace_with`` str.
 
     Args:
-        text (str): raw ``urdu`` text
-        replace_with (str): replace string
+        text (str): ``Urdu`` text
+        replace_with (str): Replace string
     Returns:
-        str: returns a ``str`` object replace url with ``replace_with`` text.
+        str: Returns a ``str`` object replace url with ``replace_with`` text.
+    Examples:
+        >>> from urduhack.preprocessing import replace_urls
+        >>> text = "20 www.gmail.com  فیصد"
+        >>> replace_urls(text)
+        '20  فیصد'
     """
     return _URL_RE.sub(replace_with, _SHORT_URL_RE.sub(replace_with, text))
 
@@ -101,10 +112,15 @@ def replace_emails(text: str, replace_with=''):
     Replace all emails in ``text`` str with ``replace_with`` str.
 
     Args:
-        text (str): raw ``urdu`` text
-        replace_with (str): replace string
+        text (str): ``Urdu`` text
+        replace_with (str): Replace string
     Returns:
-        str: returns a ``str`` object replace emails with ``replace_with`` text.
+        str: Returns a ``str`` object replace emails with ``replace_with`` text.
+    Examples:
+        >>> text = "20 gunner@gmail.com  فیصد"
+        >>> from urduhack.preprocessing import replace_emails
+        >>> replace_emails(text)
+'20 فیصد'
     """
     return _EMAIL_RE.sub(replace_with, text)
 
@@ -114,10 +130,15 @@ def replace_phone_numbers(text: str, replace_with=''):
     Replace all phone numbers in ``text`` str with ``replace_with`` str.
 
     Args:
-        text (str): raw ``urdu`` text
-        replace_with (str): replace string
+        text (str): ``Urdu`` text
+        replace_with (str): Replace string
     Returns:
-        str: returns a ``str`` object replace number_no with ``replace_with`` text.
+        str: Returns a ``str`` object replace number_no with ``replace_with`` text.
+    Examples:
+        >>> from urduhack.preprocessing import replace_numbers
+        >>> text = "20  فیصد"
+        >>> replace_numbers(text)
+        ' فیصد'
     """
     return _PHONE_RE.sub(replace_with, text)
 
@@ -127,10 +148,15 @@ def replace_numbers(text: str, replace_with=''):
     Replace all numbers in ``text`` str with ``replace_with`` str.
 
     Args:
-        text (str): raw ``urdu`` text
-        replace_with (str): replace string
+        text (str): ``Urdu`` text
+        replace_with (str): Replace string
     Returns:
-        str: returns a ``str`` object replace number with ``replace_with`` text.
+        str: Returns a ``str`` object replace number with ``replace_with`` text.
+    Examples:
+        >>> from urduhack.preprocessing import replace_phone_numbers
+        >>> text = "یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ 555-123-4567 میں ہوا تھا"
+        >>> replace_phone_numbers(text)
+'یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ میں ہوا تھا'
     """
     return _NUMBERS_RE.sub(replace_with, text)
 
@@ -140,13 +166,18 @@ def replace_currency_symbols(text: str, replace_with=None):
     Replace all currency symbols in ``text`` str with string specified by ``replace_with`` str.
 
     Args:
-        text (str): raw text
+        text (str): Raw text
         replace_with (str): if None (default), replace symbols with
             their standard 3-letter abbreviations (e.g. '$' with 'USD', '£' with 'GBP');
             otherwise, pass in a string with which to replace all symbols
             (e.g. "*CURRENCY*")
     Returns:
-        str: returns a ``str`` object containing normalized text.
+        str: Returns a ``str`` object containing normalized text.
+    Examples:
+        >>> from urduhack.preprocessing import replace_currency_symbols
+        >>> text = "یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ 2003 میں ہوا 33$ تھا۔"
+        >>> replace_currency_symbols(text)
+    'یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ 2003 میں ہوا 33USD تھا۔'
     """
     if replace_with is None:
         for key, value in CURRENCIES.items():
@@ -165,7 +196,7 @@ def remove_punctuation(text: str, marks=None) -> str:
     Remove punctuation from ``text`` by removing all instances of ``marks``.
 
     Args:
-        text (str): raw text
+        text (str): Urdu text
         marks (str): If specified, remove only the characters in this string,
             e.g. ``marks=',;:'`` removes commas, semi-colons, and colons.
             Otherwise, all punctuation marks are removed.
@@ -176,7 +207,7 @@ def remove_punctuation(text: str, marks=None) -> str:
         used to remove punctuation; otherwise, a regular expression is used
         instead. The former's performance is about 5-10x faster.
     Examples:
-        >>> from urduhack.preprocess import remove_punctuation
+        >>> from urduhack.preprocessing import remove_punctuation
         >>> output = remove_punctuation("کر ؟ سکتی ہے۔")
         کر سکتی ہے
 
@@ -193,9 +224,14 @@ def remove_accents(text: str) -> str:
     transforming them into ascii equivalents or removing them entirely.
 
     Args:
-        text (str): raw urdu text
+        text (str): Urdu text
     Returns:
         str
+    Examples:
+        >>> from urduhack.preprocessing import remove_accents
+        >>>text = "دالتِ عظمیٰ درخواست"
+        >>> remove_accents(text)
+    'دالت عظمی درخواست'
     """
     return ''.join(c for c in text if not unicodedata.combining(c))
 
@@ -205,7 +241,7 @@ def remove_english_alphabets(text: str):
     Removes ``English`` words and digits from a ``text``
 
     Args:
-         text (str): raw urdu text
+         text (str): Urdu text
     Returns:
         str: ``str`` object with english alphabets removed
     """
@@ -223,6 +259,5 @@ def remove_stopwords(text: str) -> str:
 
     Returns:
         str: ``str`` object with stop words removed
-
     """
     return " ".join(word for word in text.split() if word not in STOP_WORDS)

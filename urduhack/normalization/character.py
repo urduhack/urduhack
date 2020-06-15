@@ -337,7 +337,7 @@ def replace_digits(text: str, with_eng: bool = True) -> str:
     Replace urdu digits with English digits and vice versa
 
     Args:
-        text (str): urdu text string
+        text (str): Urdu text string
         with_eng (bool): Boolean to convert digits from one language to other
     Returns:
         Text string with replaced digits
