@@ -37,39 +37,6 @@ Fields
 ``10. MISC:``
     Any other annotation apart from the above mentioned fields
 
-
-Format
-------
-
-CoNLL single sentence format.::
-
-    # sent_id = test-s13
-    # text = والدین معمولی زخمی ہوئے ہےں۔
-    1	والدین	والدین	NOUN	NN	Case=Acc|Gender=Masc|Number=Sing|Person=3	4	nsubj	_	_
-    2	معمولی	معمولی	ADJ	JJ	Case=Nom	3	advmod	_	ChunkId=JJP|ChunkType=head
-    3	زخمی	زخمی	ADJ	JJ	Case=Nom|Gender=Masc|Number=Sing|Person=3	4	compound	_	_
-    4	ہوئے	ہو	VERB	VM	Aspect=Perf|Number=Plur|Person=2|Polite=Form|VerbForm=Part|Voice=Act	0	root	_	_
-    5	ہےں	ہے	AUX	VAUX	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin	4	aux	_	_
-    6	۔	۔	PUNCT	SYM	_	4	punct	_	ChunkId=VGF|ChunkType=child
-
-
-Examples
---------
-
-Load conll file using load_file function.::
-
-    from urduhack.conll import CoNLL
-    data = CoNLL.load_file("urdu_data.conll")
-    print(data[0][1]])
-    والدین معمولی زخمی ہوئے ہےں۔
-
-Yield conll sentence using iter_string function.::
-
-    for sentence in CoNLL.iter_string(conll_text)
-        print(data[0]['text'])
-        والدین معمولی زخمی ہوئے ہےں۔
-
-
 """
 
 from .reader import CoNLL
