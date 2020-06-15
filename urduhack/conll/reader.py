@@ -54,10 +54,8 @@ class CoNLL:
 
         Args:
             file_name (str): The location of the file.
-
         Returns:
            List[Tuple]: A Conll object equivalent to the provided file.
-
         Raises:
             IOError: If there is an error opening the given filename.
             ValueError: If there is an error parsing the input into a Conll object.
@@ -71,10 +69,8 @@ class CoNLL:
 
         Args:
             file_name (str): The name of the file whose sentences should be iterated over.
-
         Yields:
             Iterator[Tuple]: The sentences that make up the CoNLL-U file.
-
         Raises:
             IOError: If there is an error opening the file.
             ParseError: If there is an error parsing the input into a Conll object.
@@ -93,10 +89,8 @@ class CoNLL:
 
         Args:
             text (str): The CoNLL-U string.
-
         Yields:
             Iterator[Tuple]: The sentences that make up the CoNLL-U file.
-
         Raises:
             ParseError: If there is an error parsing the input into a Conll object.
         """
