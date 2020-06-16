@@ -24,3 +24,8 @@ ignore-docstrings=yes
 
 # Ignore imports when computing similarities.
 ignore-imports=no
+
+[DESIGN]
+
+# Maximum number of attributes for a class (see R0902).
+max-attributes=12
