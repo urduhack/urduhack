@@ -11,5 +11,3 @@ Every python package needs an import statement so let's do that first.::
 
     overview
     tutorial
-    tasks
-    command
