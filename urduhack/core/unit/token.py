@@ -6,12 +6,8 @@ Token, Word data structures
 import json
 from typing import Dict
 
-import regex as re
-
 from urduhack.conll import CoNLL
 from urduhack.conll.conllable import Conllable
-
-multi_word_token_id = re.compile(r"([0-9]+)-([0-9]+)")
 
 NER = 'ner'
 START_CHAR = 'start_char'
@@ -125,12 +121,6 @@ class Token:
         if the token is a multi-word token.
         """
         ret = []
-        if multi_word_token_id.match(self.id):
-            token_dict = {}
-            for field in fields:
-                if getattr(self, field) is not None:
-                    token_dict[field] = getattr(self, field)
-            ret.append(token_dict)
         for word in self.words:
             ret.append(word.to_dict())
         return ret
@@ -362,12 +352,14 @@ class Span:
             self.init_from_tokens(tokens, type)
 
     def init_from_entry(self, span_entry):
+        """ init from entry"""
         self.text = span_entry.get(CoNLL.TEXT, None)
         self.type = span_entry.get(TYPE, None)
         self.start_char = span_entry.get(START_CHAR, None)
         self.end_char = span_entry.get(END_CHAR, None)
 
     def init_from_tokens(self, tokens, type):
+        """ init from tokens"""
         assert isinstance(tokens, list), 'Tokens must be provided as a list to construct a span.'
         assert len(tokens) > 0, "Tokens of a span cannot be an empty list."
         self.tokens = tokens
@@ -453,7 +445,10 @@ class Span:
     def to_dict(self):
         """ Dumps the span into a dictionary. """
         attrs = ['text', 'type', 'start_char', 'end_char']
-        span_dict = dict([(attr_name, getattr(self, attr_name)) for attr_name in attrs])
+        span_dict: dict = {}
+        for attr_name in attrs:
+            span_dict[attr_name] = getattr(self, attr_name)
+        # span_dict = dict([(attr_name, getattr(self, attr_name)) for attr_name in attrs])
         return span_dict
 
     def __repr__(self):
