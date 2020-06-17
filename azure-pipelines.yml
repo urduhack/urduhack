@@ -24,7 +24,7 @@ jobs:
       pip install .[tf]
       pip install pytest-azurepipelines
       urduhack download
-      pytest --ignore=urduhack/tasks
+      pytest
     displayName: 'pylint'
 
 - job: 'Test'
@@ -84,5 +84,5 @@ jobs:
     displayName: 'Urduhack info'
 
   - script: |
-      pytest --cov=./ --cov-report html --ignore=urduhack/tasks
+      pytest --cov=./ --cov-report html
     displayName: 'pytest'

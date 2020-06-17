@@ -13,7 +13,7 @@ install:
   - urduhack info
 
 script:
-  - pytest --cov=./ --ignore=urduhack/tasks
+  - pytest --cov=./
 
 after_success:
   - codecov
