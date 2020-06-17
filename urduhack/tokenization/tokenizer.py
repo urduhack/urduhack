@@ -30,7 +30,7 @@ def sentence_tokenizer(text: str) -> List[str]:
         >>> text = "عراق اور شام نے اعلان کیا ہے دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟"
         >>> sentences = sentence_tokenizer(text)
         >>> sentences
-["دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟" ,"عراق اور شام نے اعلان کیا ہے۔"]
+        ["دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟" ,"عراق اور شام نے اعلان کیا ہے۔"]
     """
     if not isinstance(text, str):
         raise TypeError(Errors.E001.format(object_name=text, object_type=str))
