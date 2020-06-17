@@ -116,7 +116,7 @@ class Token:
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
-    def to_dict(self, fields=[CoNLL.ID, CoNLL.TEXT, NER, CoNLL.MISC]):
+    def to_dict(self):
         """ Dumps the token into a list of dictionary for this token with its extended words
         if the token is a multi-word token.
         """
