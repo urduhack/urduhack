@@ -1,7 +1,14 @@
 # coding: utf8
 """
-Urdu Characters Normalization Module
-------------------------------------
+Normalization
+==============
+
+The normalization of Urdu text is necessary to make it useful for the machine
+learning tasks. In the :py:mod:`~urduhack.normalization.normalize` module, the very basic
+problems faced when working with Urdu data are handled with ease and
+efficiency. All the problems and how :py:mod:`~urduhack.normalization.normalize` module handles
+them are listed below.
+
 This modules fixes the problem of correct encodings for the Urdu characters as well as replace Arabic
 characters with correct Urdu characters. This module brings all the characters in the specified unicode range
 (0600-06FF) for Urdu language.
@@ -25,7 +32,6 @@ This module provides the following functionality:
     - Put Spaces Before & After English Words
     - Removal of Diacritics from Urdu Text
 """
-
 from .character import normalize_characters, normalize_combine_characters, punctuations_space, digits_space, \
     remove_diacritics, english_characters_space, normalize
 

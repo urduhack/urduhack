@@ -7,7 +7,7 @@ Reference
    conll
    normalization
    tokenization
-   preprocess
+   preprocessing
    tasks
    utils
    command

@@ -5,8 +5,6 @@ from typing import Dict, Tuple, Any, Optional, List, Iterator
 
 import regex as re
 
-from urduhack.conll.exception import ParseError
-
 COMMENT_MARKER = '#'
 KEY_VALUE_COMMENT_PATTERN = COMMENT_MARKER + r'\s*([^=]+?)\s*=\s*(.+)'
 SINGLETON_COMMENT_PATTERN = COMMENT_MARKER + r'\s*(\S.*?)\s*$'
@@ -19,21 +17,19 @@ def parse_conll_token(line: str) -> dict:
 
     Args:
         line (str): A single conll-u token line
-
     Returns:
-         A dictionary containing conll-u token attributes
-
+         dict: A dictionary containing conll-u token attributes
     Raises:
-        ParseError: If the number of columns in line are not 10
+        ValueError: If the number of columns in line are not 10
     """
     if line[-1] == '\n':
         line = line[:-1]
 
     fields = line.split(FIELD_DELIMITER)
     if len(fields) != 10:
-        raise ParseError(f'The number of columns per token line must be 10. Invalid token: {line}')
+        raise ValueError(f'The number of columns per token line must be 10. Invalid token: {line}')
 
-    token: dict = {
+    return {
         'id': fields[0],
         'text': fields[1],
         'lemma': fields[2],
@@ -46,8 +42,6 @@ def parse_conll_token(line: str) -> dict:
         'misc': fields[9],
     }
 
-    return token
-
 
 def parse_conll_sentence(sentence: str) -> Tuple[Dict[Any, Optional[Any]], List[Dict]]:
     """
@@ -55,9 +49,8 @@ def parse_conll_sentence(sentence: str) -> Tuple[Dict[Any, Optional[Any]], List[
 
     Args:
         sentence (str):  A complete conll-u sentence
-
     Returns:
-        Two dicts containing sentence metadata and token data
+        tuple: Two dicts containing sentence metadata and token data
     """
     lines = sentence.split('\n')
     sentence_meta = {}
@@ -89,10 +82,8 @@ def _iter_lines(lines: iter) -> Iterator[Tuple]:
 
     Args:
         lines: An iterator over the lines to parse.
-
     Yields:
         An iterator over the constructed Sentence objects found in the source.
-
     Raises:
         ValueError: If there is an error constructing the Sentence.
     """
@@ -121,10 +112,8 @@ def _load_file(file_name: str) -> List[Tuple]:
 
     Args:
         file_name (str): The location of the file.
-
     Returns:
         List[Tuple]: A Conll object equivalent to the provided file.
-
     Raises:
         IOError: If there is an error opening the given filename.
         ParseError: If there is an error parsing the input into a Conll object.

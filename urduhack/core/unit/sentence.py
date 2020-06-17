@@ -30,48 +30,43 @@ class Sentence(Conllable):
 
         self._process(sentence)
 
-    def meta_value(self, key: str):
+    def meta_value(self, key: str) -> str:
         """
         Returns the value associated with the key in the metadata (comments).
 
         Args:
-            key: The key whose value to look up.
-
+            key (str): The key whose value to look up.
         Returns:
-            The value associated with the key as a string. If the key is a
-            singleton then None is returned.
-
+            str: The value associated with the key as a string. If the key is a singleton then None is returned.
         Raises:
             KeyError: If the key is not present in the comments.
         """
         return self._meta[key]
 
-    def meta_present(self, key: str):
+    def meta_present(self, key: str) -> bool:
         """
         Check if the key is present as a singleton or as a pair.
 
         Args:
-            key: The value to check for in the comments.
-
+            key (str): The value to check for in the comments.
         Returns:
-            True if the key was provided as a singleton or as a key value pair.
-            False otherwise.
+            bool: True if the key was provided as a singleton or as a key value pair. False otherwise.
         """
         return key in self._meta
 
-    def set_meta(self, key: str, value=None):
+    def set_meta(self, key: str, value: str = None):
         """
         Set the metadata or comments associated with this Sentence.
 
         Args:
-            key: The key for the comment.
-            value: The value to associate with the key. If the comment is a
+            key (str): The key for the comment.
+            value (str): The value to associate with the key. If the comment is a
                 singleton, this field can be ignored or set to None.
         """
         self._meta[key] = value
 
     def _process(self, sentence):
-        st, en = -1, -1
+        e_n = -1
         self.tokens, self.words = [], []
         sentence_meta, tokens = sentence
 
@@ -85,7 +80,7 @@ class Sentence(Conllable):
             new_word = Word(entry)
             self.words.append(new_word)
             idx = int(entry.get(CoNLL.ID))
-            if idx <= en:
+            if idx <= e_n:
                 self.tokens[-1].words.append(new_word)
             else:
                 self.tokens.append(Token(entry, words=[new_word]))
@@ -172,10 +167,9 @@ class Sentence(Conllable):
         sorted_meta = sorted(self._meta.items(), key=operator.itemgetter(0))
         for meta in sorted_meta:
             if meta[1] is not None:
-                line = '{} {} = {}'.format(CoNLL.COMMENT_MARKER, meta[0],
-                                           meta[1])
+                line = f'{CoNLL.COMMENT_MARKER} {meta[0]} = {meta[1]}'
             else:
-                line = '{} {}'.format(CoNLL.COMMENT_MARKER, meta[0])
+                line = f'{CoNLL.COMMENT_MARKER} {meta[0]}'
 
             lines.append(line)
 
