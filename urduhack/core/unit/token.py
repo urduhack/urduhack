@@ -137,7 +137,8 @@ class Token:
 
     def pretty_print(self):
         """ Print this token with its extended words in one line. """
-        return f"<{self.__class__.__name__} id={self.id};words=[{', '.join([word.pretty_print() for word in self.words])}]>"
+        return f"<{self.__class__.__name__} " \
+               f" id={self.id};words=[{', '.join([word.pretty_print() for word in self.words])}]>"
 
     def _is_null(self, value):
         return (value is None) or (value == '_')
@@ -308,19 +309,18 @@ class Word(Conllable):
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
-    def to_dict(self, fields=[CoNLL.ID, CoNLL.TEXT, CoNLL.LEMMA, CoNLL.UPOS, CoNLL.XPOS, CoNLL.FEATS, CoNLL.HEAD,
-                              CoNLL.DEPREL, CoNLL.DEPS, CoNLL.MISC]):
+    def to_dict(self):
         """ Dumps the word into a dictionary.
         """
         word_dict = {}
-        for field in fields:
+        for field in CoNLL.get_fields():
             if getattr(self, field) is not None:
                 word_dict[field] = getattr(self, field)
         return word_dict
 
     def pretty_print(self):
         """ Print the word in one line. """
-        features = [CoNLL.ID, CoNLL.TEXT, CoNLL.LEMMA, CoNLL.UPOS, CoNLL.XPOS, CoNLL.FEATS, CoNLL.HEAD, CoNLL.DEPREL]
+        features = CoNLL.get_fields()
         feature_str = ";".join(["{}={}".format(k, getattr(self, k)) for k in features if getattr(self, k) is not None])
         return f"<{self.__class__.__name__} {feature_str}>"
 
