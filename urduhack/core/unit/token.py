@@ -135,11 +135,6 @@ class Token:
             ret.append(word.to_dict())
         return ret
 
-    def pretty_print(self):
-        """ Print this token with its extended words in one line. """
-        return f"<{self.__class__.__name__} " \
-               f" id={self.id};words=[{', '.join([word.pretty_print() for word in self.words])}]>"
-
     def _is_null(self, value):
         return (value is None) or (value == '_')
 
@@ -318,12 +313,6 @@ class Word(Conllable):
                 word_dict[field] = getattr(self, field)
         return word_dict
 
-    def pretty_print(self):
-        """ Print the word in one line. """
-        features = CoNLL.get_fields()
-        feature_str = ";".join(["{}={}".format(k, getattr(self, k)) for k in features if getattr(self, k) is not None])
-        return f"<{self.__class__.__name__} {feature_str}>"
-
     def _is_null(self, value):
         return (value is None) or (value == '_')
 
@@ -469,9 +458,3 @@ class Span:
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
-
-    def pretty_print(self):
-        """ Print the span in one line. """
-        span_dict = self.to_dict()
-        feature_str = ";".join(["{}={}".format(k, v) for k, v in span_dict.items()])
-        return f"<{self.__class__.__name__} {feature_str}>"

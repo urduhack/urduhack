@@ -2,7 +2,6 @@
 """
 Sentence data structures
 """
-import io
 import json
 import operator
 from typing import Tuple
@@ -125,28 +124,6 @@ class Sentence(Conllable):
     def words(self, value):
         """ Set the list of words for this sentence. """
         self._words = value
-
-    def print_tokens(self, file=None):
-        """ Print the tokens for this sentence. """
-        for tok in self.tokens:
-            print(tok.pretty_print(), file=file)
-
-    def tokens_string(self):
-        """ Dump the tokens for this sentence into string. """
-        toks_string = io.StringIO()
-        self.print_tokens(file=toks_string)
-        return toks_string.getvalue().strip()
-
-    def print_words(self, file=None):
-        """ Print the words for this sentence. """
-        for word in self.words:
-            print(word.pretty_print(), file=file)
-
-    def words_string(self):
-        """ Dump the words for this sentence into string. """
-        wrds_string = io.StringIO()
-        self.print_words(file=wrds_string)
-        return wrds_string.getvalue().strip()
 
     def to_dict(self):
         """ Dumps the sentence into a list of dictionary for each token in the sentence.
