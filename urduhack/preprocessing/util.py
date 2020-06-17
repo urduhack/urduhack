@@ -120,7 +120,6 @@ def replace_emails(text: str, replace_with=''):
         >>> text = "20 gunner@gmail.com  فیصد"
         >>> from urduhack.preprocessing import replace_emails
         >>> replace_emails(text)
-'20 فیصد'
     """
     return _EMAIL_RE.sub(replace_with, text)
 
