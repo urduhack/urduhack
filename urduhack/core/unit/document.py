@@ -28,8 +28,13 @@ class Document(Conllable):
         self._process(sentences)
 
     @property
-    def text(self):
-        """ Access the raw text for this document. """
+    def text(self) -> str:
+        """
+        Access the raw text for this document.
+
+        Returns:
+            str: Document text
+        """
         return self._text
 
     @text.setter
