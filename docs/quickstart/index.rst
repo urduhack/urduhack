@@ -6,8 +6,8 @@ Every python package needs an import statement so let's do that first.::
     >>>import urduhack
 
 
-.. toctree::
-   :maxdepth: 2
+..  toctree::
+    :maxdepth: 2
 
-    overview
-    tutorial
+    overview.rst
+    tutorial.rst

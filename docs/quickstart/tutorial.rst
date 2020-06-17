@@ -2,13 +2,14 @@ Tutorial
 ========
 
 How to explore CoNLL-U Format
-=============================
+-----------------------------
 We aspire to maintain data for all the tasks in CoNNL-U format. CoNLL-U format holds sentence and token level data along with their
 attributes. Below we will show how to use urduhack's :py:mod:`~urduhack.CoNLL` module.::
 
 
     >>> from urduhack import CoNLL
-To iterate over sentences in CoNLL-U format we will use :py:func:`urduhack.CoNLL.iter_string` function.::
+
+To iterate over sentences in CoNLL-U format we will use :py:func:`~urduhack.CoNLL.iter_string` function.::
 
     >>> from urduhack.conll.tests.test_parser import CONLL_SENTENCE
     >>> text_iterator = CoNLL.iter_string(CONLL_SENTENCE)
