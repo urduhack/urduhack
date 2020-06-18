@@ -31,4 +31,16 @@ ignore-imports=no
 max-args=10
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=15
+max-attributes=25
+
+
+[BASIC]
+
+# Good variable names which should always be accepted, separated by a comma.
+good-names=i,
+           j,
+           k,
+           ex,
+           Run,
+           _,
+           id

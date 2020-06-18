@@ -42,7 +42,8 @@ class Token:
         """ Create attributes by parsing from the `misc` field."""
         for item in self._misc.split('|'):
             key_value = item.split('=', 1)
-            if len(key_value) == 1: continue  # some key_value can not be splited
+            if len(key_value) == 1:
+                continue  # some key_value can not be splited
             key, value = key_value
             if key in [START_CHAR, END_CHAR]:
                 value = int(value)
@@ -90,8 +91,8 @@ class Token:
     def words(self, value):
         """ Set this token's list of underlying syntactic words. """
         self._words = value
-        for w in self._words:
-            w.parent = self
+        for word in self._words:
+            word.parent = self
 
     @property
     def start_char(self):
