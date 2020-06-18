@@ -80,7 +80,11 @@ class Token:
     @misc.setter
     def misc(self, value):
         """ Set the token's miscellaneousness value. """
-        self._misc = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._misc = value
+        # self._misc = value if self._is_null(value) == False else None
 
     @property
     def words(self):
@@ -112,7 +116,12 @@ class Token:
     @ner.setter
     def ner(self, value):
         """ Set the token's NER tag. Example: 'B-ORG'"""
-        self._ner = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._ner = value
+
+        # self._ner = value if self._is_null(value) == False else None
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
@@ -226,7 +235,11 @@ class Word(Conllable):
     @feats.setter
     def feats(self, value):
         """ Set this word's morphological features. Example: 'Gender=Fem'"""
-        self._feats = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._feats = value
+        # self._feats = value if self._is_null(value) == False else None
 
     @property
     def head(self):
@@ -236,6 +249,10 @@ class Word(Conllable):
     @head.setter
     def head(self, value):
         """ Set the word's governor id value. """
+        # if self._is_null(value):
+        #     value = None
+        #
+        # self._head = int(value)
         self._head = int(value) if self._is_null(value) == False else None
 
     @property
@@ -246,7 +263,11 @@ class Word(Conllable):
     @deprel.setter
     def deprel(self, value):
         """ Set the word's dependency relation value. Example: 'nmod'"""
-        self._deprel = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._deprel = value
+        # self._deprel = value if self._is_null(value) == False else None
 
     @property
     def deps(self):
@@ -256,7 +277,11 @@ class Word(Conllable):
     @deps.setter
     def deps(self, value):
         """ Set the word's dependencies value. """
-        self._deps = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._deps = value
+        # self._deps = value if self._is_null(value) == False else None
 
     @property
     def misc(self):
@@ -266,7 +291,11 @@ class Word(Conllable):
     @misc.setter
     def misc(self, value):
         """ Set the word's miscellaneousness value. """
-        self._misc = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._misc = value
+        # self._misc = value if self._is_null(value) == False else None
 
     @property
     def parent(self):
@@ -290,7 +319,12 @@ class Word(Conllable):
     @pos.setter
     def pos(self, value):
         """ Set the word's universal part-of-speech value. Example: 'NOUN'"""
-        self._upos = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._upos = value
+
+        # self._upos = value if self._is_null(value) == False else None
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)

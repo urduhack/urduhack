@@ -18,7 +18,8 @@ CONLL_SENTENCE = """
 """
 
 
-def test_sentence(tmpdir):
+def test_sentence():
+    """Test case"""
     _sentence = None
     for sentence in CoNLL.iter_string(CONLL_SENTENCE):
         _sentence = sentence
