@@ -1,3 +1,7 @@
+# coding: utf8
+"""
+Test cases for sentence
+"""
 from urduhack import CoNLL
 from urduhack.core.unit.document import Document
 from urduhack.core.unit.sentence import Sentence

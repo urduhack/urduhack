@@ -1,7 +1,10 @@
+# coding: utf8
+"""
+Test cases for sentence
+"""
 from urduhack import CoNLL
-from urduhack.core.unit.document import Document
 from urduhack.core.unit.sentence import Sentence
-from urduhack.core.unit.token import Token
+from urduhack.core.unit.token import Word, Token
 
 CONLL_SENTENCE = """
 # sent_id = test-s13
@@ -15,138 +18,23 @@ CONLL_SENTENCE = """
 """
 
 
-def test_meta_present(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        assert isinstance(sentence, Sentence)
-        assert sentence.meta_present(key="text") is True
+def test_sentence(tmpdir):
+    _sentence = None
+    for sentence in CoNLL.iter_string(CONLL_SENTENCE):
+        _sentence = sentence
 
+    sentence_obj = Sentence(_sentence)
 
-def test_meta_value(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        assert isinstance(sentence, Sentence)
-        assert sentence.meta_value(key="text") == "والدین معمولی زخمی ہوئے ہےں۔"
+    assert sentence_obj.meta_present("text") is True
+    assert sentence_obj.meta_value("text") == "والدین معمولی زخمی ہوئے ہےں۔"
 
+    sentence_obj.set_meta('number_check', "100")
+    assert sentence_obj.meta_value("number_check") == "100"
 
-def test_set_meta(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        sentence.set_meta('test_id', 100)
-        assert sentence.meta_value(key="test_id") == 100
+    for word in sentence_obj.words:
+        assert isinstance(word, Word)
+    for token in sentence_obj.tokens:
+        assert isinstance(token, Token)
 
-
-def test_doc(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        isinstance(sentence.doc, Document)
-        sentence.doc = [[{'id': '1', 'text': 'زخمی'}]]
-        assert sentence.doc == [[{'id': '1', 'text': 'زخمی'}]]
-
-
-def test_text(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        assert sentence.text is None
-        sentence.text = "کورونا وائرس کے وار جاری"
-        assert sentence.text == "کورونا وائرس کے وار جاری"
-
-
-def test_tokens(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        assert isinstance(sentence.tokens, list)
-        sentence.tokens = [{'id': "1", "text": "کورونا"}, {"id": "2", "text": "وائرس"}]
-        assert sentence.tokens == [{'id': "1", "text": "کورونا"}, {"id": "2", "text": "وائرس"}]
-
-
-def test_words(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        assert isinstance(sentence.words, list)
-        sentence.words = [{'id': "1", "text": "کورونا"}, {"id": "2", "text": "وائرس"}]
-        assert sentence.words == [{'id': "1", "text": "کورونا"}, {"id": "2", "text": "وائرس"}]
-
-
-def test_to_dict(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        assert isinstance(sentence.to_dict(), list)
-
-
-def test_conll(tmpdir):
-    """Test Case"""
-    texts = CONLL_SENTENCE.splitlines()
-    file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
-        for text in texts:
-            text = text.strip()
-            file.write(text + "\n")
-    conll_data = CoNLL.load_file(file_name)
-    doc = Document(conll_data)
-    for sentence in doc.sentences:
-        assert isinstance(sentence.conll(), str)
+    assert isinstance(sentence_obj.to_dict(), list)
+    assert isinstance(sentence_obj.conll(), str)
