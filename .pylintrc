@@ -14,7 +14,7 @@ disable=exec-used,eval-used,too-many-branches,global-statement,no-self-use,too-f
 [SIMILARITIES]
 
 # Minimum lines number of a similarity.
-min-similarity-lines=10
+min-similarity-lines=40
 
 # Ignore comments when computing similarities.
 ignore-comments=yes

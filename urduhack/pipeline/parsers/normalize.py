@@ -12,7 +12,6 @@ class NormalizeParser(Parser):
     def _set_up(self, config):
         """pass"""
 
-
     def parse(self, document):
         """pass"""
         return normalize(document)
