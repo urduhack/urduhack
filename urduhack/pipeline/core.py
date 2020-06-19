@@ -4,8 +4,8 @@ Pipeline that runs tokenize
 """
 from typing import Dict, List
 
-from urduhack.pipeline.parsers.normalize import NormalizeParser
-from urduhack.pipeline.parsers.tokenize import TokenizeParser
+from .parsers.normalize import NormalizeParser
+from .parsers.tokenize import TokenizeParser
 
 NORMALIZE: str = 'normalize'
 TOKENIZE: str = 'tokenize'
