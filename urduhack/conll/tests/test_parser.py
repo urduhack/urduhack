@@ -1,3 +1,4 @@
+# coding: utf8
 """Test Cases"""
 
 from urduhack.conll.parser import parse_conll_sentence, parse_conll_token, _iter_lines
@@ -18,11 +19,11 @@ def test_parse_conll_sentence(tmpdir):
     """Test Case"""
     texts = CONLL_SENTENCE.splitlines()
     file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
+    with open(file_name, "w", encoding="utf8") as file:
         for text in texts:
             text = text.strip()
             file.write(text + "\n")
-    with open(file_name, "r") as file:
+    with open(file_name, "r", encoding="utf8") as file:
         sentence = file.read()
         s_meta, token_ = parse_conll_sentence(sentence)
         print(token_)
@@ -46,11 +47,11 @@ def test_iter_lines(tmpdir):
     """Test Case"""
     texts = CONLL_SENTENCE.splitlines()
     file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
+    with open(file_name, "w", encoding="utf8") as file:
         for text in texts:
             text = text.strip()
             file.write(text + "\n")
-    with open(file_name, "r") as file:
+    with open(file_name, "r", encoding="utf8") as file:
         lines = file.readlines()
         lines = _iter_lines(lines)
         for line in lines:
