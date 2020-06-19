@@ -9,5 +9,4 @@ Reference
    tokenization
    preprocessing
    utils
-   command
 
