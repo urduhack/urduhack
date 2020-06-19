@@ -10,6 +10,7 @@ class Parser(ABC):
     """ Base class for all parsers"""
 
     def __init__(self, config, pipeline):
+        """setup"""
         # overall config for the processor
         self._config = None
         # pipeline building this processor (presently parsers are only meant to exist in one pipeline)
@@ -26,11 +27,10 @@ class Parser(ABC):
     @abstractmethod
     def parse(self, document):
         """ Process a Document.  This is the main method of a processor. """
-        pass
 
     @abstractmethod
     def _set_up(self, config):
-        pass
+        """model setup"""
 
     @property
     def config(self):

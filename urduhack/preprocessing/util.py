@@ -120,7 +120,6 @@ def replace_emails(text: str, replace_with=''):
         >>> text = "20 gunner@gmail.com  فیصد"
         >>> from urduhack.preprocessing import replace_emails
         >>> replace_emails(text)
-'20 فیصد'
     """
     return _EMAIL_RE.sub(replace_with, text)
 
@@ -156,7 +155,7 @@ def replace_numbers(text: str, replace_with=''):
         >>> from urduhack.preprocessing import replace_phone_numbers
         >>> text = "یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ 555-123-4567 میں ہوا تھا"
         >>> replace_phone_numbers(text)
-'یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ میں ہوا تھا'
+        'یعنی لائن آف کنٹرول پر فائربندی کا معاہدہ میں ہوا تھا'
     """
     return _NUMBERS_RE.sub(replace_with, text)
 

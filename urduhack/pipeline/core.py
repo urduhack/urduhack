@@ -4,8 +4,8 @@ Pipeline that runs tokenize
 """
 from typing import Dict, List
 
-from urduhack.pipeline.parsers.normalize import NormalizeParser
-from urduhack.pipeline.parsers.tokenize import TokenizeParser
+from .parsers.normalize import NormalizeParser
+from .parsers.tokenize import TokenizeParser
 
 NORMALIZE: str = 'normalize'
 TOKENIZE: str = 'tokenize'
@@ -21,7 +21,7 @@ class Pipeline:
         """Pass"""
 
         self.parsers = {}
-        for item in REGISTERED_PARSERS.keys():
+        for item in REGISTERED_PARSERS:
             self.parsers[item] = REGISTERED_PARSERS[item](config={}, pipeline=self)
 
     @property

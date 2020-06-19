@@ -6,17 +6,13 @@ Token, Word data structures
 import json
 from typing import Dict
 
-import regex as re
-
 from urduhack.conll import CoNLL
 from urduhack.conll.conllable import Conllable
-
-multi_word_token_id = re.compile(r"([0-9]+)-([0-9]+)")
 
 NER = 'ner'
 START_CHAR = 'start_char'
 END_CHAR = 'end_char'
-TYPE = 'type'
+TYPE = 'span_type'
 
 
 class Token:
@@ -46,7 +42,8 @@ class Token:
         """ Create attributes by parsing from the `misc` field."""
         for item in self._misc.split('|'):
             key_value = item.split('=', 1)
-            if len(key_value) == 1: continue  # some key_value can not be splited
+            if len(key_value) == 1:
+                continue  # some key_value can not be splited
             key, value = key_value
             if key in [START_CHAR, END_CHAR]:
                 value = int(value)
@@ -83,7 +80,11 @@ class Token:
     @misc.setter
     def misc(self, value):
         """ Set the token's miscellaneousness value. """
-        self._misc = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._misc = value
+        # self._misc = value if self._is_null(value) == False else None
 
     @property
     def words(self):
@@ -94,8 +95,8 @@ class Token:
     def words(self, value):
         """ Set this token's list of underlying syntactic words. """
         self._words = value
-        for w in self._words:
-            w.parent = self
+        for word in self._words:
+            word.parent = self
 
     @property
     def start_char(self):
@@ -115,29 +116,24 @@ class Token:
     @ner.setter
     def ner(self, value):
         """ Set the token's NER tag. Example: 'B-ORG'"""
-        self._ner = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._ner = value
+
+        # self._ner = value if self._is_null(value) == False else None
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
-    def to_dict(self, fields=[CoNLL.ID, CoNLL.TEXT, NER, CoNLL.MISC]):
+    def to_dict(self):
         """ Dumps the token into a list of dictionary for this token with its extended words
         if the token is a multi-word token.
         """
         ret = []
-        if multi_word_token_id.match(self.id):
-            token_dict = {}
-            for field in fields:
-                if getattr(self, field) is not None:
-                    token_dict[field] = getattr(self, field)
-            ret.append(token_dict)
         for word in self.words:
             ret.append(word.to_dict())
         return ret
-
-    def pretty_print(self):
-        """ Print this token with its extended words in one line. """
-        return f"<{self.__class__.__name__} id={self.id};words=[{', '.join([word.pretty_print() for word in self.words])}]>"
 
     def _is_null(self, value):
         return (value is None) or (value == '_')
@@ -174,7 +170,8 @@ class Word(Conllable):
         """
         for item in self._misc.split('|'):
             key_value = item.split('=', 1)
-            if len(key_value) == 1: continue  # some key_value can not be splited
+            if len(key_value) == 1:
+                continue  # some key_value can not be splited
             key, value = key_value
             # set attribute
             attr = f'_{key}'
@@ -209,7 +206,11 @@ class Word(Conllable):
     @lemma.setter
     def lemma(self, value):
         """ Set the word's lemma value. """
-        self._lemma = value if self._is_null(value) == False or self._text == '_' else None
+        if self._is_null(value) or self._text == '_':
+            value = None
+
+        self._lemma = value
+        # self._lemma = value if self._is_null(value) == False or self._text == '_' else None
 
     @property
     def upos(self):
@@ -219,7 +220,11 @@ class Word(Conllable):
     @upos.setter
     def upos(self, value):
         """ Set the word's universal part-of-speech value. Example: 'NOUN'"""
-        self._upos = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._upos = value
+        # self._upos = value if self._is_null(value) == False else None
 
     @property
     def xpos(self):
@@ -229,7 +234,11 @@ class Word(Conllable):
     @xpos.setter
     def xpos(self, value):
         """ Set the word's treebank-specific part-of-speech value. Example: 'NNP'"""
-        self._xpos = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._xpos = value
+        # self._xpos = value if self._is_null(value) == False else None
 
     @property
     def feats(self):
@@ -239,7 +248,11 @@ class Word(Conllable):
     @feats.setter
     def feats(self, value):
         """ Set this word's morphological features. Example: 'Gender=Fem'"""
-        self._feats = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._feats = value
+        # self._feats = value if self._is_null(value) == False else None
 
     @property
     def head(self):
@@ -249,7 +262,11 @@ class Word(Conllable):
     @head.setter
     def head(self, value):
         """ Set the word's governor id value. """
-        self._head = int(value) if self._is_null(value) == False else None
+        if self._is_null(value):
+            self._head = None
+        else:
+            self._head = int(value)
+        # self._head = int(value) if self._is_null(value) == False else None
 
     @property
     def deprel(self):
@@ -259,7 +276,11 @@ class Word(Conllable):
     @deprel.setter
     def deprel(self, value):
         """ Set the word's dependency relation value. Example: 'nmod'"""
-        self._deprel = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._deprel = value
+        # self._deprel = value if self._is_null(value) == False else None
 
     @property
     def deps(self):
@@ -269,7 +290,11 @@ class Word(Conllable):
     @deps.setter
     def deps(self, value):
         """ Set the word's dependencies value. """
-        self._deps = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._deps = value
+        # self._deps = value if self._is_null(value) == False else None
 
     @property
     def misc(self):
@@ -279,7 +304,11 @@ class Word(Conllable):
     @misc.setter
     def misc(self, value):
         """ Set the word's miscellaneousness value. """
-        self._misc = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._misc = value
+        # self._misc = value if self._is_null(value) == False else None
 
     @property
     def parent(self):
@@ -303,26 +332,24 @@ class Word(Conllable):
     @pos.setter
     def pos(self, value):
         """ Set the word's universal part-of-speech value. Example: 'NOUN'"""
-        self._upos = value if self._is_null(value) == False else None
+        if self._is_null(value):
+            value = None
+
+        self._upos = value
+
+        # self._upos = value if self._is_null(value) == False else None
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
 
-    def to_dict(self, fields=[CoNLL.ID, CoNLL.TEXT, CoNLL.LEMMA, CoNLL.UPOS, CoNLL.XPOS, CoNLL.FEATS, CoNLL.HEAD,
-                              CoNLL.DEPREL, CoNLL.DEPS, CoNLL.MISC]):
+    def to_dict(self):
         """ Dumps the word into a dictionary.
         """
         word_dict = {}
-        for field in fields:
+        for field in CoNLL.get_fields():
             if getattr(self, field) is not None:
                 word_dict[field] = getattr(self, field)
         return word_dict
-
-    def pretty_print(self):
-        """ Print the word in one line. """
-        features = [CoNLL.ID, CoNLL.TEXT, CoNLL.LEMMA, CoNLL.UPOS, CoNLL.XPOS, CoNLL.FEATS, CoNLL.HEAD, CoNLL.DEPREL]
-        feature_str = ";".join(["{}={}".format(k, getattr(self, k)) for k in features if getattr(self, k) is not None])
-        return f"<{self.__class__.__name__} {feature_str}>"
 
     def _is_null(self, value):
         return (value is None) or (value == '_')
@@ -353,14 +380,14 @@ class Span:
     A range of objects (e.g., entity mentions) can be represented as spans.
     """
 
-    def __init__(self, span_entry=None, tokens=None, type=None, doc=None, sent=None):
+    def __init__(self, span_entry=None, tokens=None, span_type=None, doc=None, sent=None):
         """ Construct a span given a span entry or a list of tokens. A valid reference to a doc
         must be provided to construct a span (otherwise the text of the span cannot be initialized).
         """
-        assert span_entry is not None or (tokens is not None and type is not None), \
+        assert span_entry is not None or (tokens is not None and span_type is not None), \
             'Either a span_entry or a token list needs to be provided to construct a span.'
         assert doc is not None, 'A parent doc must be provided to construct a span.'
-        self._text, self._type, self._start_char, self._end_char = [None] * 4
+        self._text, self._span_type, self._start_char, self._end_char = [None] * 4
         self._tokens = []
         self._words = []
         self._doc = doc
@@ -370,19 +397,21 @@ class Span:
             self.init_from_entry(span_entry)
 
         if tokens is not None:
-            self.init_from_tokens(tokens, type)
+            self.init_from_tokens(tokens, span_type)
 
     def init_from_entry(self, span_entry):
+        """ init from entry"""
         self.text = span_entry.get(CoNLL.TEXT, None)
-        self.type = span_entry.get(TYPE, None)
+        self.span_type = span_entry.get(TYPE, None)
         self.start_char = span_entry.get(START_CHAR, None)
         self.end_char = span_entry.get(END_CHAR, None)
 
-    def init_from_tokens(self, tokens, type):
+    def init_from_tokens(self, tokens, span_type):
+        """ init from tokens"""
         assert isinstance(tokens, list), 'Tokens must be provided as a list to construct a span.'
         assert len(tokens) > 0, "Tokens of a span cannot be an empty list."
         self.tokens = tokens
-        self.type = type
+        self.span_type = span_type
         # load start and end char offsets from tokens
         self.start_char = self.tokens[0].start_char
         self.end_char = self.tokens[-1].end_char
@@ -432,14 +461,14 @@ class Span:
         self._words = value
 
     @property
-    def type(self):
+    def span_type(self):
         """ Access the type of this span. Example: 'PERSON'"""
-        return self._type
+        return self._span_type
 
-    @type.setter
-    def type(self, value):
+    @span_type.setter
+    def span_type(self, value):
         """ Set the type of this span. """
-        self._type = value
+        self._span_type = value
 
     @property
     def start_char(self):
@@ -463,15 +492,12 @@ class Span:
 
     def to_dict(self):
         """ Dumps the span into a dictionary. """
-        attrs = ['text', 'type', 'start_char', 'end_char']
-        span_dict = dict([(attr_name, getattr(self, attr_name)) for attr_name in attrs])
+        attrs = ['text', 'span_type', 'start_char', 'end_char']
+        span_dict: dict = {}
+        for attr_name in attrs:
+            span_dict[attr_name] = getattr(self, attr_name)
+        # span_dict = dict([(attr_name, getattr(self, attr_name)) for attr_name in attrs])
         return span_dict
 
     def __repr__(self):
         return json.dumps(self.to_dict(), indent=2, ensure_ascii=False)
-
-    def pretty_print(self):
-        """ Print the span in one line. """
-        span_dict = self.to_dict()
-        feature_str = ";".join(["{}={}".format(k, v) for k, v in span_dict.items()])
-        return f"<{self.__class__.__name__} {feature_str}>"

@@ -28,8 +28,13 @@ class Document(Conllable):
         self._process(sentences)
 
     @property
-    def text(self):
-        """ Access the raw text for this document. """
+    def text(self) -> str:
+        """
+        Access the raw text for this document.
+
+        Returns:
+            str: Document text
+        """
         return self._text
 
     @text.setter
@@ -72,8 +77,8 @@ class Document(Conllable):
         for sentence in sentences:
             self.sentences.append(Sentence(sentence, doc=self))
             begin_idx, end_idx = self.sentences[-1].tokens[0].start_char, self.sentences[-1].tokens[-1].end_char
-            if all([self.text is not None, begin_idx is not None, end_idx is not None]): self.sentences[
-                -1].text = self.text[begin_idx: end_idx]
+            if all([self.text is not None, begin_idx is not None, end_idx is not None]):
+                self.sentences[-1].text = self.text[begin_idx: end_idx]
 
         self.num_tokens = sum([len(sentence.tokens) for sentence in self.sentences])
         self.num_words = sum([len(sentence.words) for sentence in self.sentences])
@@ -84,12 +89,12 @@ class Document(Conllable):
         multi-word expansion.
 
         Args:
-            fields: name of the fields as a list
-            as_sentences: if True, return the fields as a list of sentences; otherwise as a whole list
-            from_token: if True, get the fields from Token; otherwise from Word
+            fields (list): name of the fields as a list
+            as_sentences (bool): if True, return the fields as a list of sentences; otherwise as a whole list
+            from_token (bool): if True, get the fields from Token; otherwise from Word
 
         Returns:
-            All requested fields.
+            list: All requested fields.
         """
         assert isinstance(fields, list), "Must provide field names as a list."
         assert len(fields) >= 1, "Must have at least one field."
@@ -120,9 +125,9 @@ class Document(Conllable):
         of content will be expected; otherwise a list of list of contents will be expected.
 
         Args:
-            fields: name of the fields as a list
-            contents: field values to set; total length should be equal to number of words/tokens
-            to_token: if True, set field values to tokens; otherwise to words
+            fields (list): name of the fields as a list
+            contents (list): field values to set; total length should be equal to number of words/tokens
+            to_token (bool): if True, set field values to tokens; otherwise to words
         """
         assert isinstance(fields, list), "Must provide field names as a list."
         assert isinstance(contents, list), "Must provide contents as a list (one item per line)."
@@ -145,17 +150,16 @@ class Document(Conllable):
                     for field, content in zip(fields, contents[cidx]):
                         setattr(unit, field, content)
                 cidx += 1
-        return
 
     def iter_words(self):
         """ An iterator that returns all of the words in this Document. """
-        for s in self.sentences:
-            yield from s.words
+        for sentence in self.sentences:
+            yield from sentence.words
 
     def iter_tokens(self):
         """ An iterator that returns all of the tokens in this Document. """
-        for s in self.sentences:
-            yield from s.tokens
+        for sentence in self.sentences:
+            yield from sentence.tokens
 
     def to_dict(self):
         """ Dumps the whole document into a list of list of dictionary for each token in each sentence in the doc.

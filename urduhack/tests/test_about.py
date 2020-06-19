@@ -2,7 +2,7 @@
 """about.py test cases"""
 import regex as re
 
-from urduhack.about import __version__, __description__, __author__, __author_email__, __license__, __url__, get_info
+from ..about import __version__, __description__, __author__, __author_email__, __license__, __url__, get_info
 
 
 def test_version():
