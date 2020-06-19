@@ -7,7 +7,6 @@ import json
 from typing import List, Tuple
 
 from urduhack.conll.conllable import Conllable
-
 from .sentence import Sentence
 
 
@@ -21,10 +20,10 @@ class Document(Conllable):
             sentences (list): a list of sentences, which being a list of token entry, in the form of a CoNLL-U dict.
             text (str): the raw text of the document.
         """
-        self._sentences = []
-        self._text = text
-        self._num_tokens = 0
-        self._num_words = 0
+        self._sentences: list = []
+        self._text: str = text
+        self._num_tokens: int = 0
+        self._num_words: int = 0
         self._process(sentences)
 
     @property
@@ -41,11 +40,6 @@ class Document(Conllable):
     def sentences(self):
         """ Access the list of sentences for this document. """
         return self._sentences
-
-    @sentences.setter
-    def sentences(self, value):
-        """ Set the list of tokens for this document. """
-        self._sentences = value
 
     @property
     def num_tokens(self):
@@ -68,7 +62,6 @@ class Document(Conllable):
         self._num_words = value
 
     def _process(self, sentences):
-        self.sentences = []
         for sentence in sentences:
             self.sentences.append(Sentence(sentence, doc=self))
             begin_idx, end_idx = self.sentences[-1].tokens[0].start_char, self.sentences[-1].tokens[-1].end_char
