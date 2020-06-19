@@ -24,7 +24,7 @@ def test_document(tmpdir):
     """
     texts = CONLL_SENTENCE.splitlines()
     file_name = tmpdir.join("test.txt")
-    with open(file_name, "w") as file:
+    with open(file_name, "w", encoding="utf8") as file:
         for text in texts:
             text = text.strip()
             file.write(text + "\n")
