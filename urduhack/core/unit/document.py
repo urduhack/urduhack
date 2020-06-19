@@ -7,6 +7,7 @@ import json
 from typing import List, Tuple
 
 from urduhack.conll.conllable import Conllable
+
 from .sentence import Sentence
 
 
@@ -21,10 +22,9 @@ class Document(Conllable):
             text (str): the raw text of the document.
         """
         self._sentences = []
-        self._text = None
+        self._text = text
         self._num_tokens = 0
         self._num_words = 0
-        self.text = text
         self._process(sentences)
 
     @property
@@ -36,11 +36,6 @@ class Document(Conllable):
             str: Document text
         """
         return self._text
-
-    @text.setter
-    def text(self, value):
-        """ Set the raw text for this document. """
-        self._text = value
 
     @property
     def sentences(self):
