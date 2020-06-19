@@ -1,7 +1,7 @@
 # coding: utf8
 """Parser for performing normalization"""
 
-from urduhack import CoNLL
+from urduhack.conll import CoNLL
 from urduhack.core.unit.document import Document
 from urduhack.tokenization import sentence_tokenizer, word_tokenizer
 from ..parser import Parser

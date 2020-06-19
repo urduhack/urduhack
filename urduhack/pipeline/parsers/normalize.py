@@ -1,7 +1,7 @@
 # coding: utf8
 """Parser for performing normalization"""
 
-from urduhack import normalize
+from urduhack.normalization import normalize
 from ..parser import Parser
 
 
