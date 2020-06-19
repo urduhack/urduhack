@@ -28,28 +28,18 @@ data in the easiest way possible.
 🔥 Features Support
 ----------------
 - [x] Normalization
-    - [x] Arabic and Urdu Unicode Redundancy Problem
-    - [x] Character Normalization
-    - [x] Combined Characters Normalization 
-    - [x] Diacritics Removal
-    - [x] Spaces Before & After Digits
-    - [x] Spaces After Punctuations
-    - [x] Joined Words Fix
 - [x] Tokenization
-    - [x] Sentence Tokenization
-    - [x] Words Tokenization
- - [x] Data Pre-processing
-     - [x] Handles all kind of numbers, emails, currencies and urls etc.
-- [ ] Tasks
-  - [x] Sentimental analysis
+- [x] Preprocessing
+- [x] Pipeline Module
+- [x] Models
+  - [x] Pos tagger
+  - [ ] Sentimental analysis
   - [ ] Sentence classification
   - [ ] Documents classification
   - [ ] Name entity recognition
   - [ ] Image to text
   - [ ] Speech to text
-- [x] Datasets
-  - [x] IMDB Urdu movies review dataset
-  - [x] Hand written digits datasets
+- [x] Datasets loader
 
 
 🛠 Installation
