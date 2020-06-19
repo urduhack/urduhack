@@ -3,7 +3,6 @@
 Test cases for Tokens
 """
 from urduhack import CoNLL
-from urduhack.core.unit.sentence import Sentence
 from urduhack.core.unit.token import Word, Token
 
 CONLL_SENTENCE = """
@@ -19,8 +18,9 @@ CONLL_SENTENCE = """
 
 
 def test_token():
+    """test cases"""
     for sentence in CoNLL.iter_string(CONLL_SENTENCE):
-        sent_meta, tokens = sentence
+        _, tokens = sentence
         for token in tokens:
             token = Token(token)
             assert isinstance(token, Token)
@@ -35,8 +35,9 @@ def test_token():
 
 
 def test_word():
+    """test cases"""
     for sentence in CoNLL.iter_string(CONLL_SENTENCE):
-        sent_meta, words = sentence
+        _, words = sentence
         for word in words:
             word = Word(word)
             assert isinstance(word, Word)

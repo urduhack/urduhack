@@ -21,7 +21,7 @@ class Pipeline:
         """Pass"""
 
         self.parsers = {}
-        for item in REGISTERED_PARSERS.keys():
+        for item in REGISTERED_PARSERS:
             self.parsers[item] = REGISTERED_PARSERS[item](config={}, pipeline=self)
 
     @property
