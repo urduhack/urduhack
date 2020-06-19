@@ -10,8 +10,9 @@ from ..parser import Parser
 # class for running the tokenizer
 class TokenizeParser(Parser):
     """Test"""
+
     def _set_up(self, config):
-        pass
+        """pass"""
 
     def _tokenized_text(self, text):
         """generate dictionary data structure"""
@@ -33,7 +34,7 @@ class TokenizeParser(Parser):
 
         return document
 
-    def parse(self, text):
-        """nothing"""
-        conll_data = self._tokenized_text(text)
-        return Document(conll_data, text)
+    def parse(self, document):
+        """pass"""
+        conll_data = self._tokenized_text(document)
+        return Document(conll_data, document)

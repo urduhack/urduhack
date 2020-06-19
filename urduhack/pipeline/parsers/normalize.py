@@ -7,11 +7,12 @@ from ..parser import Parser
 
 # class for running the tokenizer
 class NormalizeParser(Parser):
-    """Test"""
+    """pass"""
 
     def _set_up(self, config):
-        pass
+        """pass"""
 
-    def parse(self, text):
-        """nothing"""
-        return normalize(text)
+
+    def parse(self, document):
+        """pass"""
+        return normalize(document)
