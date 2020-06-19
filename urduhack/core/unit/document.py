@@ -17,8 +17,8 @@ class Document(Conllable):
         """ Construct a document given a list of sentences in the form of lists of CoNLL-U dicts.
 
         Args:
-            sentences (list): a list of sentences, which being a list of token entry, in the form of a CoNLL-U dict.
-            text (str): the raw text of the document.
+            sentences (list): List of sentences, which being a tuple of dict, list of token entry (CoNLL-U dict).
+            text (str): Urdu text of the document.
         """
         self._sentences: list = []
         self._text: str = text
@@ -29,7 +29,7 @@ class Document(Conllable):
     @property
     def text(self) -> str:
         """
-        Access the raw text for this document.
+        Access the Urdu text for this document.
 
         Returns:
             str: Document text
@@ -37,12 +37,12 @@ class Document(Conllable):
         return self._text
 
     @property
-    def sentences(self):
+    def sentences(self) -> list:
         """ Access the list of sentences for this document. """
         return self._sentences
 
     @property
-    def num_tokens(self):
+    def num_tokens(self) -> int:
         """ Access the number of tokens for this document. """
         return self._num_tokens
 
@@ -52,7 +52,7 @@ class Document(Conllable):
         self._num_tokens = value
 
     @property
-    def num_words(self):
+    def num_words(self) -> int:
         """ Access the number of words for this document. """
         return self._num_words
 
@@ -62,6 +62,7 @@ class Document(Conllable):
         self._num_words = value
 
     def _process(self, sentences):
+        """process sentences in to words and tokens"""
         for sentence in sentences:
             self.sentences.append(Sentence(sentence, doc=self))
             begin_idx, end_idx = self.sentences[-1].tokens[0].start_char, self.sentences[-1].tokens[-1].end_char
