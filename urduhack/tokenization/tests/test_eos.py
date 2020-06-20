@@ -52,7 +52,7 @@ def test_generate_sentences():
     assert isinstance(sentences, list)
     assert isinstance(sentences2, list)
     assert isinstance(sentences[0], str)
-    with pytest.raises(TypeError, match=r'[E001]'):
+    with pytest.raises(TypeError,):
         sentence_tokenizer(123)
 
 
