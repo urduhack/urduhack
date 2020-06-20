@@ -96,7 +96,7 @@ class Sentence(Conllable):
         self._doc = value
 
     @property
-    def text(self):
+    def text(self) -> str:
         """ Access the raw text for this sentence. """
         return self._text
 

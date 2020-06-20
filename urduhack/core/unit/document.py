@@ -150,7 +150,7 @@ class Document(Conllable):
         for sentence in self.sentences:
             yield from sentence.tokens
 
-    def to_dict(self):
+    def to_dict(self) -> list:
         """ Dumps the whole document into a list of list of dictionary for each token in each sentence in the doc.
         """
         return [sentence.to_dict() for sentence in self.sentences]
