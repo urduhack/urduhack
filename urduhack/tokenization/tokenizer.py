@@ -8,7 +8,6 @@ from typing import List
 from .eos import _generate_sentences
 from .keras_tokenizer import _is_model_exist, _preprocess_sentence, _retrieve_words, _load_model
 from ..config import MODEL_PATH, VOCAB_PATH
-from ..errors import Errors
 
 _WORD_TOKENIZER_MODEL, _CHAR2IDX, _IDX2CHAR = None, None, None
 
@@ -33,7 +32,7 @@ def sentence_tokenizer(text: str) -> List[str]:
         ["دونوں ممالک جلد اپنے اپنے سفیروں کو واپس بغداد اور دمشق بھیج دیں گے؟" ,"عراق اور شام نے اعلان کیا ہے۔"]
     """
     if not isinstance(text, str):
-        raise TypeError(Errors.E001.format(object_name=text, object_type=str))
+        raise TypeError("text parameter must be str type.")
 
     return _generate_sentences(text)
 
