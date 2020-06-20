@@ -7,9 +7,8 @@ from urduhack.tokenization import sentence_tokenizer, word_tokenizer
 from ..parser import Parser
 
 
-# class for running the tokenizer
 class TokenizeParser(Parser):
-    """Test"""
+    """Parser covert Urdu text into sentences and words."""
 
     def _set_up(self, config):
         """pass"""
@@ -35,6 +34,6 @@ class TokenizeParser(Parser):
         return document
 
     def parse(self, document):
-        """pass"""
+        """Generate sentences and words"""
         conll_data = self._tokenized_text(document)
         return Document(conll_data, document)
