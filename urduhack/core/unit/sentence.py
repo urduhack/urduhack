@@ -8,7 +8,6 @@ from typing import Tuple
 
 from urduhack.conll import CoNLL
 from urduhack.conll.conllable import Conllable
-
 from .token import Token, Word
 
 
@@ -73,12 +72,9 @@ class Sentence(Conllable):
         for key, value in sentence_meta.items():
             self.set_meta(key, value)
 
-        _text = []
         for i, entry in enumerate(tokens):
             if CoNLL.ID not in entry:  # manually set a 1-based id for word if not exist
                 entry[CoNLL.ID] = str(i + 1)
-
-            _text.append(entry['text'])
 
             new_word = Word(entry)
             self.words.append(new_word)
@@ -88,9 +84,6 @@ class Sentence(Conllable):
             else:
                 self.tokens.append(Token(entry, words=[new_word]))
             new_word.parent = self.tokens[-1]
-
-        if not self.meta_present("text"):
-            self.set_meta("text", " ".join(_text))
 
     @property
     def doc(self):
@@ -147,6 +140,9 @@ class Sentence(Conllable):
         Returns:
             str: A string representing the Sentence in CoNLL-U format.
         """
+        if not self.meta_present("text") and self.text is not None:
+            self.set_meta("text", self.text)
+
         lines = []
         sorted_meta = sorted(self._meta.items(), key=operator.itemgetter(0))
         for meta in sorted_meta:
