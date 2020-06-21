@@ -56,6 +56,24 @@ Installing with tensorflow gpu version.
 $ pip install urduhack[tf-gpu]
 ```
 
+## Usage
+
+```python
+import urduhack
+
+# Downloading models
+urduhack.download()
+
+nlp = urduhack.Pipeline()
+text = ""
+doc = nlp(text)
+
+for sentence in doc.sentences:
+    print(sentence.text)
+    for word in sentence.words:
+        print(word)
+```
+
 🔗 Documentation
 -------------
 Fantastic documentation is available at <https://urduhack.readthedocs.io/>
