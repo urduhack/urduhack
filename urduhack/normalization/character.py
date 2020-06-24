@@ -283,11 +283,11 @@ def normalize(text: str) -> str:
         raise TypeError(f"text must be str type.")
 
     text = normalize_whitespace(text)
+    text = remove_diacritics(text)
     text = normalize_characters(text)
     text = normalize_combine_characters(text)
     text = digits_space(text)
     text = all_punctuations_space(text)
-    text = remove_diacritics(text)
     text = english_characters_space(text)
     return text
 
