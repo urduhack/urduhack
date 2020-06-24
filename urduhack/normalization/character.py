@@ -8,8 +8,9 @@ from typing import Dict
 
 import regex as re
 
-from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
 from urduhack.preprocessing import normalize_whitespace
+from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
+from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
@@ -128,6 +129,10 @@ COMBINE_URDU_CHARACTERS: Dict[str, str] = {"آ": "آ",
                                            }
 
 
+# Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
+# We cannot merge them neither can we have them separately. Because if we decompose ئ,
+# we get unicode that are not available in our unicode list.
+
 def normalize_combine_characters(text: str) -> str:
     """
     To normalize combine characters with single character unicode text, use the
@@ -153,18 +158,6 @@ def normalize_combine_characters(text: str) -> str:
         text = text.replace(_key, _value)
     return text
 
-
-# Add spaces before|after numeric number and urdu words
-# 18سالہ  , 20فیصد
-_EXCEPT_HAMZA = list(filter(lambda c: c != '\u0621', URDU_ALL_CHARACTERS))
-_SPACE_BEFORE_DIGITS_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[0-9])",
-                                     flags=re.U | re.M | re.I)
-_SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[" + "".join(_EXCEPT_HAMZA) + "])", flags=re.U | re.M | re.I)
-
-
-# Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
-# We cannot merge them neither can we have them separately. Because if we decompose ئ,
-# we get unicode that are not available in our unicode list.
 
 def digits_space(text: str) -> str:
     """
