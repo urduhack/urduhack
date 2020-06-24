@@ -4,7 +4,6 @@ from .about import __version__, get_info
 from .conll import CoNLL
 from .normalization import normalize
 from .pipeline import Pipeline
-from .stop_words import STOP_WORDS
 from .utils.resources import download
 
-__all__ = ["__version__", "get_info", "normalize", "STOP_WORDS", "download", "CoNLL", "Pipeline"]
+__all__ = ["__version__", "get_info", "normalize", "download", "CoNLL", "Pipeline"]
