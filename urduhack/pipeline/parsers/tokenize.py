@@ -16,12 +16,16 @@ class TokenizeParser(Parser):
     def _tokenized_text(self, text):
         """generate dictionary data structure"""
 
-        document = []
+        doc: list = []
+        conll_format: list = []
         sentences = sentence_tokenizer(text)
         idx = 0
 
         for sentence in sentences:
+
             words = word_tokenizer(sentence)
+            doc.append(" ".join(words))
+
             sent = []
             for token_id, token in enumerate(words):
                 sent.append({CoNLL.ID: str(token_id + 1),
@@ -29,11 +33,11 @@ class TokenizeParser(Parser):
                              CoNLL.MISC: f'start_char={idx}|end_char={idx + len(token)}'})
                 idx += len(token) + 1
 
-            document.append(({}, sent))
+            conll_format.append(({}, sent))
 
-        return document
+        return conll_format, " ".join(doc)
 
     def parse(self, document):
         """Generate sentences and words"""
-        conll_data = self._tokenized_text(document)
-        return Document(conll_data, document)
+        conll_data, doc = self._tokenized_text(document)
+        return Document(conll_data, doc)
