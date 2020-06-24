@@ -7,6 +7,7 @@ and punctuations.
 from typing import Dict
 
 from urduhack.preprocessing import normalize_whitespace
+from .regexes import _SPACE_AFTER_ALL_PUNCTUATIONS_RE, _SPACE_BEFORE_ALL_PUNCTUATIONS_RE
 from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
 from .regexes import _SPACE_AFTER_PUNCTUATIONS_RE, _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE
 from .regexes import _SPACE_BEFORE_ENG_CHAR_RE, _SPACE_AFTER_ENG_CHAR_RE, _DIACRITICS_RE
@@ -196,6 +197,20 @@ def punctuations_space(text: str) -> str:
     """
     text = _SPACE_AFTER_PUNCTUATIONS_RE.sub(' ', text)
     text = _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE.sub(r'\1', text)
+    return text
+
+
+def all_punctuations_space(text: str) -> str:
+    """
+    Add spaces after punctuations used in ``urdu`` writing
+
+    Args:
+        text (str): ``Urdu`` text
+    Returns:
+        str: Returns a ``str`` object containing normalized text.
+    """
+    text = _SPACE_BEFORE_ALL_PUNCTUATIONS_RE.sub(' ', text)
+    text = _SPACE_AFTER_ALL_PUNCTUATIONS_RE.sub(' ', text)
     return text
 
 

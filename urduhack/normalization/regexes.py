@@ -1,6 +1,8 @@
 # coding: utf8
 """List of Regex"""
 
+import string
+
 import regex as re
 
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
@@ -26,3 +28,12 @@ _SPACE_AFTER_ENG_CHAR_RE = re.compile(r"(?<=[a-zA-Z])(?=[" + "".join(URDU_ALL_CH
                                       flags=re.U | re.M | re.I)
 
 _DIACRITICS_RE = re.compile(f'[{"".join(URDU_DIACRITICS)}]', flags=re.U | re.M | re.I)
+
+# add space before and after all PUNCTUATIONS
+_ALL_PUNCTUATIONS: str = "".join(URDU_PUNCTUATIONS) + "".join(string.punctuation)
+_SPACE_BEFORE_ALL_PUNCTUATIONS_RE = re.compile(
+    r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[" + "".join(_ALL_PUNCTUATIONS) + "])",
+    flags=re.U | re.M | re.I)
+_SPACE_AFTER_ALL_PUNCTUATIONS_RE = re.compile(
+    r"(?<=[" + "".join(_ALL_PUNCTUATIONS) + "])(?=[^" + "".join(_ALL_PUNCTUATIONS) + "0-9 \n])",
+    flags=re.U | re.M | re.I)
