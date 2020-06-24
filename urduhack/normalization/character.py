@@ -9,6 +9,7 @@ from typing import Dict
 import regex as re
 
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
+from urduhack.preprocessing import normalize_whitespace
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
@@ -288,6 +289,7 @@ def normalize(text: str) -> str:
         >>> normalized_text
         اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ، وسائل کی کوئی کمی نہیں ﮨﮯ۔
     """
+    text = normalize_whitespace(text)
     text = normalize_characters(text)
     text = normalize_combine_characters(text)
     text = digits_space(text)
