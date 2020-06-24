@@ -275,13 +275,13 @@ def normalize(text: str) -> str:
         >>> # The text now contains proper spaces after digits and punctuations,
         >>> # normalized characters and no diacritics!
         >>> normalized_text
-        اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ، وسائل کی کوئی کمی نہیں ﮨﮯ۔
+        اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ ۔
     """
     text = normalize_whitespace(text)
     text = normalize_characters(text)
     text = normalize_combine_characters(text)
     text = digits_space(text)
-    text = punctuations_space(text)
+    text = all_punctuations_space(text)
     text = remove_diacritics(text)
     text = english_characters_space(text)
     return text
