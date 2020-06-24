@@ -6,11 +6,10 @@ and punctuations.
 """
 from typing import Dict
 
-import regex as re
-
 from urduhack.preprocessing import normalize_whitespace
-from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
 from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
+from .regexes import _SPACE_AFTER_PUNCTUATIONS_RE, _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE
+from .regexes import _SPACE_BEFORE_ENG_CHAR_RE, _SPACE_AFTER_ENG_CHAR_RE, _DIACRITICS_RE
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
@@ -180,14 +179,6 @@ def digits_space(text: str) -> str:
     return text
 
 
-# Add spaces after ., if there is number then not Ex (9.00)
-_SPACE_AFTER_PUNCTUATIONS_RE = re.compile(
-    r"(?<=[" + "".join(URDU_PUNCTUATIONS) + "])(?=[^" + "".join(URDU_PUNCTUATIONS) + "0-9 \n])",
-    flags=re.U | re.M | re.I)
-_REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE = re.compile(r'\s+([' + "".join(URDU_PUNCTUATIONS) + '])',
-                                                  flags=re.U | re.M | re.I)
-
-
 def punctuations_space(text: str) -> str:
     """
     Add spaces after punctuations used in ``urdu`` writing
@@ -206,14 +197,6 @@ def punctuations_space(text: str) -> str:
     text = _SPACE_AFTER_PUNCTUATIONS_RE.sub(' ', text)
     text = _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE.sub(r'\1', text)
     return text
-
-
-# Add spaces before|after english characters and urdu words
-# ikramسالہ  , abفیصد
-_SPACE_BEFORE_ENG_CHAR_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[a-zA-Z])",
-                                       flags=re.U | re.M | re.I)
-_SPACE_AFTER_ENG_CHAR_RE = re.compile(r"(?<=[a-zA-Z])(?=[" + "".join(URDU_ALL_CHARACTERS) + "])",
-                                      flags=re.U | re.M | re.I)
 
 
 def english_characters_space(text: str) -> str:
@@ -239,9 +222,6 @@ def english_characters_space(text: str) -> str:
     text = _SPACE_AFTER_ENG_CHAR_RE.sub(' ', text)
 
     return text
-
-
-_DIACRITICS_RE = re.compile(f'[{"".join(URDU_DIACRITICS)}]', flags=re.U | re.M | re.I)
 
 
 def remove_diacritics(text: str) -> str:
