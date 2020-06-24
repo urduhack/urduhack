@@ -268,6 +268,8 @@ def normalize(text: str) -> str:
         text (str): ``Urdu`` text
     Returns:
         str: Normalized urdu text
+    Raises:
+        TypeError: If text param is not not str Type.
     Examples:
         >>> from urduhack import normalize
         >>> text = "اَباُوگل پاکستان ﻤﯿﮟ20سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔"
@@ -277,6 +279,9 @@ def normalize(text: str) -> str:
         >>> normalized_text
         اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ ۔
     """
+    if not isinstance(text, str):
+        raise TypeError(f"text must be str type.")
+
     text = normalize_whitespace(text)
     text = normalize_characters(text)
     text = normalize_combine_characters(text)

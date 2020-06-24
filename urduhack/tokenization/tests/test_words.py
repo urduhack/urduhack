@@ -1,3 +1,4 @@
+# coding: utf8
 """Test Cases for words"""
 
 from urduhack.tokenization.words import WORDS_SPACE
