@@ -6,9 +6,11 @@ and punctuations.
 """
 from typing import Dict
 
-import regex as re
-
-from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_PUNCTUATIONS, URDU_DIACRITICS
+from urduhack.preprocessing import normalize_whitespace
+from .regexes import _SPACE_AFTER_ALL_PUNCTUATIONS_RE, _SPACE_BEFORE_ALL_PUNCTUATIONS_RE
+from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
+from .regexes import _SPACE_AFTER_PUNCTUATIONS_RE, _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE
+from .regexes import _SPACE_BEFORE_ENG_CHAR_RE, _SPACE_AFTER_ENG_CHAR_RE, _DIACRITICS_RE
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
@@ -127,6 +129,10 @@ COMBINE_URDU_CHARACTERS: Dict[str, str] = {"آ": "آ",
                                            }
 
 
+# Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
+# We cannot merge them neither can we have them separately. Because if we decompose ئ,
+# we get unicode that are not available in our unicode list.
+
 def normalize_combine_characters(text: str) -> str:
     """
     To normalize combine characters with single character unicode text, use the
@@ -153,18 +159,6 @@ def normalize_combine_characters(text: str) -> str:
     return text
 
 
-# Add spaces before|after numeric number and urdu words
-# 18سالہ  , 20فیصد
-_EXCEPT_HAMZA = list(filter(lambda c: c != '\u0621', URDU_ALL_CHARACTERS))
-_SPACE_BEFORE_DIGITS_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[0-9])",
-                                     flags=re.U | re.M | re.I)
-_SPACE_AFTER_DIGITS_RE = re.compile(r"(?<=[0-9])(?=[" + "".join(_EXCEPT_HAMZA) + "])", flags=re.U | re.M | re.I)
-
-
-# Issue to be resolved: Words like کیجئے and کیجیے appear in the same context but they have different unicodes.
-# We cannot merge them neither can we have them separately. Because if we decompose ئ,
-# we get unicode that are not available in our unicode list.
-
 def digits_space(text: str) -> str:
     """
     Add spaces before|after numeric and urdu digits
@@ -184,14 +178,6 @@ def digits_space(text: str) -> str:
     text = _SPACE_AFTER_DIGITS_RE.sub(' ', text)
 
     return text
-
-
-# Add spaces after ., if there is number then not Ex (9.00)
-_SPACE_AFTER_PUNCTUATIONS_RE = re.compile(
-    r"(?<=[" + "".join(URDU_PUNCTUATIONS) + "])(?=[^" + "".join(URDU_PUNCTUATIONS) + "0-9 \n])",
-    flags=re.U | re.M | re.I)
-_REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE = re.compile(r'\s+([' + "".join(URDU_PUNCTUATIONS) + '])',
-                                                  flags=re.U | re.M | re.I)
 
 
 def punctuations_space(text: str) -> str:
@@ -214,12 +200,18 @@ def punctuations_space(text: str) -> str:
     return text
 
 
-# Add spaces before|after english characters and urdu words
-# ikramسالہ  , abفیصد
-_SPACE_BEFORE_ENG_CHAR_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[a-zA-Z])",
-                                       flags=re.U | re.M | re.I)
-_SPACE_AFTER_ENG_CHAR_RE = re.compile(r"(?<=[a-zA-Z])(?=[" + "".join(URDU_ALL_CHARACTERS) + "])",
-                                      flags=re.U | re.M | re.I)
+def all_punctuations_space(text: str) -> str:
+    """
+    Add spaces after punctuations used in ``urdu`` writing
+
+    Args:
+        text (str): ``Urdu`` text
+    Returns:
+        str: Returns a ``str`` object containing normalized text.
+    """
+    text = _SPACE_BEFORE_ALL_PUNCTUATIONS_RE.sub(' ', text)
+    text = _SPACE_AFTER_ALL_PUNCTUATIONS_RE.sub(' ', text)
+    return text
 
 
 def english_characters_space(text: str) -> str:
@@ -245,9 +237,6 @@ def english_characters_space(text: str) -> str:
     text = _SPACE_AFTER_ENG_CHAR_RE.sub(' ', text)
 
     return text
-
-
-_DIACRITICS_RE = re.compile(f'[{"".join(URDU_DIACRITICS)}]', flags=re.U | re.M | re.I)
 
 
 def remove_diacritics(text: str) -> str:
@@ -279,6 +268,8 @@ def normalize(text: str) -> str:
         text (str): ``Urdu`` text
     Returns:
         str: Normalized urdu text
+    Raises:
+        TypeError: If text param is not not str Type.
     Examples:
         >>> from urduhack import normalize
         >>> text = "اَباُوگل پاکستان ﻤﯿﮟ20سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔"
@@ -286,13 +277,17 @@ def normalize(text: str) -> str:
         >>> # The text now contains proper spaces after digits and punctuations,
         >>> # normalized characters and no diacritics!
         >>> normalized_text
-        اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ، وسائل کی کوئی کمی نہیں ﮨﮯ۔
+        اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ ۔
     """
+    if not isinstance(text, str):
+        raise TypeError(f"text must be str type.")
+
+    text = normalize_whitespace(text)
+    text = remove_diacritics(text)
     text = normalize_characters(text)
     text = normalize_combine_characters(text)
     text = digits_space(text)
-    text = punctuations_space(text)
-    text = remove_diacritics(text)
+    text = all_punctuations_space(text)
     text = english_characters_space(text)
     return text
 

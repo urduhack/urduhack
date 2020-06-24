@@ -1,3 +1,4 @@
+# coding: utf8
 """Test Cases"""
 
 from urduhack.conll.reader import CoNLL

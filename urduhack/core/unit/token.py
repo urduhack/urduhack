@@ -8,6 +8,7 @@ from typing import Dict
 
 from urduhack.conll import CoNLL
 from urduhack.conll.conllable import Conllable
+from urduhack.stop_words import STOP_WORDS
 
 NER = 'ner'
 START_CHAR = 'start_char'
@@ -137,6 +138,16 @@ class Token:
 
     def _is_null(self, value):
         return (value is None) or (value == '_')
+
+    @property
+    def is_stop(self) -> bool:
+        """
+        Check the token is stop_word
+
+        Returns:
+            bool: Return true|False
+        """
+        return self.text in STOP_WORDS
 
 
 class Word(Conllable):

@@ -12,48 +12,34 @@
 [![Gitter](https://badges.gitter.im/urduhack/urduhack.svg)](https://gitter.im/urduhack/urduhack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/urduhack/urduhack/blob/master/LICENSE)
 
-
 Urduhack is a NLP library for urdu language. It comes with a lot of battery included features to help you process Urdu
 data in the easiest way possible.
 
-## Note: Releasing a stable version v1.0.0 soon with lots of new models and new api.
-
-## Our Goal
+Our Goal
+--------
 
 - **Academic users** Easier experimentation to prove their hypothesis without coding from scratch.
 - **NLP beginners** Learn how to build an NLP project with production level code quality.
 - **NLP developers** Build a production level application within minutes.
 
-
 🔥 Features Support
-----------------
+-------------------
 - [x] Normalization
-    - [x] Arabic and Urdu Unicode Redundancy Problem
-    - [x] Character Normalization
-    - [x] Combined Characters Normalization 
-    - [x] Diacritics Removal
-    - [x] Spaces Before & After Digits
-    - [x] Spaces After Punctuations
-    - [x] Joined Words Fix
 - [x] Tokenization
-    - [x] Sentence Tokenization
-    - [x] Words Tokenization
- - [x] Data Pre-processing
-     - [x] Handles all kind of numbers, emails, currencies and urls etc.
-- [ ] Tasks
-  - [x] Sentimental analysis
+- [x] Preprocessing
+- [x] Pipeline Module
+- [x] Models
+  - [x] Pos tagger
+  - [ ] Sentimental analysis
   - [ ] Sentence classification
   - [ ] Documents classification
   - [ ] Name entity recognition
   - [ ] Image to text
   - [ ] Speech to text
-- [x] Datasets
-  - [x] IMDB Urdu movies review dataset
-  - [x] Hand written digits datasets
-
+- [x] Datasets loader
 
 🛠 Installation
-------------
+---------------
 Urduhack officially supports Python 3.6–3.7, and runs great on PyPy.
 
 Installing with tensorflow cpu version.
@@ -66,8 +52,27 @@ Installing with tensorflow gpu version.
 $ pip install urduhack[tf-gpu]
 ```
 
+Usage
+-----
+
+```python
+import urduhack
+
+# Downloading models
+urduhack.download()
+
+nlp = urduhack.Pipeline()
+text = ""
+doc = nlp(text)
+
+for sentence in doc.sentences:
+    print(sentence.text)
+    for word in sentence.words:
+        print(word)
+```
+
 🔗 Documentation
--------------
+----------------
 Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 
 | Documentation   |                                                                |
@@ -94,7 +99,7 @@ How to Contribute
     published. :)
 
 👍 Contributors
--------------
+---------------
 Special thanks to everyone who contributed to getting the UrduHack to the current state.
 
 Backers [![Backers on Open Collective](https://opencollective.com/urduhack/backers/badge.svg)](#backers)
@@ -103,11 +108,11 @@ Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com
 <a href="https://opencollective.com/urduhack#backers" target="_blank"><img src="https://opencollective.com/urduhack/backers.svg?width=890"></a>
 
 Sponsors [![Sponsors on Open Collective](https://opencollective.com/urduhack/sponsors/badge.svg)](#sponsors)
------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
 Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/urduhack#sponsor)]
 <a href="https://opencollective.com/urduhack/sponsor/0/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/urduhack/sponsor/1/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/1/avatar.svg"></a>
 
 📝 Copyright and license
----------------------
+------------------------
 Code released under the [MIT License](ttps://github.com/urduhack/urduhack/blob/master/LICENSE).

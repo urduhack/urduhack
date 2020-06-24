@@ -96,7 +96,7 @@ class Sentence(Conllable):
         self._doc = value
 
     @property
-    def text(self):
+    def text(self) -> str:
         """ Access the raw text for this sentence. """
         return self._text
 
@@ -140,6 +140,9 @@ class Sentence(Conllable):
         Returns:
             str: A string representing the Sentence in CoNLL-U format.
         """
+        if not self.meta_present("text") and self.text is not None:
+            self.set_meta("text", self.text)
+
         lines = []
         sorted_meta = sorted(self._meta.items(), key=operator.itemgetter(0))
         for meta in sorted_meta:

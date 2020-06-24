@@ -4,8 +4,8 @@ About
 Authors
 -------
 
-Ikram ALi(Urduhack Core contributor)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Ikram ALi (Core contributor)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A machine learning practitioner and an avid learner with professional experience in managing Python, PHP,
 Javascript projects and excellent (Machine learning / Deep learning) skills.

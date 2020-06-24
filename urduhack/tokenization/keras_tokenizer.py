@@ -11,8 +11,6 @@ from typing import Tuple
 import numpy as np
 import tensorflow as tf
 
-from ..errors import Errors
-
 
 def _load_vocab(vocab_path: str) -> Tuple[dict, dict]:
     """
@@ -113,5 +111,7 @@ def _is_model_exist(model_path: str, vocab_path: str) -> None:
     Returns: None
     """
     if not Path(model_path).exists() and not Path(vocab_path).exists():
-        raise FileNotFoundError(
-            Errors.E000.format(message="Word tokenizer Model not found! Please run 'urduhack download' in terminal"))
+        _error = "Word tokenizer Model not found!" \
+                 "Please run 'urduhack download' in terminal." \
+                 "Doc: https://urduhack.readthedocs.io/en/stable/installation.html#downloading-models"
+        raise FileNotFoundError(_error)

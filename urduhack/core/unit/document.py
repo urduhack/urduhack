@@ -17,43 +17,32 @@ class Document(Conllable):
         """ Construct a document given a list of sentences in the form of lists of CoNLL-U dicts.
 
         Args:
-            sentences (list): a list of sentences, which being a list of token entry, in the form of a CoNLL-U dict.
-            text (str): the raw text of the document.
+            sentences (list): List of sentences, which being a tuple of dict, list of token entry (CoNLL-U dict).
+            text (str): Urdu text of the document.
         """
-        self._sentences = []
-        self._text = None
-        self._num_tokens = 0
-        self._num_words = 0
-        self.text = text
+        self._sentences: list = []
+        self._text: str = text
+        self._num_tokens: int = 0
+        self._num_words: int = 0
         self._process(sentences)
 
     @property
     def text(self) -> str:
         """
-        Access the raw text for this document.
+        Access the Urdu text for this document.
 
         Returns:
             str: Document text
         """
         return self._text
 
-    @text.setter
-    def text(self, value):
-        """ Set the raw text for this document. """
-        self._text = value
-
     @property
-    def sentences(self):
+    def sentences(self) -> list:
         """ Access the list of sentences for this document. """
         return self._sentences
 
-    @sentences.setter
-    def sentences(self, value):
-        """ Set the list of tokens for this document. """
-        self._sentences = value
-
     @property
-    def num_tokens(self):
+    def num_tokens(self) -> int:
         """ Access the number of tokens for this document. """
         return self._num_tokens
 
@@ -63,7 +52,7 @@ class Document(Conllable):
         self._num_tokens = value
 
     @property
-    def num_words(self):
+    def num_words(self) -> int:
         """ Access the number of words for this document. """
         return self._num_words
 
@@ -73,7 +62,7 @@ class Document(Conllable):
         self._num_words = value
 
     def _process(self, sentences):
-        self.sentences = []
+        """process sentences in to words and tokens"""
         for sentence in sentences:
             self.sentences.append(Sentence(sentence, doc=self))
             begin_idx, end_idx = self.sentences[-1].tokens[0].start_char, self.sentences[-1].tokens[-1].end_char
@@ -161,7 +150,7 @@ class Document(Conllable):
         for sentence in self.sentences:
             yield from sentence.tokens
 
-    def to_dict(self):
+    def to_dict(self) -> list:
         """ Dumps the whole document into a list of list of dictionary for each token in each sentence in the doc.
         """
         return [sentence.to_dict() for sentence in self.sentences]
