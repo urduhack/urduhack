@@ -280,7 +280,7 @@ def normalize(text: str) -> str:
         اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ ۔
     """
     if not isinstance(text, str):
-        raise TypeError(f"text must be str type.")
+        raise TypeError("text must be str type.")
 
     text = normalize_whitespace(text)
     text = remove_diacritics(text)
