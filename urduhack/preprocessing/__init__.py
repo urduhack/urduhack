@@ -19,9 +19,8 @@ module in the reference here :py:mod:`~urduhack.preprocess`.
 
 """
 from .util import (normalize_whitespace, replace_urls, replace_emails, replace_numbers, replace_phone_numbers,
-                   replace_currency_symbols, remove_punctuation, remove_accents, remove_english_alphabets,
-                   remove_stopwords)
+                   replace_currency_symbols, remove_punctuation, remove_accents, remove_english_alphabets)
 
 __all__ = ["normalize_whitespace", "remove_punctuation", "remove_accents", "replace_urls",
            "replace_emails", "replace_numbers", "replace_phone_numbers",
-           "replace_currency_symbols", "remove_english_alphabets", "remove_stopwords"]
+           "replace_currency_symbols", "remove_english_alphabets", ]
