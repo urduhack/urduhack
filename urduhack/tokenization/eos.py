@@ -30,7 +30,7 @@ def _generate_sentences(text: str) -> list:
     """
     all_sentences = []
     sentences = _split_and_keep(text, '۔')
-    sen_counter = 0
+
     for sentence in sentences:  # pylint: disable=too-many-nested-blocks
         if sentence and (len(sentence.split()) >= 2):
             if '؟' in sentence:
@@ -38,31 +38,52 @@ def _generate_sentences(text: str) -> list:
                 for _sen in q_sentences:
                     _sen = _sen.split()
                     new_sent = ""
+                    is_cont = False
+
                     for index, word in enumerate(_sen):
+                        if is_cont:
+                            is_cont = False
+                            continue
+
                         if word in _URDU_NEWLINE_WORDS and index + 1 < len(
                                 _sen) and _sen[index + 1] not in _URDU_CONJUNCTIONS:
-                            new_sent += " " + word + "۔"
+
+                            if index + 1 < len(_sen) and _sen[index + 1] in ["۔", "،"]:
+                                new_sent += " " + word + " " + _sen[index + 1] + "\n"
+                                is_cont = True
+                            else:
+                                new_sent += " " + word + "\n"
+
                         else:
                             new_sent += " " + word
 
-                    for sen in _split_and_keep(new_sent, '۔'):
+                    for sen in new_sent.split("\n"):
                         if sen and len(sen.split()) >= 2:
                             all_sentences.append(sen.strip())
 
             else:
                 sentence = sentence.split()
                 new_sent = ""
+                is_cont = False
 
                 for index, word in enumerate(sentence):
-                    if word in _URDU_NEWLINE_WORDS and index + 1 < len(
-                            sentence) and \
-                            sentence[index + 1] not in _URDU_CONJUNCTIONS:
+                    if is_cont:
+                        is_cont = False
+                        continue
 
-                        new_sent += " " + word + "۔"
+                    if word in _URDU_NEWLINE_WORDS and index + 1 < len(
+                            sentence) and sentence[index + 1] not in _URDU_CONJUNCTIONS:
+
+                        if index + 1 < len(sentence) and sentence[index + 1] in ["۔", "،"]:
+                            new_sent += " " + word + " " + sentence[index + 1] + "\n"
+                            is_cont = True
+                        else:
+                            new_sent += " " + word + "\n"
                     else:
                         new_sent += " " + word
-                for sen in _split_and_keep(new_sent, '۔'):
+
+                for sen in new_sent.split("\n"):
                     if sen and len(sen.split()) >= 2:
                         all_sentences.append(sen.strip())
-        sen_counter += 1
+
     return all_sentences
