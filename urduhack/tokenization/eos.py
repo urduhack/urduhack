@@ -1,6 +1,5 @@
 # coding: utf8
 """Rule based Sentence tokenization module"""
-from regex import sub
 
 # Global Variables
 _URDU_CONJUNCTIONS = ['جنہیں', 'جس', 'جن', 'جو', 'اور', 'اگر', 'اگرچہ', 'لیکن', 'مگر', 'پر', 'یا', 'تاہم', 'کہ', 'کر',
@@ -37,9 +36,6 @@ def _generate_sentences(text: str) -> list:
             if '؟' in sentence:
                 q_sentences = _split_and_keep(sentence, '؟')
                 for _sen in q_sentences:
-                    _sen = sub(r"\n", " ", _sen)
-                    _sen = sub(' +', ' ', _sen)
-                    # Removing trailing spaces and splitting
                     _sen = _sen.split()
                     new_sent = ""
                     for index, word in enumerate(_sen):
@@ -54,9 +50,6 @@ def _generate_sentences(text: str) -> list:
                             all_sentences.append(sen.strip())
 
             else:
-                sentence = sub(r"\n", " ", sentence)
-                sentence = sub(' +', ' ', sentence)
-                # Removing trailing spaces and splitting
                 sentence = sentence.split()
                 new_sent = ""
 
