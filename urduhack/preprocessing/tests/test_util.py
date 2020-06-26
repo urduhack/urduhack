@@ -3,7 +3,7 @@
 
 from ..util import normalize_whitespace, replace_currency_symbols, \
     remove_punctuation, remove_accents, \
-    remove_stopwords, remove_english_alphabets, replace_emails, replace_numbers, replace_phone_numbers, replace_urls
+    remove_english_alphabets, replace_emails, replace_numbers, replace_phone_numbers, replace_urls
 
 
 def test_normalize_whitespace():
@@ -80,9 +80,3 @@ def test_remove_english_alphabets():
     text = "تمہارے پاس کتنے dollars ہے"
     proc_text = 'تمہارے پاس کتنے  ہے'
     assert remove_english_alphabets(text) == proc_text
-
-
-def test_remove_stopwords():
-    """Test Case"""
-    text = "لڑکی نے تفتیش میں بتایا ہے کہ وہ صرف لڑکے کا کردار چیک کرنا چاہتی تھی"
-    assert remove_stopwords(text) == "لڑکی تفتیش بتایا لڑکے کردار چیک چاہتی"

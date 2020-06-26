@@ -3,7 +3,7 @@
 import platform
 from pathlib import Path
 
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 __description__ = 'Natural Language Processing (NLP) library for Urdu language.'
 __url__ = 'https://github.com/urduhack/urduhack'
 __author__ = 'Ikram Ali'

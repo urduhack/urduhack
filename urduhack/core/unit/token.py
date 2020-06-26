@@ -2,8 +2,8 @@
 """
 Token, Word data structures
 """
-
 import json
+import unicodedata
 from typing import Dict
 
 from urduhack.conll import CoNLL
@@ -148,6 +148,19 @@ class Token:
             bool: Return true|False
         """
         return self.text in STOP_WORDS
+
+    @property
+    def is_punct(self) -> bool:
+        """
+        Check the token is punct
+
+        Returns:
+            bool: Return true|False
+        """
+        for char in self.text:
+            if not unicodedata.category(char).startswith('P'):
+                return False
+        return True
 
 
 class Word(Conllable):
