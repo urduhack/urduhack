@@ -13,7 +13,7 @@ _VOCAB_SOURCES = {
 }
 
 
-def create_char_vocab() -> set:
+def get_char_vocab() -> set:
     """
     Complete vocab used by models. Maps characters to integers and vice versa
 
