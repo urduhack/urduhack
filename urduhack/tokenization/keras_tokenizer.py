@@ -9,8 +9,8 @@ from pathlib import Path
 from typing import Tuple
 
 import numpy as np
-from numpy import ndarray
 import tensorflow as tf
+from numpy import ndarray
 
 
 def _load_vocab(vocab_path: str) -> Tuple[dict, dict]:
@@ -26,7 +26,7 @@ def _load_vocab(vocab_path: str) -> Tuple[dict, dict]:
         vocab = vocab_file.readline()
     vocab = list('_' + vocab)
     char2idx = {char: idx for idx, char in enumerate(vocab)}
-    idx2char = {idx: char for idx, char in enumerate(vocab)}
+    idx2char = {idx: char for idx, char in enumerate(vocab)}  # pylint: disable=unnecessary-comprehension
     return char2idx, idx2char
 
 
