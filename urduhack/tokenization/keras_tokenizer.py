@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Tuple
 
 import numpy as np
+from numpy import ndarray
 import tensorflow as tf
 
 
@@ -21,16 +22,15 @@ def _load_vocab(vocab_path: str) -> Tuple[dict, dict]:
         Two dictionaries containing character to integer mapping and integer to character mapping
     """
 
-    vocab_file = open(vocab_path, encoding="utf-8")
-    vocab = vocab_file.readline()
+    with open(vocab_path, "r", encoding="UTF-8") as vocab_file:
+        vocab = vocab_file.readline()
     vocab = list('_' + vocab)
-    vocab.remove('\n')
     char2idx = {char: idx for idx, char in enumerate(vocab)}
-    idx2char = {idx: char for idx, char in enumerate(vocab)}  # pylint: disable=unnecessary-comprehension
+    idx2char = {idx: char for idx, char in enumerate(vocab)}
     return char2idx, idx2char
 
 
-def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int) -> bytearray:
+def _preprocess_sentence(sentence: str, char2idx: dict, max_len: int) -> Tuple[ndarray, ndarray]:
     """
     Makes the input and output arrays for the data explaining where is a character or a space
 
