@@ -6,7 +6,6 @@ and punctuations.
 """
 from typing import Dict
 
-from urduhack.preprocessing import normalize_whitespace
 from .regexes import _SPACE_AFTER_ALL_PUNCTUATIONS_RE, _SPACE_BEFORE_ALL_PUNCTUATIONS_RE
 from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
 from .regexes import _SPACE_AFTER_PUNCTUATIONS_RE, _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE
@@ -282,7 +281,6 @@ def normalize(text: str) -> str:
     if not isinstance(text, str):
         raise TypeError("text must be str type.")
 
-    text = normalize_whitespace(text)
     text = remove_diacritics(text)
     text = normalize_characters(text)
     text = normalize_combine_characters(text)
