@@ -6,10 +6,12 @@ and punctuations.
 """
 from typing import Dict
 
+from .regexes import _DIACRITICS_RE
 from .regexes import _SPACE_AFTER_ALL_PUNCTUATIONS_RE, _SPACE_BEFORE_ALL_PUNCTUATIONS_RE
 # from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
 from .regexes import _SPACE_AFTER_PUNCTUATIONS_RE, _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE
-from .regexes import _SPACE_BEFORE_ENG_CHAR_RE, _SPACE_AFTER_ENG_CHAR_RE, _DIACRITICS_RE
+
+# from .regexes import _SPACE_BEFORE_ENG_CHAR_RE, _SPACE_AFTER_ENG_CHAR_RE
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
@@ -214,29 +216,30 @@ def all_punctuations_space(text: str) -> str:
     return text
 
 
-def english_characters_space(text: str) -> str:
-    """
-    Functionality to add spaces before and after English words in the given Urdu text. It is an important step in
-    normalization of the Urdu data.
-
-    this function returns a :py:class:`String` object which contains the original text with spaces before & after
-    English words.
-
-    Args:
-        text (str): ``Urdu`` text
-    Returns:
-        str: Returns a ``str`` object containing normalized text.
-    Examples:
-        >>> from urduhack.normalization import english_characters_space
-        >>> text = "خاتون Aliyaنے بچوںUzma and Aliyaکے قتل کا اعترافConfession کیا ہے۔"
-        >>> normalized_text = english_characters_space(text)
-        >>> normalized_text
-        خاتون Aliya نے بچوں Uzma and Aliya کے قتل کا اعتراف Confession کیا ہے۔
-    """
-    text = _SPACE_BEFORE_ENG_CHAR_RE.sub(' ', text)
-    text = _SPACE_AFTER_ENG_CHAR_RE.sub(' ', text)
-
-    return text
+# Moved into preprocessing module
+# def english_characters_space(text: str) -> str:
+#     """
+#     Functionality to add spaces before and after English words in the given Urdu text. It is an important step in
+#     normalization of the Urdu data.
+#
+#     this function returns a :py:class:`String` object which contains the original text with spaces before & after
+#     English words.
+#
+#     Args:
+#         text (str): ``Urdu`` text
+#     Returns:
+#         str: Returns a ``str`` object containing normalized text.
+#     Examples:
+#         >>> from urduhack.normalization import english_characters_space
+#         >>> text = "خاتون Aliyaنے بچوںUzma and Aliyaکے قتل کا اعترافConfession کیا ہے۔"
+#         >>> normalized_text = english_characters_space(text)
+#         >>> normalized_text
+#         خاتون Aliya نے بچوں Uzma and Aliya کے قتل کا اعتراف Confession کیا ہے۔
+#     """
+#     text = _SPACE_BEFORE_ENG_CHAR_RE.sub(' ', text)
+#     text = _SPACE_AFTER_ENG_CHAR_RE.sub(' ', text)
+#
+#     return text
 
 
 def remove_diacritics(text: str) -> str:

@@ -28,13 +28,11 @@ This module provides the following functionality:
     - Normalizing Single Characters
     - Normalizing Combine Characters
     - Put Spaces After Urdu Punctuations
-    - Put Spaces Before & After English Words
     - Removal of Diacritics from Urdu Text
 """
 from .character import normalize_characters, normalize_combine_characters, punctuations_space, \
-    remove_diacritics, english_characters_space, normalize
+    remove_diacritics, normalize
 
 __all__ = ["normalize_characters", "normalize_combine_characters",
-           "english_characters_space",
            "punctuations_space", "remove_diacritics",
            "normalize"]

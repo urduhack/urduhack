@@ -21,12 +21,13 @@ _SPACE_AFTER_PUNCTUATIONS_RE = re.compile(
 _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE = re.compile(r'\s+([' + "".join(URDU_PUNCTUATIONS) + '])',
                                                   flags=re.U | re.M | re.I)
 
+# Moved into preprocessing module
 # Add spaces before|after english characters and urdu words
 # ikramسالہ  , abفیصد
-_SPACE_BEFORE_ENG_CHAR_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[a-zA-Z])",
-                                       flags=re.U | re.M | re.I)
-_SPACE_AFTER_ENG_CHAR_RE = re.compile(r"(?<=[a-zA-Z])(?=[" + "".join(URDU_ALL_CHARACTERS) + "])",
-                                      flags=re.U | re.M | re.I)
+# _SPACE_BEFORE_ENG_CHAR_RE = re.compile(r"(?<=[" + "".join(URDU_ALL_CHARACTERS) + "])(?=[a-zA-Z])",
+#                                        flags=re.U | re.M | re.I)
+# _SPACE_AFTER_ENG_CHAR_RE = re.compile(r"(?<=[a-zA-Z])(?=[" + "".join(URDU_ALL_CHARACTERS) + "])",
+#                                       flags=re.U | re.M | re.I)
 
 _DIACRITICS_RE = re.compile(f'[{"".join(URDU_DIACRITICS)}]', flags=re.U | re.M | re.I)
 

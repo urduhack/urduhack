@@ -5,8 +5,7 @@ from urduhack import normalize
 from urduhack.normalization.character import normalize_characters, CORRECT_URDU_CHARACTERS, \
     normalize_combine_characters, \
     COMBINE_URDU_CHARACTERS, replace_digits
-from urduhack.normalization.character import punctuations_space, \
-    remove_diacritics, english_characters_space
+from urduhack.normalization.character import punctuations_space, remove_diacritics
 from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS, URDU_DIACRITICS
 
 
@@ -219,17 +218,18 @@ def test_combine_urdu_characters():
         assert len(value) == 1
 
 
-def test_english_space():
-    """Test cases"""
-    data = {
-        "سکیورٹی حکام کے مطابق جنوبی صوبےLahj میں رات گئے۔": "سکیورٹی حکام کے مطابق جنوبی صوبے Lahj میں رات گئے۔",
-        "اس جوڑے کی دو نوجوان Amna and Aliyaبیٹیاں ہیں۔": "اس جوڑے کی دو نوجوان Amna and Aliya بیٹیاں ہیں۔",
-        "جو ان تمام واقعات سے لاعلمIgnorantہیں۔": "جو ان تمام واقعات سے لاعلم Ignorant ہیں۔",
-        "خاتون Aliyaنے بچوںUzma and Aliyaکے قتل کا اعترافConfession کیا ہے۔": "خاتون Aliya نے بچوں Uzma and Aliya کے"
-                                                                              " قتل کا اعتراف Confession کیا ہے۔",
-    }
-    for key, value in data.items():
-        assert value == english_characters_space(key)
+# Moved into preprocessing module
+# def test_english_space():
+#     """Test cases"""
+#     data = {
+#         "سکیورٹی حکام کے مطابق جنوبی صوبےLahj میں رات گئے۔": "سکیورٹی حکام کے مطابق جنوبی صوبے Lahj میں رات گئے۔",
+#         "اس جوڑے کی دو نوجوان Amna and Aliyaبیٹیاں ہیں۔": "اس جوڑے کی دو نوجوان Amna and Aliya بیٹیاں ہیں۔",
+#         "جو ان تمام واقعات سے لاعلمIgnorantہیں۔": "جو ان تمام واقعات سے لاعلم Ignorant ہیں۔",
+#         "خاتون Aliyaنے بچوںUzma and Aliyaکے قتل کا اعترافConfession کیا ہے۔": "خاتون Aliya نے بچوں Uzma and Aliya کے"
+#                                                                               " قتل کا اعتراف Confession کیا ہے۔",
+#     }
+#     for key, value in data.items():
+#         assert value == english_characters_space(key)
 
 
 # Moved into preprocessing module
