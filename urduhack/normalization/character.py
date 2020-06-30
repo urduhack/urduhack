@@ -271,12 +271,12 @@ def normalize(text: str) -> str:
         TypeError: If text param is not not str Type.
     Examples:
         >>> from urduhack import normalize
-        >>> text = "اَباُوگل پاکستان ﻤﯿﮟ20سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔"
+        >>> text = "اَباُوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔"
         >>> normalized_text = normalize(text)
         >>> # The text now contains proper spaces after digits and punctuations,
         >>> # normalized characters and no diacritics!
         >>> normalized_text
-        اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ ۔
+        اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔
     """
     if not isinstance(text, str):
         raise TypeError("text must be str type.")
@@ -284,9 +284,6 @@ def normalize(text: str) -> str:
     text = remove_diacritics(text)
     text = normalize_characters(text)
     text = normalize_combine_characters(text)
-    text = digits_space(text)
-    text = all_punctuations_space(text)
-    text = english_characters_space(text)
     return text
 
 
