@@ -29,9 +29,7 @@ This module provides the following functionality:
     - Normalizing Combine Characters
     - Removal of Diacritics from Urdu Text
 """
-from .character import normalize_characters, normalize_combine_characters, punctuations_space, \
+from .character import normalize_characters, normalize_combine_characters, \
     remove_diacritics, normalize
 
-__all__ = ["normalize_characters", "normalize_combine_characters",
-           "punctuations_space", "remove_diacritics",
-           "normalize"]
+__all__ = ["normalize_characters", "normalize_combine_characters", "remove_diacritics", "normalize"]

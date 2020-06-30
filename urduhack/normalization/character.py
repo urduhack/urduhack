@@ -165,7 +165,7 @@ def punctuations_space(text: str) -> str:
     Returns:
         str: Returns a ``str`` object containing normalized text.
     Examples:
-        >>> from urduhack.normalization import punctuations_space
+        >>> from urduhack.normalization.character import punctuations_space
         >>> text = "ہوتا ہے   ۔  ٹائپ"
         >>> normalized_text = punctuations_space(text)
         >>> normalized_text
