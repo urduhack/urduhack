@@ -2,13 +2,12 @@
 """Test cases for character class"""
 
 from urduhack import normalize
-from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS, URDU_DIACRITICS
-from urduhack.normalization.character import digits_space, punctuations_space,\
-    remove_diacritics, english_characters_space
-
-from urduhack.normalization.character import normalize_characters, CORRECT_URDU_CHARACTERS,\
+from urduhack.normalization.character import normalize_characters, CORRECT_URDU_CHARACTERS, \
     normalize_combine_characters, \
     COMBINE_URDU_CHARACTERS, replace_digits
+from urduhack.normalization.character import punctuations_space, \
+    remove_diacritics, english_characters_space
+from urduhack.urdu_characters import URDU_ALL_CHARACTERS, URDU_ALPHABETS, URDU_DIGITS, URDU_DIACRITICS
 
 
 def test_normalize():
@@ -233,20 +232,21 @@ def test_english_space():
         assert value == english_characters_space(key)
 
 
-def test_digits_space():
-    """Test cases"""
-    data = {"20فیصد": "20 فیصد",
-            "18سالہ": "18 سالہ",
-            "18.30سالہ": "18.30 سالہ",
-            "سالہ18": "سالہ 18",
-            "سالہ30.18": "سالہ 30.18",
-            " 44 سالہ20فیصد30": " 44 سالہ 20 فیصد 30",
-            "ان میں 1990ء30": "ان میں 1990ء 30",
-            "ان میں 1990ء کے": "ان میں 1990ء کے",
-            "ان میں ء1990ء کے": "ان میں ء 1990ء کے",
-            }
-    for key, value in data.items():
-        assert value == digits_space(key)
+# Moved into preprocessing module
+# def test_digits_space():
+#     """Test cases"""
+#     data = {"20فیصد": "20 فیصد",
+#             "18سالہ": "18 سالہ",
+#             "18.30سالہ": "18.30 سالہ",
+#             "سالہ18": "سالہ 18",
+#             "سالہ30.18": "سالہ 30.18",
+#             " 44 سالہ20فیصد30": " 44 سالہ 20 فیصد 30",
+#             "ان میں 1990ء30": "ان میں 1990ء 30",
+#             "ان میں 1990ء کے": "ان میں 1990ء کے",
+#             "ان میں ء1990ء کے": "ان میں ء 1990ء کے",
+#             }
+#     for key, value in data.items():
+#         assert value == digits_space(key)
 
 
 def test_punctuations_space():

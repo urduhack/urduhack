@@ -7,7 +7,7 @@ and punctuations.
 from typing import Dict
 
 from .regexes import _SPACE_AFTER_ALL_PUNCTUATIONS_RE, _SPACE_BEFORE_ALL_PUNCTUATIONS_RE
-from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
+# from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
 from .regexes import _SPACE_AFTER_PUNCTUATIONS_RE, _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE
 from .regexes import _SPACE_BEFORE_ENG_CHAR_RE, _SPACE_AFTER_ENG_CHAR_RE, _DIACRITICS_RE
 
@@ -158,25 +158,26 @@ def normalize_combine_characters(text: str) -> str:
     return text
 
 
-def digits_space(text: str) -> str:
-    """
-    Add spaces before|after numeric and urdu digits
-
-    Args:
-        text (str): ``Urdu`` text
-    Returns:
-        str: Returns a ``str`` object containing normalized text.
-    Examples:
-        >>> from urduhack.normalization import digits_space
-        >>> text = "20فیصد"
-        >>> normalized_text = digits_space(text)
-        >>> normalized_text
-        20 فیصد
-    """
-    text = _SPACE_BEFORE_DIGITS_RE.sub(' ', text)
-    text = _SPACE_AFTER_DIGITS_RE.sub(' ', text)
-
-    return text
+# Moved into preprocessing module
+# def digits_space(text: str) -> str:
+#     """
+#     Add spaces before|after numeric and urdu digits
+#
+#     Args:
+#         text (str): ``Urdu`` text
+#     Returns:
+#         str: Returns a ``str`` object containing normalized text.
+#     Examples:
+#         >>> from urduhack.normalization import digits_space
+#         >>> text = "20فیصد"
+#         >>> normalized_text = digits_space(text)
+#         >>> normalized_text
+#         20 فیصد
+#     """
+#     text = _SPACE_BEFORE_DIGITS_RE.sub(' ', text)
+#     text = _SPACE_AFTER_DIGITS_RE.sub(' ', text)
+#
+#     return text
 
 
 def punctuations_space(text: str) -> str:
