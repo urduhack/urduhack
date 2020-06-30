@@ -1,7 +1,7 @@
 # coding: utf8
 """Test cases for character class"""
 
-from urduhack.preprocessing.character import digits_space
+from urduhack.preprocessing.character import digits_space, english_characters_space
 
 
 def test_digits_space():
@@ -18,3 +18,16 @@ def test_digits_space():
             }
     for key, value in data.items():
         assert value == digits_space(key)
+
+
+def test_english_space():
+    """Test cases"""
+    data = {
+        "سکیورٹی حکام کے مطابق جنوبی صوبےLahj میں رات گئے۔": "سکیورٹی حکام کے مطابق جنوبی صوبے Lahj میں رات گئے۔",
+        "اس جوڑے کی دو نوجوان Amna and Aliyaبیٹیاں ہیں۔": "اس جوڑے کی دو نوجوان Amna and Aliya بیٹیاں ہیں۔",
+        "جو ان تمام واقعات سے لاعلمIgnorantہیں۔": "جو ان تمام واقعات سے لاعلم Ignorant ہیں۔",
+        "خاتون Aliyaنے بچوںUzma and Aliyaکے قتل کا اعترافConfession کیا ہے۔": "خاتون Aliya نے بچوں Uzma and Aliya کے"
+                                                                              " قتل کا اعتراف Confession کیا ہے۔",
+    }
+    for key, value in data.items():
+        assert value == english_characters_space(key)

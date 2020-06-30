@@ -4,6 +4,7 @@ Urduhack Character preprocess functions
 """
 
 from .regexes import _SPACE_AFTER_DIGITS_RE, _SPACE_BEFORE_DIGITS_RE
+from .regexes import _SPACE_BEFORE_ENG_CHAR_RE, _SPACE_AFTER_ENG_CHAR_RE
 
 
 def digits_space(text: str) -> str:
@@ -23,5 +24,30 @@ def digits_space(text: str) -> str:
     """
     text = _SPACE_BEFORE_DIGITS_RE.sub(' ', text)
     text = _SPACE_AFTER_DIGITS_RE.sub(' ', text)
+
+    return text
+
+
+def english_characters_space(text: str) -> str:
+    """
+    Functionality to add spaces before and after English words in the given Urdu text. It is an important step in
+    normalization of the Urdu data.
+
+    this function returns a :py:class:`String` object which contains the original text with spaces before & after
+    English words.
+
+    Args:
+        text (str): ``Urdu`` text
+    Returns:
+        str: Returns a ``str`` object containing normalized text.
+    Examples:
+        >>> from urduhack.preprocessing import english_characters_space
+        >>> text = "خاتون Aliyaنے بچوںUzma and Aliyaکے قتل کا اعترافConfession کیا ہے۔"
+        >>> normalized_text = english_characters_space(text)
+        >>> normalized_text
+        خاتون Aliya نے بچوں Uzma and Aliya کے قتل کا اعتراف Confession کیا ہے۔
+    """
+    text = _SPACE_BEFORE_ENG_CHAR_RE.sub(' ', text)
+    text = _SPACE_AFTER_ENG_CHAR_RE.sub(' ', text)
 
     return text
