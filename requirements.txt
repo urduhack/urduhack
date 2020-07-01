@@ -1,3 +1,4 @@
+tf2crf
 tensorflow-datasets~=3.1
 Click~=7.1
 regex

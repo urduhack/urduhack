@@ -7,7 +7,7 @@ import tensorflow as tf
 
 from ..keras_tokenizer import _load_vocab, _preprocess_sentence, _retrieve_words, _is_model_exist
 from ..tokenizer import sentence_tokenizer, word_tokenizer
-from ...config import MODEL_PATH, VOCAB_PATH
+from ...config import WORD_TOKENIZER_MODEL_PATH, WORD_TOKENIZER_VOCAB_PATH
 
 
 def test_load_vocab(tmpdir):
@@ -46,8 +46,8 @@ def test_retrieve_words():
     """
     sentence = "ترقی رکنے سے آہستہ آہستہ پاکستان نیچے چلاگی"
     assert isinstance(sentence, str)
-    model = tf.keras.models.load_model(MODEL_PATH)
-    char2idx, idx2char = _load_vocab(VOCAB_PATH)
+    model = tf.keras.models.load_model(WORD_TOKENIZER_MODEL_PATH)
+    char2idx, idx2char = _load_vocab(WORD_TOKENIZER_VOCAB_PATH)
     inp_, _ = _preprocess_sentence(sentence, char2idx, max_len=256)
     predictions = model.predict(inp_)
     word_tokens = _retrieve_words(inp_[0, :], predictions[0, :], idx2char)
