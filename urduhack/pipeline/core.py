@@ -5,13 +5,18 @@ Pipeline that runs tokenize
 from typing import Dict, List
 
 from .parsers.normalize import NormalizeParser
+from .parsers.pos_tagger import PosTaggerParser
 from .parsers.tokenize import TokenizeParser
 
 NORMALIZE: str = 'normalize'
 TOKENIZE: str = 'tokenize'
+POS_TAGGER: str = 'pos_tagger'
 
-PIPELINE_NAMES: List = [NORMALIZE, TOKENIZE]
-REGISTERED_PARSERS: Dict = {NORMALIZE: NormalizeParser, TOKENIZE: TokenizeParser}
+PIPELINE_NAMES: List = [NORMALIZE, TOKENIZE, POS_TAGGER]
+REGISTERED_PARSERS: Dict = {NORMALIZE: NormalizeParser,
+                            TOKENIZE: TokenizeParser,
+                            POS_TAGGER: PosTaggerParser,
+                            }
 
 
 class Pipeline:
