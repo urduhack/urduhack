@@ -7,9 +7,10 @@ from typing import Tuple
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.preprocessing.sequence import pad_sequences
-
 from urduhack.config import POS_TAGGER_WEIGHTS_PATH, POS_WORD2IDX_PATH, POS_TAG2IDX_PATH
 from urduhack.models.pos_tagger.model import _bi_lstm_crf_model
+
+_POS_TAGGER_MODEL, _WORD2IDX, _TAG2IDX, _IDX2WORD, _IDX2TAG = None, None, None, None, None
 
 
 def _load_metadata(model_path: str, word2idx_path: str,
@@ -41,10 +42,6 @@ def _load_metadata(model_path: str, word2idx_path: str,
     return model_arch, w2i, t2i, i2w, i2t
 
 
-model, word2idx, tag2idx, idx2word, idx2tag = _load_metadata(POS_TAGGER_WEIGHTS_PATH, POS_WORD2IDX_PATH,
-                                                             POS_TAG2IDX_PATH)
-
-
 def predict_tags(text: str) -> list:
     """
     Predicts POS Tags
@@ -55,12 +52,18 @@ def predict_tags(text: str) -> list:
     Returns:
         list: Containing words their tags
     """
+    global _POS_TAGGER_MODEL, _WORD2IDX, _TAG2IDX, _IDX2WORD, _IDX2TAG
+    if _POS_TAGGER_MODEL is None:
+        _POS_TAGGER_MODEL, _WORD2IDX, _TAG2IDX, _IDX2WORD, _IDX2TAG = _load_metadata(POS_TAGGER_WEIGHTS_PATH,
+                                                                                     POS_WORD2IDX_PATH,
+                                                                                     POS_TAG2IDX_PATH)
+
     tokens = text.split()
-    encoded = [[word2idx[word] if word in word2idx else word2idx["UNK"] for word in tokens]]
-    padded = pad_sequences(sequences=encoded, maxlen=50, value=word2idx['PAD'], padding='post')
-    predictions = model.predict(padded)
+    encoded = [[_WORD2IDX[word] if word in _WORD2IDX else _WORD2IDX["UNK"] for word in tokens]]
+    padded = pad_sequences(sequences=encoded, maxlen=50, value=_WORD2IDX['PAD'], padding='post')
+    predictions = _POS_TAGGER_MODEL.predict(padded)
     pred_tags = np.argmax(predictions, axis=2).reshape(predictions.shape[1])
     tags = []
     for word, t_idx in zip(tokens, pred_tags):
-        tags.append((word, idx2tag[t_idx]))
+        tags.append((word, _IDX2TAG[t_idx]))
     return tags
