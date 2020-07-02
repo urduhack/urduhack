@@ -25,15 +25,15 @@ Our Goal
 🔥 Features Support
 -------------------
 - [x] Normalization
-- [x] Tokenization
 - [x] Preprocessing
+- [x] Tokenization
 - [x] Pipeline Module
 - [x] Models
   - [x] Pos tagger
   - [ ] Sentimental analysis
   - [ ] Sentence classification
   - [ ] Documents classification
-  - [ ] Name entity recognition
+  - [x] Name entity recognition
   - [ ] Image to text
   - [ ] Speech to text
 - [x] Datasets loader
