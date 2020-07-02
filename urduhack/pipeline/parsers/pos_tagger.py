@@ -1,6 +1,7 @@
 # coding: utf8
 """Parser for performing normalization"""
 
+from urduhack.conll import CoNLL
 from urduhack.models.pos_tagger import predict_tags
 
 from ..parser import Parser
@@ -21,6 +22,6 @@ class PosTaggerParser(Parser):
             assert len(tags) == len(sentence.words), " Error in post tags"
             for tag, word in zip(tags, sentence.words):
                 if tag[0] == word.text:
-                    word.pos = tag[1]
+                    setattr(word, CoNLL.UPOS, tag[1])
 
         return document
