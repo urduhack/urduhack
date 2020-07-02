@@ -1,2 +1,4 @@
 # coding: utf8
-"""model"""
+"""Ner Model"""
+
+from .predict import predict_ner
