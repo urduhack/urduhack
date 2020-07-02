@@ -115,3 +115,11 @@ To get words from sentence. ::
      ہو
      گیا
      ہے۔
+
+POS tag
+^^^^^^^
+
+Word class hold Pos tags. ::
+
+    >>> for word in sentence.words:
+            print(word.pos)

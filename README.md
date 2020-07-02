@@ -25,15 +25,15 @@ Our Goal
 🔥 Features Support
 -------------------
 - [x] Normalization
-- [x] Tokenization
 - [x] Preprocessing
+- [x] Tokenization
 - [x] Pipeline Module
 - [x] Models
   - [x] Pos tagger
   - [ ] Sentimental analysis
   - [ ] Sentence classification
   - [ ] Documents classification
-  - [ ] Name entity recognition
+  - [x] Name entity recognition
   - [ ] Image to text
   - [ ] Speech to text
 - [x] Datasets loader
@@ -68,7 +68,10 @@ doc = nlp(text)
 for sentence in doc.sentences:
     print(sentence.text)
     for word in sentence.words:
-        print(word)
+        print(f"{word.text}\t{word.pos}")
+
+    for token in sentence.tokens:
+        print(f"{token.text}\t{token.ner}")
 ```
 
 🔗 Documentation

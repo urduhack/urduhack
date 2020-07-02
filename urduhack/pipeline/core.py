@@ -4,14 +4,22 @@ Pipeline that runs tokenize
 """
 from typing import Dict, List
 
+from .parsers.ner import NerParser
 from .parsers.normalize import NormalizeParser
+from .parsers.pos_tagger import PosTaggerParser
 from .parsers.tokenize import TokenizeParser
 
 NORMALIZE: str = 'normalize'
 TOKENIZE: str = 'tokenize'
+POS_TAGGER: str = 'pos_tagger'
+NER: str = 'ner'
 
-PIPELINE_NAMES: List = [NORMALIZE, TOKENIZE]
-REGISTERED_PARSERS: Dict = {NORMALIZE: NormalizeParser, TOKENIZE: TokenizeParser}
+PIPELINE_NAMES: List = [NORMALIZE, TOKENIZE, POS_TAGGER, NER]
+REGISTERED_PARSERS: Dict = {NORMALIZE: NormalizeParser,
+                            TOKENIZE: TokenizeParser,
+                            POS_TAGGER: PosTaggerParser,
+                            NER: NerParser
+                            }
 
 
 class Pipeline:

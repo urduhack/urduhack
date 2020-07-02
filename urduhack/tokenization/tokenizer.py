@@ -7,7 +7,7 @@ from typing import List
 
 from .eos import _generate_sentences
 from .keras_tokenizer import _is_model_exist, _preprocess_sentence, _retrieve_words, _load_model
-from ..config import MODEL_PATH, VOCAB_PATH
+from ..config import WORD_TOKENIZER_MODEL_PATH, WORD_TOKENIZER_VOCAB_PATH
 
 _WORD_TOKENIZER_MODEL, _CHAR2IDX, _IDX2CHAR = None, None, None
 
@@ -60,8 +60,8 @@ def word_tokenizer(sentence: str, max_len: int = 256) -> List[str]:
     global _WORD_TOKENIZER_MODEL, _CHAR2IDX, _IDX2CHAR
 
     if _WORD_TOKENIZER_MODEL is None:
-        _is_model_exist(MODEL_PATH, VOCAB_PATH)
-        _WORD_TOKENIZER_MODEL, _CHAR2IDX, _IDX2CHAR = _load_model(MODEL_PATH, VOCAB_PATH)
+        _is_model_exist(WORD_TOKENIZER_MODEL_PATH, WORD_TOKENIZER_VOCAB_PATH)
+        _WORD_TOKENIZER_MODEL, _CHAR2IDX, _IDX2CHAR = _load_model(WORD_TOKENIZER_MODEL_PATH, WORD_TOKENIZER_VOCAB_PATH)
 
     inp_, _ = _preprocess_sentence(sentence, _CHAR2IDX, max_len=max_len)
     predictions = _WORD_TOKENIZER_MODEL.predict(inp_)
