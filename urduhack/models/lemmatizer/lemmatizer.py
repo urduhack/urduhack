@@ -1,13 +1,14 @@
+# coding: utf8
 """Urdu Lemmatizer"""
 
-from urduhack.config import LEMMA_LOOKUP_TABLE_PATH
-
 import json
+
+from urduhack.config import LEMMA_LOOKUP_TABLE_PATH
 
 _WORD2LEMMA = None
 
 
-def lemma_lookup(text: str, lookup_path: str = LEMMA_LOOKUP_TABLE_PATH):
+def lemma_lookup(text: str, lookup_path: str = LEMMA_LOOKUP_TABLE_PATH) -> list:
     """
     Get lemma of the word from lookup table
 
@@ -16,7 +17,7 @@ def lemma_lookup(text: str, lookup_path: str = LEMMA_LOOKUP_TABLE_PATH):
         lookup_path (str): path to the lookup json file
 
     Returns:
-        A list containing tuple of word and its lemma
+        list: A list containing tuple of word and its lemma
     """
 
     tokens = text.split()
