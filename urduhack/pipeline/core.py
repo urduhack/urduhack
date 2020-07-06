@@ -8,18 +8,21 @@ from .parsers.ner import NerParser
 from .parsers.normalize import NormalizeParser
 from .parsers.pos_tagger import PosTaggerParser
 from .parsers.tokenize import TokenizeParser
+from .parsers.lemma import LemmaParser
 
 NORMALIZE: str = 'normalize'
 TOKENIZE: str = 'tokenize'
 POS_TAGGER: str = 'pos_tagger'
 NER: str = 'ner'
+LEMMA: str = 'lemma'
 
-PIPELINE_NAMES: List = [NORMALIZE, TOKENIZE, POS_TAGGER, NER]
+
+PIPELINE_NAMES: List = [NORMALIZE, TOKENIZE, POS_TAGGER, NER, LEMMA]
 REGISTERED_PARSERS: Dict = {NORMALIZE: NormalizeParser,
                             TOKENIZE: TokenizeParser,
                             POS_TAGGER: PosTaggerParser,
-                            NER: NerParser
-                            }
+                            NER: NerParser,
+                            LEMMA: LemmaParser}
 
 
 class Pipeline:

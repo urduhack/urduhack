@@ -6,7 +6,7 @@ from ..utils.io import download_from_url
 
 def download():
     """
-     Download the specific model from s3.
+     Download the specific model from github.
     """
     _url = MODELS_URL['WORD_TOKENIZER_WEIGHTS']
     file_name = _url.split("/")[-1]
@@ -19,6 +19,10 @@ def download():
     _url = MODELS_URL["NER_WEIGHTS"]
     file_name = _url.split("/")[-1]
     download_from_url(file_name=file_name, url=_url, download_dir='models/ner/')
+
+    _url = MODELS_URL["LEMMA_WEIGHTS"]
+    file_name = _url.split("/")[-1]
+    download_from_url(file_name=file_name, url=_url, download_dir='models/lemma/')
 
     # Sentiment model
     # _url = MODELS_URL['SENTIMENT_V1_WEIGHTS']
