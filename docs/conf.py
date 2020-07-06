@@ -197,4 +197,5 @@ autodoc_mock_imports = [
     "numpy",
     "tf",
     "keras",
+    "tf2crf",
 ]
