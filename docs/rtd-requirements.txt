@@ -1,3 +1,4 @@
 tensorflow~=2.2
+tf2crf
 Click~=7.1
 regex
