@@ -90,7 +90,7 @@ Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 
 
 
-How to Contribute
+👍 How to Contribute
 -----------------
 1.  Check for open issues or open a fresh issue to start a discussion
     around a feature idea or a bug. There is a [Contributor Friendly](https://github.com/urduhack/urduhack/issues)
@@ -101,9 +101,6 @@ How to Contribute
 4.  Send a pull request and bug the maintainer until it gets merged and
     published. :)
 
-👍 Contributors
----------------
-Special thanks to everyone who contributed to getting the UrduHack to the current state.
 
 Backers [![Backers on Open Collective](https://opencollective.com/urduhack/backers/badge.svg)](#backers)
 ---------------------------------------------------------------------------------------------------------
