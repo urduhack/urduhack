@@ -105,11 +105,13 @@ Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 Backers [![Backers on Open Collective](https://opencollective.com/urduhack/backers/badge.svg)](#backers)
 ---------------------------------------------------------------------------------------------------------
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/urduhack#backer)]
-<a href="https://opencollective.com/urduhack#backers" target="_blank"><img src="https://opencollective.com/urduhack/backers.svg?width=890"></a>
+
+<a href="https://opencollective.com/urduhack#backers" target="_blank"><img src="https://opencollective.com/urduhack/backers.svg"></a>
 
 Sponsors [![Sponsors on Open Collective](https://opencollective.com/urduhack/sponsors/badge.svg)](#sponsors)
 ------------------------------------------------------------------------------------------------------------
 Support this project by becoming a sponsor. [[Become a sponsor](https://opencollective.com/urduhack#sponsor)]
+
 <a href="https://opencollective.com/urduhack/sponsor/0/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/0/avatar.svg"></a>
 <a href="https://opencollective.com/urduhack/sponsor/1/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/1/avatar.svg"></a>
 
