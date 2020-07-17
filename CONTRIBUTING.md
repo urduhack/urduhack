@@ -10,7 +10,7 @@ Our vision is to provide state of the art Machine Learning models in Urduhack fo
 
 1. [Issues and Bugs](#issues-and-bugs)
 2. [Code Contribution](#code-contribution)
-3. [Add or Improve a Machine Learning Models](#add-or-improve-machine-learning-models)
+3. [Add or Improve Machine Learning Models](#add-or-improve-machine-learning-models)
 4. [Code Conventions](#code-convention)
 5. [Add Test Cases](#add-test-cases)
 6. [Code of Conduct](#code-of-conduct)
@@ -19,7 +19,7 @@ Our vision is to provide state of the art Machine Learning models in Urduhack fo
 
 If you have encountered an issue, quickly [search](https://github.com/urduhack/urduhack/issues) to see
 if this issue has already been raised. Remember! it is always better to look in the old issue as
-if often contains helpful tips and solutions.
+it often contains helpful tips and solutions.
 
 If you there as a problem in your code and you are seeking help from [Stack Overflow](https://stackoverflow.com/questions/tagged/urduhack),
 do tag `urduhack` and `python` as more people will be able to see it and help.
@@ -54,10 +54,10 @@ modifications, follow the steps
 -   Clone the urduhack github repo via `git clone https://github.com/urduhack/urduhack.git` or you can clone
     it in Pycharm or any other IDE.
 -   Create a branch and remember your branch name must reflect the purpose.
--   Make the changes
--   Write the test cases
+-   Make changes
+-   Write test cases
 -   Run it locally by installing using `pip install -e .` to check if the changes are working
--   Test if the test case is passed with `pytest`
+-   Check if the test case is passed with `pytest`
 -   Push the changes to urduhack and create a pull request from your branch.
 
 ## Add or Improve Machine Learning Models
