@@ -10,9 +10,10 @@ Our vision is to provide state of the art Machine Learning models in Urduhack fo
 
 1. [Issues and Bugs](#issues-and-bugs)
 2. [Code Contribution](#code-contribution)
-3. [Code Conventions](#code-convention)
-4. [Add Test Cases](#add-test-cases)
-5. [Code of Conduct](#code-of-conduct)
+3. [Add or Improve a Machine Learning Models](#add-or-improve-machine-learning-models)
+4. [Code Conventions](#code-convention)
+5. [Add Test Cases](#add-test-cases)
+6. [Code of Conduct](#code-of-conduct)
 
 ## Issues and Bugs
 
@@ -59,9 +60,13 @@ modifications, follow the steps
 -   Test if the test case is passed with `pytest`
 -   Push the changes to urduhack and create a pull request from your branch.
 
-### Code Contribution Demo
-### Contributor Agreement
-### Fixing bugs
+## Add or Improve Machine Learning Models
+
+We have open sourced Urduhack models code. Either you've got your own dataset or you can request for the dataset. Train
+the models, optimize the parameters and if you get any improvements in the models , you can create a pull request for the
+update of the model.
+
+Procedure will be added soon!!
 
 ## Code Convention
 Code should loosely follow [PEP8](https://www.python.org/dev/peps/pep-0008/) conventions. Use `pylint` for linting python
@@ -75,5 +80,3 @@ To know more about pytest, read the pytest [documentation](http://docs.pytest.or
 
 When adding test cases, use the same name of the function with the prefix `test_`. Code should be short and concise for test
 case and only test one behaviour at a time.
-
-## Code of Conduct
