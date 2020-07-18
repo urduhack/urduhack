@@ -15,6 +15,8 @@
 Urduhack is a NLP library for urdu language. It comes with a lot of battery included features to help you process Urdu
 data in the easiest way possible.
 
+You can reach out core contributor Mr Ikram Ali @ https://github.com/akkefa
+
 Our Goal
 --------
 
@@ -112,8 +114,7 @@ Sponsors [![Sponsors on Open Collective](https://opencollective.com/urduhack/spo
 ------------------------------------------------------------------------------------------------------------
 Support this project by becoming a sponsor. [[Become a sponsor](https://opencollective.com/urduhack#sponsor)]
 
-<a href="https://opencollective.com/urduhack/sponsor/0/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/urduhack/sponsor/1/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/urduhack" target="_blank"><img src="https://opencollective.com/urduhack/sponsors.svg"></a>
 
 📝 Copyright and license
 ------------------------
