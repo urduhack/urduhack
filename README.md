@@ -15,6 +15,8 @@
 Urduhack is a NLP library for urdu language. It comes with a lot of battery included features to help you process Urdu
 data in the easiest way possible.
 
+You can reach out core contributor Mr Ikram Ali @ https://github.com/akkefa
+
 Our Goal
 --------
 
@@ -90,7 +92,7 @@ Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 
 
 
-How to Contribute
+👍 How to Contribute
 -----------------
 1.  Check for open issues or open a fresh issue to start a discussion
     around a feature idea or a bug. There is a [Contributor Friendly](https://github.com/urduhack/urduhack/issues)
@@ -101,20 +103,18 @@ How to Contribute
 4.  Send a pull request and bug the maintainer until it gets merged and
     published. :)
 
-👍 Contributors
----------------
-Special thanks to everyone who contributed to getting the UrduHack to the current state.
 
 Backers [![Backers on Open Collective](https://opencollective.com/urduhack/backers/badge.svg)](#backers)
 ---------------------------------------------------------------------------------------------------------
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/urduhack#backer)]
-<a href="https://opencollective.com/urduhack#backers" target="_blank"><img src="https://opencollective.com/urduhack/backers.svg?width=890"></a>
+
+<a href="https://opencollective.com/urduhack#backers" target="_blank"><img src="https://opencollective.com/urduhack/backers.svg"></a>
 
 Sponsors [![Sponsors on Open Collective](https://opencollective.com/urduhack/sponsors/badge.svg)](#sponsors)
 ------------------------------------------------------------------------------------------------------------
 Support this project by becoming a sponsor. [[Become a sponsor](https://opencollective.com/urduhack#sponsor)]
-<a href="https://opencollective.com/urduhack/sponsor/0/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/urduhack/sponsor/1/website" target="_blank"><img src="https://opencollective.com/urduhack/sponsor/1/avatar.svg"></a>
+
+<a href="https://opencollective.com/urduhack" target="_blank"><img src="https://opencollective.com/urduhack/sponsors.svg"></a>
 
 📝 Copyright and license
 ------------------------
