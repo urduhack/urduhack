@@ -20,8 +20,8 @@ def get_info() -> dict:
         dict: Urduhack library info
     """
     return {
-        "Urduhack version": __version__,
-        "Location": str(Path(__file__).parent.parent),
-        "Platform": platform.platform(),
-        "Python version": platform.python_version(),
+        "urduhack_version": __version__,
+        "location": str(Path(__file__).parent.parent),
+        "platform": platform.platform(),
+        "python_version": platform.python_version(),
     }
