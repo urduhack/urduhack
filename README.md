@@ -85,12 +85,12 @@ Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 | [Installation]  | How to install Urduhack and download models                    |
 | [Quickstart]    | New to Urduhack? Here's everything you need to know!           |
 | [API Reference] | The detailed reference for Urduhack's API.                     |
-| [contribute]    | How to contribute to the code base.                            |
+| [Contribute]    | How to contribute to the code base.                            |
 
 [Installation]: https://urduhack.readthedocs.io/en/stable/installation.html
 [Quickstart]: https://urduhack.readthedocs.io/en/stable/quickstart/index.html
 [Api reference]: https://urduhack.readthedocs.io/en/stable/reference/index.html
-[contribute]: https://github.com/urduhack/urduhack/blob/master/CONTRIBUTING.md
+[Contribute]: https://github.com/urduhack/urduhack/blob/master/CONTRIBUTING.md
 
 
 
