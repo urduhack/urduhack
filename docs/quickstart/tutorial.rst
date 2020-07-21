@@ -21,8 +21,6 @@ It will yield a sentence in proper CoNLL-U format from which we can extract sent
             print(f"Sentence Text: {sent_meta['text']}")
             for token in tokens:
                 print(token)
-            Sentence ID: test-s13
-            Sentence Text: والدین معمولی زخمی ہوئے ہےں۔
             {'id': '1', 'text': 'والدین', 'lemma': 'والدین', 'upos': 'NOUN', 'xpos': 'NN', 'feats': 'Case=Acc|Gender=Masc|Number=Sing|Person=3', 'head': '4', 'deprel': 'nsubj', 'deps': '_', 'misc': 'Vib=0|Tam=0|ChunkId=NP|ChunkType=head'}
             {'id': '2', 'text': 'معمولی', 'lemma': 'معمولی', 'upos': 'ADJ', 'xpos': 'JJ', 'feats': 'Case=Nom', 'head': '3', 'deprel': 'advmod', 'deps': '_', 'misc': 'ChunkId=JJP|ChunkType=head'}
             {'id': '3', 'text': 'زخمی', 'lemma': 'زخمی', 'upos': 'ADJ', 'xpos': 'JJ', 'feats': 'Case=Nom|Gender=Masc|Number=Sing|Person=3', 'head': '4', 'deprel': 'compound', 'deps': '_', 'misc': 'Vib=0|Tam=0|ChunkId=JJP2|ChunkType=head'}
@@ -39,8 +37,6 @@ To load a file in ConLL-U format, we will use :py:func:`urduhack.CoNLL.load_file
             print(f"Sentence Text: {sent_meta['text']}")
             for token in tokens:
                 print(token)
-            Sentence ID: test-s13
-            Sentence Text: والدین معمولی زخمی ہوئے ہےں۔
             {'id': '1', 'text': 'والدین', 'lemma': 'والدین', 'upos': 'NOUN', 'xpos': 'NN', 'feats': 'Case=Acc|Gender=Masc|Number=Sing|Person=3', 'head': '4', 'deprel': 'nsubj', 'deps': '_', 'misc': 'Vib=0|Tam=0|ChunkId=NP|ChunkType=head'}
             {'id': '2', 'text': 'معمولی', 'lemma': 'معمولی', 'upos': 'ADJ', 'xpos': 'JJ', 'feats': 'Case=Nom', 'head': '3', 'deprel': 'advmod', 'deps': '_', 'misc': 'ChunkId=JJP|ChunkType=head'}
             {'id': '3', 'text': 'زخمی', 'lemma': 'زخمی', 'upos': 'ADJ', 'xpos': 'JJ', 'feats': 'Case=Nom|Gender=Masc|Number=Sing|Person=3', 'head': '4', 'deprel': 'compound', 'deps': '_', 'misc': 'Vib=0|Tam=0|ChunkId=JJP2|ChunkType=head'}
