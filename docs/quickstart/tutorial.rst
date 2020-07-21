@@ -93,33 +93,19 @@ To get words from sentence. ::
 
     >>> for word in sentence.words:
             print(word.text)
-     گزشتہ
-     ایک
-     روز
-     کے
-     دوران
-     کورونا
-     کے
-     سبب
-     118
-     اموات
-     ہوئیںجس
-     کے
-     بعد
-     اموات
-     کا
-     مجموعہ
-     3
-     ہزار
-     93
-     ہو
-     گیا
-     ہے۔
 
-POS tag
-^^^^^^^
+POS tagger
+^^^^^^^^^^
 
 Word class hold Pos tags. ::
 
     >>> for word in sentence.words:
             print(word.pos)
+
+Lemmatizer
+^^^^^^^^^^
+
+Word class hold lemma. ::
+
+    >>> for word in sentence.words:
+            print(word.lemma)
