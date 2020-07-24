@@ -38,3 +38,15 @@ STOP_WORDS: FrozenSet[str] = frozenset("""
  ہوتے ہونا ہونگے ہونی ہونے ہوں ہی ہیلو ہیں ہے یا یات یعنی یک یہ یہاں یہی یہیں
 
 """.split())
+
+
+def remove_stopwords(text: str) -> str:
+    """
+    Remove STOP_WORDS from `text`.
+
+    Args:
+        text (str): Urdu text
+    Returns:
+        str: ``str`` object with stop words removed
+    """
+    return " ".join(word for word in text.split() if word not in STOP_WORDS)
