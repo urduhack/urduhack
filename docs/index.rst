@@ -44,7 +44,7 @@ Our Goal
 - **NLP beginners** Learn how to build an NLP project with production level code quality.
 - **NLP developers** Build a production level application within minutes.
 
-**Urduhack** is maintained by `Ikram Ali and Contributors <https://github.com/Urduhack/Urduhack/graphs/contributors>`_.
+**Urduhack** is maintained by `Ikram Ali and Contributors <https://github.com/akkefa>`_.
 
 
 .. toctree::

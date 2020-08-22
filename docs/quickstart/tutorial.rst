@@ -21,8 +21,6 @@ It will yield a sentence in proper CoNLL-U format from which we can extract sent
             print(f"Sentence Text: {sent_meta['text']}")
             for token in tokens:
                 print(token)
-            Sentence ID: test-s13
-            Sentence Text: والدین معمولی زخمی ہوئے ہےں۔
             {'id': '1', 'text': 'والدین', 'lemma': 'والدین', 'upos': 'NOUN', 'xpos': 'NN', 'feats': 'Case=Acc|Gender=Masc|Number=Sing|Person=3', 'head': '4', 'deprel': 'nsubj', 'deps': '_', 'misc': 'Vib=0|Tam=0|ChunkId=NP|ChunkType=head'}
             {'id': '2', 'text': 'معمولی', 'lemma': 'معمولی', 'upos': 'ADJ', 'xpos': 'JJ', 'feats': 'Case=Nom', 'head': '3', 'deprel': 'advmod', 'deps': '_', 'misc': 'ChunkId=JJP|ChunkType=head'}
             {'id': '3', 'text': 'زخمی', 'lemma': 'زخمی', 'upos': 'ADJ', 'xpos': 'JJ', 'feats': 'Case=Nom|Gender=Masc|Number=Sing|Person=3', 'head': '4', 'deprel': 'compound', 'deps': '_', 'misc': 'Vib=0|Tam=0|ChunkId=JJP2|ChunkType=head'}
@@ -39,8 +37,6 @@ To load a file in ConLL-U format, we will use :py:func:`urduhack.CoNLL.load_file
             print(f"Sentence Text: {sent_meta['text']}")
             for token in tokens:
                 print(token)
-            Sentence ID: test-s13
-            Sentence Text: والدین معمولی زخمی ہوئے ہےں۔
             {'id': '1', 'text': 'والدین', 'lemma': 'والدین', 'upos': 'NOUN', 'xpos': 'NN', 'feats': 'Case=Acc|Gender=Masc|Number=Sing|Person=3', 'head': '4', 'deprel': 'nsubj', 'deps': '_', 'misc': 'Vib=0|Tam=0|ChunkId=NP|ChunkType=head'}
             {'id': '2', 'text': 'معمولی', 'lemma': 'معمولی', 'upos': 'ADJ', 'xpos': 'JJ', 'feats': 'Case=Nom', 'head': '3', 'deprel': 'advmod', 'deps': '_', 'misc': 'ChunkId=JJP|ChunkType=head'}
             {'id': '3', 'text': 'زخمی', 'lemma': 'زخمی', 'upos': 'ADJ', 'xpos': 'JJ', 'feats': 'Case=Nom|Gender=Masc|Number=Sing|Person=3', 'head': '4', 'deprel': 'compound', 'deps': '_', 'misc': 'Vib=0|Tam=0|ChunkId=JJP2|ChunkType=head'}
@@ -69,9 +65,6 @@ We can get the document using pipeline module. ::
     """
     >>> doc = nlp(text)
     >>> print(doc.text)
-    گزشتہ ایک روز کے دوران کورونا کے سبب 118 اموات ہوئیں جس کے بعد اموات کا مجموعہ 3 ہزار 93 ہوگیا ہے۔
-    سب سے زیادہ اموات بھی پنجاب میں ہوئی ہیں جہاں ایک ہزار 202 افراد جان کی بازی ہار چکے ہیں۔
-    سندھ میں 916، خیبر پختونخوا میں 755، اسلام آباد میں 94، گلگت بلتستان میں 18، بلوچستان میں 93 اور ا?زاد کشمیر میں 15 افراد کورونا وائرس سے جاں بحق ہو چکے ہیں۔
 
 Sentence
 ^^^^^^^^
@@ -80,11 +73,6 @@ Now to get the sentences from the Document. ::
 
     >>> for sentence in doc.sentences:
             print(sentence.text)
-    گزشتہ ایک روز کے دوران کورونا کے سبب 118 اموات ہوئیں جس کے بعد اموات کا مجموعہ 3 ہزار 93 ہوگیا ہے
-    سب سے زیادہ اموات بھی پنجاب میں ہوئی ہیں
-    جہاں ایک ہزار 202 افراد جان کی بازی ہار چکے ہیں۔
-    سندھ میں 916، خیبر پختونخوا میں 755، اسلام آباد میں 94، گلگت بلتستان میں 18، بلوچستان میں 93 اور ا?زاد کشمیر میں 15 افراد کورونا وائرس سے جاں بحق ہو چکے ہی
-    گزشتہ ایک روز کے دوران کورونا کے سبب 118 اموات ہوئیں جس کے بعد اموات کا مجموعہ 3 ہزار 93 ہوگیا ہے
 
 Word
 ^^^^
@@ -93,33 +81,19 @@ To get words from sentence. ::
 
     >>> for word in sentence.words:
             print(word.text)
-     گزشتہ
-     ایک
-     روز
-     کے
-     دوران
-     کورونا
-     کے
-     سبب
-     118
-     اموات
-     ہوئیںجس
-     کے
-     بعد
-     اموات
-     کا
-     مجموعہ
-     3
-     ہزار
-     93
-     ہو
-     گیا
-     ہے۔
 
-POS tag
-^^^^^^^
+POS tagger
+^^^^^^^^^^
 
 Word class hold Pos tags. ::
 
     >>> for word in sentence.words:
             print(word.pos)
+
+Lemmatizer
+^^^^^^^^^^
+
+Word class hold lemma. ::
+
+    >>> for word in sentence.words:
+            print(word.lemma)

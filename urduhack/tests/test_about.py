@@ -44,6 +44,6 @@ def test_get_info():
     assert isinstance(data, dict)
     for value in data.values():
         assert isinstance(value, str)
-    keys = ("Urduhack version", "Location", "Python version", "Platform")
+    keys = ("urduhack_version", "location", "python_version", "platform")
     for _key in keys:
         assert _key in data.keys()

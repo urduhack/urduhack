@@ -85,24 +85,16 @@ Fantastic documentation is available at <https://urduhack.readthedocs.io/>
 | [Installation]  | How to install Urduhack and download models                    |
 | [Quickstart]    | New to Urduhack? Here's everything you need to know!           |
 | [API Reference] | The detailed reference for Urduhack's API.                     |
+| [Contribute]    | How to contribute to the code base.                            |
 
 [Installation]: https://urduhack.readthedocs.io/en/stable/installation.html
 [Quickstart]: https://urduhack.readthedocs.io/en/stable/quickstart/index.html
 [Api reference]: https://urduhack.readthedocs.io/en/stable/reference/index.html
-
-
-
-👍 How to Contribute
------------------
-1.  Check for open issues or open a fresh issue to start a discussion
-    around a feature idea or a bug. There is a [Contributor Friendly](https://github.com/urduhack/urduhack/issues)
-    tag for issues that should be ideal for people who are not very
-    familiar with the codebase yet.
-3.  Write a test which shows that the bug was fixed or that the feature
-    works as expected.
-4.  Send a pull request and bug the maintainer until it gets merged and
-    published. :)
-
+[Contribute]: https://github.com/urduhack/urduhack/blob/master/CONTRIBUTING.md
+    
+👍  Contributors
+----------------
+Special thanks to everyone who contributed to getting the Urduhack to the current state.
 
 Backers [![Backers on Open Collective](https://opencollective.com/urduhack/backers/badge.svg)](#backers)
 ---------------------------------------------------------------------------------------------------------
