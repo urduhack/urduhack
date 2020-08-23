@@ -5,9 +5,12 @@ provides functionality to put proper spaces before and after numeric digits, urd
 and punctuations.
 """
 from typing import Dict
+import logging
 
 from .regexes import _DIACRITICS_RE
 from .regexes import _SPACE_AFTER_PUNCTUATIONS_RE, _REMOVE_SPACE_BEFORE_PUNCTUATIONS_RE
+
+logger = logging.getLogger(__name__)
 
 # Contains wrong Urdu characters mapping to correct characters
 CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
@@ -111,8 +114,8 @@ def normalize_characters(text: str) -> str:
     Examples:
         >>> from urduhack.normalization import normalize_characters
         >>> # Text containing characters from Arabic Unicode block
-        >>> text = "مجھ کو جو توڑا ﮔیا تھا"
-        >>> normalized_text = normalize_characters(text)
+        >>> _text = "مجھ کو جو توڑا ﮔیا تھا"
+        >>> normalized_text = normalize_characters(_text)
         >>> # Normalized text - Arabic characters are now replaced with Urdu characters
         >>> normalized_text
         مجھ کو جو توڑا گیا تھا
@@ -145,8 +148,8 @@ def normalize_combine_characters(text: str) -> str:
     Examples:
         >>> from urduhack.normalization import normalize_combine_characters
         >>> # In the following string, Alif ('ا') and Hamza ('ٔ ') are separate characters
-        >>> text = "جرأت"
-        >>> normalized_text = normalize_combine_characters(text)
+        >>> _text = "جرأت"
+        >>> normalized_text = normalize_combine_characters(_text)
         >>> # Now Alif and Hamza are replaced by a Single Urdu Unicode Character!
         >>> normalized_text
         جرأت
@@ -166,8 +169,8 @@ def punctuations_space(text: str) -> str:
         str: Returns a ``str`` object containing normalized text.
     Examples:
         >>> from urduhack.normalization.character import punctuations_space
-        >>> text = "ہوتا ہے   ۔  ٹائپ"
-        >>> normalized_text = punctuations_space(text)
+        >>> _text = "ہوتا ہے   ۔  ٹائپ"
+        >>> normalized_text = punctuations_space(_text)
         >>> normalized_text
         ہوتا ہے۔ ٹائپ
     """
@@ -187,8 +190,8 @@ def remove_diacritics(text: str) -> str:
         str: Returns a ``str`` object containing normalized text.
     Examples:
         >>> from urduhack.normalization import remove_diacritics
-        >>> text = "شیرِ پنجاب"
-        >>> normalized_text = remove_diacritics(text)
+        >>> _text = "شیرِ پنجاب"
+        >>> normalized_text = remove_diacritics(_text)
         >>> normalized_text
         شیر پنجاب
     """
@@ -259,8 +262,8 @@ def normalize(text: str) -> str:
         TypeError: If text param is not not str Type.
     Examples:
         >>> from urduhack import normalize
-        >>> text = "اَباُوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔"
-        >>> normalized_text = normalize(text)
+        >>> _text = "اَباُوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔"
+        >>> normalized_text = normalize(_text)
         >>> # The text now contains proper spaces after digits and punctuations,
         >>> # normalized characters and no diacritics!
         >>> normalized_text
@@ -268,6 +271,8 @@ def normalize(text: str) -> str:
     """
     if not isinstance(text, str):
         raise TypeError("text must be str type.")
+
+    logger.info("Normalizing the raw Urdu text.")
 
     text = remove_diacritics(text)
     text = normalize_characters(text)
