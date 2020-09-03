@@ -27,15 +27,17 @@ Fields
 ``5. XPOS:``
     Language specific part-of-speed tag. underscore if not available
 ``6. FEATS:``
-    List of morphological features from the universal features inventory or from a defined language specific extension
+    Unordered list of morphological features, defined by Universal Dependencies;
+    indicates the gender and number of a noun, the tense of a verb, etc.
 ``7. HEAD:``
-    Head of the current word which is wither the value of ID or zero.
+    Head of the word, indicates the index of the word to which the current one is related
 ``8. DEPREL:``
-    Universal dependencies relation to the HEAD (root if HEAD=0) or a defined language specific subtype of one.
+    Universal Dependencies relation; indicates the relation between two words (subject or object of a verb, determiner of a noun, etc.)
 ``9. DEPS:``
-    Enhanced dependency graph in the form of a list of head-deprel pairs
+    Language-specific part of speech tags
 ``10. MISC:``
     Any other annotation apart from the above mentioned fields
+    Commentary or other annotation
 
 """
 
