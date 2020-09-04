@@ -17,24 +17,37 @@ Fields
 -------
 
 ``1. ID:``
-    ID represents the word/token index in the sentence
+    ID represents the word/token index in the sentence, indexing starts from 1 in UD sentences.
 ``2. FORM:``
-    Word/token form or punctuation symbol used in the sentence
+    Word/token form or punctuation symbol used in the sentence, like how a word is being used in the sentence for example
+    organize, organizer, organization all of these are inflectional forms of word organize.
 ``3. LEMMA:``
-    Root/stem of the word
+    Root/stem of the word, lemma is used to get the vocabulary form of word which helps in understanding roots of different words.
+    Lemmatization refers to doing things properly with the use of a vocabulary and morphological analysis of words,
+    normally aiming to remove inflectional endings only and to return the base or dictionary form of a word, which is known as the lemma .
+    For example:
+    
 ``4. UPOS:``
-    Universal Part-of-Speech tag
+    UPOS mark the core part-of-speech categories. They help in analysing the word usage in the sentence.
+    Following are the UPOS tags available in UD.
+    (ADJ, ADV, INTJ, NOUN, PROPN, VERB, ADP, AUX, CCONJ, DET, NUM, PART, PRON, SCONJ, PUNCT, SYM, X)
 ``5. XPOS:``
-    Language specific part-of-speed tag. underscore if not available
+    Language specific part-of-speed tag. For some languages grammar rules are different and that's is why language specific
+    POS tags are used.
 ``6. FEATS:``
-    Unordered list of morphological features, defined by Universal Dependencies;
-    indicates the gender and number of a noun, the tense of a verb, etc.
+    Features are additional pieces of information about the word, its part of speech and morphosyntactic properties.
+    Every feature has the form Name=Value and every word can have any number of features, separated by the vertical bar,
+    as in Gender=Masc|Number=Sing.
+    Users can extend this set of universal features and add language-specific features when necessary.
 ``7. HEAD:``
-    Head of the word, indicates the index of the word to which the current one is related
+    Head of the current word, which is either a value of ID or zero (0). All words of sentence are dependent to other words
+    of the sentence. Head shows the DEPREL of current word of the sentence to the head word.
 ``8. DEPREL:``
-    Universal Dependencies relation; indicates the relation between two words (subject or object of a verb, determiner of a noun, etc.)
+     Universal dependency relation to the HEAD (root iff HEAD = 0) or a defined language-specific subtype of one
 ``9. DEPS:``
-    Language-specific part of speech tags
+    A dependency can be labeled as dep when it is impossible to determine a more precise relation. This may be because of a weird
+    grammatical construction, or a limitation in conversion or parsing software. The use of dep should be avoided as much as possible.
+    Enhanced dependency graph in the form of a list of head-deprel pairs.
 ``10. MISC:``
     Any other annotation apart from the above mentioned fields
     Commentary or other annotation
