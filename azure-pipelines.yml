@@ -31,15 +31,6 @@ jobs:
   dependsOn: 'Validate'
   strategy:
     matrix:
-      Python36Linux:
-        imageName: 'ubuntu-18.04'
-        python.version: '3.6'
-      Python36Windows:
-        imageName: 'vs2017-win2016'
-        python.version: '3.6'
-      Python36Mac:
-        imageName: 'macos-10.14'
-        python.version: '3.6'
       Python37Linux:
         imageName: 'ubuntu-18.04'
         python.version: '3.7'
