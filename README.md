@@ -2,8 +2,8 @@
 
 [![image](https://img.shields.io/pypi/pyversions/urduhack.svg)](https://pypi.org/project/urduhack/)
 [![image](https://img.shields.io/pypi/v/urduhack.svg)](https://pypi.org/project/urduhack/)
-[![Azure DevOps builds](https://img.shields.io/azure-devops/build/urduhack/urduhack/1?logo=azure-pipelines)](https://dev.azure.com/Urduhack/Urduhack/_build?definitionId=1)
-[![Azure DevOps tests](https://img.shields.io/azure-devops/tests/urduhack/urduhack/1?logo=azure-pipelines)](https://dev.azure.com/Urduhack/Urduhack/_build?definitionId=1)
+[![Azure DevOps builds](https://img.shields.io/azure-devops/build/urduhack/urduhack/1?logo=azure-pipelines)](https://dev.azure.com/Urduhack/Urduhack/_build?definitionId=2)
+[![Azure DevOps tests](https://img.shields.io/azure-devops/tests/urduhack/urduhack/1?logo=azure-pipelines)](https://dev.azure.com/Urduhack/Urduhack/_build?definitionId=2)
 [![Build Status](https://img.shields.io/travis/urduhack/urduhack?label=linux%20build&logo=travis)](https://travis-ci.org/urduhack/urduhack)
 [![CodeFactor](https://www.codefactor.io/repository/github/urduhack/urduhack/badge)](https://www.codefactor.io/repository/github/urduhack/urduhack)
 [![codecov](https://codecov.io/gh/urduhack/urduhack/branch/master/graph/badge.svg)](https://codecov.io/gh/urduhack/urduhack)
