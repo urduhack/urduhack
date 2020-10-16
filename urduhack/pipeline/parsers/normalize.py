@@ -10,9 +10,8 @@ class NormalizeParser(Parser):
     """This parser normalize Urdu text."""
 
     def _set_up(self, config):
-        """pass"""
+        """Basic setup for parser"""
 
     def parse(self, document):
         """Function to normalize|preprocess text"""
-
         return preprocess(normalize(normalize_whitespace(document)))
