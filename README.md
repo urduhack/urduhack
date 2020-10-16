@@ -32,12 +32,11 @@ Our Goal
 - [x] Pipeline Module
 - [x] Models
   - [x] Pos tagger
-  - [ ] Sentimental analysis
-  - [ ] Sentence classification
-  - [ ] Documents classification
+  - [x] Lemmatizer
   - [x] Name entity recognition
+  - [ ] Sentimental analysis
   - [ ] Image to text
-  - [ ] Speech to text
+  - [ ] Question answering system
 - [x] Datasets loader
 
 🛠 Installation

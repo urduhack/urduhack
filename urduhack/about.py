@@ -2,6 +2,7 @@
 """Project Meta data description"""
 import platform
 from pathlib import Path
+from typing import Dict
 
 __version__ = '1.1.1'
 __description__ = 'Natural Language Processing (NLP) library for Urdu language.'
@@ -11,7 +12,7 @@ __author_email__ = 'mrikram1989@gmail.com'
 __license__ = 'MIT License'
 
 
-def get_info() -> dict:
+def get_info() -> Dict[str, str]:
     """
     Get system info about Urduhack library.
     prints details in Markdown for easy copy-pasting to GitHub issues.
