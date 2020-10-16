@@ -1,9 +1,6 @@
 Installation
 ============
 
-Notes
------
-
 .. note:: Urduhack is supported on the following Python versions
 
 +------------+-------+-------+-------+-------+-------+
@@ -12,8 +9,8 @@ Notes
 |Urduhack    |  Yes  |  Yes  |  Yes  |       |       |
 +------------+-------+-------+-------+-------+-------+
 
-Basic Installation
-------------------
+Install Urduhack via pip
+------------------------
 
 .. note::
 
@@ -29,6 +26,9 @@ Installing with Tensorflow **cpu** version.::
 Installing with Tensorflow **gpu** version.::
 
     $ pip install Urduhack[tf-gpu]
+
+
+
 
 Package Dependencies
 --------------------
