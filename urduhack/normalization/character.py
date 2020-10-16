@@ -270,9 +270,9 @@ def normalize(text: str) -> str:
         اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔
     """
     if not isinstance(text, str):
-        raise TypeError("text must be str type.")
+        raise TypeError("Text must be str type.")
 
-    logger.info("Normalizing the raw Urdu text.")
+    logger.info("Normalizing the Urdu text.")
 
     text = remove_diacritics(text)
     text = normalize_characters(text)
