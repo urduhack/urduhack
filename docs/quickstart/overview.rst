@@ -1,6 +1,28 @@
 Overview
 ========
 
+Urdu Characters
+---------------
+
+The Urdu alphabet is the right-to-left alphabet used for the Urdu language.
+It is a modification of the Persian alphabet known as Perso-Arabic, which is itself a derivative of the Arabic
+alphabet. The Urdu alphabet has up to 58 letters with 39 basic letters and no distinct letter cases, the Urdu
+alphabet is typically written in the calligraphic Nastaʿlīq script.
+
+46 Alphabets, 10 Digits, 6 Punctuations, 6 Diacritics.
+
+Urdu Stopwords
+---------------
+
+Stop words are natural language words which have very little meaning, such as "and", "the", "a", "an", and similar
+words. These words are highly redundant in texts and do not contribute much so it is sometimes a viable approach to
+remove the stop words in pre-processing of the data.
+
+::
+
+    >>> from urduhack.stop_words import STOP_WORDS
+    >>> print(STOP_WORDS)
+
 Normalization
 -------------
 
@@ -37,3 +59,9 @@ This module provides the following functionality:
 The tokenization of Urdu text is necessary to make it useful for the machine
 learning tasks. In the :py:mod:`~urduhack.tokenization` module, we solved the problem related to
 sentence and word tokenization.
+
+
+
+
+
+

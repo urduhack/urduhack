@@ -1,4 +1,5 @@
-tensorflow~=2.2
+tensorflow~=2.3
+tensorflow-datasets~=3.1
 tf2crf
 Click~=7.1
 regex

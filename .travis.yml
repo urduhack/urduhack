@@ -6,7 +6,6 @@ matrix:
 
 install:
   - pip install --upgrade pip
-  - pip install tensorflow~=2.2
   - pip install -r dev-requirements.txt
   - pip install .[tf]
   - urduhack download
