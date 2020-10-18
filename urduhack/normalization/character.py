@@ -250,14 +250,14 @@ def replace_digits(text: str, with_eng: bool = True) -> str:
 
 def normalize(text: str) -> str:
     """
-    To normalize some text, all you need to do pass ``unicode`` text. It will return a ``str``
+    To normalize some text, all you need to do pass ``Urdu`` text. It will return a ``str``
     with normalized characters both single and combined, proper spaces after digits and punctuations
     and diacritics removed.
 
     Args:
         text (str): ``Urdu`` text
     Returns:
-        str: Normalized urdu text
+        str: Normalized ``Urdu`` text
     Raises:
         TypeError: If text param is not not str Type.
     Examples:
@@ -272,7 +272,7 @@ def normalize(text: str) -> str:
     if not isinstance(text, str):
         raise TypeError("Text must be str type.")
 
-    logger.info("Normalizing the Urdu text.")
+    logger.info("Normalizing the text.")
 
     text = remove_diacritics(text)
     text = normalize_characters(text)
