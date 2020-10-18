@@ -21,11 +21,11 @@ The easiest way to install **urduhack** is by :command:`pip` install.
 
 Installing with Tensorflow **cpu** version.::
 
-    $ pip install Urduhack[tf]
+    $ pip install urduhack[tf]
 
 Installing with Tensorflow **gpu** version.::
 
-    $ pip install Urduhack[tf-gpu]
+    $ pip install urduhack[tf-gpu]
 
 
 
@@ -35,7 +35,7 @@ Package Dependencies
 Having so many functionality, **urduhack** depends on a number of other packages. Try to avoid any kind of conflict.
 It is preferred that you create a virtual environment and install *urduhack* in that environment.
 
-* **Tensorflow > 2.0.0** Use for training, evaluating and testing deep neural network model.
+* **Tensorflow ~= 2.3** Use for training, evaluating and testing deep neural network model.
 
 * **transformers** Use for bert implementation for training and evaluation.
 
