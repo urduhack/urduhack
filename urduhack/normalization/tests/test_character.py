@@ -2,7 +2,7 @@
 """Test cases for character class"""
 
 from urduhack import normalize
-from urduhack.normalization.character import normalize_characters, CORRECT_URDU_CHARACTERS, \
+from urduhack.normalization.character import normalize_characters, _CORRECT_URDU_CHARACTERS_MAPPING, \
     normalize_combine_characters, \
     COMBINE_URDU_CHARACTERS, replace_digits
 from urduhack.normalization.character import punctuations_space, remove_diacritics
@@ -168,16 +168,16 @@ def test_normalize_characters():
 def test_correct_urdu_characters():
     """ Test case """
     for char in URDU_ALPHABETS:
-        assert char in CORRECT_URDU_CHARACTERS
+        assert char in _CORRECT_URDU_CHARACTERS_MAPPING
 
     for char in URDU_DIGITS:
-        assert char in CORRECT_URDU_CHARACTERS
+        assert char in _CORRECT_URDU_CHARACTERS_MAPPING
 
-    for _list in CORRECT_URDU_CHARACTERS.values():
+    for _list in _CORRECT_URDU_CHARACTERS_MAPPING.values():
         for char in _list:
             assert char not in URDU_ALL_CHARACTERS
 
-    for key in CORRECT_URDU_CHARACTERS:
+    for key in _CORRECT_URDU_CHARACTERS_MAPPING:
         for char in key:
             assert char in URDU_ALL_CHARACTERS
 
@@ -211,7 +211,7 @@ def test_combine_urdu_characters():
     for char in COMBINE_URDU_CHARACTERS.values():
         assert len(char) == 1
         assert char in URDU_ALL_CHARACTERS
-        assert char in CORRECT_URDU_CHARACTERS
+        assert char in _CORRECT_URDU_CHARACTERS_MAPPING
 
     for key, value in COMBINE_URDU_CHARACTERS.items():
         assert len(key) == 2
