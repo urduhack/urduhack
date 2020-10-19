@@ -233,17 +233,17 @@ for key, value in URDU_ENG_DIGITS_MAP.items():
     _URDU_DIGITS_TRANSLATOR.update(dict.fromkeys(map(ord, value), key))
 
 
-def replace_digits(text: str, with_eng: bool = True) -> str:
+def replace_digits(text: str, with_english: bool = True) -> str:
     """
     Replace urdu digits with English digits and vice versa
 
     Args:
         text (str): Urdu text string
-        with_eng (bool): Boolean to convert digits from one language to other
+        with_english (bool): Boolean to convert digits from one language to other
     Returns:
         Text string with replaced digits
     """
-    if with_eng:
+    if with_english:
         return text.translate(_ENG_DIGITS_TRANSLATOR)
     return text.translate(_URDU_DIGITS_TRANSLATOR)
 

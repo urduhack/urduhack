@@ -270,4 +270,4 @@ def test_replace_digits():
     eng_text = 'سکیورٹی حکام کے مطابق جنوبی صوبے 550 میں رات گئے'
     ur_text = 'سکیورٹی حکام کے مطابق جنوبی صوبے ۵۵۰ میں رات گئے'
     assert replace_digits(ur_text) == eng_text
-    assert replace_digits(eng_text, with_eng=False) == ur_text
+    assert replace_digits(eng_text, with_english=False) == ur_text
