@@ -25,7 +25,6 @@ class Conllable:
             A string conll representation of the base component.
 
         Raises:
-            NotImplementedError: If the child class does not implement the
-                method.
+            NotImplementedError: If the child class does not implement the method.
         """
         raise NotImplementedError("No implementation for conll")
