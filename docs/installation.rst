@@ -37,9 +37,9 @@ It is preferred that you create a virtual environment and install *urduhack* in 
 
 * **Tensorflow ~= 2.3** Use for training, evaluating and testing deep neural network model.
 
-* **transformers** Use for bert implementation for training and evaluation.
+* **Transformers** Use for bert implementation for training and evaluation.
 
-* **tensorflow-datasets** Use for download and prepare the dataset,read it into a model using the tf.data.Dataset API.
+* **Tensorflow-datasets** Use for download and prepare the dataset,read it into a model using the tf.data.Dataset API.
 
 * **Click** With help of this library Urduhack commandline application developed.
 
