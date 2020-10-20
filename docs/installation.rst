@@ -19,16 +19,15 @@ Install Urduhack via pip
 
 The easiest way to install **urduhack** is by :command:`pip` install.
 
-Installing with Tensorflow **cpu** version.::
+Installing with Tensorflow **cpu** version.
+ ::
 
     $ pip install urduhack[tf]
 
-Installing with Tensorflow **gpu** version.::
+Installing with Tensorflow **gpu** version.
+ ::
 
     $ pip install urduhack[tf-gpu]
-
-
-
 
 Package Dependencies
 --------------------
@@ -49,7 +48,8 @@ Downloading Models
 Pythonic Way
 ^^^^^^^^^^^^
 
-You can download model using Urduhack code.::
+You can download model using Urduhack code.
+ ::
 
     import urduhack
     urduhack.download()
@@ -57,7 +57,8 @@ You can download model using Urduhack code.::
 Command line
 ^^^^^^^^^^^^
 
-To download the models all you have to do is run this simple command in the command line.::
+To download the models all you have to do is run this simple command in the command line.
+ ::
 
     $ urduhack download
 

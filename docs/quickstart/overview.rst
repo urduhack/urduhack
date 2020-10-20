@@ -11,18 +11,6 @@ alphabet is typically written in the calligraphic Nastaʿlīq script.
 
 46 Alphabets, 10 Digits, 6 Punctuations, 6 Diacritics.
 
-Urdu Stopwords
----------------
-
-Stop words are natural language words which have very little meaning, such as "and", "the", "a", "an", and similar
-words. These words are highly redundant in texts and do not contribute much so it is sometimes a viable approach to
-remove the stop words in pre-processing of the data.
-
-::
-
-    >>> from urduhack.stop_words import STOP_WORDS
-    >>> print(STOP_WORDS)
-
 Normalization
 -------------
 
@@ -39,6 +27,18 @@ characters with correct Urdu characters. This module brings all the characters i
 It also fixes the problem of joining of different Urdu words. By joining we mean that when space between two Urdu words
 is removed, they must not make a new word. Their rendering must not change and even after the removal of space
 they should look the same.
+
+Urdu Stopwords
+---------------
+
+Stop words are natural language words which have very little meaning, such as "and", "the", "a", "an", and similar
+words. These words are highly redundant in texts and do not contribute much so it is sometimes a viable approach to
+remove the stop words in pre-processing of the data.
+ ::
+
+    >>> from urduhack.stop_words import STOP_WORDS, remove_stopwords
+    >>> print(STOP_WORDS)
+    >>> text = remove_stopwords(text)
 
 Tokenization
 ------------
