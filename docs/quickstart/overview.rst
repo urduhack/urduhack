@@ -27,6 +27,10 @@ characters with correct Urdu characters. This module brings all the characters i
 It also fixes the problem of joining of different Urdu words. By joining we mean that when space between two Urdu words
 is removed, they must not make a new word. Their rendering must not change and even after the removal of space
 they should look the same.
+ ::
+
+    >>> from urduhack import normalize
+    >>> text = normalize(text)
 
 Urdu Stopwords
 ---------------
