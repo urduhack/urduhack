@@ -12,6 +12,14 @@ class NormalizeParser(Parser):
     def _set_up(self, config):
         """Basic setup for parser"""
 
-    def parse(self, document):
-        """Function to normalize|preprocess text"""
+    def parse(self, document: str) -> str:
+        """
+        Normalize|Preprocess text
+
+        Args:
+            document (str): Urdu text
+
+        Returns:
+            str: Return complete urdu document
+        """
         return preprocess(normalize(normalize_whitespace(document)))
