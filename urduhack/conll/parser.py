@@ -1,9 +1,9 @@
 # coding: utf8
 """Conll format parser"""
 
-from typing import Dict, Tuple, Any, Optional, List, Iterator
+from typing import Dict, Tuple, Any, Optional, List, Iterator, Iterable
 
-import regex as re
+import regex as re  # type: ignore
 
 COMMENT_MARKER = '#'
 KEY_VALUE_COMMENT_PATTERN = COMMENT_MARKER + r'\s*([^=]+?)\s*=\s*(.+)'
@@ -74,7 +74,7 @@ def parse_conll_sentence(sentence: str) -> Tuple[Dict[Any, Optional[Any]], List[
     return sentence_meta, tokens
 
 
-def _iter_lines(lines: iter) -> Iterator[Tuple]:
+def _iter_lines(lines: Iterable) -> Iterator[Tuple]:
     """
     Iterate over the constructed sentences in the given lines.
 

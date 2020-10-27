@@ -112,6 +112,7 @@ html_context = {
 #
 # html_sidebars = {}
 
+html_favicon = '_static/favicon.ico'
 
 # -- Options for HTMLHelp output ---------------------------------------------
 

@@ -41,7 +41,7 @@ class Pipeline:
         return [self.parsers[parser_name] for parser_name in PIPELINE_NAMES if self.parsers.get(parser_name)]
 
     def parse(self, doc):
-        """Tst"""
+        """Document will be parse all available parsers"""
         for parser_name in PIPELINE_NAMES:
             if self.parsers.get(parser_name):
                 doc = self.parsers[parser_name].parse(doc)

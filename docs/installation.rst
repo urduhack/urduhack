@@ -1,9 +1,6 @@
 Installation
 ============
 
-Notes
------
-
 .. note:: Urduhack is supported on the following Python versions
 
 +------------+-------+-------+-------+-------+-------+
@@ -12,8 +9,8 @@ Notes
 |Urduhack    |  Yes  |  Yes  |  Yes  |       |       |
 +------------+-------+-------+-------+-------+-------+
 
-Basic Installation
-------------------
+Install Urduhack via pip
+------------------------
 
 .. note::
 
@@ -22,24 +19,26 @@ Basic Installation
 
 The easiest way to install **urduhack** is by :command:`pip` install.
 
-Installing with Tensorflow **cpu** version.::
+Installing with Tensorflow **cpu** version.
+ ::
 
-    $ pip install Urduhack[tf]
+    $ pip install urduhack[tf]
 
-Installing with Tensorflow **gpu** version.::
+Installing with Tensorflow **gpu** version.
+ ::
 
-    $ pip install Urduhack[tf-gpu]
+    $ pip install urduhack[tf-gpu]
 
 Package Dependencies
 --------------------
 Having so many functionality, **urduhack** depends on a number of other packages. Try to avoid any kind of conflict.
 It is preferred that you create a virtual environment and install *urduhack* in that environment.
 
-* **Tensorflow > 2.0.0** Use for training, evaluating and testing deep neural network model.
+* **Tensorflow ~= 2.3** Use for training, evaluating and testing deep neural network model.
 
-* **transformers** Use for bert implementation for training and evaluation.
+* **Transformers** Use for bert implementation for training and evaluation.
 
-* **tensorflow-datasets** Use for download and prepare the dataset,read it into a model using the tf.data.Dataset API.
+* **Tensorflow-datasets** Use for download and prepare the dataset,read it into a model using the tf.data.Dataset API.
 
 * **Click** With help of this library Urduhack commandline application developed.
 
@@ -49,7 +48,8 @@ Downloading Models
 Pythonic Way
 ^^^^^^^^^^^^
 
-You can download model using Urduhack code.::
+You can download model using Urduhack code.
+ ::
 
     import urduhack
     urduhack.download()
@@ -57,7 +57,8 @@ You can download model using Urduhack code.::
 Command line
 ^^^^^^^^^^^^
 
-To download the models all you have to do is run this simple command in the command line.::
+To download the models all you have to do is run this simple command in the command line.
+ ::
 
     $ urduhack download
 

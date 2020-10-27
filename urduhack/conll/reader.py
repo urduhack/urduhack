@@ -11,20 +11,20 @@ class CoNLL:
     A Conll class to easily load conll-u formats. This module can also load resources by iterating over string.
     This module is the main entrance to conll's functionalities.
     """
-    ID = 'id'
-    TEXT = 'text'
-    LEMMA = 'lemma'
-    UPOS = 'upos'
-    XPOS = 'xpos'
-    FEATS = 'feats'
-    HEAD = 'head'
-    DEPREL = 'deprel'
-    DEPS = 'deps'
-    MISC = 'misc'
+    ID: str = 'id'
+    TEXT: str = 'text'
+    LEMMA: str = 'lemma'
+    UPOS: str = 'upos'
+    XPOS: str = 'xpos'
+    FEATS: str = 'feats'
+    HEAD: str = 'head'
+    DEPREL: str = 'deprel'
+    DEPS: str = 'deps'
+    MISC: str = 'misc'
 
-    COMMENT_MARKER = '#'
-    FIELD_DELIMITER = '\t'
-    EMPTY = '_'
+    COMMENT_MARKER: str = '#'
+    FIELD_DELIMITER: str = '\t'
+    EMPTY: str = '_'
 
     @staticmethod
     def get_fields() -> List[str]:

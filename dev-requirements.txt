@@ -1,5 +1,5 @@
 wheel~=0.35
-pytest~=6.0
+pytest~=6.1
 pytest-cov
 pytest-pylint
 Sphinx

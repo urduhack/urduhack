@@ -4,7 +4,7 @@ Character Normalization functions
 provides functionality to put proper spaces before and after numeric digits, urdu digits
 and punctuations.
 """
-from typing import Dict
+from typing import Dict, List
 import logging
 
 from .regexes import _DIACRITICS_RE
@@ -13,73 +13,73 @@ from .regexes import _SPACE_AFTER_PUNCTUATIONS_RE, _REMOVE_SPACE_BEFORE_PUNCTUAT
 logger = logging.getLogger(__name__)
 
 # Contains wrong Urdu characters mapping to correct characters
-CORRECT_URDU_CHARACTERS: Dict = {'آ': ['ﺁ', 'ﺂ'],
-                                 'أ': ['ﺃ'],
-                                 'ا': ['ﺍ', 'ﺎ', ],
-                                 'ب': ['ﺏ', 'ﺐ', 'ﺑ', 'ﺒ'],
-                                 'پ': ['ﭖ', 'ﭘ', 'ﭙ', ],
-                                 'ت': ['ﺕ', 'ﺖ', 'ﺗ', 'ﺘ'],
-                                 'ٹ': ['ﭦ', 'ﭧ', 'ﭨ', 'ﭩ'],
-                                 'ث': ['ﺛ', 'ﺜ', 'ﺚ'],
-                                 'ج': ['ﺝ', 'ﺞ', 'ﺟ', 'ﺠ'],
-                                 'ح': ['ﺡ', 'ﺣ', 'ﺤ', 'ﺢ'],
-                                 'خ': ['ﺧ', 'ﺨ', 'ﺦ'],
-                                 'د': ['ﺩ', 'ﺪ'],
-                                 'ذ': ['ﺬ', 'ﺫ'],
-                                 'ر': ['ﺭ', 'ﺮ'],
-                                 'ز': ['ﺯ', 'ﺰ', ],
-                                 'س': ['ﺱ', 'ﺲ', 'ﺳ', 'ﺴ', ],
-                                 'ش': ['ﺵ', 'ﺶ', 'ﺷ', 'ﺸ'],
-                                 'ص': ['ﺹ', 'ﺺ', 'ﺻ', 'ﺼ', ],
-                                 'ض': ['ﺽ', 'ﺾ', 'ﺿ', 'ﻀ'],
-                                 'ط': ['ﻃ', 'ﻄ'],
-                                 'ظ': ['ﻅ', 'ﻇ', 'ﻈ'],
-                                 'ع': ['ﻉ', 'ﻊ', 'ﻋ', 'ﻌ', ],
-                                 'غ': ['ﻍ', 'ﻏ', 'ﻐ', ],
-                                 'ف': ['ﻑ', 'ﻒ', 'ﻓ', 'ﻔ', ],
-                                 'ق': ['ﻕ', 'ﻖ', 'ﻗ', 'ﻘ', ],
-                                 'ل': ['ﻝ', 'ﻞ', 'ﻟ', 'ﻠ', ],
-                                 'م': ['ﻡ', 'ﻢ', 'ﻣ', 'ﻤ', ],
-                                 'ن': ['ﻥ', 'ﻦ', 'ﻧ', 'ﻨ', ],
-                                 'چ': ['ﭺ', 'ﭻ', 'ﭼ', 'ﭽ'],
-                                 'ڈ': ['ﮈ', 'ﮉ'],
-                                 'ڑ': ['ﮍ', 'ﮌ'],
-                                 'ژ': ['ﮋ', ],
-                                 'ک': ['ﮎ', 'ﮏ', 'ﮐ', 'ﮑ', 'ﻛ', 'ك'],
-                                 'گ': ['ﮒ', 'ﮓ', 'ﮔ', 'ﮕ'],
-                                 'ں': ['ﮞ', 'ﮟ'],
-                                 'و': ['ﻮ', 'ﻭ', 'ﻮ', ],
-                                 'ؤ': ['ﺅ'],
-                                 'ھ': ['ﮪ', 'ﮬ', 'ﮭ', 'ﻬ', 'ﻫ', 'ﮫ'],
-                                 'ہ': ['ﻩ', 'ﮦ', 'ﻪ', 'ﮧ', 'ﮩ', 'ﮨ', 'ه', ],
-                                 'ۂ': [],
-                                 'ۃ': ['ة'],
-                                 'ء': ['ﺀ'],
-                                 'ی': ['ﯼ', 'ى', 'ﯽ', 'ﻰ', 'ﻱ', 'ﻲ', 'ﯾ', 'ﯿ', 'ي'],
-                                 'ئ': ['ﺋ', 'ﺌ', ],
-                                 'ے': ['ﮮ', 'ﮯ', 'ﻳ', 'ﻴ', ],
-                                 'ۓ': [],
-                                 '۰': ['٠'],
-                                 '۱': ['١'],
-                                 '۲': ['٢'],
-                                 '۳': ['٣'],
-                                 '۴': ['٤'],
-                                 '۵': ['٥'],
-                                 '۶': ['٦'],
-                                 '۷': ['٧'],
-                                 '۸': ['٨'],
-                                 '۹': ['٩'],
-                                 '۔': [],
-                                 '؟': [],
-                                 '٫': [],
-                                 '،': [],
-                                 'لا': ['ﻻ', 'ﻼ'],
-                                 '': ['ـ']
+_CORRECT_URDU_CHARACTERS_MAPPING: Dict[str, List[str]] = {'آ': ['ﺁ', 'ﺂ'],
+                                                          'أ': ['ﺃ'],
+                                                          'ا': ['ﺍ', 'ﺎ', ],
+                                                          'ب': ['ﺏ', 'ﺐ', 'ﺑ', 'ﺒ'],
+                                                          'پ': ['ﭖ', 'ﭘ', 'ﭙ', ],
+                                                          'ت': ['ﺕ', 'ﺖ', 'ﺗ', 'ﺘ'],
+                                                          'ٹ': ['ﭦ', 'ﭧ', 'ﭨ', 'ﭩ'],
+                                                          'ث': ['ﺛ', 'ﺜ', 'ﺚ'],
+                                                          'ج': ['ﺝ', 'ﺞ', 'ﺟ', 'ﺠ'],
+                                                          'ح': ['ﺡ', 'ﺣ', 'ﺤ', 'ﺢ'],
+                                                          'خ': ['ﺧ', 'ﺨ', 'ﺦ'],
+                                                          'د': ['ﺩ', 'ﺪ'],
+                                                          'ذ': ['ﺬ', 'ﺫ'],
+                                                          'ر': ['ﺭ', 'ﺮ'],
+                                                          'ز': ['ﺯ', 'ﺰ', ],
+                                                          'س': ['ﺱ', 'ﺲ', 'ﺳ', 'ﺴ', ],
+                                                          'ش': ['ﺵ', 'ﺶ', 'ﺷ', 'ﺸ'],
+                                                          'ص': ['ﺹ', 'ﺺ', 'ﺻ', 'ﺼ', ],
+                                                          'ض': ['ﺽ', 'ﺾ', 'ﺿ', 'ﻀ'],
+                                                          'ط': ['ﻃ', 'ﻄ'],
+                                                          'ظ': ['ﻅ', 'ﻇ', 'ﻈ'],
+                                                          'ع': ['ﻉ', 'ﻊ', 'ﻋ', 'ﻌ', ],
+                                                          'غ': ['ﻍ', 'ﻏ', 'ﻐ', ],
+                                                          'ف': ['ﻑ', 'ﻒ', 'ﻓ', 'ﻔ', ],
+                                                          'ق': ['ﻕ', 'ﻖ', 'ﻗ', 'ﻘ', ],
+                                                          'ل': ['ﻝ', 'ﻞ', 'ﻟ', 'ﻠ', ],
+                                                          'م': ['ﻡ', 'ﻢ', 'ﻣ', 'ﻤ', ],
+                                                          'ن': ['ﻥ', 'ﻦ', 'ﻧ', 'ﻨ', ],
+                                                          'چ': ['ﭺ', 'ﭻ', 'ﭼ', 'ﭽ'],
+                                                          'ڈ': ['ﮈ', 'ﮉ'],
+                                                          'ڑ': ['ﮍ', 'ﮌ'],
+                                                          'ژ': ['ﮋ', ],
+                                                          'ک': ['ﮎ', 'ﮏ', 'ﮐ', 'ﮑ', 'ﻛ', 'ك'],
+                                                          'گ': ['ﮒ', 'ﮓ', 'ﮔ', 'ﮕ'],
+                                                          'ں': ['ﮞ', 'ﮟ'],
+                                                          'و': ['ﻮ', 'ﻭ', 'ﻮ', ],
+                                                          'ؤ': ['ﺅ'],
+                                                          'ھ': ['ﮪ', 'ﮬ', 'ﮭ', 'ﻬ', 'ﻫ', 'ﮫ'],
+                                                          'ہ': ['ﻩ', 'ﮦ', 'ﻪ', 'ﮧ', 'ﮩ', 'ﮨ', 'ه', ],
+                                                          'ۂ': [],
+                                                          'ۃ': ['ة'],
+                                                          'ء': ['ﺀ'],
+                                                          'ی': ['ﯼ', 'ى', 'ﯽ', 'ﻰ', 'ﻱ', 'ﻲ', 'ﯾ', 'ﯿ', 'ي'],
+                                                          'ئ': ['ﺋ', 'ﺌ', ],
+                                                          'ے': ['ﮮ', 'ﮯ', 'ﻳ', 'ﻴ', ],
+                                                          'ۓ': [],
+                                                          '۰': ['٠'],
+                                                          '۱': ['١'],
+                                                          '۲': ['٢'],
+                                                          '۳': ['٣'],
+                                                          '۴': ['٤'],
+                                                          '۵': ['٥'],
+                                                          '۶': ['٦'],
+                                                          '۷': ['٧'],
+                                                          '۸': ['٨'],
+                                                          '۹': ['٩'],
+                                                          '۔': [],
+                                                          '؟': [],
+                                                          '٫': [],
+                                                          '،': [],
+                                                          'لا': ['ﻻ', 'ﻼ'],
+                                                          '': ['ـ']
 
-                                 }
+                                                          }
 
 _TRANSLATOR = {}
-for key, value in CORRECT_URDU_CHARACTERS.items():
+for key, value in _CORRECT_URDU_CHARACTERS_MAPPING.items():
     _TRANSLATOR.update(dict.fromkeys(map(ord, value), key))
 
 
@@ -233,31 +233,31 @@ for key, value in URDU_ENG_DIGITS_MAP.items():
     _URDU_DIGITS_TRANSLATOR.update(dict.fromkeys(map(ord, value), key))
 
 
-def replace_digits(text: str, with_eng: bool = True) -> str:
+def replace_digits(text: str, with_english: bool = True) -> str:
     """
     Replace urdu digits with English digits and vice versa
 
     Args:
         text (str): Urdu text string
-        with_eng (bool): Boolean to convert digits from one language to other
+        with_english (bool): Boolean to convert digits from one language to other
     Returns:
         Text string with replaced digits
     """
-    if with_eng:
+    if with_english:
         return text.translate(_ENG_DIGITS_TRANSLATOR)
     return text.translate(_URDU_DIGITS_TRANSLATOR)
 
 
 def normalize(text: str) -> str:
     """
-    To normalize some text, all you need to do pass ``unicode`` text. It will return a ``str``
+    To normalize some text, all you need to do pass ``Urdu`` text. It will return a ``str``
     with normalized characters both single and combined, proper spaces after digits and punctuations
     and diacritics removed.
 
     Args:
         text (str): ``Urdu`` text
     Returns:
-        str: Normalized urdu text
+        str: Normalized ``Urdu`` text
     Raises:
         TypeError: If text param is not not str Type.
     Examples:
@@ -270,9 +270,9 @@ def normalize(text: str) -> str:
         اباوگل پاکستان ﻤﯿﮟ 20 سال ﺳﮯ ، وسائل کی کوئی کمی نہیں ﮨﮯ۔
     """
     if not isinstance(text, str):
-        raise TypeError("text must be str type.")
+        raise TypeError("Text must be str type.")
 
-    logger.info("Normalizing the raw Urdu text.")
+    logger.info("Normalizing the text.")
 
     text = remove_diacritics(text)
     text = normalize_characters(text)
