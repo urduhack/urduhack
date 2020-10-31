@@ -65,7 +65,7 @@ def setup_package():
           python_requires='>= 3.8',
 
           classifiers=[
-              'Development Status :: 4 - Beta',
+              'Development Status :: 5 - Production/Stable',
               'Intended Audience :: Developers',
               'Intended Audience :: Education',
               'Intended Audience :: Science/Research',
@@ -74,8 +74,6 @@ def setup_package():
               'Operating System :: MacOS :: MacOS X',
               'Operating System :: Microsoft :: Windows',
               'Programming Language :: Python :: 3',
-              'Programming Language :: Python :: 3.6',
-              'Programming Language :: Python :: 3.7',
               'Programming Language :: Python :: 3.8',
               'Topic :: Software Development :: Libraries',
               'Topic :: Software Development :: Libraries :: Python Modules',
