@@ -62,7 +62,7 @@ def setup_package():
 
           keywords="urdu machine learning text pre-processing tensorflow nlp",
 
-          python_requires='>= 3.6',
+          python_requires='>= 3.8',
 
           classifiers=[
               'Development Status :: 4 - Beta',
