@@ -5,9 +5,9 @@ from pathlib import Path
 from typing import Dict
 
 # Directories
-URDUHACK_BASE_DIR: str = f"{str(Path.home())}/.urduhack"
-URDUHACK_MODElS_DIR: str = f"{URDUHACK_BASE_DIR}/models"
-URDUHACK_DATASETS_DIR: str = f"{URDUHACK_BASE_DIR}/datasets"
+URDUHACK_DIRECTORY: str = f"{str(Path.home())}/.urduhack"
+URDUHACK_MODElS_DIR: str = f"{URDUHACK_DIRECTORY}/models"
+URDUHACK_DATASETS_DIR: str = f"{URDUHACK_DIRECTORY}/datasets"
 
 WORD_TOKENIZER_MODEL_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/word_tokenizer.h5"
 WORD_TOKENIZER_VOCAB_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/vocab.txt"
