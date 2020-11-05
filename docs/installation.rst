@@ -34,7 +34,7 @@ Package Dependencies
 Having so many functionality, **urduhack** depends on a number of other packages. Try to avoid any kind of conflict.
 It is preferred that you create a virtual environment and install *urduhack* in that environment.
 
-* **Tensorflow ~= 2.3** Use for training, evaluating and testing deep neural network model.
+* **Tensorflow ~= 2.4** Use for training, evaluating and testing deep neural network model.
 
 * **Transformers** Use for bert implementation for training and evaluation.
 
