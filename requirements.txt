@@ -2,3 +2,4 @@ tf2crf
 tensorflow-datasets~=4.0
 Click~=7.1
 regex
+absl-py
