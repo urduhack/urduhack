@@ -9,8 +9,7 @@ URDUHACK_DIRECTORY: str = f"{str(Path.home())}/.urduhack"
 URDUHACK_MODElS_DIR: str = f"{URDUHACK_DIRECTORY}/models"
 URDUHACK_DATASETS_DIR: str = f"{URDUHACK_DIRECTORY}/datasets"
 
-WORD_TOKENIZER_MODEL_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/word_tokenizer.h5"
-WORD_TOKENIZER_VOCAB_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/vocab.txt"
+WORD_TOKENIZER_MODEL_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/wtk.model"
 
 POS_TAGGER_WEIGHTS_PATH: str = f"{URDUHACK_MODElS_DIR}/tagger/pos/tf_pos_weights.h5"
 POS_WORD2IDX_PATH: str = f"{URDUHACK_MODElS_DIR}/tagger/pos/word2idx.json"
