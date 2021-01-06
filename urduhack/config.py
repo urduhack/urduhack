@@ -23,8 +23,7 @@ LEMMA_LOOKUP_TABLE_PATH: str = f"{URDUHACK_MODElS_DIR}/lemma/ur_lemma_lookup.jso
 
 # Models URLs
 MODELS_URL: Dict[str, str] = {
-    "WORD_TOKENIZER_WEIGHTS": "https://github.com/urduhack/resources/releases/download/"
-                              "word_tokenizer/word_tokenizer.zip",
+    "WORD_TOKENIZER_WEIGHTS": "https://github.com/urduhack/resources/releases/download/word_tokenizer/wtk.model.zip",
     "SENTIMENT_V1_WEIGHTS": "https://sgp1.digitaloceanspaces.com/urduhack/models/sentiment/v1/sentiment_v1.zip",
     "POS_TAGGER_WEIGHTS": "https://github.com/urduhack/resources/releases/download/pos_tagger/pos_tagger.zip",
     "NER_WEIGHTS": "https://github.com/urduhack/resources/releases/download/ner/ner.zip",
