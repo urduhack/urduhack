@@ -4,9 +4,10 @@ import sentencepiece as spm
 from urduhack.stop_words import STOP_WORDS
 
 from pathlib import Path
+from typing import List
 
 
-def _is_token(pieces: list, special_symbol: str = "▁"):
+def _is_token(pieces: list, special_symbol: str = "▁") -> List[str]:
     """
     Check for stopwords and actual words in word pieces
 
@@ -29,7 +30,7 @@ def _is_token(pieces: list, special_symbol: str = "▁"):
     return decoded
 
 
-def _load_model(model_path: str):
+def _load_model(model_path: str) -> spm.SentencePieceProcessor:
     """
     Loads pre_trained keras model and vocab file
 
@@ -38,9 +39,9 @@ def _load_model(model_path: str):
     Returns:
         spm model class instance
     """
-    sm = spm.SentencePieceProcessor()
-    sm.Load(model_file=model_path)
-    return sm
+    spm_model = spm.SentencePieceProcessor()
+    spm_model.Load(model_file=model_path)
+    return spm_model
 
 
 def _is_model_available(model_path: str) -> None:
