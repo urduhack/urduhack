@@ -1,10 +1,11 @@
 """SentencePiece based word tokenizer module"""
 
-import sentencepiece as spm
-from urduhack.stop_words import STOP_WORDS
-
 from pathlib import Path
 from typing import List
+
+from urduhack.stop_words import STOP_WORDS
+
+import sentencepiece as spm
 
 
 def _is_token(pieces: list, special_symbol: str = "▁") -> List[str]:

@@ -3,7 +3,6 @@ Test cases for tokenizer
 """
 
 import pytest
-import tensorflow as tf
 import sentencepiece as spm
 
 from ..wtk import _is_model_available, _is_token, _load_model
