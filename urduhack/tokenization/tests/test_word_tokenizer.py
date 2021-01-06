@@ -39,10 +39,9 @@ def test_word_tokenizer():
     #     word_tokenizer(sentence2, 20)
 
 
-def test_is_word():
+def test_is_token():
     """Test Case"""
-    text = "ہم اس کیلئے تیار ہیں لیکن پھرسسٹم لپیٹاجائے ؟کیجئےگا۔قومی " \
-           "اسمبلی کے اجلاس میں خطاب کرتے ہوئے۔ایسے رویوں سے تشدد کی لہر شروع ہوگی۔"
+    text = "ہم اس کیلئے تیار ہیں لیکن پھرسسٹم لپیٹاجائے ؟کیجئےگا۔"
 
     model = _load_model(WORD_TOKENIZER_MODEL_PATH)
     pieces = _is_token(model.EncodeAsPieces(text))
