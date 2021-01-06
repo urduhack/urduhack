@@ -45,7 +45,7 @@ def test_is_token():
 
     model = _load_model(WORD_TOKENIZER_MODEL_PATH)
     pieces = _is_token(model.EncodeAsPieces(text))
-    assert "گا" in pieces
+    assert "▁گا" in pieces
 
 
 def test_is_model_available():
