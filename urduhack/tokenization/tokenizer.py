@@ -9,10 +9,6 @@ from .eos import _generate_sentences
 from .wtk import _load_model, _is_model_available, _is_token
 from ..config import WORD_TOKENIZER_MODEL_PATH
 
-from ..preprocessing import preprocess
-from ..normalization import normalize
-from ..tokenization.words import fix_join_words
-
 _WORD_TOKENIZER_MODEL = None
 
 
@@ -67,9 +63,7 @@ def word_tokenizer(sentence: str) -> List[str]:
         _is_model_available(WORD_TOKENIZER_MODEL_PATH)
         _WORD_TOKENIZER_MODEL = _load_model(WORD_TOKENIZER_MODEL_PATH)
 
-    text = fix_join_words(preprocess(normalize(sentence)))
-
-    spm_pieces = _WORD_TOKENIZER_MODEL.EncodeAsPieces(text)
+    spm_pieces = _WORD_TOKENIZER_MODEL.EncodeAsPieces(sentence)
     filtered = _is_token(spm_pieces)
     tokens = _WORD_TOKENIZER_MODEL.DecodePieces(filtered).split()
 
