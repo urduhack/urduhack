@@ -3,9 +3,8 @@
 from pathlib import Path
 from typing import List
 
-from urduhack.stop_words import STOP_WORDS
-
 import sentencepiece as spm
+from urduhack.stop_words import STOP_WORDS
 
 
 def _is_token(pieces: list, special_symbol: str = "▁") -> List[str]:
