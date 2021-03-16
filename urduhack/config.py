@@ -5,13 +5,11 @@ from pathlib import Path
 from typing import Dict
 
 # Directories
-USER_HOME_DIR: str = str(Path.home())
-URDUHACK_BASE_DIR: str = f"{USER_HOME_DIR}/.urduhack"
-URDUHACK_MODElS_DIR: str = f"{URDUHACK_BASE_DIR}/models"
-URDUHACK_DATASETS_DIR: str = f"{URDUHACK_BASE_DIR}/datasets"
+URDUHACK_DIRECTORY: str = f"{str(Path.home())}/.urduhack"
+URDUHACK_MODElS_DIR: str = f"{URDUHACK_DIRECTORY}/models"
+URDUHACK_DATASETS_DIR: str = f"{URDUHACK_DIRECTORY}/datasets"
 
-WORD_TOKENIZER_MODEL_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/word_tokenizer.h5"
-WORD_TOKENIZER_VOCAB_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/vocab.txt"
+WORD_TOKENIZER_MODEL_PATH: str = f"{URDUHACK_MODElS_DIR}/tokenizer/word/wtk.model"
 
 POS_TAGGER_WEIGHTS_PATH: str = f"{URDUHACK_MODElS_DIR}/tagger/pos/tf_pos_weights.h5"
 POS_WORD2IDX_PATH: str = f"{URDUHACK_MODElS_DIR}/tagger/pos/word2idx.json"
@@ -25,8 +23,7 @@ LEMMA_LOOKUP_TABLE_PATH: str = f"{URDUHACK_MODElS_DIR}/lemma/ur_lemma_lookup.jso
 
 # Models URLs
 MODELS_URL: Dict[str, str] = {
-    "WORD_TOKENIZER_WEIGHTS": "https://github.com/urduhack/resources/releases/download/"
-                              "word_tokenizer/word_tokenizer.zip",
+    "WORD_TOKENIZER_WEIGHTS": "https://github.com/urduhack/resources/releases/download/word_tokenizer/wtk.model.zip",
     "SENTIMENT_V1_WEIGHTS": "https://sgp1.digitaloceanspaces.com/urduhack/models/sentiment/v1/sentiment_v1.zip",
     "POS_TAGGER_WEIGHTS": "https://github.com/urduhack/resources/releases/download/pos_tagger/pos_tagger.zip",
     "NER_WEIGHTS": "https://github.com/urduhack/resources/releases/download/ner/ner.zip",

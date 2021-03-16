@@ -7,7 +7,7 @@ from typing import Any, Optional
 
 import tensorflow as tf
 
-from ..config import URDUHACK_BASE_DIR
+from ..config import URDUHACK_DIRECTORY
 
 
 def pickle_dump(file_name: str, data: Any):
@@ -55,7 +55,7 @@ def download_from_url(file_name: str, url: str, download_dir: str, cache_dir: Op
         raise TypeError(f"{download_dir} must be str type.")
 
     if cache_dir is None:
-        cache_dir = URDUHACK_BASE_DIR
+        cache_dir = URDUHACK_DIRECTORY
 
     Path(cache_dir).mkdir(parents=True, exist_ok=True)
     tf.keras.utils.get_file(fname=file_name, origin=url, cache_subdir=download_dir, cache_dir=cache_dir, extract=True)

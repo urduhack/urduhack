@@ -13,11 +13,11 @@ jobs:
 # Perform basic checks for most important errors (syntax etc.) Uses the config
 - job: 'Validate'
   pool:
-    vmImage: 'ubuntu-18.04'
+    vmImage: 'ubuntu-20.04'
   steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.7'
+      versionSpec: '3.8'
   - script: |
       python -m pip install --upgrade pip
       pip install -r dev-requirements.txt
@@ -31,23 +31,14 @@ jobs:
   dependsOn: 'Validate'
   strategy:
     matrix:
-      Python37Linux:
-        imageName: 'ubuntu-18.04'
-        python.version: '3.7'
-      Python37Windows:
-       imageName: 'vs2017-win2016'
-       python.version: '3.7'
-      Python37Mac:
-        imageName: 'macos-10.14'
-        python.version: '3.7'
       Python38Linux:
-        imageName: 'ubuntu-18.04'
+        imageName: 'ubuntu-20.04'
         python.version: '3.8'
       Python38Windows:
         imageName: 'vs2017-win2016'
         python.version: '3.8'
       Python38Mac:
-        imageName: 'macos-10.14'
+        imageName: 'macos-10.15'
         python.version: '3.8'
   pool:
       vmImage: $(imageName)
