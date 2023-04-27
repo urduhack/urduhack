@@ -108,7 +108,7 @@ def normalize_characters(text: str) -> str:
     Replace ``urdu`` text characters with correct ``unicode`` characters.
 
     Args:
-        text (str): ``Urdu`` text
+        text : ``Urdu`` text
     Returns:
         str: Returns a ``str`` object containing normalized text.
     Examples:
@@ -142,7 +142,7 @@ def normalize_combine_characters(text: str) -> str:
     Replace combine|join ``urdu`` characters with single unicode character
 
     Args:
-        text (str): ``Urdu`` text
+        text : ``Urdu`` text
     Returns:
         str: Returns a ``str`` object containing normalized text.
     Examples:
@@ -164,7 +164,7 @@ def punctuations_space(text: str) -> str:
     Add spaces after punctuations used in ``urdu`` writing
 
     Args:
-        text (str): ``Urdu`` text
+        text : ``Urdu`` text
     Returns:
         str: Returns a ``str`` object containing normalized text.
     Examples:
@@ -185,7 +185,7 @@ def remove_diacritics(text: str) -> str:
     This function returns a String object which contains the original text minus Urdu diacritics.
 
     Args:
-        text (str): ``Urdu`` text
+        text : ``Urdu`` text
     Returns:
         str: Returns a ``str`` object containing normalized text.
     Examples:
@@ -238,7 +238,7 @@ def replace_digits(text: str, with_english: bool = True) -> str:
     Replace urdu digits with English digits and vice versa
 
     Args:
-        text (str): Urdu text string
+        text : Urdu text string
         with_english (bool): Boolean to convert digits from one language to other
     Returns:
         Text string with replaced digits
@@ -255,7 +255,7 @@ def normalize(text: str) -> str:
     and diacritics removed.
 
     Args:
-        text (str): ``Urdu`` text
+        text : ``Urdu`` text
     Returns:
         str: Normalized ``Urdu`` text
     Raises:
