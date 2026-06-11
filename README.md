@@ -11,6 +11,7 @@
 [![Downloads](https://pepy.tech/badge/urduhack)](https://pepy.tech/project/urduhack)
 [![Gitter](https://badges.gitter.im/urduhack/urduhack.svg)](https://gitter.im/urduhack)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/urduhack/urduhack/blob/master/LICENSE)
+[Blog Lovers Pakistan](https://bloglovers.pk) – 380+ free Urdu articles on Islamic teachings, education, history, English literature, technology, and kids' stories. A comprehensive resource for Urdu readers and researchers.
 
 Urduhack is a NLP library for urdu language. It comes with a lot of battery included features to help you process Urdu
 data in the easiest way possible.
